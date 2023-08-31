@@ -8,7 +8,7 @@ lab:
 
 En este ejercicio, creará una arquitectura de medallas en un almacén de lago de Fabric mediante cuadernos. Creará un área de trabajo, creará un almacén de lago, cargará datos en la capa de bronce, transformará los datos y los cargará en la tabla Delta de plata, después transformará aún más los datos y los cargará en las tablas Delta de oro y, entonces, explorará el conjunto de datos y creará relaciones.
 
-Este ejercicio debería tardar en completarse **40** minutos aproximadamente.
+Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
 > **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -21,7 +21,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace-medallion.png)
+   ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace-medallion.png)
 5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un conjunto de datos de Power BI.
 
     ![Captura de pantalla de la página de configuración del área de trabajo en Power BI.](./Images/workspace-settings.png)
@@ -32,9 +32,9 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Ingeniería de datos* en el portal de Fabric y crear un almacén de lago de datos para los datos que va a analizar.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**.
+1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**. Si no ve la experiencia de ingeniería de datos, póngase en contacto con el administrador de Fabric con una solicitud para [habilitar Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
 
-2. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+2. En la página de inicio de **Ingeniería de datos de Synapse**, cree un nuevo **Lakehouse** denominado **Sales**.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
@@ -43,7 +43,7 @@ Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *
 4. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **bronze**.
 
 5. En el menú **...** de la carpeta **bronze**, seleccione **Cargar** y **Cargar archivos**, entonces cargue los 3 archivos (2019.csv, 2020.csv, y 2021.csv) desde el equipo local (o máquina virtual de laboratorio, si procede) al almacén de lago. Use la tecla Mayús para cargar los 3 archivos a la vez.
-   
+
 6. Una vez caragados los archivos, seleccione la carpeta **bronze** y compruebe que los archivos han sido cargados, como se muestra aquí:
 
     ![Captura de pantalla del archivo products.csv cargado en un almacén de lago.](./Images/bronze-files.png)
@@ -60,11 +60,11 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
 
     ![Captura de pantalla de un nuevo cuaderno denominado Transformar datos para Silver.](./Images/sales-notebook-rename.png)
 
-2. Seleccione la celda existente del cuaderno, que contiene un sencillo código comentado. Resalte y elimine estas dos líneas: no necesitará este código.
-   
+3. Seleccione la celda existente del cuaderno, que contiene un sencillo código comentado. Resalte y elimine estas dos líneas: no necesitará este código.
+
    > **Nota**: Los cuadernos permiten ejecutar código en varios lenguajes, como Python, Scala y SQL. En este ejercicio, usará PySpark y SQL. También puede agregar celdas Markdown para proporcionar texto con formato e imágenes para documentar el código.
 
-3. **Pegue** el siguiente código en la celda:
+4. **Pegue** el siguiente código en la celda:
 
     ```python
     from pyspark.sql.types import *
@@ -89,23 +89,23 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
     display(df.head(10))
     ```
 
-4. Use el botón ****&#9655;** (*Ejecutar celda*)** a la izquierda de la celda para ejecutar el código.
+5. Use el botón ****&#9655;** (*Ejecutar celda*)** a la izquierda de la celda para ejecutar el código.
 
     > **Nota**: Dado que esta es la primera vez que se ejecuta código de Spark en este cuaderno, se debe iniciar una sesión con Spark. Esto significa que la primera ejecución puede tardar un minuto en completarse. Las ejecuciones posteriores serán más rápidas.
 
-5. Cuando se haya completado el comando de la celda, **revise la salida** que aparece debajo de ella, que será algo parecido a esto:
+6. Cuando se haya completado el comando de la celda, **revise la salida** que aparece debajo de ella, que será algo parecido a esto:
 
     | Índice | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | Correo electrónico | Elemento | Quantity | UnitPrice | Impuesto |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
     | 1 | SO49172 | 1 | 01-01-2021 | Brian Howard | brian23@adventure-works.com | Road-250 Red, 52 | 1 | 2443.35 | 195.468 |
-    | 2 |  SO49173 | 1 | 01-01-2021 | Linda Álvarez | Mountain-200 Silver, 38 | 1 | 2071.4197 | 165.7136 |
+    | 2 |  SO49173 | 1 | 01-01-2021 | Linda Álvarez | linda19@adventure-works.com | Mountain-200 Silver, 38 | 1 | 2071.4197 | 165.7136 |
     | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     El código ejecutado ha cargado los datos de los archivos CSV de la carpeta **bronze** en un dataframe de Spark y, después, ha mostrado las primeras filas del dataframe.
 
     > **Nota**: Puede borrar, ocultar y cambiar automáticamente el tamaño del contenido de la salida de la celda seleccionando el menú **...** situado en la parte superior izquierda del panel de salida.
 
-6. Ahora **agregará columnas para la validación y limpieza de datos** mediante un dataframe de PySpark para agregar columnas y actualizar los valores de algunas de las columnas existentes. Use el botón + para **agregar un nuevo bloque de código** y agregue el código siguiente a la celda:
+7. Ahora **agregará columnas para la validación y limpieza de datos** mediante un dataframe de PySpark para agregar columnas y actualizar los valores de algunas de las columnas existentes. Use el botón + para **agregar un nuevo bloque de código** y agregue el código siguiente a la celda:
 
     ```python
     from pyspark.sql.functions import when, lit, col, current_timestamp, input_file_name
@@ -120,14 +120,14 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
     ```
 
     La primera línea del código importa las funciones necesarias de PySpark. Después, va a agregar nuevas columnas al dataframe para poder realizar un seguimiento del nombre del archivo de origen, si el pedido se marcó como anterior al año fiscal de interés y cuándo se creó y modificó la fila.
-    
+
     También va a agregar columnas para CustomerID e ItemID, que se rellenarán más adelante.
-    
+
     Por último, va a actualizar la columna CustomerName a “Unknown” si es null o está vacía.
 
-7. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
+8. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
 
-8. A continuación, definirá el esquema de la tabla **sales_silver** en la base de datos de ventas mediante el formato Delta Lake. Cree un nuevo bloque de código y agregue el siguiente código a la celda:
+9. A continuación, definirá el esquema de la tabla **sales_silver** en la base de datos de ventas mediante el formato Delta Lake. Cree un nuevo bloque de código y agregue el siguiente código a la celda:
 
     ```python
     # Define the schema for the sales_silver table
@@ -151,16 +151,17 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
         .addColumn("CreatedTS", DateType()) \
         .addColumn("ModifiedTS", DateType()) \
         .execute()
-        ```
-9. Run the cell to execute the code using the ****&#9655;** (*Run cell*)** button.
+    ```
 
-10. Select the **...** in the Tables section of the lakehouse explorer pane and select **Refresh**. You should now see the new **sales_silver** table listed. The **&#9650;** (triangle icon) indicates that it's a Delta table.
+10. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
 
-    ![Screenshot of the sales_silver table in a lakehouse.](./Images/sales-silver-table.png)
+11. Seleccione **...** en la sección Tablas en el panel del explorador del almacén de lago y seleccione **Actualizar**. Ahora debería ver la nueva tabla **sales_silver** en la lista. **&#9650;** (icono de triángulo) indica que es una tabla Delta.
 
-    > **Note**: If you don't see the new table, wait a few seconds and then select **Refresh** again, or refresh the entire browser tab.
+    ![Captura de pantalla de la tabla sales_silver en un almacén de lago.](./Images/sales-silver-table.png)
 
-11. Now you're going to perform an **upsert operation** on a Delta table, updating existing records based on specific conditions and inserting new records when no match is found. Add a new code block and paste the following code:
+    > **Nota**: si no ve la nueva tabla, espere unos segundos y vuelva a seleccionar **Actualizar**, o actualice la pestaña del explorador.
+
+12. Ahora va a realizar una **operación upsert** en una tabla Delta, actualizando los registros existentes según unas condiciones específicas e insertando nuevos registros cuando no se encuentren coincidencias. Agregue un nuevo bloque de código y pegue el siguiente código:
 
     ```python
     # Update existing records and insert new ones based on a condition defined by the columns SalesOrderNumber, OrderDate, CustomerName, and Item.
@@ -200,6 +201,7 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
       ) \
       .execute()
     ```
+
     Esta operación es importante porque permite actualizar los registros existentes en la tabla según los valores de columnas específicas e insertar nuevos registros cuando no se encuentren coincidencias. Este es un requisito común cuando se cargan datos desde un sistema de origen que pueden contener actualizaciones de registros existentes y nuevos.
 
 Ahora tiene datos en la tabla Delta de plata que están listos para ser aún más transformados y modelados.
@@ -212,11 +214,11 @@ Ahora que tiene datos en la capa Silver, puede usar el punto de conexión de SQL
 
     ![Captura de pantalla del punto de conexión de SQL en un el almacén de lago de datos.](./Images/sql-endpoint-item.png)
 
-1. Seleccione **Nueva consulta SQL** en la cinta de opciones, que abrirá un editor de consultas SQL. Tenga en cuenta que puede cambiar el nombre de la consulta mediante el elemento de menú **...** situado junto al nombre de consulta existente en el panel del explorador del almacén de lago de datos.
+2. Seleccione **Nueva consulta SQL** en la cinta de opciones, que abrirá un editor de consultas SQL. Tenga en cuenta que puede cambiar el nombre de la consulta mediante el elemento de menú **...** situado junto al nombre de consulta existente en el panel del explorador del almacén de lago de datos.
 
    Vamos a ejecutar dos consultas SQL para explorar los datos.
 
-1. Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
+3. Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
     ```sql
     SELECT YEAR(OrderDate) AS Year
@@ -230,15 +232,16 @@ Ahora que tiene datos en la capa Silver, puede usar el punto de conexión de SQL
 
     ![Captura de pantalla de los resultados de una consulta SQL en un almacén de lago de datos.](./Images/total-sales-sql.png)
 
-  1. Ahora echaremos un vistazo a qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
+4. Ahora echaremos un vistazo a qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
-        ```sql
-        SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
-        FROM sales_silver
-        GROUP BY CustomerName
-        ORDER BY TotalQuantity DESC
-        ```
-        Esta consulta calcula la cantidad total de artículos adquiridos por cada cliente en la tabla sales_silver y,después, devuelve los 10 clientes principales en términos de cantidad.
+    ```sql
+    SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
+    FROM sales_silver
+    GROUP BY CustomerName
+    ORDER BY TotalQuantity DESC
+    ```
+
+      Esta consulta calcula la cantidad total de artículos adquiridos por cada cliente en la tabla sales_silver y,después, devuelve los 10 clientes principales en términos de cantidad.
 
 La exploración de datos en la capa Silver es útil para el análisis básico, pero tendrá que transformar los datos aún más y modelarlos en un esquema de estrella para habilitar análisis e informes más avanzados. Lo hará en la sección siguiente.
 
@@ -252,14 +255,14 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
 
 2. En el panel de exploración de almacenes de lago, agregue su almacén de lago **Sales** seleccionando **Agregar** y seleccionando entonces el almacén de lago **Sales** que creó anteriormente. Debería ver la tabla **sales_silver** en la sección **Tablas** del panel de exploración.
 
-3. En el bloque de código existente, quite el texto reutilizable y **agregue el código siguiente** para cargar datos al dataframe y comenzar a crear el esquema de estrella:
+3. En el bloque de código existente, quite el texto reutilizable y **agregue el código siguiente** para cargar datos al dataframe y comenzar a crear el esquema de estrella, después ejecútelo:
 
-    ```python
+   ```python
     # Load data to the dataframe as a starting point to create the gold layer
     df = spark.read.table("Sales.sales_silver")
     ```
 
-4. **Agregue un nuevo bloque de código** y pegue el código siguiente para crear la tabla de dimensiones de fecha:
+4. **Agregue un nuevo bloque de código** y pegue el código siguiente para crear la tabla de dimensiones y ejecútelo:
 
     ```python
     from pyspark.sql.types import *
@@ -276,9 +279,10 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
         .addColumn("yyyymm", StringType()) \
         .execute()
     ```
+
     > **Nota**: Puede ejecutar el comando `display(df)` en cualquier momento para comprobar el progreso del trabajo. En este caso, ejecutaría “display(dfdimDate_gold)” para ver el contenido del dataframe dimDate_gold.
 
-1. En un nuevo bloque de código, **agregue el código siguiente** para crear una trama de datos para la dimensión de fecha, **dimdate_gold**:
+5. En un nuevo bloque de código, **agregue y ejecute el código siguiente** para crear una trama de datos para la dimensión de fecha, **dimdate_gold**:
 
     ```python
     from pyspark.sql.functions import col, dayofmonth, month, year, date_format
@@ -293,8 +297,12 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
             date_format(col("OrderDate"), "yyyyMM").alias("yyyymm"), \
         ).orderBy("OrderDate")
 
+    # Display the first 10 rows of the dataframe to preview your data
 
-2. You're separating the code out into new code blocks so that you can understand and watch what's happening in the notebook as you transform the data. In another new code block, **add the following code** to update the date dimension as new data comes in:
+    display(dfdimDate_gold.head(10))
+    ```
+
+6. Está separando el código en nuevos bloques de código para poder comprender y observar lo que sucede en el cuaderno a medida que transforma los datos. En otro bloque de código nuevo, **agregue y ejecute el siguiente código** para actualizar la dimensión de fecha a medida se ingresan nuevos datos:
 
     ```python
     from delta.tables import *
@@ -325,8 +333,9 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
       ) \
       .execute()
     ```
+
     ¡Enhorabuena! La dimensión de fecha está configurada. Ahora creará la dimensión del cliente.
-3. Para crear la tabla de dimensiones de cliente, **agregue un nuevo bloque de código** y pegue este código:
+7. Para crear la tabla de dimensiones de cliente, **agregue un nuevo bloque de código**, pegue y ejecute el código siguiente:
 
     ```python
     from pyspark.sql.types import *
@@ -342,7 +351,8 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
         .addColumn("CustomerID", LongType()) \
         .execute()
     ```
-1. En un nuevo bloque de código, **agregue el código siguiente** para quitar clientes duplicados; seleccione columnas específicas y divida la columna "CustomerName" para crear columnas "First" y "Last" (nombres y apellidos):
+
+8. En un nuevo bloque de código, **agregue y ejecute el código siguiente** para quitar clientes duplicados; seleccione columnas específicas y divida la columna "CustomerName" para crear columnas "First" y "Last" (nombres y apellidos):
 
     ```python
     from pyspark.sql.functions import col, split
@@ -351,12 +361,16 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     
     dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
         .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
-        .withColumn("Last",split(col("CustomerName"), " ").getItem(1)) \
+        .withColumn("Last",split(col("CustomerName"), " ").getItem(1)) 
+    
+    # Display the first 10 rows of the dataframe to preview your data
+
+    display(dfdimDate_gold.head(10))
     ```
 
      Aquí ha creado un nuevo DataFrame “dfdimCustomer_silver” realizando varias transformaciones, como anular duplicados, seleccionar columnas específicas y separar la columna “CustomerName” para crear las columnas “First” y “Last” name. El resultado es un DataFrame con datos de cliente estructurados limpios, incluyendo las columnas “First” y “Last” name extraídas de la columna “CustomerName”.
 
-2. Después, **crearemos la columna ID para nuestros clientes**. En un nuevo bloque de código, pegue lo siguiente:
+9. Después, **crearemos la columna ID para nuestros clientes**. En un nuevo bloque de código, pegue y ejecute lo siguiente:
 
     ```python
     from pyspark.sql.functions import monotonically_increasing_id, col, when, coalesce, max, lit
@@ -368,10 +382,15 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     dfdimCustomer_gold = dfdimCustomer_silver.join(dfdimCustomer_temp,(dfdimCustomer_silver.CustomerName == dfdimCustomer_temp.CustomerName) & (dfdimCustomer_silver.Email == dfdimCustomer_temp.Email), "left_anti")
     
     dfdimCustomer_gold = dfdimCustomer_gold.withColumn("CustomerID",monotonically_increasing_id() + MAXCustomerID + 1)
+
+    # Display the first 10 rows of the dataframe to preview your data
+
+    display(dfdimDate_gold.head(10))
     ```
+
     Aquí va a limpiar y transformar los datos del cliente (dfdimCustomer_silver) mediante la realización de una anticombinación izquierda para excluir duplicados que ya existen en la tabla dimCustomer_gold y, a continuación, generar valores CustomerID únicos mediante la función monotonically_increasing_id().
 
-1. Ahora se asegurará de que su tabla de clientes se mantenga actualizada conforme vayan entrando nuevos datos. **En un nuevo bloque de código**, pegue lo siguiente:
+10. Ahora se asegurará de que su tabla de clientes se mantenga actualizada conforme vayan entrando nuevos datos. **En un nuevo bloque de código**, pegue y ejecute lo siguiente:
 
     ```python
     from delta.tables import *
@@ -401,7 +420,8 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
       ) \
       .execute()
     ```
-2. Ahora **repetirá esos pasos para crear la dimensión del producto**. En un nuevo bloque de código, pegue lo siguiente:
+
+11. Ahora **repetirá esos pasos para crear la dimensión del producto**. En un nuevo bloque de código, pegue y ejecute lo siguiente:
 
     ```python
     from pyspark.sql.types import *
@@ -413,9 +433,10 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
         .addColumn("ItemID", LongType()) \
         .addColumn("ItemInfo", StringType()) \
         .execute()
-    ```    
-3.  **Agregue otro bloque de código** para crear el dataframe **customer_gold**. Usará esto más adelante en el join de Sales.
-    
+    ```
+
+12. **Agregue otro bloque de código** para crear el dataframe **customer_gold**. Usará esto más adelante en el join de Sales.
+  
     ```python
     from pyspark.sql.functions import col, split, lit
     
@@ -423,10 +444,14 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     
     dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
         .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
-        .withColumn("ItemInfo",when((split(col("Item"), ", ").getItem(1).isNull() | (split(col("Item"), ", ").getItem(1)=="")),lit("")).otherwise(split(col("Item"), ", ").getItem(1))) \
+        .withColumn("ItemInfo",when((split(col("Item"), ", ").getItem(1).isNull() | (split(col("Item"), ", ").getItem(1)=="")),lit("")).otherwise(split(col("Item"), ", ").getItem(1))) 
+    
+    # Display the first 10 rows of the dataframe to preview your data
+
+    display(dfdimProduct_silver.head(10))
        ```
 
-4.  Ahora creará identificadores para la **tabla dimProduct_gold**. Agregue la siguiente sintaxis a un nuevo bloque de código:
+13. Ahora creará identificadores para la **tabla dimProduct_gold**. Agregue la siguiente sintaxis a un nuevo bloque de código y ejecútelo:
 
     ```python
     from pyspark.sql.functions import monotonically_increasing_id, col, lit, max, coalesce
@@ -439,40 +464,46 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     dfdimProduct_gold = dfdimProduct_silver.join(dfdimProduct_temp,(dfdimProduct_silver.ItemName == dfdimProduct_temp.ItemName) & (dfdimProduct_silver.ItemInfo == dfdimProduct_temp.ItemInfo), "left_anti")
     
     dfdimProduct_gold = dfdimProduct_gold.withColumn("ItemID",monotonically_increasing_id() + MAXProductID + 1)
-    ```
-5.   De forma similar a lo que ha hecho con las otras dimensiones, debe asegurarse de que la tabla de productos permanezca actualizada a medida que entran nuevos datos. **En un nuevo bloque de código**, pegue lo siguiente:
-        ```python
-        from delta.tables import *
+    
+    # Display the first 10 rows of the dataframe to preview your data
 
-        deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
-        
-        dfUpdates = dfdimProduct_gold
-        
-        deltaTable.alias('silver') \
-          .merge(
+    display(dfdimProduct_gold.head(10))
+    ```
+
+14. De forma similar a lo que ha hecho con las otras dimensiones, debe asegurarse de que la tabla de productos permanezca actualizada a medida que entran nuevos datos. **En un nuevo bloque de código**, pegue y ejecute lo siguiente:
+
+    ```python
+       from delta.tables import *
+    
+       deltaTable = DeltaTable.forPath(spark, 'Tables/dimproduct_gold')
+            
+      dfUpdates = dfdimProduct_gold
+            
+      deltaTable.alias('silver') \
+      .merge(
             dfUpdates.alias('updates'),
             'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
-          ) \
-           .whenMatchedUpdate(set =
+            ) \
+            .whenMatchedUpdate(set =
             {
-              
+               
             }
-          ) \
-         .whenNotMatchedInsert(values =
-            {
+            ) \
+            .whenNotMatchedInsert(values =
+             {
               "ItemName": "updates.ItemName",
               "ItemInfo": "updates.ItemInfo",
               "ItemID": "updates.ItemID"
-            }
-          ) \
-          .execute()
-        ```
+              }
+              ) \
+              .execute()
+      ```
 
-        Esto calcula el siguiente id. de producto disponible según los datos actuales de la tabla, asignando estos nuevos identificadores a los productos, y mostrando entonces la información de producto actualizada (en el caso de que el comando display no esté comentado).
+      Esto calcula el siguiente id. de producto disponible según los datos actuales de la tabla, asignando estos nuevos identificadores a los productos, y mostrando entonces la información de producto actualizada (en el caso de que el comando display no esté comentado).
 
-        **Ahora que ha creado las dimensiones, el último paso es crear la tabla de hechos.**
+      **Ahora que ha creado las dimensiones, el último paso es crear la tabla de hechos.**
 
-1.  **En un nuevo bloque de código**, pegue el código siguiente para crear la **tabla de hechos**:
+15. **En un nuevo bloque de código**, pegue y ejecute el código siguiente para crear la **tabla de hechos**:
 
     ```python
     from pyspark.sql.types import *
@@ -488,7 +519,8 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
         .addColumn("Tax", FloatType()) \
         .execute()
     ```
-2.  **En un nuevo bloque de código**, pegue el código siguiente para crear un **nuevo dataframe** para combinar los datos de ventas con la información del cliente y del producto, como el identificador de cliente, el identificador del artículo, la fecha de pedido, la cantidad, el precio unitario y los impuestos:
+
+16. **En un nuevo bloque de código**, pegue y ejecute el código siguiente para crear un **nuevo dataframe** para combinar los datos de ventas con la información del cliente y del producto, como el identificador de cliente, el identificador del artículo, la fecha de pedido, la cantidad, el precio unitario y los impuestos:
 
     ```python
     from pyspark.sql.functions import col
@@ -511,9 +543,14 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
             , col("df1.UnitPrice") \
             , col("df1.Tax") \
         ).orderBy(col("df1.OrderDate"), col("df2.CustomerID"), col("df3.ItemID"))
+    
+    # Display the first 10 rows of the dataframe to preview your data
+    
+    display(dffactSales_gold.head(10))
     ```
 
-3.  Ahora se asegurará de que los datos de ventas permanecen actualizados mediante la ejecución del código siguiente en un **nuevo bloque de código**:
+17. Ahora se asegurará de que los datos de ventas permanecen actualizados mediante la ejecución del código siguiente en un **nuevo bloque de código**:
+
     ```python
     from delta.tables import *
     
@@ -543,9 +580,10 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
       ) \
       .execute()
     ```
+
      Aquí va a usar la operación merge de Delta Lake para sincronizar y actualizar la tabla de factsales_gold con nuevos datos de ventas (dffactSales_gold). La operación compara la fecha de pedido, el identificador de cliente y el identificador de producto entre los datos existentes (tabla de plata) y los nuevos datos (actualiza DataFrame), actualizando los registros coincidentes e insertando nuevos registros según sea necesario.
 
-**Ahora tiene una capa de oro mantenida y modelada que puede usarse para informes y análisis.**
+Ahora tiene una capa de **oro** mantenida y modelada que puede usarse para informes y análisis.
 
 ## Crear un conjunto de datos
 
@@ -561,7 +599,7 @@ Tenga en cuenta que no puede usar el **conjunto de datos predeterminado** que se
    - dimproduct_gold
    - factsales_gold
 
-    Esto abrirá el conjunto de datos en Fabric, donde podrá crear relaciones y medidas.
+    Esto abrirá el conjunto de datos en Fabric, donde podrá crear relaciones y medidas como se muestra aquí:
 
     ![Captura de pantalla de un conjunto de datos en Fabric.](./Images/dataset-relationships.png)
 
