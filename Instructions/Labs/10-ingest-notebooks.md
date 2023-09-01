@@ -1,0 +1,247 @@
+---
+lab:
+  title: Ingesta de datos con cuadernos de Spark y Microsoft Fabric
+  module: Ingest data with Spark and Microsoft Fabric notebooks
+---
+
+# Ingesta de datos con cuadernos de Spark y Microsoft Fabric
+
+En este laboratorio, creará un cuaderno de Microsoft Fabric y usará PySpark para conectarse a una ruta de acceso de Azure Blob Storage y, a continuación, cargará los datos en un lago mediante optimizaciones de escritura.
+
+Este laboratorio se tarda aproximadamente **30** minutos en completarse.
+
+Para esta experiencia, crearemos el código en varias celdas de código del cuaderno, lo que puede no reflejar cómo lo hará en su entorno; sin embargo, puede ser útil para la depuración.
+
+Dado que también estamos trabajando con un conjunto de datos de ejemplo, la optimización no refleja lo que puede ver en producción a escala; sin embargo, todavía puede ver mejoras y, cuando cada milisegundo cuenta, la optimización es clave.
+
+> **Nota**: Necesitará una **licencia de Microsoft Fabric** para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita.
+>
+> También necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Creación de un área de trabajo y un destino de almacén de lago
+
+Empiece por crear un área de trabajo con la versión de prueba de Fabric habilitada, una nueva instancia de almacén de lago y una carpeta de destino en el almacén de lago.
+
+1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione la experiencia de **Ingeniería de datos de Synapse**.
+
+    ![Captura de pantalla de la experiencia de Ingeniería de datos de Synapse](Images/data-engineering-home.png)
+
+1. En la barra de menús de la izquierda, seleccione el **Áreas de trabajo**.
+
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya la capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
+
+1. Cuando se abra la nueva área de trabajo, debe estar vacía con un rombo junto al nombre del área de trabajo, como se muestra aquí:
+
+    ![Captura de pantalla de un área de trabajo nueva y vacía](Images/new-workspace.png)
+
+1. En el área de trabajo, seleccione **+ Nuevo > Almacén de lago**, proporcione un nombre y **Crear**.
+
+    > :memo: **Nota:** Puede tardar unos minutos en crear un nuevo almacén de lago sin **Tablas** o **Archivos**.
+
+    ![Captura de pantalla de un nuevo almacén de lago](Images/new-lakehouse.png)
+
+1. En **Archivos**, seleccione **[...]** para crear una **Nueva subcarpeta** denominada **RawData**.
+
+1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **Archivos > ... > Propiedades**.
+
+1. Copie la **ruta de acceso de ABFS** de la carpeta **RawData** en un bloc de notas vacío para su uso posterior, que debería tener un aspecto similar al siguiente:  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
+
+Ahora debería tener un área de trabajo con una instancia de Almacén de lago y una carpeta de destino RawData.
+
+## Creación de un cuaderno de Fabric y carga de datos externos
+
+Cree un cuaderno de Fabric y conéctese al origen de datos externo con PySpark.
+
+1. En el menú superior de almacén de lago, seleccione **Abrir cuaderno > Nuevo cuaderno**, que se abrirá una vez creado.
+
+    > :bulb: **Sugerencia:** Tiene acceso al explorador de Almacén de lago desde este cuaderno y puede actualizar para ver el progreso a medida que complete este ejercicio.
+
+1. En la celda predeterminada, observe que el código está establecido en **PySpark (Python)** .
+
+1. Inserte el código siguiente en la celda de código, que hará lo siguiente:
+    1. Declaración de parámetros para la cadena de conexión
+    1. Cree la cadena de conexión
+    1. Lectura de datos en un elemento DataFrame
+
+    ```Python
+    # Azure Blob Storage access info
+    blob_account_name = "azureopendatastorage"
+    blob_container_name = "nyctlc"
+    blob_relative_path = "yellow"
+    
+    # Construct connection path
+    wasbs_path = f'wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}'
+    print(wasbs_path)
+    
+    # Read parquet data from Azure Blob Storage path
+    blob_df = spark.read.parquet(wasbs_path)
+    ```
+
+1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código para conectarse y leer datos en un elemento DataFrame.
+
+    **Resultado esperado:** El comando debe realizarse correctamente e imprimir `wasbs://nyctlc@azureopendatastorage.blob.core.windows.net/yellow`
+
+    > :memo **: Nota:** Una sesión de Spark se inicia en la primera ejecución de código, por lo que puede tardar más tiempo en completarse.
+
+1. Para escribir los datos en un archivo, ahora necesita esa **Ruta de acceso de ABFS** para la carpeta **RawData**.
+
+1. Inserte el código siguiente en una **nueva celda de código**:
+
+    ```python
+        # Declare file name    
+        file_name = "yellow_taxi"
+    
+        # Construct destination path
+        output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
+        print(output_parquet_path)
+        
+        # Load the first 1000 rows as a Parquet file
+        blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
+    ```
+
+1. Su **output_parquet_path** debe ser similar a:  `abfss://Spark@onelake.dfs.fabric.microsoft.com/DPDemo.Lakehouse/Files/RawData/yellow_taxi`
+
+1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código para escribir 1000 filas en un archivo yellow_taxi.parquet.
+
+1. Para confirmar la carga de datos desde el Explorador de Almacén de lago, seleccione **Archivos > ... > Actualizar**.
+
+Ahora debería ver la nueva carpeta **RawData** con un "archivo"**yellow_taxi.parquet**, *que se muestra como una carpeta con archivos de partición dentro*.
+
+## Transformar y cargar datos en una tabla Delta
+
+Es probable que la tarea de ingesta de datos no termine solo con cargar un archivo. Las tablas Delta de una instancia de Almacén de lago permiten consultas y almacenamiento escalables y flexibles, por lo que también crearemos una.
+
+1. Cree una celda de código e inserte el código siguiente:
+
+    ```python
+    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
+    
+    # Add dataload_datetime column with current timestamp
+    filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
+    
+    # Filter columns to exclude any NULL values in storeAndFwdFlag
+    filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
+    
+    # Load the filtered data into a Delta table
+    table_name = "yellow_taxi"  # Replace with your desired table name
+    filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
+    
+    # Display results
+    display(filtered_df.limit(1))
+    ```
+
+1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código.
+
+    * Esto agregará una columna de marca de tiempo **dataload_datetime** para registrar cuándo se cargaron los datos en una tabla Delta
+    * Filtrar valores NULL en **storeAndFwdFlag**
+    * Carga de datos filtrados en una tabla Delta
+    * Mostrar una sola fila para la validación
+
+1. Revise y confirme los resultados mostrados, algo similar a la siguiente imagen:
+
+    ![Captura de pantalla de la salida correcta que muestra una sola fila](Images/notebook-transform-result.png)
+
+Ahora se ha conectado correctamente a datos externos, los ha escrito en un archivo parquet, ha cargado los datos en un DataFrame, ha transformado los datos y los ha cargado en una tabla Delta.
+
+## Optimización de escrituras de tabla Delta
+
+Probablemente esté usando macrodatos en su organización y por eso eligió cuadernos de Fabric para la ingesta de datos, por lo que también se explicará cómo optimizar la ingesta y las lecturas de los datos. En primer lugar, repetiremos los pasos para transformar y escribir en una tabla Delta con optimizaciones de escritura incluidas.
+
+1. Cree una celda de código e inserte el código siguiente:
+
+    ```python
+    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
+    
+    # Read the parquet data from the specified path
+    raw_df = spark.read.parquet("**InsertYourABFSPathHere**")
+    
+    # Add dataload_datetime column with current timestamp
+    opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
+    
+    # Filter columns to exclude any NULL values in storeAndFwdFlag
+    opt_df = opt_df.filter(opt_df["storeAndFwdFlag"].isNotNull())
+    
+    # Enable V-Order
+    spark.conf.set("spark.sql.parquet.vorder.enabled", "true")
+    
+    # Enable automatic Delta optimized write
+    spark.conf.set("spark.microsoft.delta.optimizeWrite.enabled", "true")
+    
+    # Load the filtered data into a Delta table
+    table_name = "yellow_taxi_opt"  # New table name
+    opt_df.write.format("delta").mode("append").saveAsTable(table_name)
+    
+    # Display results
+    display(opt_df.limit(1))
+    ```
+
+1. Vuelva a obtener la **ruta de acceso de ABFS** y actualice el código del bloque **antes** de ejecutar la celda.
+
+1. Confirme que tiene los mismos resultados que antes del código de optimización.
+
+Ahora, tome nota de los tiempos de ejecución de ambos bloques de código. Los tiempos variarán, pero puede ver un aumento claro del rendimiento con el código optimizado.
+
+## Análisis de datos de tabla Delta con consultas SQL
+
+Este laboratorio se centra en la ingesta de datos, que realmente explica el proceso de *extracción, transformación y carga*, pero también es útil para obtener una vista previa de los datos.
+
+1. Cree una nueva celda de código e inserte el código siguiente:
+
+    ```python
+    # Load table into df
+    delta_table_name = "yellow_taxi"
+    table_df = spark.read.format("delta").table(delta_table_name)
+    
+    # Create temp SQL table
+    table_df.createOrReplaceTempView("yellow_taxi_temp")
+    
+    # SQL Query
+    table_df = spark.sql('SELECT * FROM yellow_taxi_temp')
+    
+    # Display 10 results
+    display(table_df.limit(10))
+    ```
+
+1. Cree otra celda de código e inserte este código también:
+
+    ```python
+    # Load table into df
+    delta_table_name = "yellow_taxi_opt"
+    opttable_df = spark.read.format("delta").table(delta_table_name)
+    
+    # Create temp SQL table
+    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
+    
+    # SQL Query to confirm
+    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
+    
+    # Display results
+    display(opttable_df.limit(3))
+    ```
+
+1. Ahora, seleccione **Ejecutar todo** en la barra de menús superior.
+
+Esto ejecutará todas las celdas de código y le permitirá ver cuál es el proceso completo de principio a fin. Podrá ver los tiempos de ejecución entre bloques optimizados y no de código.
+
+## Limpieza de recursos
+
+En este ejercicio, ha obtenido información sobre cómo crear:
+
+* Áreas de trabajo
+* Almacenes de lago
+* Cuadernos de Fabric
+* Código de PySpark para:
+  * Conectarse a orígenes de datos externos
+  * Lectura de datos en un elemento DataFrame
+  * Escribir datos de DataFrame en un archivo de Parquet
+  * Lectura de datos de un archivo de Parquet
+  * Transformar datos en un DataFrame
+  * Cargar datos de DataFrame en una tabla Delta
+  * Optimización de escrituras de tabla Delta
+  * Consulta de datos de tabla Delta con SQL
+
+Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado para este ejercicio.
+
+1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
+2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
+3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
