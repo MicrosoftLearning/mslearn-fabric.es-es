@@ -29,7 +29,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Ingeniería de datos* en el portal y crear un almacén de lago de datos para sus archivos de datos.
 
-1. En la parte inferior izquierda del portal de Power BI, cambie a la experiencia **Ingeniería de datos**.
+1. En la parte inferior izquierda del portal de Power BI, cambie a la experiencia **Ingeniería de datos**. Si no ve la experiencia de ingeniería de datos, póngase en contacto con el administrador de Fabric con una solicitud para [habilitar Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
 
     La página Inicio de Ingeniería de datos incluye iconos para crear recursos de ingeniería de datos que se usan habitualmente.
 
