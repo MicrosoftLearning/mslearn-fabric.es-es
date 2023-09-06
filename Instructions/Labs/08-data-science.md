@@ -10,15 +10,15 @@ En este laboratorio, usaremos Microsoft Fabric para crear un cuaderno y entrenar
 
 Este laboratorio se tarda en completar **45** minutos aproximadamente.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para más información sobre cómo habilitar una licencia de prueba de Fabric gratuita. Para ello, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
+1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
+3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
 
     ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
@@ -209,8 +209,8 @@ Cuando haya entrenado y realizado un seguimiento de los modelos con MLflow, pued
 
 Microsoft Fabric realizará un seguimiento de todos los experimentos y le permitirá explorarlos visualmente.
 
-1. Vaya a la página principal de **Ciencia de datos**.
-1. Seleccione el experimento `experiment-churn` para abrirlo.
+1. En el panel izquierdo, vaya al área de trabajo.
+1. Seleccione el experimento `experiment-churn` en la lista.
 
     > **Sugerencia:** Si ve que no hay ninguna ejecución de experimentos registrada, actualice la página.
 
