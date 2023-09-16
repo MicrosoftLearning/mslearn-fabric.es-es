@@ -10,9 +10,9 @@ En este laboratorio, creará un cuaderno de Microsoft Fabric y usará PySpark pa
 
 Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 
-Para esta experiencia, crearemos el código en varias celdas de código del cuaderno, lo que puede no reflejar cómo lo hará en su entorno; sin embargo, puede ser útil para la depuración.
+Para esta experiencia, creará el código en varias celdas de código del cuaderno, lo que podría no reflejar cómo lo hará en su entorno, aunque podría resultar útil para la depuración.
 
-Dado que también estamos trabajando con un conjunto de datos de ejemplo, la optimización no refleja lo que puede ver en producción a escala; sin embargo, todavía puede ver mejoras y, cuando cada milisegundo cuenta, la optimización es clave.
+Dado que también está trabajando con un conjunto de datos de ejemplo, la optimización no refleja lo que podría ver en producción a escala, aunque todavía podrá ver mejoras y, cuando cada milisegundo cuente, la optimización resultará clave.
 
 > **Nota**: Necesitará una **licencia de Microsoft Fabric** para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita.
 >
@@ -22,7 +22,7 @@ Dado que también estamos trabajando con un conjunto de datos de ejemplo, la opt
 
 Empiece por crear un área de trabajo con la versión de prueba de Fabric habilitada, una nueva instancia de almacén de lago y una carpeta de destino en el almacén de lago.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione la experiencia de **Ingeniería de datos de Synapse**.
+1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione la experiencia de **Ingeniería de datos**.
 
     ![Captura de pantalla de la experiencia de Ingeniería de datos de Synapse](Images/data-engineering-home.png)
 
@@ -36,7 +36,7 @@ Empiece por crear un área de trabajo con la versión de prueba de Fabric habili
 
 1. En el área de trabajo, seleccione **+ Nuevo > Almacén de lago**, proporcione un nombre y **Crear**.
 
-    > :memo: **Nota:** Puede tardar unos minutos en crear un nuevo almacén de lago sin **Tablas** o **Archivos**.
+    > **Nota:** podría tardar unos minutos en crear un nuevo almacén de lago sin **Tablas** o **Archivos**.
 
     ![Captura de pantalla de un nuevo almacén de lago](Images/new-lakehouse.png)
 
@@ -54,14 +54,14 @@ Cree un cuaderno de Fabric y conéctese al origen de datos externo con PySpark.
 
 1. En el menú superior de almacén de lago, seleccione **Abrir cuaderno > Nuevo cuaderno**, que se abrirá una vez creado.
 
-    > :bulb: **Sugerencia:** Tiene acceso al explorador de Almacén de lago desde este cuaderno y puede actualizar para ver el progreso a medida que complete este ejercicio.
+    >  **Sugerencia:** tiene acceso al explorador del Almacén de lago desde este cuaderno y podrá actualizar para ver el progreso a medida que complete este ejercicio.
 
 1. En la celda predeterminada, observe que el código está establecido en **PySpark (Python)** .
 
 1. Inserte el código siguiente en la celda de código, que hará lo siguiente:
-    1. Declaración de parámetros para la cadena de conexión
-    1. Cree la cadena de conexión
-    1. Lectura de datos en un elemento DataFrame
+    - Declaración de parámetros para la cadena de conexión
+    - Cree la cadena de conexión
+    - Lectura de datos en un elemento DataFrame
 
     ```Python
     # Azure Blob Storage access info
@@ -81,7 +81,7 @@ Cree un cuaderno de Fabric y conéctese al origen de datos externo con PySpark.
 
     **Resultado esperado:** El comando debe realizarse correctamente e imprimir `wasbs://nyctlc@azureopendatastorage.blob.core.windows.net/yellow`
 
-    > :memo **: Nota:** Una sesión de Spark se inicia en la primera ejecución de código, por lo que puede tardar más tiempo en completarse.
+    > **Nota:** una sesión de Spark se inicia en la primera ejecución de código, por lo que podría tardar más tiempo en completarse.
 
 1. Para escribir los datos en un archivo, ahora necesita esa **Ruta de acceso de ABFS** para la carpeta **RawData**.
 
@@ -99,9 +99,9 @@ Cree un cuaderno de Fabric y conéctese al origen de datos externo con PySpark.
         blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
-1. Su **output_parquet_path** debe ser similar a:  `abfss://Spark@onelake.dfs.fabric.microsoft.com/DPDemo.Lakehouse/Files/RawData/yellow_taxi`
+1. Agregue la ruta de acceso ABFS **RawData** y seleccione **&#9655; Ejecutar celda** para escribir 1000 filas en un archivo yellow_taxi.parquet.
 
-1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código para escribir 1000 filas en un archivo yellow_taxi.parquet.
+1. Su **output_parquet_path** debe ser similar a:  `abfss://Spark@onelake.dfs.fabric.microsoft.com/DPDemo.Lakehouse/Files/RawData/yellow_taxi`
 
 1. Para confirmar la carga de datos desde el Explorador de Almacén de lago, seleccione **Archivos > ... > Actualizar**.
 
@@ -115,6 +115,9 @@ Es probable que la tarea de ingesta de datos no termine solo con cargar un archi
 
     ```python
     from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
+    
+    # Read the parquet data from the specified path
+    raw_df = spark.read.parquet(output_parquet_path)   
     
     # Add dataload_datetime column with current timestamp
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
@@ -132,10 +135,10 @@ Es probable que la tarea de ingesta de datos no termine solo con cargar un archi
 
 1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código.
 
-    * Esto agregará una columna de marca de tiempo **dataload_datetime** para registrar cuándo se cargaron los datos en una tabla Delta
-    * Filtrar valores NULL en **storeAndFwdFlag**
-    * Carga de datos filtrados en una tabla Delta
-    * Mostrar una sola fila para la validación
+    - Esto agregará una columna de marca de tiempo **dataload_datetime** para registrar cuándo se cargaron los datos en una tabla Delta
+    - Filtrar valores NULL en **storeAndFwdFlag**
+    - Carga de datos filtrados en una tabla Delta
+    - Mostrar una sola fila para la validación
 
 1. Revise y confirme los resultados mostrados, algo similar a la siguiente imagen:
 
@@ -151,10 +154,10 @@ Probablemente esté usando macrodatos en su organización y por eso eligió cuad
 
     ```python
     from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
-    
+ 
     # Read the parquet data from the specified path
-    raw_df = spark.read.parquet("**InsertYourABFSPathHere**")
-    
+    raw_df = spark.read.parquet(output_parquet_path)    
+
     # Add dataload_datetime column with current timestamp
     opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
@@ -174,8 +177,6 @@ Probablemente esté usando macrodatos en su organización y por eso eligió cuad
     # Display results
     display(opt_df.limit(1))
     ```
-
-1. Vuelva a obtener la **ruta de acceso de ABFS** y actualice el código del bloque **antes** de ejecutar la celda.
 
 1. Confirme que tiene los mismos resultados que antes del código de optimización.
 
@@ -216,29 +217,16 @@ Este laboratorio se centra en la ingesta de datos, que realmente explica el proc
     opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
     
     # Display results
-    display(opttable_df.limit(3))
+    display(opttable_df.limit(10))
     ```
 
-1. Ahora, seleccione **Ejecutar todo** en la barra de menús superior.
+1. Ahora, seleccione la flecha &#9660; situada junto al botón **Ejecutar celda** para la primera de estas dos consultas y, en la lista desplegable, seleccione **Ejecutar esta celda y debajo**.
 
-Esto ejecutará todas las celdas de código y le permitirá ver cuál es el proceso completo de principio a fin. Podrá ver los tiempos de ejecución entre bloques optimizados y no de código.
+    Esto ejecutará las dos últimas celdas de código. Observe la diferencia de tiempo de ejecución entre consultar la tabla con datos no optimizados y una tabla con datos optimizados.
 
 ## Limpieza de recursos
 
-En este ejercicio, ha obtenido información sobre cómo crear:
-
-* Áreas de trabajo
-* Almacenes de lago
-* Cuadernos de Fabric
-* Código de PySpark para:
-  * Conectarse a orígenes de datos externos
-  * Lectura de datos en un elemento DataFrame
-  * Escribir datos de DataFrame en un archivo de Parquet
-  * Lectura de datos de un archivo de Parquet
-  * Transformar datos en un DataFrame
-  * Cargar datos de DataFrame en una tabla Delta
-  * Optimización de escrituras de tabla Delta
-  * Consulta de datos de tabla Delta con SQL
+En este ejercicio, usó cuadernos con PySpark en Fabric para cargar datos y guardarlos en Parquet. A continuación, usó ese archivo de Parquet para transformar aún más los datos y las escrituras optimizadas de la tabla Delta. Por último, usó SQL para consultar las tablas Delta.
 
 Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
