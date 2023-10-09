@@ -6,11 +6,11 @@ lab:
 
 # Usar cuadernos para explorar datos en Microsoft Fabric
 
-En este laboratorio, usaremos cuadernos para la exploración de datos. Los cuadernos son una herramienta eficaz para explorar y analizar datos de forma interactiva. Durante este ejercicio, aprenderemos a crear y usar cuadernos para explorar un conjunto de datos, generar estadísticas de resumen y crear visualizaciones para comprender mejor los datos. Al final de este laboratorio, tendrá una sólida comprensión de cómo utilizar cuadernos para la exploración y el análisis de datos.
+En este laboratorio, usaremos cuadernos para la exploración de datos. Los cuadernos son una herramienta eficaz para explorar y analizar datos de forma interactiva. Durante este ejercicio, aprenderemos a crear y usar cuadernos para explorar un conjunto de datos, generar estadísticas de resumen y crear visualizaciones para comprender mejor los datos. Al final de este laboratorio, comprenderá de forma sólida cómo usar cuadernos para la exploración y el análisis de datos.
 
-Este laboratorio se tarda en completar **45** minutos aproximadamente.
+Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota:** Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
@@ -27,7 +27,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes) como *experimentos*.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono **Ingeniería de datos** y cambie a la experiencia **Ciencia de datos**.
+1. En la parte inferior izquierda del portal de Power BI, seleccione el icono **PowerBI** y cambie a la experiencia **Ciencia de datos**.
 
 1. En la página principal de **Ciencia de datos**, cree un nuevo **cuaderno**.
 
@@ -49,7 +49,7 @@ Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan u
 
 Ahora está listo para ejecutar código para obtener datos. Trabajará con el [**conjunto de datos de diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) de Azure Open Datasets. Después de cargar los datos, convertirá los datos en un dataframe de Pandas, que es una estructura común para trabajar con datos en filas y columnas.
 
-1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno. Escriba el siguiente código en él:
+1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno. Escriba el código siguiente para cargar el conjunto de datos en una trama de datos.
 
     ```python
     # Azure storage access info for open dataset diabetes
@@ -138,7 +138,7 @@ Ahora, vamos a generar estadísticas descriptivas para comprender la distribuci�
     print(desc_stats)
     ```
 
-    El promedio `age` es de aproximadamente 48,5 años, con una desviación estándar de 13,1 años. La persona más joven tiene 19 años y la más mayor tiene 79 años. La media `BMI` es de aproximadamente 26,4, lo que entra en la categoría de **sobrepeso** según las [normas de la OMS](https://www.who.int/health-topics/obesity#tab=tab_1). El mínimo `BMI` es 18 y el máximo es 42,2.
+    La edad promedio es de aproximadamente 48.5 años, con una desviación estándar de 13.1 años. La persona más joven tiene 19 años y la más mayor tiene 79 años. La media `BMI` es de aproximadamente 26,4, lo que entra en la categoría de **sobrepeso** según las [normas de la OMS](https://www.who.int/health-topics/obesity#tab=tab_1). El mínimo `BMI` es 18 y el máximo es 42,2.
 
 ## Trazar la distribución de datos
 
@@ -152,12 +152,12 @@ Vamos a comprobar la característica `BMI` y trazar su distribución para compre
     import numpy as np
     
     # Calculate the mean, median of the BMI variable
-    mean = df_pnd['BMI'].mean()
-    median = df_pnd['BMI'].median()
+    mean = df['BMI'].mean()
+    median = df['BMI'].median()
     
     # Histogram of the BMI variable
     plt.figure(figsize=(8, 6))
-    plt.hist(df_pnd['BMI'], bins=20, color='skyblue', edgecolor='black')
+    plt.hist(df['BMI'], bins=20, color='skyblue', edgecolor='black')
     plt.title('BMI Distribution')
     plt.xlabel('BMI')
     plt.ylabel('Frequency')
@@ -203,7 +203,7 @@ Vamos a generar visualizaciones como gráficos de dispersión y diagramas de caj
     fig, ax = plt.subplots(figsize=(7, 5))
     
     # Replace numeric values with labels
-    df_pnd['SEX'] = df_pnd['SEX'].replace({1: 'Male', 2: 'Female'})
+    df['SEX'] = df['SEX'].replace({1: 'Male', 2: 'Female'})
     
     sns.boxplot(x='SEX', y='BP', data=df, ax=ax)
     ax.set_title('Blood pressure across Gender')
@@ -269,7 +269,7 @@ Vamos a calcular las correlaciones entre diferentes características para compre
     df.corr(numeric_only=True)
     ```
 
-1. Un mapa térmico es una herramienta útil para visualizar rápidamente la fuerza y la dirección de las relaciones entre pares variables. Puede resaltar correlaciones positivas o negativas fuertes, así como identificar pares que carecen de correlación. Para crear un mapa térmico, agregue otra celda de código al cuaderno y escriba el código siguiente.
+1. Un mapa térmico es una herramienta útil para visualizar rápidamente la fuerza y la dirección de las relaciones entre pares variables. Puede resaltar correlaciones positivas o negativas fuertes e identificar pares que carezcan de correlación. Para crear un mapa térmico, agregue otra celda de código al cuaderno y escriba el código siguiente.
 
     ```python
     plt.figure(figsize=(15, 7))
