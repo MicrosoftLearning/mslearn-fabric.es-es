@@ -23,15 +23,15 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
     ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
 
-En este laboratorio, se usa Data Activator en Fabric para crear un *Reflex*. Data Activator proporciona un conjunto de datos de ejemplo que puede utilizar para explorar las funcionalidades de Data Activator. Use estos datos de ejemplo para crear un *Reflex* que analice algunos datos en tiempo real y cree un desencadenador para enviar un correo electrónico cuando se cumpla una condición.
+En este laboratorio, usará Data Activator en Fabric para crear un *Reflex*. Data Activator proporciona un conjunto de datos de ejemplo que puede utilizar para explorar las funcionalidades de Data Activator. Usará estos datos de ejemplo para crear un *Reflex* que analice algunos datos en tiempo real y cree un desencadenador para enviar un correo electrónico cuando se cumpla una condición.
 
-> **Nota**: el proceso de ejemplo de Data Activator está generando algunos datos aleatorios en segundo plano.  Cuanto más complejas sean las condiciones y los filtros que cree, más probable será que ningún evento cumpla aún las condiciones y los filtros del desencadenador. Si no ve ningún dato en el gráfico, espere unos minutos y actualice la página. Dicho esto, no es necesario esperar a que los datos se muestren en los gráficos para continuar con el laboratorio.
+> **Nota**: el proceso de ejemplo de Data Activator genera algunos datos aleatorios en segundo plano. Cuanto más complejas sean las condiciones y los filtros, más tiempo se tarda en desencadenarlos. Si no ve ningún dato en el gráfico, espere unos minutos y actualice la página. Dicho esto, no es necesario esperar a que los datos se muestren en los gráficos para continuar con el laboratorio.
 
 ## Escenario
 
 En este escenario, es analista de datos de una empresa que vende y distribuye una gama de productos.  Es responsable de los datos de todos los envíos y ventas a la ciudad de Redmond. Desea crear un Reflex que controle los paquetes que están pendientes de entrega. Una categoría de productos que usted envía son las recetas médicas que necesitan estar refrigeradas a una temperatura determinada durante el tránsito. Desea crear un Reflex que envíe un correo electrónico al departamento de envíos si la temperatura de un paquete que contiene una receta es superior o inferior a un determinado umbral. La temperatura ideal debe estar comprendida entre 33 y 41 grados. Dado que los eventos Reflex ya contienen un desencadenador similar, se crea uno específico para los paquetes enviados a la ciudad de Redmond. Comencemos.
 
-## Crear un Reflex
+## Creación de un Reflex
 
 1. En el portal de experiencia de **Microsoft Fabric**, seleccione primero la experiencia de **Data Activator** seleccionando el icono de experiencia de Fabric actual en la esquina inferior izquierda de la pantalla y, a continuación, seleccione **Data Activator** en el menú. Por ejemplo, en la captura de pantalla siguiente, la experiencia de Fabric actual es **Power BI**.
 
@@ -45,7 +45,7 @@ En este escenario, es analista de datos de una empresa que vende y distribuye un
 
     ![Captura de pantalla de la pantalla Obtener datos de Data Activator.](./Images/data-activator-get-started.png)
 
-1. De forma predeterminada, Data Activator crea su Reflex con el nombre *Reflex AAAA-MM-DD hh:mm:ss*. Dado que puede tener varios Reflex en el área de trabajo, debe cambiar el nombre predeterminado de Reflex por un nombre más descriptivo. Seleccione la lista desplegable junto al nombre de Reflex actual en la esquina superior izquierda y cambie el nombre a ***Reflex Envío Contoso*** para nuestro ejemplo.
+1. De forma predeterminada, Data Activator crea su Reflex con el nombre *Reflex AAAA-MM-DD hh:mm:ss*. Dado que puede tener varios Reflex en el área de trabajo, debe cambiar el nombre predeterminado de Reflex por uno más descriptivo. Seleccione la lista desplegable junto al nombre de Reflex actual en la esquina superior izquierda y cambie el nombre a ***Reflex Envío Contoso*** para nuestro ejemplo.
 
     ![Captura de pantalla de la pantalla Inicio de Reflex de Data Activator.](./Images/data-activator-reflex-home-screen.png)
 
@@ -65,11 +65,11 @@ Para familiarizarse con el modo *Diseño*, seleccione las distintas secciones de
 
 ### Modo de datos
 
-1. Si no está actualmente en modo *Datos*, seleccione la pestaña **Datos** en la parte inferior izquierda de la pantalla. En un ejemplo real, agregaría sus propios orígenes de datos desde los objetos visuales de EventStreams y Power BI aquí. Para este laboratorio, se utilizan los datos de ejemplo que proporciona Data Activator. Los datos de ejemplo que proporciona Data Activator ya están configurados con tres EventStreams que supervisan el estado de entrega del paquete.
+Si no está actualmente en modo *Datos*, seleccione la pestaña **Datos** en la parte inferior izquierda de la pantalla. En un ejemplo real, agregaría sus propios orígenes de datos desde los objetos visuales de EventStreams y Power BI aquí. Para este laboratorio, utiliza los datos de ejemplo que proporciona Data Activator. El ejemplo ya está configurado con tres EventStreams que supervisan el estado de entrega del paquete.
 
 ![Captura de pantalla del modo Datos de Reflex de Data Activator.](./Images/data-activator-data-tab.png)
 
-1. Seleccione cada uno de los diferentes eventos para ver los datos que procesa el evento.
+Seleccione cada uno de los distintos eventos y observe los datos que se usan en la secuencia.
 
 ![Captura de pantalla de los eventos del modo Datos de Reflex de Data Activator.](./Images/data-activator-get-data-tab-event-2.png)
 
@@ -81,7 +81,7 @@ En un escenario real, es posible que no sea necesario crear un nuevo objeto para
 
 1. Si no está actualmente en modo *Datos*, seleccione la pestaña **Datos** en la parte inferior izquierda de la pantalla.
 
-1. Seleccione el evento ***Paquete en tránsito***. Preste mucha atención a los valores de las columnas *PackageId*, *Temperatura*, *ColdChainType*, *Ciudad* y *SpecialCare*. Estas columnas se usan para crear el desencadenador.
+1. Seleccione el evento ***Paquete en tránsito***. Preste mucha atención a los valores de las columnas *PackageId*, *Temperatura*, *ColdChainType*, *Ciudad* y *SpecialCare*. Estas columnas se usarán para crear el desencadenador.
 
 1. Si el cuadro de diálogo *Asignar datos* aún no está abierto en el lado derecho, seleccione el botón **Asignar datos** a la derecha de la pantalla.
 
@@ -105,19 +105,21 @@ Tiempo para crear el desencadenador.
 
 ## Crear un desencadenador
 
-Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex que envíe un correo electrónico al departamento de envío si la temperatura de un paquete que contiene una receta es superior o inferior a un umbral determinado. La temperatura ideal debe estar comprendida entre 33 y 41 grados. Dado que los eventos Reflex ya contienen un desencadenador similar, se crea uno específicamente para los paquetes enviados a la ciudad de Redmond*.
+Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex que envíe un correo electrónico al departamento de envío si la temperatura de un paquete que contiene una receta es superior o inferior a un umbral determinado. La temperatura ideal debe estar comprendida entre 33 y 41 grados. Dado que los eventos Reflex ya contienen un desencadenador similar, creará uno específicamente para los paquetes enviados a la ciudad de Redmond*.
 
-1. Seleccione el botón **Nuevo desencadenador** en el menú superior. Se crea un nuevo desencadenador con el nombre predeterminado *Sin título*, cambie el nombre a ***Temperatura de los medicamentos fuera del intervalo*** para definir mejor el desencadenador.
+1. En el evento *Paquete en tránsito* del objeto **Redmond Packages**, seleccione el botón **Nuevo desencadenador** en el menú superior. Se crea un nuevo desencadenador con el nombre predeterminado *Sin título*, cambie el nombre a ***Temperatura de los medicamentos fuera del intervalo*** para definir mejor el desencadenador.
 
     ![Captura de pantalla de la creación de un nuevo desencadenador de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-new.png)
 
-1. Tiempo para seleccionar la propiedad o la columna de evento que desencadena su Reflex. Puesto que creó varias propiedades al crear el objeto, seleccione el botón **Propiedad existente** y seleccione la propiedad ***Temperature***. Al seleccionar esta propiedad, se debe devolver un gráfico con valores de temperatura históricos de ejemplo.
+1. Tiempo para seleccionar la propiedad o la columna de evento que desencadena su Reflex. Puesto que creó varias propiedades al crear el objeto, seleccione el botón **Propiedad existente** y seleccione la propiedad ***Temperature***. 
 
     ![Captura de pantalla de la selección de una propiedad de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-property.png)
 
+    Al seleccionar esta propiedad, se debe devolver un gráfico con valores de temperatura históricos de ejemplo.
+
     ![Captura de pantalla del gráfico de propiedades de valores históricos de Data Activator.](./Images/data-activator-trigger-property-sample-graph.png)
 
-1. Ahora debe decidir qué tipo de condición desea desencadenar desde esta propiedad. En este caso, quiere desencadenar su Reflex cuando la temperatura sea superior a 41 grados o inferior a 33 grados. Puesto que buscamos un intervalo numérico, seleccione el botón **Numérico** y seleccione la condición **Fuera del intervalo**.
+1. Ahora debe decidir qué tipo de condición desea desencadenar desde esta propiedad. En este caso, quiere desencadenar su Reflex cuando la temperatura sea superior a 41 grados o inferior a 33 grados. Puesto que buscamos un intervalo numérico, seleccione el botón **Numérico** y seleccione la condición **Fuera del intervalo**.
 
     ![Captura de pantalla de la elección del tipo de condición de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-type.png)
 
@@ -125,11 +127,11 @@ Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex
 
     ![Captura de pantalla de la introducción de valores de condición de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
-1. Hasta ahora se ha definido la propiedad y la condición en la que desea que se active el desencadenador, pero eso todavía no incluye todos los parámetros necesarios. Todavía tiene que asegurarse de que el desencadenador solo se activa para la *ciudad* de **Redmond** y para el tipo de *cuidado especial* de **Medicamento**. Vamos a añadir un par de filtros para esas condiciones.  Seleccione el botón **Agregar filtro** y seleccione la propiedad ***Ciudad***. Escriba ***Redmond*** como valor. A continuación, vuelva a seleccionar el botón **Agregar filtro** y seleccione la propiedad ***SpecialCare***. Escriba ***Medicamento*** como valor.
+1. Hasta ahora se ha definido la propiedad y la condición en la que desea que se active el desencadenador, pero eso todavía no incluye todos los parámetros necesarios. Todavía tiene que asegurarse de que el desencadenador solo se activa para la *ciudad* de **Redmond** y para el tipo de *cuidado especial* de **Medicamento**. Vamos a añadir un par de filtros para esas condiciones.  Seleccione el botón **Agregar filtro**, establezca la propiedad en ***City***, establezca la relación en ***Igual*** y escriba ***Redmond*** como valor. A continuación, agregue un nuevo filtro con la propiedad ***SpecialCare***, establézcalo en ***Igual*** y escriba ***Medicine*** como valor.
 
     ![Captura de pantalla de la adición de filtro de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-add-filter.png)
 
-1. Añadamos un filtro más para asegurarnos de que el medicamento está refrigerado. Seleccione el botón **Agregar filtro** y seleccione la propiedad ***ColdChainType***. Escriba ***Refrigerado*** como valor.
+1. Añadamos un filtro más para asegurarnos de que el medicamento está refrigerado. Seleccione el botón **Agregar filtro**, establezca la propiedad ***ColdChainType***, establézcala en ***Igual*** y escriba ***Refrigerated*** como valor.
 
     ![Captura de pantalla de la adición de filtro de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-add-filter-additional.png)
 
@@ -141,16 +143,16 @@ Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex
 
     - **Enviar a**: la cuenta de usuario actual debería estar seleccionada de forma predeterminada, lo que debería estar bien para este laboratorio.
     - **Asunto**: *paquete de medicamentos de Redmond fuera del intervalo de temperatura aceptable*
-    - **Título**: *temperatura demasiado caliente o demasiado fría*
+    - **Título**: *temperatura demasiado alta o demasiado baja*
     - **Información adicional**: seleccione la propiedad *Temperatura* en la lista de casilla de verificación.
 
-    ![Captura de pantalla de inicio del desencadenador de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-start.png)
+    ![Captura de pantalla de la acción Definir del activador de datos.](./Images/data-activator-trigger-define-action.png)
 
 1. Seleccione **Guardar** y, a continuación, **Iniciar** en el menú superior.
 
 Ahora ha creado e iniciado un desencadenador en Data Activator.
 
-## Actualizar un desencadenador
+## Actualización y detención de un desencadenador
 
 El único problema con este desencadenador es que mientras el desencadenador envió un correo electrónico con la temperatura, el desencadenador no envió el *PackageId* del paquete. Vamos a seguir y actualizar el desencadenador para incluir el *PackageId*.
 
@@ -172,11 +174,7 @@ El único problema con este desencadenador es que mientras el desencadenador env
 
     ![Captura de pantalla de la actualización del desencadenador de Data Activator.](./Images/data-activator-trigger-updated.png)
 
-El desencadenador ya está actualizado.
-
-## Detener un desencadenador
-
-Para detener el desencadenador, seleccione el botón **Detener** en el menú superior.
+1. Detenga el desencadenador seleccionando el botón **Detener** en el menú superior.
 
 ## Limpieza de recursos
 
