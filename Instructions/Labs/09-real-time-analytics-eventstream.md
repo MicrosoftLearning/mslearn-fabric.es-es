@@ -5,7 +5,7 @@ lab:
 ---
 # Introducción a Eventstream en Análisis en tiempo real (RTA)
 
-Eventstream es una característica de Microsoft Fabric que captura, transforma y enruta eventos en tiempo real a varios destinos con una experiencia sin escritura de código. Puede agregar al Eventstream orígenes de datos de eventos, destinos de enrutamiento y el procesador de eventos cuando sea necesaria una transformación. EventStore de Microsoft Fabric es una opción de supervisión que mantiene eventos del clúster y proporciona una manera de conocer el estado del clúster o de las cargas de trabajo en un momento dado. Se puede consultar el servicio EventStore sobre los eventos que están disponibles para cada entidad y tipo de entidad del clúster. Esto significa que puede consultar eventos en distintos niveles, como clúster, nodos, aplicaciones, servicios, particiones y réplicas de particiones. El servicio EventStore también tiene la capacidad de correlacionar los eventos del clúster. El examen de los eventos que se escribieron al mismo tiempo desde distintas entidades y que pueden haberse afectado entre sí permite al servicio EventStore vincular estos eventos para identificar las causas de las actividades del clúster. Otra opción para la supervisión y el diagnóstico de clústeres de Microsoft Fabric es agregar y recopilar eventos con EventFlow.
+Eventstream es una característica de Microsoft Fabric que captura, transforma y enruta eventos en tiempo real a varios destinos con una experiencia sin escritura de código. A Eventstream puede agregar orígenes de datos de eventos, destinos de enrutamiento y el procesador de eventos cuando sea necesaria una transformación. EventStore de Microsoft Fabric es una opción de supervisión que mantiene eventos del clúster y proporciona una manera de conocer el estado del clúster o de las cargas de trabajo en un momento dado. Se puede consultar el servicio EventStore sobre los eventos que están disponibles para cada entidad y tipo de entidad del clúster. Esto significa que puede consultar eventos en distintos niveles, como clústeres, nodos, aplicaciones, servicios, particiones y réplicas de particiones. El servicio EventStore también tiene la capacidad de correlacionar los eventos del clúster. El examen de los eventos que se escribieron al mismo tiempo desde distintas entidades y que pueden haberse afectado entre sí permite al servicio EventStore vincular estos eventos para identificar las causas de las actividades del clúster. Otra opción para la supervisión y el diagnóstico de clústeres de Microsoft Fabric es agregar y recopilar eventos con EventFlow.
 
 <!--
 
@@ -63,38 +63,38 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. En **Análisis en tiempo real**, seleccione la casilla **Base de datos KQL**.
 
-   ![Elegir Base de datos KQL](./Images/select-kqldatabase.png)
+   ![Imagen de la elección de kqldatabase](./Images/select-kqldatabase.png)
 
 2. Se le pedirá que asigne un **Nombre** a la base de datos KQL.
 
-   ![Nombre de la base de datos KQL](./Images/name-kqldatabase.png)
+   ![Imagen de nombrar kqldatabase](./Images/name-kqldatabase.png)
 
 3. Dele un nombre a la base de datos KQL que sea fácil de recordar, como **MyStockData**, y presione **Crear**.
 
 1. En el panel **Detalles de la base de datos**, seleccione el icono de lápiz para activar la disponibilidad en OneLake.
 
-   ![Habilitar OneLake](./Images/enable-onelake-availability.png)
+   ![Imagen de la habilitación de OnLake](./Images/enable-onelake-availability.png)
 
 2. Asegúrese de cambiar el botón a **Activo** y, a continuación, seleccione **Listo**.
 
-   ![Activar OneLake con el botón de alternancia](./Images/enable-onelake-toggle.png)
+   ![Imagen de la habilitación del botón de alternancia de onlake](./Images/enable-onelake-toggle.png)
 
 ## Creación de un Eventstream
 
 1. En la barra de menús, seleccione **Análisis en tiempo real** (el icono tiene un aspecto similar a ![Logotipo de RTA](./Images/rta_logo.png)).
 2. En **Nuevo**, seleccione **EventStream (versión preliminar)**
 
-   ![Elegir Eventstream](./Images/select-eventstream.png)
+   ![Imagen de la elección de Eventstream](./Images/select-eventstream.png)
 
 3. Se le pedirá que le dé un **Nombre** al Eventstream. Asigne un nombre al EventStream que sea fácil de recordar, como ***MyStockES**, y presione el botón **Crear**.
 
-   ![Nombre del Eventstream](./Images/name-eventstream.png)
+   ![Imagen de nombrar Eventstream](./Images/name-eventstream.png)
 
 ## Establecer un origen y un destino de Eventstream
 
 1. En el lienzo Eventstream, seleccione **Nuevo origen** en la lista desplegable y elija **Datos de ejemplo**.
 
-   ![Lienzo de EventStream](./Images/real-time-analytics-canvas.png)
+   ![Imagen del lienzo de EventStream](./Images/real-time-analytics-canvas.png)
 
 2. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar y configurar**.
 
@@ -105,7 +105,7 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 3. Ahora agregue un destino seleccionando **Nuevo destino** y, a continuación, seleccione **Base de datos KQL**.
 
-   ![Destino de EventStream](./Images/new-kql-destination.png)
+   ![Imagen del destino de EventStream](./Images/new-kql-destination.png)
 
 4. En la configuración de la base de datos KQL, use la tabla siguiente para completar la configuración.
 
@@ -121,22 +121,22 @@ For "enable data copy to OneLake" - are you adding a lakehouse as a destination?
 
 1. En el cuadro de diálogo **Ingerir datos**, seleccione **Nueva tabla** y escriba MyStockData.
 
-   ![Insertar datos bursátiles](./Images/ingest-stream-data-to-kql.png)
+   ![Imagen sobre la inserción de datos de existencias](./Images/ingest-stream-data-to-kql.png)
 
 2. Seleccione **Next: Source** (Siguiente: Origen).
 3. En la página **Origen**, confirme el **Nombre de la conexión de datos** y seleccione **Siguiente: Esquema**.
 
-   ![nombre del origen de datos](./Images/ingest-data.png)
+   ![Imagen del nombre del origen de datos](./Images/ingest-data.png)
 
 4. Los datos de entrada se descomprimen para obtener los datos de ejemplo, así que mantenga el tipo de compresión como sin comprimir.
 5. En la lista desplegable **Formato de datos**, seleccione **JSON**.
 
-   ![Cambio a JSON](./Images/injest-as-json.png)
+   ![Imagen de Cambiar a JSON](./Images/injest-as-json.png)
 
 6. Después de esto, puede que sea necesario cambiar algunos o todos los tipos de datos de la secuencia de entrada a las tablas de destino.
 7. Para ello, seleccione **flecha abajo > Cambiar tipo de datos**. A continuación, compruebe que las columnas reflejan el tipo de datos correcto:
 
-   ![Cambiar tipos de datos](./Images/change-data-type-in-es.png)
+   ![Imagen sobre cambiar los tipos de datos](./Images/change-data-type-in-es.png)
 
 8. Cuando termine, seleccione **Siguiente: Resumen**.
 
@@ -153,15 +153,15 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 1. Vaya a la base de datos KQL que ha creado e hidratado denominada ***MyStockData***.
 2. En el árbol Datos, seleccione el menú Más [...] en la tabla MyStockData. Seleccione Tabla de consulta > Mostrar 100 registros cualesquiera.
 
-   ![Conjunto de consultas KQL](./Images/kql-query-sample.png)
+   ![Imagen del conjunto de consultas de KQL](./Images/kql-query-sample.png)
 
 3. La consulta de ejemplo se abre en el panel **Comprobar los datos** con el contexto de tabla ya rellenado. Esta primera consulta usa el operador take para devolver un número de registros de ejemplo y es útil para echar un primer vistazo a la estructura de datos y los valores posibles. Las consultas de ejemplo que se rellenan automáticamente se ejecutan automáticamente. Puede ver los resultados de la consulta en el panel de resultados.
 
-   ![Resultados de la consulta KQL](./Images/kql-query-results.png)
+   ![Imagen de los resultados de consulta de KQL](./Images/kql-query-results.png)
 
 4. Vuelva al árbol de datos para seleccionar la siguiente consulta, que usa los operadores where y between para devolver los registros ingeridos en las últimas 24 horas.
 
-   ![Resultados de la consulta KQL de las últimas 24 horas](./Images/kql-query-results-last24.png)
+   ![Imagen de los últimos 24 resultados de consulta de KQL](./Images/kql-query-results-last24.png)
 
 > **Nota**: Tenga en cuenta que los volúmenes de los datos de streaming superan los límites de consulta. Este comportamiento puede variar en función de la cantidad de datos transmitidos a la base de datos.
 
@@ -173,11 +173,11 @@ El editor de consultas admite el uso de T-SQL además de su lenguaje de consulta
 
 1. De nuevo en el árbol Datos, seleccione el **menú Más** [...] en la tabla MyStockData. Seleccione **Tabla de consulta > SQL > Mostrar 100 registros cualesquiera**.
 
-   ![Ejemplo de consulta SQL](./Images/sql-query-sample.png)
+   ![Imagen de ejemplo de consulta SQL](./Images/sql-query-sample.png)
 
 2. Sitúe el cursor en algún lugar de la consulta y seleccione **Ejecutar** o presione **Mayús + Entrar**.
 
-   ![resultados de la consulta SQL](./Images/sql-query-results.png)
+   ![Imagen de los resultados de consulta SQL](./Images/sql-query-results.png)
 
 Puede seguir navegando con las funciones integradas y familiarizarse con los datos usando SQL o KQL. Aquí finaliza la lección.
 
