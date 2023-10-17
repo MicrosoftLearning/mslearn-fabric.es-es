@@ -171,7 +171,7 @@ Ahora, generaremos el código para aplicar la transformación de codificación o
 
 1. Inicie Data Wrangler en el menú superior del dataframe `df`.
 
-1. Seleccione la característica `Brand` en la cuadrícula. 
+1. Seleccione la característica `Brand` en la cuadrícula.
 
 1. En el panel **Operaciones**, expanda **Fórmulas** y, a continuación, seleccione **Codificación one-hot**.
 
@@ -183,7 +183,7 @@ Ahora, generaremos el código para aplicar la transformación de codificación o
 
 ## Operaciones de ordenación y filtrado
 
-Imagine que necesitamos revisar los datos de ingresos de una tienda específica y, a continuación, ordenar los precios de los productos. En los pasos siguientes, usamos Data Wrangler para filtrar y analizar el dataframe `df`. 
+Imagine que necesitamos revisar los datos de ingresos de una tienda específica y, a continuación, ordenar los precios de los productos. En los pasos siguientes, usamos Data Wrangler para filtrar y analizar el dataframe `df`.
 
 1. Inicie Data Wrangler para el dataframe `df`.
 
@@ -250,9 +250,9 @@ Supongamos que necesitamos comprender el promedio de ingresos generados por cada
 
 1. Seleccione **Promedio** para la propiedad **Tipo de agregación**.
 
-1. Seleccione **Aplicar**. 
+1. Seleccione **Aplicar**.
 
-1. Seleccione **Agregar código al cuaderno**. 
+1. Seleccione **Agregar código al cuaderno**.
 
 1. Combine el código de la transformación de la variable `Brand` con el código generado por el paso de agregación de la función `clean_data(df)`. El bloque de código final debería ser similar al siguiente:
  
@@ -277,7 +277,7 @@ Supongamos que necesitamos comprender el promedio de ingresos generados por cada
 
     ```python
     print(df)
-    ``` 
+    ```
 
     Resultados:
     ```

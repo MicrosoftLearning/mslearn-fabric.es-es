@@ -134,8 +134,7 @@ Ahora, vamos a generar estadísticas descriptivas para comprender la distribuci�
 1. Use el icono **+Código** situado debajo de la salida de la celda para agregar una nueva celda de código al cuaderno y escriba el código siguiente:
 
     ```python
-    desc_stats = df.describe()
-    print(desc_stats)
+    df.describe()
     ```
 
     La edad promedio es de aproximadamente 48.5 años, con una desviación estándar de 13.1 años. La persona más joven tiene 19 años y la más mayor tiene 79 años. La media `BMI` es de aproximadamente 26,4, lo que entra en la categoría de **sobrepeso** según las [normas de la OMS](https://www.who.int/health-topics/obesity#tab=tab_1). El mínimo `BMI` es 18 y el máximo es 42,2.
