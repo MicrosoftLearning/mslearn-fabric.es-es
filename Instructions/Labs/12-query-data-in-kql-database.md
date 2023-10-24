@@ -49,19 +49,10 @@ En este laboratorio, usará Real-Time Analytics (RTA) en Fabric para crear una b
 
 7. Una vez cargados los datos, verifíquelos en la base de datos KQL. Para ello, seleccione los puntos suspensivos situados a la derecha de la tabla, vaya a **Consultar tabla** y seleccione **Mostrar 100 registros cualesquiera**.
 
-    <div><video controls src="./Images/check-kql-sample-dataset.mp4" muted="false" autoplay loop></video></div>
+    ![Imagen de la selección de los 100 archivos superiores de la tabla RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
 > **NOTA**: La primera vez que ejecute esto, puede tardar varios segundos en asignar recursos de proceso.
 
 ## Escenario
-En este escenario, es un analista que se encarga de consultar un conjunto de datos de ejemplo que implementará desde el entorno de Fabric.
+En este escenario, usted es un analista al que se le ha encomendado la tarea de consultar un conjunto de datos de muestra de métricas sin procesar de un SQL Server hipotético que implementará desde el entorno de Fabric. Use KQL y T-SQL para consultar estos datos y recopilar información con el fin de obtener conclusiones informativas sobre los datos.
 
-
-
-Una consulta de Kusto es una manera de leer datos, procesarlos y mostrar los resultados. La consulta se escribe en texto sin formato con el que es fácil trabajar. Una consulta de Kusto puede tener una o varias instrucciones que muestren datos como una tabla o un grafo.
-
-Una instrucción de tabla tiene algunos operadores que funcionan en datos de tabla. Cada operador toma una tabla como entrada y proporciona una tabla como salida. Los operadores se unen mediante una pleca (|). Los datos se mueven de un operador a otro. Cada operador cambia los datos de alguna manera y los pasa.
-
-Puede imaginárselo como un embudo, en el que se empieza con una tabla entera de datos. Cada operador filtra, ordena o resume los datos. El orden de los operadores es importante porque funcionan uno después de otro. Al final del embudo, obtendrá una salida final.
-
-Estos operadores son específicos de KQL, pero pueden ser similares a SQL u otros lenguajes.
