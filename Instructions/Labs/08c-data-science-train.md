@@ -10,7 +10,7 @@ En este laboratorio, entrenará un modelo de aprendizaje automático para predec
 
 Al completar este laboratorio, obtendrá experiencia práctica en aprendizaje automático y seguimiento de modelos, y aprenderá a trabajar con *cuadernos*, *experimentos* y *modelos* en Microsoft Fabric.
 
-Este laboratorio se tarda en completar **45** minutos aproximadamente.
+Este laboratorio se tarda aproximadamente **25** minutos en completarse.
 
 > **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,7 +29,7 @@ Antes de trabajar con modelos de Fabric, cree un área de trabajo con la evaluac
 
 Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes).
 
-1. En la parte inferior izquierda del portal de Fabric, seleccione el icono **Ingeniería de datos** y cambie a la experiencia **Ciencia de datos**.
+1. En la parte inferior izquierda del portal de Fabric, seleccione el icono de **Power BI** y cambie a la experiencia **Ciencia de datos**.
 
 1. En la página principal de **Ciencia de datos**, cree un nuevo **cuaderno**.
 
@@ -213,7 +213,7 @@ Cuando haya entrenado y realizado un seguimiento de los modelos con MLflow, pued
 
 Microsoft Fabric realizará un seguimiento de todos los experimentos y le permitirá explorarlos visualmente.
 
-1. Vaya a la página principal de **Ciencia de datos**.
+1. Vaya al área de trabajo desde la barra de menús del centro de conectividad de la izquierda.
 1. Seleccione el experimento `experiment-diabetes` para abrirlo.
 
     > **Sugerencia:** Si ve que no hay ninguna ejecución de experimentos registrada, actualice la página.
@@ -237,7 +237,7 @@ Después de comparar los modelos de aprendizaje automático que ha entrenado ent
 1. En la información general del experimento, asegúrese de que la pestaña **Ver** está seleccionada.
 1. Seleccione **Detalles de ejecución**.
 1. Seleccione la ejecución con la puntuación R2 más alta.
-1. Seleccione **Guardar** en el cuadro **Guardar como modelo**.
+1. Seleccione **Guardar** en el cuadro **Guardar ejecución como modelo**.
 1. Seleccione **Crear un nuevo modelo** en la ventana emergente recién abierta.
 1. Seleccione la carpeta `model` .
 1. Asigne al modelo el nombre `model-diabetes` y seleccione **Guardar**.
@@ -249,7 +249,7 @@ Tenga en cuenta que el modelo, el experimento y la ejecución del experimento es
 
 Ahora que ha terminado de entrenar y evaluar los modelos, puede guardar el cuaderno con un nombre descriptivo y finalizar la sesión con Spark.
 
-1. En la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno.
+1. Vuelva a su cuaderno y, en la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno.
 2. Establezca el **nombre** del cuaderno en **Entrenar y comparar modelos** y, luego, cierre el panel de configuración.
 3. En el menú del cuaderno, seleccione **Detener sesión** para finalizar la sesión con Spark.
 

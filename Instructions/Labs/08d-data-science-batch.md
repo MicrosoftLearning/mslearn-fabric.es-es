@@ -10,7 +10,7 @@ En este laboratorio, usará un modelo de aprendizaje automático para predecir u
 
 Al completar este laboratorio, obtendrá experiencia práctica para generar predicciones y visualizar los resultados.
 
-Este laboratorio se tarda en completar **45** minutos aproximadamente.
+Este laboratorio se tarda aproximadamente **20** minutos en completarse.
 
 > **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -29,13 +29,13 @@ Antes de trabajar con modelos de Fabric, cree un área de trabajo con la evaluac
 
 Para ingerir datos, entrenar y registrar un modelo, ejecutará las celdas de un cuaderno. Cargue el cuaderno en el área de trabajo.
 
-1. En la parte inferior izquierda del portal de Fabric, seleccione el icono **Ingeniería de datos** y cambie a la experiencia **Ciencia de datos**.
+1. En una nueva pestaña del navegador, vaya al cuaderno [Generate-Predictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb) y descárguelo en una carpeta de su elección.
+1. Vuelva a la pestaña del explorador de Fabric y, en la parte inferior izquierda del portal de Fabric, seleccione el icono de **Power BI** y cambie a la experiencia **Ciencia de datos**.
 1. En la página principal de **Ciencia de datos**, seleccione **Importar cuaderno**.
 
     Recibirá una notificación cuando el cuaderno se importe correctamente.
 
 1. Vaya al cuaderno importado denominado `Generate-Predictions`.
-
 1. Lea las instrucciones del cuaderno cuidadosamente y ejecute cada celda individualmente.
 
 ## Limpieza de recursos
