@@ -1,16 +1,16 @@
 ---
 lab:
-  title: "Exploración de la ciencia de datos en Microsoft\_Fabric"
-  module: Get started with data science in Microsoft Fabric
+  title: "Entrenamiento y seguimiento de un modelo en Microsoft\_Fabric"
+  module: Train and track machine learning models with MLflow in Microsoft Fabric
 ---
 
-# Exploración de la ciencia de datos en Microsoft Fabric
+# Entrenamiento y seguimiento de modelos de Machine Learning con MLflow en Microsoft Fabric
 
-En este laboratorio, ingerirá datos, explorará los datos de un cuaderno, procesará los datos con Data Wrangler y entrenará dos tipos de modelos. Al realizar todos estos pasos, podrá explorar las características de ciencia de datos en Microsoft Fabric.
+En este laboratorio, entrenará un modelo de aprendizaje automático para predecir una medida cuantitativa de la diabetes. Entrenará un modelo de regresión con Scikit-learn, hará un seguimiento y comparará los modelos con MLflow.
 
-Al completar este laboratorio, obtendrá experiencia práctica en aprendizaje automático y seguimiento de modelos, y aprenderá a trabajar con *cuadernos*, *Data Wrangler*, *experimentos* y *modelos* en Microsoft Fabric.
+Al completar este laboratorio, obtendrá experiencia práctica en aprendizaje automático y seguimiento de modelos, y aprenderá a trabajar con *cuadernos*, *experimentos* y *modelos* en Microsoft Fabric.
 
-Este laboratorio se tarda aproximadamente **20** minutos en completarse.
+Este laboratorio se tarda aproximadamente **25** minutos en completarse.
 
 > **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
@@ -27,7 +27,7 @@ Antes de trabajar con modelos de Fabric, cree un área de trabajo con la evaluac
 
 ## Creación de un cuaderno
 
-Para ejecutar código, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes).
+Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes).
 
 1. En la parte inferior izquierda del portal de Fabric, seleccione el icono de **Power BI** y cambie a la experiencia **Ciencia de datos**.
 
@@ -42,10 +42,10 @@ Para ejecutar código, puede crear un *cuaderno*. Los cuadernos proporcionan un 
 1. Use el botón **&#128393;** (Editar) para cambiar la celda al modo de edición y, luego, elimine el contenido y escriba el texto siguiente:
 
     ```text
-   # Data science in Microsoft Fabric
+   # Train a machine learning model and track with MLflow
     ```
 
-## Obtener los datos
+## Carga de datos en un objeto DataFrame
 
 Ahora está listo para ejecutar código para obtener los datos y entrenar un modelo. Trabajará con el [conjunto de datos de diabetes](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) de Azure Open Datasets. Después de cargar los datos, convertirá los datos en un dataframe de Pandas, que es una estructura común para trabajar con datos en filas y columnas.
 
@@ -90,57 +90,25 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
 
     La salida muestra las filas y columnas del conjunto de datos de diabetes.
 
-1. Hay dos pestañas en la parte superior de la tabla representada: **Tabla** y **Gráfico**. Seleccionar **Gráfico**.
-1. Seleccione las **opciones Ver** en la parte superior derecha del gráfico para cambiar la visualización.
-1. Cambie el gráfico a la siguiente configuración:
-    * **Tipo de gráfico**: `Box plot`
-    * **Clave**: *dejar en blanco*
-    * **Valores**: `Y`
-1. Seleccione **Aplicar** para representar la nueva visualización y explorar la salida.
-
-## Preparación de los datos
-
-Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede ejecutar código en un cuaderno o usar el Wrangler de datos para generar código automáticamente.
-
-1. Los datos se cargan como un dataframe de Spark. Para iniciar Data Wrangler, debe convertir los datos en un dataframe de Pandas. Ejecute el código siguiente en su cuaderno:
+1. Los datos se cargan como un dataframe de Spark. Scikit-learn esperará que el conjunto de datos de entrada sea un dataframe de Pandas. Ejecute el código siguiente para convertir el conjunto de datos en un dataframe de Pandas:
 
     ```python
+    import pandas as pd
     df = df.toPandas()
     df.head()
     ```
 
-1. Seleccione **Datos** en la cinta de opciones del cuaderno y, a continuación, seleccione **Iniciar Data Wrangler**.
-1. Seleccione el conjunto de datos `df`. Cuando se inicia Data Wrangler, se genera una introducción descriptiva del dataframe en el panel **Resumen**.
+## Entrenar un modelo de Machine Learning
 
-    Actualmente, la columna de etiqueta es `Y`, que es una variable continua. Para entrenar un modelo de Machine Learning que prediga Y, debe entrenar un modelo de regresión. Los valores (predichos) de Y pueden ser difíciles de interpretar. En su lugar, podríamos explorar la posibilidad de entrenar un modelo de clasificación que prediga si alguien tiene un riesgo bajo o alto de desarrollar diabetes. Para poder entrenar un modelo de clasificación, debe crear una columna de etiqueta binaria basada en los valores de `Y`.
+Ahora que ha cargado los datos, puede usarlos para entrenar un modelo de Machine Learning y predecir una medida cuantitativa de la diabetes. Entrenará un modelo de regresión mediante la biblioteca Scikit-Learn y hará un seguimiento del modelo con MLflow.
 
-1. Seleccione la columna `Y` en Data Wrangler. Tenga en cuenta que hay una disminución en la frecuencia de la papelera `220-240`. El percentil 75 `211.5` coincide aproximadamente con la transición de las dos regiones en el histograma. Utilicemos este valor como umbral de riesgo bajo y alto.
-1. Vaya al panel **Operaciones**, expanda **Fórmulas** y, a continuación, seleccione **Crear columna a partir de la fórmula**.
-1. Cree una nueva columna con la siguiente configuración:
-    * **Nombre de la columna**: `Risk`
-    * **Fórmula de la columna**: `(df['Y'] > 211.5).astype(int)`
-1. Revise la nueva columna `Risk` que se agrega a la versión preliminar. Compruebe que el número de filas con valor `1` debe ser aproximadamente el 25 % de todas las filas (ya que es el percentil 75 de `Y`).
-1. Seleccione **Aplicar**.
-1. Seleccione **Agregar código al cuaderno**.
-1. Ejecute la celda con el código que ha generado Data Wrangler.
-1. Ejecute el código siguiente en una nueva celda para comprobar que la columna `Risk` tiene la forma esperada:
-
-    ```python
-    df_clean.describe()
-    ```
-
-## Entrenamiento de modelos de Machine Learning
-
-Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de Machine Learning que prediga la diabetes. Podemos entrenar dos tipos diferentes de modelos con nuestro conjunto de datos: un modelo de regresión (predicción `Y`) o un modelo de clasificación (predicción `Risk`). Entrenará los modelos mediante la biblioteca scikit-learn y hará un seguimiento de los modelo con MLflow.
-
-### Entrenamiento de un modelo de regresión
-
-1. Ejecute el código siguiente para dividir los datos en un conjunto de datos de entrenamiento y prueba, y para separar las características de la etiqueta `Y` que desea predecir:
+1. Ejecute el código siguiente para dividir los datos en un conjunto de datos de entrenamiento y prueba, y para separar las características de la etiqueta que desea predecir:
 
     ```python
     from sklearn.model_selection import train_test_split
     
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
+    print("Splitting data...")
+    X, y = df[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df['Y'].values
     
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
@@ -148,12 +116,12 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-regression"
-    mlflow.set_experiment(experiment_name)
+   import mlflow
+   experiment_name = "experiment-diabetes"
+   mlflow.set_experiment(experiment_name)
     ```
 
-    El código crea un experimento de MLflow llamado `diabetes-regression`. En este experimento se realizará un seguimiento de los modelos.
+    El código crea un experimento de MLflow llamado `experiment-diabetes`. En este experimento se realizará un seguimiento de los modelos.
 
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
@@ -165,63 +133,111 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
     
        model = LinearRegression()
        model.fit(X_train, y_train)
+    
+       mlflow.log_param("estimator", "LinearRegression")
     ```
 
-    El código entrena un modelo de regresión mediante la regresión lineal. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow.
-
-### Entrenamiento de un modelo de clasificación
-
-1. Ejecute el código siguiente para dividir los datos en un conjunto de datos de entrenamiento y prueba, y para separar las características de la etiqueta `Risk` que desea predecir:
-
-    ```python
-    from sklearn.model_selection import train_test_split
-    
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
-    
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
-    ```
+    El código entrena un modelo de regresión mediante la regresión lineal. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow. Además, va a registrar un parámetro llamado `estimator`, con el valor `LinearRegression`.
 
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-classification"
-    mlflow.set_experiment(experiment_name)
-    ```
-
-    El código crea un experimento de MLflow llamado `diabetes-classification`. En este experimento se realizará un seguimiento de los modelos.
-
-1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
-
-    ```python
-    from sklearn.linear_model import LogisticRegression
+    from sklearn.tree import DecisionTreeRegressor
     
     with mlflow.start_run():
-        mlflow.sklearn.autolog()
-
-        model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
+       mlflow.autolog()
+    
+       model = DecisionTreeRegressor(max_depth=5) 
+       model.fit(X_train, y_train)
+    
+       mlflow.log_param("estimator", "DecisionTreeRegressor")
     ```
 
-    El código entrena un modelo de clasificación mediante regresión logística. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow.
+    El código entrena un modelo de regresión mediante regresión del árbol de decisión. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow. Además, va a registrar un parámetro llamado `estimator`, con el valor `DecisionTreeRegressor`.
+
+## Uso de MLflow para buscar y ver los experimentos
+
+Cuando haya entrenado y realizado un seguimiento de los modelos con MLflow, puede usar la biblioteca de MLflow para recuperar los experimentos y sus detalles.
+
+1. Para enumerar todos los experimentos, use el código siguiente:
+
+    ```python
+   import mlflow
+   experiments = mlflow.search_experiments()
+   for exp in experiments:
+       print(exp.name)
+    ```
+
+1. Para recuperar un experimento específico, puede obtenerlo por su nombre:
+
+    ```python
+   experiment_name = "experiment-diabetes"
+   exp = mlflow.get_experiment_by_name(experiment_name)
+   print(exp)
+    ```
+
+1. Con un nombre de experimento, puede recuperar todos los trabajos de ese experimento:
+
+    ```python
+   mlflow.search_runs(exp.experiment_id)
+    ```
+
+1. Para comparar más fácilmente las ejecuciones y salidas del trabajo, puede configurar la búsqueda para ordenar los resultados. Por ejemplo, la celda siguiente ordena los resultados por `start_time`, y solo muestra un máximo de `2` resultados:
+
+    ```python
+   mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)
+    ```
+
+1. Por último, puede trazar las métricas de evaluación de varios modelos para compararlos fácilmente:
+
+    ```python
+   import matplotlib.pyplot as plt
+   
+   df_results = mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)[["metrics.training_r2_score", "params.estimator"]]
+   
+   fig, ax = plt.subplots()
+   ax.bar(df_results["params.estimator"], df_results["metrics.training_r2_score"])
+   ax.set_xlabel("Estimator")
+   ax.set_ylabel("R2 score")
+   ax.set_title("R2 score by Estimator")
+   for i, v in enumerate(df_results["metrics.training_r2_score"]):
+       ax.text(i, v, str(round(v, 2)), ha='center', va='bottom', fontweight='bold')
+   plt.show()
+    ```
+
+    La salida debe ser similar a la de la imagen siguiente:
+
+    ![Captura de pantalla de las métricas de evaluación trazadas.](./Images/plotted-metrics.png)
 
 ## Exploración de los experimentos
 
 Microsoft Fabric realizará un seguimiento de todos los experimentos y le permitirá explorarlos visualmente.
 
 1. Vaya al área de trabajo desde la barra de menús del centro de conectividad de la izquierda.
-1. Seleccione el experimento `diabetes-regression` para abrirlo.
+1. Seleccione el experimento `experiment-diabetes` para abrirlo.
 
     > **Sugerencia:** Si ve que no hay ninguna ejecución de experimentos registrada, actualice la página.
 
-1. Revise las **métricas de ejecución** para explorar la precisión del modelo de regresión.
-1. Vuelva a la página principal y seleccione el experimento `diabetes-classification` para abrirlo.
-1. Revise las **métricas de ejecución** para explorar la precisión del modelo de clasificación. Tenga en cuenta que el tipo de métrica es diferente, ya que ha entrenado otro tipo de modelo.
+1. Seleccione la pestaña **Ver**.
+1. Seleccione **Ejecutar lista**.
+1. Seleccione las dos ejecuciones más recientes activando su casilla.
+    Como resultado, las dos últimas ejecuciones se compararán entre sí en el panel **Comparación de métricas**. De forma predeterminada, las métricas se trazan por nombre de ejecución.
+1. Seleccione el botón **&#128393;** (Editar) del gráfico que visualiza el error medio absoluto de cada ejecución.
+1. Cambie el **tipo de visualización** a `bar`.
+1. Cambie el **eje X** a `estimator`.
+1. Seleccione **Reemplazar** y explore el nuevo gráfico.
+1. Opcionalmente, puede repetir estos pasos para los demás gráficos en el panel **Comparación de métricas**.
+
+Al trazar las métricas de rendimiento por estimador registrado, puede revisar qué algoritmo dio lugar a un mejor modelo.
 
 ## Guardar el modelo
 
-Después de comparar los modelo de Machine Learning que ha entrenado entre experimentos, puede elegir aquel con el mejor rendimiento. Para usar el modelo con el mejor rendimiento, guarde el modelo y úselo para generar predicciones.
+Después de comparar los modelos de aprendizaje automático que ha entrenado entre ejecuciones de experimentos, puede elegir aquel con el mejor rendimiento. Para usar el modelo con el mejor rendimiento, guarde el modelo y úselo para generar predicciones.
 
-1. Seleccione **Guardar** en el cuadro **Guardar como modelo**.
+1. En la información general del experimento, asegúrese de que la pestaña **Ver** está seleccionada.
+1. Seleccione **Detalles de ejecución**.
+1. Seleccione la ejecución con la puntuación R2 más alta.
+1. Seleccione **Guardar** en el cuadro **Guardar ejecución como modelo**.
 1. Seleccione **Crear un nuevo modelo** en la ventana emergente recién abierta.
 1. Seleccione la carpeta `model` .
 1. Asigne al modelo el nombre `model-diabetes` y seleccione **Guardar**.
@@ -233,7 +249,7 @@ Tenga en cuenta que el modelo, el experimento y la ejecución del experimento es
 
 Ahora que ha terminado de entrenar y evaluar los modelos, puede guardar el cuaderno con un nombre descriptivo y finalizar la sesión con Spark.
 
-1. En la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno.
+1. Vuelva a su cuaderno y, en la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno.
 2. Establezca el **nombre** del cuaderno en **Entrenar y comparar modelos** y, luego, cierre el panel de configuración.
 3. En el menú del cuaderno, seleccione **Detener sesión** para finalizar la sesión con Spark.
 
