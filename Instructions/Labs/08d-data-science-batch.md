@@ -29,7 +29,8 @@ Antes de trabajar con modelos de Fabric, cree un área de trabajo con la evaluac
 
 Para ingerir datos, entrenar y registrar un modelo, ejecutará las celdas de un cuaderno. Cargue el cuaderno en el área de trabajo.
 
-1. En una nueva pestaña del navegador, vaya al cuaderno [Generate-Predictions](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb) y descárguelo en una carpeta de su elección.
+1. En una pestaña nueva del explorador, vaya a `https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/08/Generate-Predictions.ipynb`
+1. Seleccione el icono **Descargar archivo sin formato** para descargar el cuaderno `Generate-Predictions` en una carpeta de su elección.
 1. Vuelva a la pestaña del explorador de Fabric y, en la parte inferior izquierda del portal de Fabric, seleccione el icono de **Power BI** y cambie a la experiencia **Ciencia de datos**.
 1. En la página principal de **Ciencia de datos**, seleccione **Importar cuaderno**.
 
