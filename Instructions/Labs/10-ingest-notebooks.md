@@ -14,25 +14,29 @@ Para esta experiencia, creará el código en varias celdas de código del cuader
 
 Dado que también está trabajando con un conjunto de datos de ejemplo, la optimización no refleja lo que podría ver en producción a escala, aunque todavía podrá ver mejoras y, cuando cada milisegundo cuente, la optimización resultará clave.
 
-> **Nota**: Necesitará una **licencia de Microsoft Fabric** para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita.
->
-> También necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+
+## Activación de una versión de prueba de Microsoft Fabric
+
+1. Después de registrarse en una cuenta de Microsoft Fabric, vaya al portal de Microsoft Fabric en [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
+1. Seleccione el icono **Administrador de cuentas** (la imagen de un *usuario* en la parte superior derecha)
+1. En el menú del administrador de cuentas, seleccione **Iniciar prueba** para iniciar una prueba de Microsoft Fabric.
+1. Después de actualizar correctamente a Microsoft Fabric, vaya a la página principal seleccionando **Página principal de Fabric**.
+
+## Crear un área de trabajo
+
+Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
+
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
 ## Creación de un área de trabajo y un destino de almacén de lago
 
-Empiece por crear un área de trabajo con la versión de prueba de Fabric habilitada, una nueva instancia de almacén de lago y una carpeta de destino en el almacén de lago.
-
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione la experiencia de **Ingeniería de datos**.
-
-    ![Captura de pantalla de la experiencia de Ingeniería de datos de Synapse](Images/data-engineering-home.png)
-
-1. En la barra de menús de la izquierda, seleccione el **Áreas de trabajo**.
-
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya la capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
-
-1. Cuando se abra la nueva área de trabajo, debe estar vacía con un rombo junto al nombre del área de trabajo, como se muestra aquí:
-
-    ![Captura de pantalla de un área de trabajo nueva y vacía](Images/new-workspace.png)
+Empiece por crear un área de trabajo, una nueva instancia de almacén de lago y una carpeta de destino en el almacén de lago.
 
 1. En el área de trabajo, seleccione **+ Nuevo > Almacén de lago**, proporcione un nombre y **Crear**.
 
