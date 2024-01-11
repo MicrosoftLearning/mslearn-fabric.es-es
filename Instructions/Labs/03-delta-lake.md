@@ -10,35 +10,33 @@ Las tablas de un almacén de lago de Microsoft Fabric se basan en el formato *D
 
 Este ejercicio debería tardar en completarse **40** minutos aproximadamente.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+4. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
 ## Creación de un almacén de lago y carga de datos
 
-Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Ingeniería de datos* en el portal y crear un almacén de lago de datos para los datos que va a analizar.
+Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los datos que va analizar.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**.
-
-2. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
-3. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` y guárdelo como **products.csv** en el equipo local (o máquina virtual de laboratorio, si procede).
+1. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` y guárdelo como **products.csv** en el equipo local (o máquina virtual de laboratorio, si procede).
 
-4. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **products**.
+1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **products**.
 
-5. En el menú **...** de la carpeta **products**, seleccione **Cargar** y **Cargar archivos** y, luego, cargue el archivo **products.csv** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
-6. Una vez cargado el archivo, seleccione la carpeta **products** y compruebe que se ha cargado el archivo **products.csv**, como se muestra aquí:
+1. En el menú **...** de la carpeta **products**, seleccione **Cargar** y **Cargar archivos** y, luego, cargue el archivo **products.csv** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
+1. Una vez cargado el archivo, seleccione la carpeta **products** y compruebe que se ha cargado el archivo **products.csv**, como se muestra aquí:
 
     ![Captura de pantalla del archivo products.csv cargado en un almacén de lago.](./Images/products-file.png)
 
@@ -99,7 +97,7 @@ También puede crear tablas *externas* en las que los metadatos del esquema se d
 1. Agregue otra nueva celda de código y escriba en ella el código siguiente:
 
     ```python
-   df.write.format("delta").saveAsTable("external_products", path="<abfs_path>/external_products")
+   df.write.format("delta").saveAsTable("external_products", path="abfs_path/external_products")
     ```
 
 2. En el panel **Explorador de almacenes de lago**, en el menú **...** de la carpeta **Archivos**, seleccione **Copiar ruta de acceso de ABFS**.
@@ -108,7 +106,7 @@ También puede crear tablas *externas* en las que los metadatos del esquema se d
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files*
 
-3. En el código que escribió en la celda de código, reemplace **<abfs_path>** por la ruta de acceso que copió en el Portapapeles para que el código guarde el objeto DataFrame como una tabla externa con archivos de datos en una carpeta llamada **external_products** en la ubicación de la carpeta **Archivos**. La ruta de acceso completa debe ser similar a la siguiente:
+3. En el código que escribió en la celda de código, reemplace **abfs_path** por la ruta de acceso que copió en el Portapapeles para que el código guarde el objeto DataFrame como una tabla externa con archivos de datos en una carpeta llamada **external_products** en la ubicación de la carpeta **Archivos**. La ruta de acceso completa debe ser similar a la siguiente:
 
     *abfss://workspace@tenant-onelake.dfs.fabric.microsoft.com/lakehousename.Lakehouse/Files/external_products*
 

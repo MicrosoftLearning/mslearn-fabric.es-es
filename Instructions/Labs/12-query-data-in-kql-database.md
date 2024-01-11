@@ -16,14 +16,7 @@ Este laboratorio se realiza en **25** minutos aproximadamente.
 
 En este escenario, usted es un analista que tiene la tarea de consultar un conjunto de datos de ejemplo de métricas sin procesar que llevan a cabo de los taxis de Nueva York y extrae estadísticas de resumen (generación de perfiles) de los datos del entorno de Fabric. Use KQL para consultar estos datos y recopilar información con el fin de obtener conclusiones informativas sobre los datos.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activación de una versión de prueba de Microsoft Fabric
-
-1. Después de registrarse en una cuenta de Microsoft Fabric, vaya al portal de Microsoft Fabric en [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Seleccione el icono **Administrador de cuentas** (la imagen de un *usuario* en la parte superior derecha)
-1. En el menú del administrador de cuentas, seleccione **Iniciar prueba** para iniciar una prueba de Microsoft Fabric.
-1. Después de actualizar correctamente a Microsoft Fabric, vaya a la página principal seleccionando **Página principal de Fabric**.
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
@@ -149,7 +142,7 @@ Consultas **ORDER BY**, que se usan para ordenar los datos por una o varias colu
 
 ## Datos de ```GROUP BY``` de nuestro conjunto de datos de ejemplo mediante KQL
 
-1. A continuación, es posible que deseemos ***agrupar por*** la ubicación de recogida que hacemos con el operador ```summarize```. También podemos usar el operador ```project```, que nos permite seleccionar y cambiar el nombre de las columnas que se desean incluir en la salida. En este caso, agrupamos por distrito dentro del sistema de taxi de Nueva York para proporcionar a nuestros usuarios la distancia total que viajaron desde cada distrito.
+1. A continuación, es posible que deseemos ***agrupar por*** la ubicación de recogida que hacemos con el operador ```summarize```. También se puede usar el operador ```project```, que nos permite seleccionar y cambiar el nombre de las columnas que se deseen incluir en la salida. En este caso, agrupamos por distrito dentro del sistema de taxi de Nueva York para proporcionar a nuestros usuarios la distancia total que viajaron desde cada distrito.
 
 ```kusto
 
@@ -242,7 +235,7 @@ Las bases de datos KQL no admiten T-SQL de forma nativa, pero proporcionan un pu
 
 ## Datos de ```GROUP BY``` de nuestro conjunto de datos de ejemplo mediante T-SQL
 
-1. A continuación, es posible que queramos ***agrupar por*** la ubicación de recogida, lo que haremos con el operador ```GROUP BY```. También podemos usar el operador ```AS```, que nos permite seleccionar y cambiar el nombre de las columnas que se desean incluir en la salida. En este caso, agrupamos por distrito dentro del sistema de taxi de Nueva York para proporcionar a nuestros usuarios la distancia total que viajaron desde cada distrito.
+1. A continuación, es posible que queramos ***agrupar por*** la ubicación de recogida, lo que haremos con el operador ```GROUP BY```. También se puede usar el operador ```AS```, que nos permite seleccionar y cambiar el nombre de las columnas que se deseen incluir en la salida. En este caso, agrupamos por distrito dentro del sistema de taxi de Nueva York para proporcionar a nuestros usuarios la distancia total que viajaron desde cada distrito.
 
     ```sql
     SELECT pickup_boroname AS Borough, Sum(trip_distance) AS [Total Trip Distance]
