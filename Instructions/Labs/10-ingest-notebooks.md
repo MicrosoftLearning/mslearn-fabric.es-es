@@ -14,14 +14,7 @@ Para esta experiencia, creará el código en varias celdas de código del cuader
 
 Dado que también está trabajando con un conjunto de datos de ejemplo, la optimización no refleja lo que podría ver en producción a escala, aunque todavía podrá ver mejoras y, cuando cada milisegundo cuente, la optimización resultará clave.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activación de una versión de prueba de Microsoft Fabric
-
-1. Después de registrarse en una cuenta de Microsoft Fabric, vaya al portal de Microsoft Fabric en [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Seleccione el icono **Administrador de cuentas** (la imagen de un *usuario* en la parte superior derecha)
-1. En el menú del administrador de cuentas, seleccione **Iniciar prueba** para iniciar una prueba de Microsoft Fabric.
-1. Después de actualizar correctamente a Microsoft Fabric, vaya a la página principal seleccionando **Página principal de Fabric**.
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 

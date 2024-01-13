@@ -9,15 +9,15 @@ Eventstream es una característica de Microsoft Fabric que captura, transforma 
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota:** Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota:** Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para más información sobre cómo habilitar una licencia de prueba de Fabric gratuita. Para ello, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
+1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
 
    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
@@ -66,7 +66,7 @@ En este tutorial, aprenderá a:
 
    ![Imagen de la elección de Eventstream](./Images/select-eventstream.png)
 
-3. Se le pedirá que le dé un **Nombre** al Eventstream. Asigne un nombre al EventStream que sea fácil de recordar, como ***MyStockES**, y presione el botón **Crear**.
+3. Se le pedirá que le dé un **Nombre** al Eventstream. Asigne un nombre al EventStream que sea fácil de recordar, como **MyStockES**, y presione el botón **Crear**.
 
    ![Imagen de nombrar Eventstream](./Images/name-eventstream.png)
 
@@ -76,7 +76,7 @@ En este tutorial, aprenderá a:
 
    ![Imagen del lienzo de EventStream](./Images/real-time-analytics-canvas.png)
 
-2. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar y configurar**.
+2. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar**.
 
    | Campo       | Valor recomendado |
    | ----------- | ----------------- |
@@ -95,7 +95,7 @@ En este tutorial, aprenderá a:
    | Área de trabajo        | Área de trabajo en la que creó una base de datos KQL |
    | Base de datos KQL     | MyStockData                                    |
 
-3. Seleccione **Agregar y configurar**.
+3. Seleccione **Crear y configurar**.
 
 ## Configuración de la ingesta de datos
 
@@ -130,7 +130,7 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 
 > **Nota**: El Editor de KQL incluye la sintaxis y el resaltado de IntelliSense, lo que permite conocer rápidamente el Lenguaje de consulta Kusto (KQL).
 
-1. Vaya a la base de datos KQL que ha creado e hidratado denominada ***MyStockData***.
+1. Vaya a la base de datos KQL que ha creado e hidratado denominada **MyStockData**.
 2. En el árbol Datos, seleccione el menú Más [...] en la tabla MyStockData. Seleccione Tabla de consulta > Mostrar 100 registros cualesquiera.
 
    ![Imagen del conjunto de consultas de KQL](./Images/kql-query-sample.png)

@@ -10,18 +10,18 @@ Data Activator de Microsoft Fabric realiza acciones en función de lo que sucede
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota:** Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Data Activator**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
 En este laboratorio, usará Data Activator en Fabric para crear un *Reflex*. Data Activator proporciona un conjunto de datos de ejemplo que puede utilizar para explorar las funcionalidades de Data Activator. Usará estos datos de ejemplo para crear un *Reflex* que analice algunos datos en tiempo real y cree un desencadenador para enviar un correo electrónico cuando se cumpla una condición.
 
@@ -29,15 +29,11 @@ En este laboratorio, usará Data Activator en Fabric para crear un *Reflex*. Dat
 
 ## Escenario
 
-En este escenario, es analista de datos de una empresa que vende y distribuye una gama de productos.  Es responsable de los datos de todos los envíos y ventas a la ciudad de Redmond. Desea crear un Reflex que controle los paquetes que están pendientes de entrega. Una categoría de productos que usted envía son las recetas médicas que necesitan estar refrigeradas a una temperatura determinada durante el tránsito. Desea crear un Reflex que envíe un correo electrónico al departamento de envíos si la temperatura de un paquete que contiene una receta es superior o inferior a un determinado umbral. La temperatura ideal debe estar comprendida entre 33 y 41 grados. Dado que los eventos Reflex ya contienen un desencadenador similar, se crea uno específico para los paquetes enviados a la ciudad de Redmond. Comencemos.
+En este escenario, es analista de datos de una empresa que vende y distribuye una gama de productos.  Es responsable de los datos de todos los envíos y ventas a la ciudad de Redmond. Desea crear un Reflex que controle los paquetes que están pendientes de entrega. Una categoría de productos que usted envía son las recetas médicas que necesitan estar refrigeradas a una temperatura determinada durante el tránsito. Desea crear un Reflex que envíe un correo electrónico al departamento de envíos si la temperatura de un paquete que contiene una receta es superior o inferior a un determinado umbral. La temperatura ideal debe estar comprendida entre 33 y 41 grados. Dado que los eventos Reflex ya contienen un desencadenador similar, se crea uno específico para los paquetes enviados a la ciudad de Redmond. ¡Empecemos!
 
 ## Creación de un Reflex
 
-1. En el portal de experiencia de **Microsoft Fabric**, seleccione primero la experiencia de **Data Activator** seleccionando el icono de experiencia de Fabric actual en la esquina inferior izquierda de la pantalla y, a continuación, seleccione **Data Activator** en el menú. Por ejemplo, en la captura de pantalla siguiente, la experiencia de Fabric actual es **Power BI**.
-
-    ![Captura de pantalla de la selección de la Experiencia de Data Activator.](./Images/data-activator-select-experience.png)
-
-1. Ahora debería estar en la pantalla Inicio de Data Activator. El icono Experiencia de Fabric de la parte inferior derecha también ha cambiado al de Data Activator. Vamos a crear un nuevo Reflex seleccionando el botón **Reflex (versión preliminar)** .
+1. Asegúrese de que está en la pantalla de inicio de Data Activator comprobando que el icono de la parte inferior derecha refleja Data Activator. Vamos a crear un nuevo Reflex seleccionando el botón **Reflex (versión preliminar)** .
 
     ![Captura de pantalla de la pantalla Inicio de Data Activator.](./Images/data-activator-home-screen.png)
 
@@ -55,7 +51,7 @@ Nuestro Reflex ahora se crea y podemos empezar a agregar desencadenadores y acci
 
 La pantalla Inicio de Reflex se divide en dos secciones, el modo *Diseño* del modo *Datos*. Para seleccionar el modo, seleccione la pestaña correspondiente en la parte inferior izquierda de la pantalla.  La pestaña del modo *Diseño* es donde se definen los objetos con los desencadenadores, las propiedades y los eventos. La pestaña del modo *Datos* es donde puede agregar los orígenes de datos y ver los datos que procesa Reflex. Echemos un vistazo a la pestaña del modo *Diseño*, que debe abrirse de forma predeterminada al crear Reflex.
 
-### modo de diseño
+### Modo de diseño
 
 Si no está actualmente en modo *Diseño*, seleccione la pestaña **Diseño** en la parte inferior izquierda de la pantalla.
 
@@ -75,7 +71,7 @@ Seleccione cada uno de los distintos eventos y observe los datos que se usan en 
 
 Es el momento de agregar un desencadenador a nuestro Reflex, pero primero, vamos a crear un nuevo objeto.
 
-## Creación de un objeto
+## Creación de un objeto 
 
 En un escenario real, es posible que no sea necesario crear un nuevo objeto para este Reflex, ya que el ejemplo de Data Activator ya incluye un objeto denominado *Package*. Pero para este laboratorio, creamos un nuevo objeto para demostrar cómo crear uno. Vamos a crear un nuevo objeto denominado *Redmond Packages*.
 
@@ -89,9 +85,9 @@ En un escenario real, es posible que no sea necesario crear un nuevo objeto para
 
 1. En el cuadro de diálogo *Asignar datos*, seleccione la pestaña ***Asignar a un nuevo objeto*** y escriba los valores siguientes:
 
-    - **Nombre del objeto**: *Redmond Packages*
+    - **Nombre de objeto**: *Paquetes de Redmond*
     - **Asignar columna de clave**: *PackageId*
-    - **Asignar propiedades**: *Ciudad, ColdChainType, SpecialCare, Temperatura*
+    - **Asignar propiedades**: *City, ColdChainType, SpecialCare, Temperature*
 
     ![Captura de pantalla del cuadro de diálogo Asignar datos del modo Datos de Reflex de Data Activator.](./Images/data-activator-data-tab-assign-data.png)
 
@@ -141,10 +137,10 @@ Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex
 
 1. Escriba los valores siguientes para la acción de correo electrónico:
 
-    - **Enviar a**: la cuenta de usuario actual debería estar seleccionada de forma predeterminada, lo que debería estar bien para este laboratorio.
-    - **Asunto**: *paquete de medicamentos de Redmond fuera del intervalo de temperatura aceptable*
+    - **Enviar a**: la cuenta de usuario actual debería estar seleccionada de forma predeterminada. Con eso es suficiente para este laboratorio.
+    - **Asunto**: *el paquete de medicamentos de Redmond se encuentra fuera del intervalo de temperatura aceptable*
     - **Título**: *temperatura demasiado alta o demasiado baja*
-    - **Información adicional**: seleccione la propiedad *Temperatura* en la lista de casilla de verificación.
+    - **Información adicional**: seleccione la propiedad *Temperature* en la lista de casillas.
 
     ![Captura de pantalla de la acción Definir del activador de datos.](./Images/data-activator-trigger-define-action.png)
 
@@ -170,7 +166,7 @@ El único problema con este desencadenador es que mientras el desencadenador env
 
 1. Puesto que ha actualizado el desencadenador, la acción correcta debe ser actualizar y no guardar el desencadenador, pero para este laboratorio hacemos lo contrario y seleccionamos el botón **Guardar** en lugar del botón **Actualizar** para ver también qué sucede. La razón por la que debería haber seleccionado el botón *Actualizar* es porque cuando selecciona *actualizar* el desencadenador, este guarda el desencadenador y actualiza el desencadenador que se está ejecutando actualmente con las nuevas condiciones. Si simplemente selecciona el botón *Guardar*, el desencadenador que se está ejecutando actualmente no usará las nuevas condiciones hasta que seleccione actualizar el desencadenador. Vamos a seguir y seleccionar el botón **Guardar**.
 
-1. Como ha seleccionado *Guardar* en lugar de *Actualizar*, ha observado que el mensaje *Hay una actualización de propiedad disponible. Actualice ahora para asegurarse de que el desencadenador tiene los cambios más recientes* aparece en la parte superior de la pantalla. El mensaje también tiene un botón *Actualizar*. Vamos a seguir y seleccionar el botón **Actualizar**.
+1. Al haber seleccionado *Guardar *, en lugar de *Actualizar*, ha observado que el mensaje *Hay una actualización de la propiedad disponible. Realícela ahora para asegurarse de que el desencadenador tiene los cambios más recientes* aparece en la parte superior de la pantalla. El mensaje también tiene un botón *Actualizar*. Vamos a seguir y seleccionar el botón **Actualizar**.
 
     ![Captura de pantalla de la actualización del desencadenador de Data Activator.](./Images/data-activator-trigger-updated.png)
 

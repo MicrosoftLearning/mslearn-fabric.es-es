@@ -10,34 +10,32 @@ Apache Spark es un motor de código abierto para el procesamiento de datos distr
 
 Este laboratorio tardará aproximadamente **45** minutos en completarse.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para más información sobre cómo habilitar una licencia de evaluación gratuita de Fabric. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
 ## Creación de un almacén de lago y carga de archivos
 
-Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Ingeniería de datos* en el portal y crear un almacén de lago de datos para los archivos de datos que va a analizar.
+Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los archivos de datos que va analizar.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**.
-
-2. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará y extraerá una carpeta de archivos de texto del equipo local (o máquina virtual de laboratorio si procede) y, luego, los cargará en el almacén de lago.
 
-3. Descargue y extraiga los archivos de datos de este ejercicio desde [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
+1. Descargue y extraiga los archivos de datos de este ejercicio desde [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
 
-4. Después de extraer el archivo comprimido, compruebe que tiene una carpeta denominada **orders** que contiene los archivos CSV **2019.csv**, **2020.csv**y **2021.csv**.
-5. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar carpeta** y, luego, cargue la carpeta **orders** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
-6. Una vez cargados los archivos, expanda **Archivos** y seleccione la carpeta **orders**; compruebe que se han cargado los archivos CSV, como se muestra aquí:
+1. Después de extraer el archivo comprimido, compruebe que tiene una carpeta denominada **orders** que contiene los archivos CSV **2019.csv**, **2020.csv**y **2021.csv**.
+1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar carpeta** y, luego, cargue la carpeta **orders** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
+1. Una vez cargados los archivos, expanda **Archivos** y seleccione la carpeta **orders**; compruebe que se han cargado los archivos CSV, como se muestra aquí:
 
     ![Captura de pantalla de los archivos cargados en un almacén de lago.](./Images/uploaded-files.png)
 
@@ -157,9 +155,9 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 10. El objeto DataFrame solo incluye los datos del archivo **2019.csv**. Modifique el código para que la ruta de acceso del archivo use un carácter comodín \* para leer los datos de los pedidos de ventas de todos los archivos de la carpeta **orders**:
 
     ```python
-   from pyspark.sql.types import *
+    from pyspark.sql.types import *
 
-   orderSchema = StructType([
+    orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -171,8 +169,8 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
        StructField("Tax", FloatType())
        ])
 
-   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-   display(df)
+    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+    display(df)
     ```
 
 11. Ejecute la celda de código modificada y revise la salida, que ahora debe incluir las ventas de 2019, 2020 y 2021.
@@ -570,7 +568,7 @@ Aunque **matplotlib** permite crear gráficos complejos de varios tipos, puede q
    # Clear the plot area
    plt.clf()
 
-   # Create a bar chart
+   # Create a line chart
    ax = sns.lineplot(x="OrderYear", y="GrossRevenue", data=df_sales)
    plt.show()
     ```

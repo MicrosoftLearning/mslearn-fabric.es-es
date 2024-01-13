@@ -10,30 +10,24 @@ En Microsoft Fabric, un almacenamiento de datos proporciona una base de datos re
 
 Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para más información sobre cómo habilitar una licencia de prueba de Fabric gratuita. Para ello, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Synapse Data Warehouse**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
 ## Creación del almacenamiento de datos
 
-Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Almacenamiento de datos* en el portal y crear un almacenamiento de datos.
+Ahora que tiene un área de trabajo, es el momento de crear un almacenamiento de datos. La página principal de Synapse Data Warehouse incluye un acceso directo para crear un nuevo almacén:
 
-1. En la parte inferior izquierda del portal de Power BI, cambie a la experiencia **Almacenamiento de datos**.
-
-    La página principal de Almacenamiento de datos incluye un acceso directo para crear un nuevo almacén:
-
-    > **Nota**: Si no ve un icono en la esquina inferior izquierda, es que Fabric no está habilitado para el inquilino. Fabric está habilitado en el portal de administración de los inquilinos que tienen una suscripción Power BI Premium.
-
-2. En la página principal de **Almacenamiento de datos**, cree un nuevo **almacenamiento** con el nombre que prefiera.
+1. En la página principal de **Synapse Data Warehouse**, cree un nuevo **almacenamiento** con el nombre que prefiera.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacenamiento:
 

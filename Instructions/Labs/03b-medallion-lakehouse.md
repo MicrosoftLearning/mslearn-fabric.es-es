@@ -10,41 +10,40 @@ En este ejercicio, creará una arquitectura de medallas en un almacén de lago d
 
 Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para obtener más información sobre cómo habilitar una licencia de evaluación de Fabric gratuita. Para hacerlo, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
-## Crear un área de trabajo y habilitar la edición del modelo de datos
+## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+4. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-   ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace-medallion.png)
+   ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace-medallion.png)
+
 5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un conjunto de datos de Power BI.
 
-    ![Captura de pantalla de la página de configuración del área de trabajo en Power BI.](./Images/workspace-settings.png)
+    ![Captura de pantalla de la página de configuración del área de trabajo en Fabric.](./Images/workspace-settings.png)
 
     > **Nota**: Es posible que tenga que actualizar la pestaña del explorador después de habilitar la característica en vista previa (GB).
 
 ## Crear un almacén de lago y cargar datos a la capa de bronce
 
-Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia *Ingeniería de datos* en el portal de Fabric y crear un almacén de lago de datos para los datos que va a analizar.
+Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los datos que va analizar.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**. Si no ve la experiencia de ingeniería de datos, póngase en contacto con el administrador de Fabric con una solicitud para [habilitar Fabric](https://learn.microsoft.com/fabric/admin/fabric-switch).
-
-2. En la página de inicio de **Ingeniería de datos de Synapse**, cree un nuevo **Lakehouse** denominado **Sales**.
+1. En la página de inicio de **Ingeniería de datos de Synapse**, cree un nuevo **Lakehouse** denominado **Sales**.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
-3. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraiga los archivos y guárdelos con sus nombres originales en el equipo local (o máquina virtual de laboratorio, si procede). Debe haber 3 archivos con datos de ventas de 3 años: 2019.csv, 2020.csv y 2021.csv.
+1. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraiga los archivos y guárdelos con sus nombres originales en el equipo local (o máquina virtual de laboratorio, si procede). Debe haber 3 archivos con datos de ventas de 3 años: 2019.csv, 2020.csv y 2021.csv.
 
-4. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **bronze**.
+1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **bronze**.
 
-5. En el menú **...** de la carpeta **bronze**, seleccione **Cargar** y **Cargar archivos**, entonces cargue los 3 archivos (2019.csv, 2020.csv, y 2021.csv) desde el equipo local (o máquina virtual de laboratorio, si procede) al almacén de lago. Use la tecla Mayús para cargar los 3 archivos a la vez.
+1. En el menú **...** de la carpeta **bronze**, seleccione **Cargar** y **Cargar archivos**, entonces cargue los 3 archivos (2019.csv, 2020.csv, y 2021.csv) desde el equipo local (o máquina virtual de laboratorio, si procede) al almacén de lago. Use la tecla Mayús para cargar los 3 archivos a la vez.
 
-6. Una vez caragados los archivos, seleccione la carpeta **bronze** y compruebe que los archivos han sido cargados, como se muestra aquí:
+1. Una vez caragados los archivos, seleccione la carpeta **bronze** y compruebe que los archivos han sido cargados, como se muestra aquí:
 
     ![Captura de pantalla del archivo products.csv cargado en un almacén de lago.](./Images/bronze-files.png)
 
@@ -97,8 +96,8 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
 
     | Índice | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | Correo electrónico | Elemento | Quantity | UnitPrice | Impuesto |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-    | 1 | SO49172 | 1 | 01-01-2021 | Brian Howard | brian23@adventure-works.com | Road-250 Red, 52 | 1 | 2443.35 | 195.468 |
-    | 2 |  SO49173 | 1 | 01-01-2021 | Linda Álvarez | linda19@adventure-works.com | Mountain-200 Silver, 38 | 1 | 2071.4197 | 165.7136 |
+    | 1 | SO49172 | 1 | 2021-01-01 | Brian Howard | brian23@adventure-works.com | Road-250 Red, 52 | 1 | 2443.35 | 195.468 |
+    | 2 |  SO49173 | 1 | 2021-01-01 | Linda Álvarez | linda19@adventure-works.com | Mountain-200 Silver, 38 | 1 | 2071.4197 | 165.7136 |
     | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
     El código ejecutado ha cargado los datos de los archivos CSV de la carpeta **bronze** en un dataframe de Spark y, después, ha mostrado las primeras filas del dataframe.
@@ -120,8 +119,6 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
     ```
 
     La primera línea del código importa las funciones necesarias de PySpark. Después, va a agregar nuevas columnas al dataframe para poder realizar un seguimiento del nombre del archivo de origen, si el pedido se marcó como anterior al año fiscal de interés y cuándo se creó y modificó la fila.
-
-    También va a agregar columnas para CustomerID e ItemID, que se rellenarán más adelante.
 
     Por último, va a actualizar la columna CustomerName a “Unknown” si es null o está vacía.
 
@@ -357,7 +354,7 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     ```python
     from pyspark.sql.functions import col, split
     
-    # Create customer_gold dataframe
+    # Create customer_silver dataframe
     
     dfdimCustomer_silver = df.dropDuplicates(["CustomerName","Email"]).select(col("CustomerName"),col("Email")) \
         .withColumn("First",split(col("CustomerName"), " ").getItem(0)) \
@@ -365,7 +362,7 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     
     # Display the first 10 rows of the dataframe to preview your data
 
-    display(dfdimCustomer_silver .head(10))
+    display(dfdimCustomer_silver.head(10))
     ```
 
      Aquí ha creado un nuevo DataFrame “dfdimCustomer_silver” realizando varias transformaciones, como anular duplicados, seleccionar columnas específicas y separar la columna “CustomerName” para crear las columnas “First” y “Last” name. El resultado es un DataFrame con datos de cliente estructurados limpios, incluyendo las columnas “First” y “Last” name extraídas de la columna “CustomerName”.
@@ -435,12 +432,12 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
         .execute()
     ```
 
-12. **Agregue otro bloque de código** para crear el dataframe **customer_gold**. Usará esto más adelante en el join de Sales.
+12. **Agregue otro bloque de código** para crear el dataframe **product_silver**.
   
     ```python
     from pyspark.sql.functions import col, split, lit
     
-    # Create Customer_gold dataframe, this dataframe will be used later on on the Sales join
+    # Create product_silver dataframe
     
     dfdimProduct_silver = df.dropDuplicates(["Item"]).select(col("Item")) \
         .withColumn("ItemName",split(col("Item"), ", ").getItem(0)) \
@@ -470,6 +467,8 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
     display(dfdimProduct_gold.head(10))
     ```
 
+      Esto calcula el siguiente id. de producto disponible según los datos actuales de la tabla, asignando estos nuevos identificadores a los productos, y mostrando entonces la información de producto actualizada.
+
 14. De forma similar a lo que ha hecho con las otras dimensiones, debe asegurarse de que la tabla de productos permanezca actualizada a medida que entran nuevos datos. **En un nuevo bloque de código**, pegue y ejecute lo siguiente:
 
     ```python
@@ -498,8 +497,6 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
               ) \
               .execute()
       ```
-
-      Esto calcula el siguiente id. de producto disponible según los datos actuales de la tabla, asignando estos nuevos identificadores a los productos, y mostrando entonces la información de producto actualizada (en el caso de que el comando display no esté comentado).
 
       **Ahora que ha creado las dimensiones, el último paso es crear la tabla de hechos.**
 

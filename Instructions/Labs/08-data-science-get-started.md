@@ -12,27 +12,21 @@ Al completar este laboratorio, obtendrá experiencia práctica en aprendizaje au
 
 Este laboratorio se tarda aproximadamente **20** minutos en completarse.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para obtener una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
-
-## Activación de una prueba de Microsoft Fabric
-
-1. Después de registrarse en una cuenta de Microsoft Fabric, vaya al portal de Microsoft Fabric en [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com).
-1. Seleccione el icono **Administrador de cuentas** (la imagen de un *usuario* en la parte superior derecha)
-1. En el menú del administrador de cuentas, seleccione **Iniciar prueba** para iniciar una prueba de Microsoft Fabric.
-1. Después de actualizar correctamente a Microsoft Fabric, vaya a la página principal seleccionando **Página principal de Fabric**.
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ciencia de datos de Synapse**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, debe estar vacía.
+1. Vaya a la página principal de Microsoft Fabric en [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com) en un explorador.
+1. Seleccione **Ciencia de datos de Synapse**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Creación de un cuaderno
+## Crear un cuaderno
 
 Para ejecutar código, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes).
 
@@ -57,19 +51,19 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
 1. En su cuaderno, use el icono **+Código** debajo de la salida de la celda más reciente para agregar una nueva celda de código al cuaderno y escriba en ella el código siguiente:
 
     ```python
-    # Azure storage access info for open dataset diabetes
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "mlsamples"
-    blob_relative_path = "diabetes"
-    blob_sas_token = r"" # Blank since container is Anonymous access
+   # Azure storage access info for open dataset diabetes
+   blob_account_name = "azureopendatastorage"
+   blob_container_name = "mlsamples"
+   blob_relative_path = "diabetes"
+   blob_sas_token = r"" # Blank since container is Anonymous access
     
-    # Set Spark config to access  blob storage
-    wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
-    print("Remote blob path: " + wasbs_path)
+   # Set Spark config to access  blob storage
+   wasbs_path = f"wasbs://%s@%s.blob.core.windows.net/%s" % (blob_container_name, blob_account_name, blob_relative_path)
+   spark.conf.set("fs.azure.sas.%s.%s.blob.core.windows.net" % (blob_container_name, blob_account_name), blob_sas_token)
+   print("Remote blob path: " + wasbs_path)
     
-    # Spark read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+   # Spark read parquet, note that it won't load any data yet by now
+   df = spark.read.parquet(wasbs_path)
     ```
 
 1. Use el botón **&#9655; Ejecutar celda** situado a la izquierda de la celda para ejecutarla. Como alternativa, puede presionar `SHIFT` + `ENTER` en el teclado para ejecutar una celda.
@@ -79,14 +73,14 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
 1. Use el icono **+Código** debajo de la salida de la celda para agregar una nueva celda de código al cuaderno y escriba en ella el código siguiente:
 
     ```python
-    display(df)
+   display(df)
     ```
 
 1. Cuando se haya completado el comando de la celda, revise la salida que aparece debajo de ella, que será algo parecido a esto:
 
     |AGE|SEX|BMI|BP|S1|S2|S3|S4|S5|S6|Y|
     |---|---|---|--|--|--|--|--|--|--|--|
-    |59|2|32,1|101.0|157|93.2|38,0|4.0|4.8598|87|151|
+    |59|2|32,1|101.0|157|93.2|38.0|4.0|4.8598|87|151|
     |48|1|21.6|87,0|183|103.2|70.0|3.0|3.8918|69|75|
     |72|2|30,5|93.0|156|93.6|41,0|4.0|4.6728|85|141|
     |24|1|25,3|84.0|198|131.4|40,0|5.0|4.8903|89|206|
@@ -110,8 +104,8 @@ Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede 
 1. Los datos se cargan como un dataframe de Spark. Para iniciar Data Wrangler, debe convertir los datos en un dataframe de Pandas. Ejecute el código siguiente en su cuaderno:
 
     ```python
-    df = df.toPandas()
-    df.head()
+   df = df.toPandas()
+   df.head()
     ```
 
 1. Seleccione **Datos** en la cinta de opciones del cuaderno y, a continuación, seleccione **Iniciar Data Wrangler**.
@@ -131,7 +125,7 @@ Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede 
 1. Ejecute el código siguiente en una nueva celda para comprobar que la columna `Risk` tiene la forma esperada:
 
     ```python
-    df_clean.describe()
+   df_clean.describe()
     ```
 
 ## Entrenamiento de modelos de Machine Learning
@@ -143,19 +137,19 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
 1. Ejecute el código siguiente para dividir los datos en un conjunto de datos de entrenamiento y prueba, y para separar las características de la etiqueta `Y` que desea predecir:
 
     ```python
-    from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import train_test_split
     
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
+   X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Y'].values
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
 
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-regression"
-    mlflow.set_experiment(experiment_name)
+   import mlflow
+   experiment_name = "diabetes-regression"
+   mlflow.set_experiment(experiment_name)
     ```
 
     El código crea un experimento de MLflow llamado `diabetes-regression`. En este experimento se realizará un seguimiento de los modelos.
@@ -163,13 +157,13 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    from sklearn.linear_model import LinearRegression
+   from sklearn.linear_model import LinearRegression
     
-    with mlflow.start_run():
-       mlflow.autolog()
+   with mlflow.start_run():
+      mlflow.autolog()
     
-       model = LinearRegression()
-       model.fit(X_train, y_train)
+      model = LinearRegression()
+      model.fit(X_train, y_train)
     ```
 
     El código entrena un modelo de regresión mediante la regresión lineal. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow.
@@ -179,19 +173,19 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
 1. Ejecute el código siguiente para dividir los datos en un conjunto de datos de entrenamiento y prueba, y para separar las características de la etiqueta `Risk` que desea predecir:
 
     ```python
-    from sklearn.model_selection import train_test_split
+   from sklearn.model_selection import train_test_split
     
-    X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
+   X, y = df_clean[['AGE','SEX','BMI','BP','S1','S2','S3','S4','S5','S6']].values, df_clean['Risk'].values
     
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=0)
     ```
 
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    import mlflow
-    experiment_name = "diabetes-classification"
-    mlflow.set_experiment(experiment_name)
+   import mlflow
+   experiment_name = "diabetes-classification"
+   mlflow.set_experiment(experiment_name)
     ```
 
     El código crea un experimento de MLflow llamado `diabetes-classification`. En este experimento se realizará un seguimiento de los modelos.
@@ -199,12 +193,12 @@ Ahora que ha preparado los datos, puede utilizarlos para entrenar un modelo de M
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
     ```python
-    from sklearn.linear_model import LogisticRegression
+   from sklearn.linear_model import LogisticRegression
     
-    with mlflow.start_run():
-        mlflow.sklearn.autolog()
+   with mlflow.start_run():
+       mlflow.sklearn.autolog()
 
-        model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
+       model = LogisticRegression(C=1/0.1, solver="liblinear").fit(X_train, y_train)
     ```
 
     El código entrena un modelo de clasificación mediante regresión logística. Los parámetros, las métricas y los artefactos se registran automáticamente con MLflow.
@@ -228,7 +222,7 @@ Después de comparar los modelo de Machine Learning que ha entrenado entre exper
 
 1. Seleccione **Guardar** en el cuadro **Guardar como modelo**.
 1. Seleccione **Crear un nuevo modelo** en la ventana emergente recién abierta.
-1. Seleccione la carpeta `model` .
+1. Seleccione la carpeta `model`.
 1. Asigne al modelo el nombre `model-diabetes` y seleccione **Guardar**.
 1. Seleccione **Ver modelo** en la notificación que aparece en la parte superior derecha de la pantalla cuando se crea el modelo. También puede actualizar la ventana. El modelo guardado se vincula en **Versiones del modelo**.
 

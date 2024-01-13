@@ -10,26 +10,24 @@ En Microsoft Fabric, los flujos de datos (Gen2) se conectan a varios orígenes d
 
 Este laboratorio está diseñado para introducir los distintos elementos de los flujos de datos (Gen2) y no para crear una solución compleja que pueda existir en una empresa. Este laboratorio se realiza en **30 minutos aproximadamente**.
 
-> **Nota**: Necesitará una licencia de Microsoft Fabric para realizar este ejercicio. Consulte [Introducción a Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para más información sobre cómo habilitar una licencia de prueba de Fabric gratuita. Para ello, necesitará una cuenta *profesional* o *educativa* de Microsoft. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
 
 ## Crear un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Inicie sesión en [Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com` y seleccione **Power BI**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Creación de un almacén de lago
+## Crear un almacén de lago
 
-Ahora que tiene un área de trabajo, es el momento de cambiar a la experiencia **Ingeniería de datos** en el portal y crear un almacén de lago de datos en el que ingerir datos.
+Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos en el cual ingerirá los datos.
 
-1. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Ingeniería de datos**.
-
-2. En la página principal de **Ingeniería de datos**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío.
 
@@ -54,17 +52,21 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
  ![Consulta en el Editor de Power Query.](./Images/power-query.png)
 
-4. En la cinta de opciones de la barra de herramientas, seleccione la pestaña **Agregar columna**. A continuación, seleccione **Columna personalizada** y cree una columna llamada **MonthNo** que contenga un número basado en la fórmula `Date.Month([OrderDate])`, como se muestra aquí:
+4. En la cinta de la barra de herramientas, seleccione la pestaña **Agregar columna**. A continuación, seleccione **Columna personalizada** y cree una nueva columna.
+
+5. Establezca el *Nuevo nombre de columna* en `MonthNo`, establezca el *Tipo de datos* en **Número entero** y agregue la siguiente fórmula: `Date.Month([OrderDate])`, tal y como se muestra aquí:
 
  ![Columna personalizada en el Editor de Power Query.](./Images/custom-column.png)
 
- El paso para agregar la columna personalizada se agrega a la consulta y la columna resultante se muestra en el panel de datos:
+6. Seleccione **Aceptar** para crear la columna y observe cómo se agrega el paso para agregar la columna personalizada a la consulta. La columna resultante se muestra en el panel de datos:
 
  ![Consulta con un paso de columna personalizado.](./Images/custom-column-added.png)
 
 > **Sugerencia:** En el panel "Configuración de la consulta" del lado derecho, observe que los **pasos aplicados** incluyen cada paso de transformación. En la parte inferior, también puede alternar el botón **Flujo de diagrama** para activar el diagrama visual de los pasos.
 >
 > Los pasos se pueden mover hacia arriba o hacia abajo, se pueden editar seleccionando el icono de engranaje y puede seleccionar cada paso para ver las transformaciones que se aplican en el panel de vista previa.
+
+7. Compruebe y confirme que el tipo de datos de la columna **OrderDate** está establecido en **Date** y el tipo de datos de la columna recién creada **MonthNo** esté establecido en **Número entero**.
 
 ## Adición de un destino de datos al flujo de datos
 
@@ -80,24 +82,18 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
    ![Página de configuración del destino de datos.](./Images/data-destination-target.png)
 
-   > **Nota:** En la página **Configuración de destino**, observe cómo OrderDate y MonthNo no están seleccionadas en la asignación de columnas y hay un mensaje informativo: *Cambiar a fecha y hora*.
+4. En la página **Elegir configuración de destino**, seleccione **Anexar** y, luego, **Guardar configuración**.
+    > **Nota:** se recomienda usar el editor de *Power Query* para actualizar los tipos de datos, pero también es posible hacerlo desde esta página, si lo prefiere.
 
-   ![Página de configuración del destino de datos.](./Images/destination-settings.png)
+    ![Página de configuración del destino de datos.](./Images/destination-settings.png)
 
-1. Cancele esta acción y vuelva a las columnas OrderDate y MonthNo en Power Query en línea. Haga clic con el botón derecho en el encabezado de columna y en **Cambiar tipo**.
-
-    - OrderDate = Fecha y hora
-    - MonthNo = Número entero
-
-1. Ahora repita el proceso descrito anteriormente para agregar un destino de almacén de lago.
-
-8. En la página **Configuración de destino**, seleccione **Anexar** y, luego, guarde la configuración.  El destino **Almacén de lago** se indica con un icono en la consulta en el Editor de Power Query.
+5. En la barra de menús, abra **Vista** y seleccione **Vista de diagrama**. Tenga en cuenta que el destino **Almacén de lago** se indica con un icono en la consulta en el Editor de Power Query.
 
    ![Consulta con un destino de almacén de lago.](./Images/lakehouse-destination.png)
 
-9. Seleccione **Publicar** para publicar el flujo de datos. A continuación, espere a que se cree el flujo de datos **Dataflow 1** en el área de trabajo.
+6. Seleccione **Publicar** para publicar el flujo de datos. A continuación, espere a que se cree el flujo de datos **Dataflow 1** en el área de trabajo.
 
-1. Una vez publicado, puede hacer clic con el botón derecho en el flujo de datos del área de trabajo, seleccionar **Propiedades** y cambiar el nombre del flujo de datos.
+7. Una vez publicado, puede hacer clic con el botón derecho en el flujo de datos del área de trabajo, seleccionar **Propiedades** y cambiar el nombre del flujo de datos.
 
 ## Adición de un flujo de datos a una canalización
 
