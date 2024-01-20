@@ -119,7 +119,7 @@ Ahora que ha cargado los datos, puede usarlos para entrenar un modelo de Machine
    mlflow.set_experiment(experiment_name)
     ```
 
-    El código crea un experimento de MLflow llamado `experiment-diabetes`. En este experimento se realizará un seguimiento de los modelos.
+    El código crea un experimento de MLflow llamado **experiment-diabetes**. En este experimento se realizará un seguimiento de los modelos.
 
 1. Agregue otra nueva celda de código al cuaderno, escriba en ella el código siguiente y ejecútela:
 
