@@ -48,7 +48,11 @@ Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan u
 
 Ahora está listo para ejecutar código para obtener datos. Trabajará con el [**conjunto de datos de diabetes**](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) de Azure Open Datasets. Después de cargar los datos, convertirá los datos en un dataframe de Pandas, que es una estructura común para trabajar con datos en filas y columnas.
 
-1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno. Escriba el código siguiente para cargar el conjunto de datos en una trama de datos.
+1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno.
+
+    > **Sugerencia**: Para ver el icono **+ Código**, mueva el ratón hasta justo debajo y a la izquierda de la salida de la celda actual. Como alternativa, en la barra de menús, en la pestaña **Editar**, seleccione **+ Añadir celda de código**.
+
+1. Escriba el código siguiente para cargar el conjunto de datos en una trama de datos.
 
     ```python
    # Azure storage access info for open dataset diabetes
@@ -112,7 +116,7 @@ Ahora que ha cargado los datos, puede comprobar la estructura del conjunto de da
    print(df.dtypes)
     ```
 
-    El conjunto de datos contiene **442 filas** y **11 columnas**. Esto significa que tiene 442 ejemplos y 11 características o variables en el conjunto de datos. Es probable que la variable `SEX` contenga datos categóricos o de cadena.
+    El conjunto de datos contiene **442 filas** y **11 columnas**. Esto significa que tiene 442 ejemplos y 11 características o variables en el conjunto de datos. Es probable que la variable **SEX** contenga datos de categorías o cadenas.
 
 ## Comprobar los datos que faltan
 

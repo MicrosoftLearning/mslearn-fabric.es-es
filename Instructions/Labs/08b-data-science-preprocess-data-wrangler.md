@@ -48,7 +48,11 @@ Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan u
 
 Ahora está listo para ejecutar código para obtener datos. Trabajará con el [**conjunto de datos de OJ Sales**](https://learn.microsoft.com/en-us/azure/open-datasets/dataset-oj-sales-simulated?tabs=azureml-opendatasets?azure-portal=true) de Azure Open Datasets. Después de cargar los datos, convertirá los datos en un dataframe de Pandas, que es la estructura compatible con Data Wrangler.
 
-1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno. Escriba el código siguiente para cargar el conjunto de datos en una trama de datos.
+1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno.
+
+    > **Sugerencia**: Para ver el icono **+ Código**, mueva el ratón hasta justo debajo y a la izquierda de la salida de la celda actual. Como alternativa, en la barra de menús, en la pestaña **Editar**, seleccione **+ Añadir celda de código**.
+
+1. Escriba el código siguiente para cargar el conjunto de datos en una trama de datos.
 
     ```python
    # Azure storage access info for open dataset diabetes
