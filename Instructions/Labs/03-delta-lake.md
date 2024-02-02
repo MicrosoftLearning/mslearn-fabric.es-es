@@ -16,7 +16,7 @@ Este ejercicio debería tardar en completarse **40** minutos aproximadamente.
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com`, seleccione **Ingeniería de datos de Synapse**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -31,7 +31,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
-1. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` y guárdelo como **products.csv** en el equipo local (o máquina virtual de laboratorio, si procede).
+1. Descargue el [archivo de datos](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv` y guárdelo como **products.csv** en el equipo local (o máquina virtual de laboratorio, si procede).
 
 1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Nueva subcarpeta** y cree una carpeta llamada **products**.
 
@@ -82,13 +82,17 @@ Puede guardar el objeto DataFrame como una tabla Delta mediante el método `save
 
 Las tablas *administradas* son tablas cuyos metadatos de esquema y archivos de datos administra Fabric. Los archivos de datos de la tabla se crean en la carpeta **Tablas**.
 
-1. En los resultados devueltos por la primera celda de código, use el botón **+Código** para agregar una nueva celda de código si aún no existe. A continuación, escriba el código siguiente en la nueva celda y ejecútela:
+1. En los resultados devueltos por la primera celda de código, use el icono **+Código** para agregar una nueva celda de código si aún no existe.
+
+    > **Sugerencia**: Para ver el icono **+ Código**, mueva el ratón hasta justo debajo y a la izquierda de la salida de la celda actual. Como alternativa, en la barra de menús, en la pestaña **Editar**, seleccione **+ Añadir celda de código**.
+
+2. Escriba el código siguiente en la nueva celda y ejecútela:
 
     ```python
    df.write.format("delta").saveAsTable("managed_products")
     ```
 
-2. En el panel **Explorador de almacenes de lagos**, en el menú **...** de la carpeta **Tablas**, seleccione **Actualizar**. A continuación, expanda el nodo **Tablas** y compruebe que se ha creado la tabla **managed_products**.
+3. En el panel **Explorador de almacenes de lagos**, en el menú **...** de la carpeta **Tablas**, seleccione **Actualizar**. A continuación, expanda el nodo **Tablas** y compruebe que se ha creado la tabla **managed_products**.
 
 ### Creación de una tabla *externa*
 
