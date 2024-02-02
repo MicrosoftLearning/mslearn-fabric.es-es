@@ -146,7 +146,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     Ahora el objeto DataFrame incluye los nombres de columna correctos (además del **índice**, que es una columna integrada en todos los objetos DataFrame en función de la posición ordinal de cada fila). Los tipos de datos de las columnas se especifican mediante un conjunto estándar de tipos definidos en la biblioteca de Spark SQL, que se importaron al principio de la celda.
 
-9. Examine el objeto DataFrame para confirmar que los cambios se han aplicado a los datos. Ejecute la celda siguiente:
+9. Examine el objeto DataFrame para confirmar que los cambios se han aplicado a los datos. Ejecute el código siguiente en una nueva celda de código:
 
     ```python
    display(df)
