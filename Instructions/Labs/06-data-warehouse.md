@@ -66,7 +66,7 @@ Un almacenamiento es una base de datos relacional en la que se pueden definir ta
 
 5. Ejecute la nueva consulta para insertar tres filas en la tabla **DimProduct**.
 6. Cuando finalice la consulta, seleccione la pestaña **Datos** en la parte inferior de la página del almacenamiento de datos. En el panel **Explorador**, seleccione la tabla **DimProduct** y compruebe que las tres filas se han agregado a la tabla.
-7. En la pestaña del menú **Inicio**, use el botón **Nueva consulta SQL** para crear una nueva consulta. A continuación, copie y pegue el código de Transact-SQL desde [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt) en el nuevo panel de consulta.
+7. En la pestaña del menú **Inicio**, use el botón **Nueva consulta SQL** para crear una nueva consulta. A continuación, copie y pegue el código de Transact-SQL desde `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/create-dw.txt` en el nuevo panel de consulta.
 <!-- I had to remove the GO command in this query as well -->
 8. Ejecute la consulta, que crea un esquema de almacenamiento de datos simple y carga algunos datos. El script debe tardar unos 30 segundos en ejecutarse.
 9. Use el botón **Actualizar** de la barra de herramientas para actualizar la vista. A continuación, en el panel **Explorador**, compruebe que el esquema **dbo** del almacenamiento de datos contiene ahora las cuatro tablas siguientes:

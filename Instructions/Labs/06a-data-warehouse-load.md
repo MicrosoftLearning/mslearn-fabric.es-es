@@ -31,7 +31,7 @@ En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos 
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio descargará un archivo CVS en el equipo local (o máquina virtual de laboratorio si procede) y, a continuación, lo cargará en el almacén de lago.
 
-1. Descargue el archivo de este ejercicio desde [https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv](https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv).
+1. Descargue el archivo de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
 1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar carpeta** y, luego, cargue el archivo **sales.csv** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
 
@@ -46,7 +46,7 @@ En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos 
 1. Proporcione la siguiente información en el cuadro de diálogo **Cargar archivo en nueva tabla**.
     - **Nuevo nombre de tabla:** staging_sales
     - **Usar encabezado para los nombres de columnas:** seleccionado
-    - **Separador:** \n
+    - **Separador:** ,
 
 1. Seleccione **Cargar**.
 
@@ -101,11 +101,6 @@ Vamos a crear las tablas de hechos y las dimensiones de los datos de Sales. Tamb
         );
         
     ALTER TABLE Sales.Dim_Item add CONSTRAINT PK_Dim_Item PRIMARY KEY NONCLUSTERED (ItemID) NOT ENFORCED
-    GO
-    
-    CREATE VIEW [Sales].[Staging_Sales]
-    AS
-        SELECT * FROM [ExternalData].[dbo].[staging_sales];
     GO
     ```
 
@@ -183,7 +178,7 @@ Vamos a ejecutar algunas consultas analíticas para validar los datos en el alma
     SELECT c.CustomerName, SUM(s.UnitPrice * s.Quantity) AS TotalSales
     FROM Sales.Fact_Sales s
     JOIN Sales.Dim_Customer c
-    ON s.SalesOrderNumber = c.SalesOrderNumber
+    ON s.CustomerID = c.CustomerID
     WHERE YEAR(s.OrderDate) = 2021
     GROUP BY c.CustomerName
     ORDER BY TotalSales DESC;
