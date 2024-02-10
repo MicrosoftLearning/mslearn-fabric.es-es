@@ -6,7 +6,7 @@ lab:
 
 # Consulta de un almacenamiento de datos en Microsoft Fabric
 
-En Microsoft Fabric, un almacenamiento de datos proporciona una base de datos relacional para análisis a gran escala. Los almacenamientos de datos de Microsoft Fabric incluyen XXXXXX.
+En Microsoft Fabric, un almacenamiento de datos proporciona una base de datos relacional para análisis a gran escala. El amplio conjunto de experiencias integradas en el área de trabajo de Microsoft Fabric permite a los clientes reducir el tiempo de obtención de información al tener un modelo semántico siempre conectado y fácil de consumir que se integra con Power BI en el modo Direct Lake. 
 
 Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 

@@ -18,9 +18,9 @@ Este laboratorio se realiza en unos **30** minutos.
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com`, seleccione **Ingeniería de datos de Synapse**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia en la sección **Avanzado** que incluya la capacidad de Fabric (*Prueba*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -45,7 +45,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 Fabric proporciona varias formas de cargar datos en el almacén de lago, incluida la compatibilidad integrada con canalizaciones que copian orígenes de datos externos y flujos de datos (Gen 2) que puede definir con herramientas visuales basadas en Power Query. Sin embargo, una de las formas más sencillas de ingerir pequeñas cantidades de datos es cargar archivos o carpetas desde su PC local (o la máquina virtual del laboratorio si procede).
 
-1. Descargue el archivo **sales.csv** de [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv), guárdelo como **sales.csv** en su PC local (o máquina virtual del laboratorio si procede).
+1. Descargue el archivo [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, guárdelo como **sales.csv** en su PC local (o máquina virtual del laboratorio si procede).
 
    > **Nota:** Para descargar el archivo, abra una nueva pestaña en el explorador y pegue la dirección URL. Haga clic con el botón derecho en cualquier parte de la página que contenga los datos y seleccione **Guardar como** para guardar la página como un archivo CSV.
 
@@ -88,9 +88,7 @@ Los datos de ventas que cargó están en un archivo, con el que los analistas e 
 
 Cuando se crea un almacén de lago y se definen tablas en él, se crea automáticamente un punto de conexión de SQL con el que se pueden consultar las tablas usando instrucciones SQL `SELECT`.
 
-1. En la parte superior derecha de la página del almacén de lago, cambie de **Almacén de lago** a **Punto de conexión SQL**. Espere un poco hasta que se abra el punto de conexión de consultas SQL para el almacén de lago en una interfaz visual desde la que puede consultar las tablas, como se muestra aquí:
-
-    ![Captura de pantalla de la página Punto de conexión SQL.](./Images/lakehouse-sql-endpoint.png)
+1. En la parte superior derecha de la página del almacén de lago, cambie de **Almacén de lago** a **Punto de conexión de análisis SQL**. Espere un momento hasta que se abra el punto de conexión de análisis SQL para el almacén de lago en una interfaz visual desde la que puede consultar las tablas.
 
 2. Use el botón **Nueva consulta SQL** para abrir un nuevo editor de consultas y escriba la siguiente consulta SQL:
 
@@ -131,13 +129,14 @@ Aunque muchos profesionales de los datos están familiarizados con SQL, los anal
 
 ## Creación de un informe
 
-Las tablas del almacén de lago se agregan automáticamente a un conjunto de datos predeterminado que define un modelo de datos para la generación de informes con Power BI.
+Las tablas del almacén de lago se agregan automáticamente a un modelo semántico predeterminado para la generación de informes con Power BI.
 
-1. En la parte inferior de la página Punto de conexión SQL, seleccione la pestaña **Modelo**. Se muestra el esquema del modelo de datos para el conjunto de datos.
 
-    ![Captura de pantalla de un modelo de datos.](./Images/data-model.png)
+1. En la parte inferior de la página Punto de conexión de SQL, seleccione la pestaña **Modelo**. Se muestra el esquema del modelo de datos del modelo semántico.
 
-    > **Nota:** En este ejercicio, el modelo de datos consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
+    ![Captura de pantalla de un modelo semántico.](./Images/data-model.png)
+
+    > **Nota**: En este ejercicio, el modelo semántico consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
 
 2. En la cinta de menús, seleccione la pestaña **Informes** y elija **Nuevo informe**. Se abre una nueva pestaña del explorador en la que puede diseñar el informe.
 
@@ -158,15 +157,15 @@ Las tablas del almacén de lago se agregan automáticamente a un conjunto de dat
 5. En el menú **Archivo**, seleccione **Guardar**. A continuación, guarde el informe como **Informe de ventas de artículos** en el área de trabajo que creó antes.
 6. Cierre la pestaña del explorador que contiene el informe para volver al punto de conexión SQL del almacén de lago. Ahora, en la barra de menús de la izquierda, seleccione el área de trabajo para comprobar que contiene los siguientes elementos:
     - Almacén de lago.
-    - Punto de conexión SQL para el almacén de lago.
-    - Conjunto de datos predeterminado para las tablas del almacén de lago.
+    - Punto de conexión de análisis SQL del almacén de lago.
+    - Modelo semántico predeterminado para las tablas del almacén de lago.
     - **Informe de ventas de artículos**.
 
 ## Limpieza de recursos
 
-En este ejercicio, ha creado un almacén de lago y ha importado datos en él. Ha visto que un almacén de lago consta de tablas y archivos guardados en un almacén de datos OneLake. Las tablas administradas se pueden consultar con SQL y se incluyen en un conjunto de datos predeterminado para poder visualizar los datos.
+En este ejercicio, ha creado un almacén de lago y ha importado datos en él. Ha visto que un almacén de lago consta de tablas y archivos guardados en un almacén de datos OneLake. Las tablas administradas se pueden consultar mediante SQL y se incluyen en un modelo semántico predeterminado para admitir visualizaciones de datos.
 
-Si ha terminado de explorar el almacén de datos, puede eliminar el área de trabajo que ha creado para este ejercicio.
+Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.

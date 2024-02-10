@@ -16,9 +16,9 @@ Este laboratorio tardará aproximadamente **45** minutos en completarse.
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com) en `https://app.fabric.microsoft.com`, seleccione **Ingeniería de datos de Synapse**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia en la sección **Avanzado** que incluya la capacidad de Fabric (*Prueba*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -31,7 +31,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará y extraerá una carpeta de archivos de texto del equipo local (o máquina virtual de laboratorio si procede) y, luego, los cargará en el almacén de lago.
 
-1. Descargue y extraiga los archivos de datos de este ejercicio desde [https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip).
+1. Descargue y extraiga los [archivos de datos](https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip) de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
 
 1. Después de extraer el archivo comprimido, compruebe que tiene una carpeta denominada **orders** que contiene los archivos CSV **2019.csv**, **2020.csv**y **2021.csv**.
 1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar carpeta** y, luego, cargue la carpeta **orders** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
@@ -71,7 +71,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     ![Captura de pantalla de un cuaderno con un panel de archivos.](./Images/notebook-files.png)
 
-2. En el menú **...** de **2019.csv**, seleccione **Cargar datos** > **Spark**. Se agregará al cuaderno una nueva celda de código que contiene el código siguiente:
+1. En el menú **...** de **2019.csv**, seleccione **Cargar datos** > **Spark**. Se agregará al cuaderno una nueva celda de código que contiene el código siguiente:
 
     ```python
    df = spark.read.format("csv").option("header","true").load("Files/orders/2019.csv")
@@ -81,11 +81,11 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     > **Sugerencia**: Puede ocultar los paneles del explorador de almacenes de lago de la izquierda mediante sus iconos **<<** . De esta forma, podrá centrarse en el cuaderno.
 
-3. Use el botón **&#9655; Ejecutar celda** situado a la izquierda de la celda para ejecutarla.
+1. Use el botón **&#9655; Ejecutar celda** situado a la izquierda de la celda para ejecutarla.
 
     > **Nota**: Dado que esta es la primera vez que se ejecuta código de Spark, se debe iniciar una sesión de Spark. Esto significa que la primera ejecución de la sesión puede tardar un minuto o así en completarse. Las ejecuciones posteriores serán más rápidas.
 
-4. Cuando se haya completado el comando de la celda, revise la salida que aparece debajo de ella, que será algo parecido a esto:
+1. Cuando se haya completado el comando de la celda, revise la salida que aparece debajo de ella, que será algo parecido a esto:
 
     | Índice | SO43701 | 11 | 2019-07-01 | Christy Zhu | christy12@adventure-works.com | Mountain-100 Silver, 44 | 16 | 3399,99 | 271.9992 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -95,7 +95,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     La salida muestra las filas y columnas de datos del archivo 2019.csv. Sin embargo, observe que los encabezados de columna no parecen correctos. El código predeterminado usado para cargar los datos en un objeto DataFrame da por hecho que el archivo CSV incluye los nombres de columna en la primera fila, pero en este caso el archivo CSV solo incluye los datos sin información de encabezado.
 
-5. Modifique el código para establecer la opción **header** en **false** de la siguiente manera:
+1. Modifique el código para establecer la opción **header** en **false** de la siguiente manera:
 
     ```python
    df = spark.read.format("csv").option("header","false").load("Files/orders/2019.csv")
@@ -103,7 +103,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
    display(df)
     ```
 
-6. Vuelva a ejecutar la celda y revise la salida, que debería parecerse a esta:
+1. Vuelva a ejecutar la celda y revise la salida, que debería parecerse a esta:
 
    | Índice | _c0 | _c1 | _c2 | _c3 | _c4 | _c5 | _c6 | _c7 | _c8 |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -114,7 +114,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     Ahora el objeto DataFrame incluye correctamente la primera fila como valores de datos, pero los nombres de columna se generan automáticamente y no son muy útiles. Para que los datos tengan sentido, es necesario definir explícitamente el esquema y el tipo de datos correctos para los valores de datos del archivo.
 
-7. Modifique el código de la siguiente manera para definir un esquema y aplicarlo al cargar los datos:
+1. Modifique el código de la siguiente manera para definir un esquema y aplicarlo al cargar los datos:
 
     ```python
    from pyspark.sql.types import *
@@ -135,7 +135,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
    display(df)
     ```
 
-8. Ejecute la celda modificada y revise la salida, que debería parecerse a esta:
+1. Ejecute la celda modificada y revise la salida, que debería parecerse a esta:
 
    | Índice | SalesOrderNumber | SalesOrderLineNumber | OrderDate | CustomerName | Correo electrónico | Elemento | Quantity | UnitPrice | Impuesto |
     | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
@@ -146,13 +146,15 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 
     Ahora el objeto DataFrame incluye los nombres de columna correctos (además del **índice**, que es una columna integrada en todos los objetos DataFrame en función de la posición ordinal de cada fila). Los tipos de datos de las columnas se especifican mediante un conjunto estándar de tipos definidos en la biblioteca de Spark SQL, que se importaron al principio de la celda.
 
-9. Examine el objeto DataFrame para confirmar que los cambios se han aplicado a los datos. Ejecute el código siguiente en una nueva celda de código:
+1. Examine el objeto DataFrame para confirmar que los cambios se han aplicado a los datos.
 
-    ```python
+1. Agregue una nueva celda de código mediante el vínculo **+ Código** que aparece al mover el mouse debajo del lado izquierdo de la salida de la celda actual (o en la barra de menús, en la pestaña **Editar**, seleccione **+ Agregar celda de código**). A continuación, ejecute el código siguiente en la nueva celda de código:
+
+    ```Python
    display(df)
     ```
 
-10. El objeto DataFrame solo incluye los datos del archivo **2019.csv**. Modifique el código para que la ruta de acceso del archivo use un carácter comodín \* para leer los datos de los pedidos de ventas de todos los archivos de la carpeta **orders**:
+1. El objeto DataFrame solo incluye los datos del archivo **2019.csv**. Modifique el código para que la ruta de acceso del archivo use un carácter comodín \* para leer los datos de los pedidos de ventas de todos los archivos de la carpeta **orders**:
 
     ```python
     from pyspark.sql.types import *
@@ -173,7 +175,7 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
     display(df)
     ```
 
-11. Ejecute la celda de código modificada y revise la salida, que ahora debe incluir las ventas de 2019, 2020 y 2021.
+1. Ejecute la celda de código modificada y revise la salida, que ahora debe incluir las ventas de 2019, 2020 y 2021.
 
     **Nota**: Solo se muestra un subconjunto de las filas, por lo que es posible que no pueda ver ejemplos de todos los años.
 
@@ -228,7 +230,7 @@ El objeto DataFrame incluye una amplia variedad de funciones que puede usar para
    display(yearlySales)
     ```
 
-4. Ejecute la celda de código que agregó y observe que los resultados muestran el número de pedidos de ventas por año. Observe que el método **select** incluye una función **year** de SQL para extraer el componente de año del campo *OrderDate* (motivo por el que el código incluye una instrucción **import** para importar funciones de la biblioteca Spark SQL). A continuación, se usa un método **alias** para asignar un nombre de columna al valor de año extraído. Los datos se agrupan entonces por la columna *Year* derivada y el recuento de filas de cada grupo se calcula antes de que finalmente se use el método **orderBy** para ordenar el objeto DataFrame resultante.
+4. Ejecute la celda de código que agregó y observe que los resultados muestran el número de pedidos de ventas por año. Observe que el método **select** incluye una función **year** de SQL para extraer el componente de año del campo *OrderDate* (motivo por el que el código incluye una instrucción **import** para importar funciones de la biblioteca Spark SQL). A continuación, se usa un método **alias** para asignar un nombre de columna al valor del año extraído. Los datos se agrupan entonces por la columna *Year* derivada y el recuento de filas de cada grupo se calcula antes de que finalmente se use el método **orderBy** para ordenar el objeto DataFrame resultante.
 
 ## Uso de Spark para transformar archivos de datos
 
@@ -269,7 +271,7 @@ Una tarea común para los ingenieros de datos es ingerir datos en un formato o e
 
 1. Agregue una nueva celda con el código siguiente para guardar el objeto DataFrame transformado en formato Parquet (sobrescriba los datos si ya existen):
 
-    ```python
+    ```Python
    transformed_df.write.mode("overwrite").parquet('Files/transformed_data/orders')
    print ("Transformed data saved!")
     ```
@@ -282,7 +284,7 @@ Una tarea común para los ingenieros de datos es ingerir datos en un formato o e
 
 3. Agregue una nueva celda con el código siguiente para cargar un nuevo objeto DataFrame desde los archivos Parquet de la carpeta **transformed_orders/orders**:
 
-    ```python
+    ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
    display(orders_df)
     ```
@@ -293,7 +295,7 @@ Una tarea común para los ingenieros de datos es ingerir datos en un formato o e
 
 1. Agregue una nueva celda con el código siguiente, que guarda el objeto DataFrame, y particione los datos por las columnas **Year** y **Month**:
 
-    ```python
+    ```Python
    orders_df.write.partitionBy("Year","Month").mode("overwrite").parquet("Files/partitioned_data")
    print ("Transformed data saved!")
     ```
@@ -306,7 +308,7 @@ Una tarea común para los ingenieros de datos es ingerir datos en un formato o e
 
 3. Agregue una nueva celda con el código siguiente para cargar un nuevo objeto DataFrame desde el archivo **orders.parquet**:
 
-    ```python
+    ```Python
    orders_2021_df = spark.read.format("parquet").load("Files/partitioned_data/Year=2021/Month=*")
    display(orders_2021_df)
     ```

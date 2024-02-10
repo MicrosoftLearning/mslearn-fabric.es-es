@@ -6,7 +6,7 @@ lab:
 
 # Crear una arquitectura de medallas en un almacén de lago de Microsoft Fabric
 
-En este ejercicio, creará una arquitectura de medallas en un almacén de lago de Fabric mediante cuadernos. Creará un área de trabajo, creará un almacén de lago, cargará datos en la capa de bronce, transformará los datos y los cargará en la tabla Delta de plata, después transformará aún más los datos y los cargará en las tablas Delta de oro y, entonces, explorará el conjunto de datos y creará relaciones.
+En este ejercicio, creará una arquitectura de medallas en un almacén de lago de Fabric mediante cuadernos. Creará un área de trabajo, creará un almacén de lago, cargará datos en la capa de bronce, transformará los datos y los cargará en la tabla Delta de plata, después transformará aún más los datos y los cargará en las tablas Delta de oro y, entonces, explorará el modelo semántico y creará relaciones.
 
 Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
@@ -23,7 +23,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace-medallion.png)
 
-5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un conjunto de datos de Power BI.
+5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un modelo semántico de Power BI.
 
     ![Captura de pantalla de la página de configuración del área de trabajo en Fabric.](./Images/workspace-settings.png)
 
@@ -582,25 +582,24 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
 
 Ahora tiene una capa de **oro** mantenida y modelada que puede usarse para informes y análisis.
 
-## Crear un conjunto de datos
+## Creación de un modelo semántico
 
-En el área de trabajo, ahora puede usar la capa de oro para crear un informe y analizar los datos. Puede acceder al conjunto de datos directamente en el área de trabajo para crear relaciones y medidas para los informes.
+En el área de trabajo, ahora puede usar la capa de oro para crear un informe y analizar los datos. Puede acceder al modelo semántico directamente en el área de trabajo para crear relaciones y medidas para los informes.
 
-Tenga en cuenta que no puede usar el **conjunto de datos predeterminado** que se crea automáticamente al crear un almacén de lago de datos. Debe crear un nuevo conjunto de datos que incluya las tablas de oro que creó en este ejercicio, desde el explorador de almacenes de lago.
+Tenga en cuenta que no puede usar el **modelo semántico predeterminado** que se crea automáticamente al crear un almacén de lago de datos. Debe crear un nuevo modelo semántico que incluya las tablas de oro que creó en este ejercicio, desde el explorador de almacenes de lago.
 
 1. En el área de trabajo, vaya a su almacén de lago **Sales**.
-2. Seleccione **Nuevo conjunto de datos de Power BI** en la cinta de la vista de exploración del almacén de lago.
-3. Seleccione las tablas de oro transformadas para incluirlas en el conjunto de datos y seleccione **Confirmar**.
+2. Seleccione **Nuevo modelo semántico** en la cinta de la vista de exploración del almacén de lago.
+3. Asigne el nombre **Sales_Gold** al nuevo modelo semántico.
+4. Seleccione las tablas de oro transformadas para incluirlas en el modelo semántico y seleccione **Confirmar**.
    - dimdate_gold
    - dimcustomer_gold
    - dimproduct_gold
    - factsales_gold
 
-    Esto abrirá el conjunto de datos en Fabric, donde podrá crear relaciones y medidas como se muestra aquí:
+    Esto abrirá el modelo semántico en Fabric, donde podrá crear relaciones y medidas como se muestra aquí:
 
-    ![Captura de pantalla de un conjunto de datos en Fabric.](./Images/dataset-relationships.png)
-
-4. Cambie el nombre del conjunto de datos para que sea más fácil de identificar. Seleccione el nombre del conjunto de datos en la esquina superior izquierda de la ventana. Cambie el nombre del conjunto de datos a **Sales_Gold**.
+    ![Captura de pantalla de un modelo semántico en Fabric.](./Images/dataset-relationships.png)
 
 Desde aquí, usted u otros miembros del equipo de datos pueden crear informes y paneles basados en los datos del almacén de lago. Estos informes se conectarán directamente a la capa de oro de su lago, por lo que siempre reflejarán los datos más recientes.
 
