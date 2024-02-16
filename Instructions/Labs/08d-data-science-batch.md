@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Generación y guardado de predicciones por lotes
+  title: "Generación de predicciones por lotes mediante un modelo implementado en Microsoft\_Fabric"
   module: Generate batch predictions using a deployed model in Microsoft Fabric
 ---
 
-# Generación y guardado de predicciones por lotes
+# Generación de predicciones por lotes mediante un modelo implementado en Microsoft Fabric
 
 En este laboratorio, usará un modelo de aprendizaje automático para predecir una medida cuantitativa de la diabetes.
 
@@ -48,7 +48,11 @@ Usará un *cuaderno* para entrenar y usar un modelo en este ejercicio.
 
 En primer lugar, entrenemos un modelo de Machine Learning que use un algoritmo de *regresión* para predecir la respuesta de interés de pacientes con diabetes (una medida cuantitativa del progreso de la enfermedad un año después de la línea de base)
 
-1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno. Escriba el código siguiente para cargar y preparar los datos y usarlos para entrenar un modelo.
+1. En el cuaderno, use el icono **+ Código** situado debajo de la celda más reciente para agregar una nueva celda de código al cuaderno.
+
+    > **Sugerencia**: Para ver el icono **+ Código**, mueva el ratón hasta justo debajo y a la izquierda de la salida de la celda actual. Como alternativa, en la barra de menús, en la pestaña **Editar**, seleccione **+ Añadir celda de código**.
+
+1. Escriba el código siguiente para cargar y preparar los datos y usarlos para entrenar un modelo.
 
     ```python
    import pandas as pd

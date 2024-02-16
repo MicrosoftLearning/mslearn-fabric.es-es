@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Crear y usar cuadernos para la exploración de datos
+  title: Explorar datos sobre la ciencia de datos con cuadernos en Microsoft Fabric
   module: Explore data for data science with notebooks in Microsoft Fabric
 ---
 
-# Usar cuadernos para explorar datos en Microsoft Fabric
+# Explorar datos sobre la ciencia de datos con cuadernos en Microsoft Fabric
 
 En este laboratorio, usaremos cuadernos para la exploración de datos. Los cuadernos son una herramienta eficaz para explorar y analizar datos de forma interactiva. Durante este ejercicio, aprenderemos a crear y usar cuadernos para explorar un conjunto de datos, generar estadísticas de resumen y crear visualizaciones para comprender mejor los datos. Al final de este laboratorio, comprenderá de forma sólida cómo usar cuadernos para la exploración y el análisis de datos.
 
