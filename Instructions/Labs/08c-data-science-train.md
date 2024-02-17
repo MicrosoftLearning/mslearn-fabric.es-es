@@ -1,6 +1,6 @@
 ---
 lab:
-  title: "Entrenamiento y seguimiento de un modelo en Microsoft\_Fabric"
+  title: Entrenamiento y seguimiento de modelos de Machine Learning con MLflow en Microsoft Fabric
   module: Train and track machine learning models with MLflow in Microsoft Fabric
 ---
 
@@ -48,7 +48,11 @@ Para entrenar un modelo, puede crear un *cuaderno*. Los cuadernos proporcionan u
 
 Ahora está listo para ejecutar código para obtener los datos y entrenar un modelo. Trabajará con el [conjunto de datos de diabetes](https://learn.microsoft.com/azure/open-datasets/dataset-diabetes?tabs=azureml-opendatasets?azure-portal=true) de Azure Open Datasets. Después de cargar los datos, convertirá los datos en un dataframe de Pandas, que es una estructura común para trabajar con datos en filas y columnas.
 
-1. En su cuaderno, use el icono **+Código** debajo de la salida de la celda más reciente para agregar una nueva celda de código al cuaderno y escriba en ella el código siguiente:
+1. En su cuaderno, use el icono **+ Código** situado debajo de la última salida de celda para agregar una nueva celda de código al cuaderno.
+
+    > **Sugerencia**: Para ver el icono **+ Código**, mueva el ratón hasta justo debajo y a la izquierda de la salida de la celda actual. Como alternativa, en la barra de menús, en la pestaña **Editar**, seleccione **+ Añadir celda de código**.
+
+1. Escriba el siguiente código en él:
 
     ```python
    # Azure storage access info for open dataset diabetes

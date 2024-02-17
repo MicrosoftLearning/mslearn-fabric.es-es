@@ -1,10 +1,10 @@
 ---
 lab:
-  title: "Exploración de la ciencia de datos en Microsoft\_Fabric"
+  title: "Introducción a la ciencia de datos en Microsoft\_Fabric"
   module: Get started with data science in Microsoft Fabric
 ---
 
-# Exploración de la ciencia de datos en Microsoft Fabric
+# Introducción a la ciencia de datos en Microsoft Fabric
 
 En este laboratorio, ingerirá datos, explorará los datos de un cuaderno, procesará los datos con Data Wrangler y entrenará dos tipos de modelos. Al realizar todos estos pasos, podrá explorar las características de ciencia de datos en Microsoft Fabric.
 
@@ -112,7 +112,7 @@ Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede 
    df.head()
     ```
 
-1. Seleccione **Datos** en la cinta de opciones del cuaderno y, a continuación, seleccione **Iniciar Data Wrangler**.
+1. Seleccione **Datos** en la cinta de opciones del cuaderno y, a continuación, seleccione el desplegable **Transformar DataFrame en Data Wrangler**.
 1. Seleccione el conjunto de datos `df`. Cuando se inicia Data Wrangler, se genera una introducción descriptiva del dataframe en el panel **Resumen**.
 
     Actualmente, la columna de etiqueta es `Y`, que es una variable continua. Para entrenar un modelo de Machine Learning que prediga Y, debe entrenar un modelo de regresión. Los valores (predichos) de Y pueden ser difíciles de interpretar. En su lugar, podríamos explorar la posibilidad de entrenar un modelo de clasificación que prediga si alguien tiene un riesgo bajo o alto de desarrollar diabetes. Para poder entrenar un modelo de clasificación, debe crear una columna de etiqueta binaria basada en los valores de `Y`.
@@ -224,11 +224,11 @@ Microsoft Fabric realizará un seguimiento de todos los experimentos y le permit
 
 Después de comparar los modelo de Machine Learning que ha entrenado entre experimentos, puede elegir aquel con el mejor rendimiento. Para usar el modelo con el mejor rendimiento, guarde el modelo y úselo para generar predicciones.
 
-1. Seleccione **Guardar** en el cuadro **Guardar como modelo**.
-1. Seleccione **Crear un nuevo modelo** en la ventana emergente recién abierta.
+1. Seleccione **Guardar como modelo de ML** en la cinta de opciones del experimento.
+1. Seleccione **Crear un nuevo modelo de ML** en la ventana emergente recién abierta.
 1. Seleccione la carpeta `model`.
 1. Asigne al modelo el nombre `model-diabetes` y seleccione **Guardar**.
-1. Seleccione **Ver modelo** en la notificación que aparece en la parte superior derecha de la pantalla cuando se crea el modelo. También puede actualizar la ventana. El modelo guardado se vincula en **Versiones del modelo**.
+1. Seleccione **Ver modelo de ML** en la notificación que aparece en la parte superior derecha de la pantalla cuando se crea el modelo. También puede actualizar la ventana. El modelo guardado se vincula en **Versiones del modelo de ML**.
 
 Tenga en cuenta que el modelo, el experimento y la ejecución del experimento están vinculados, lo que le permite revisar cómo se entrena el modelo.
 
