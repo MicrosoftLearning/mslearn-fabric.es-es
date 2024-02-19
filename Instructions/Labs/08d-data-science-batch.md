@@ -129,7 +129,7 @@ En primer lugar, entrenemos un modelo de Machine Learning que use un algoritmo d
 
 Para usar el modelo, será necesario un conjunto de datos de detalles de pacientes para los que se necesita predecir un diagnóstico de diabetes. Creará este conjunto de datos como una tabla en un almacén de lago de Microsoft Fabric.
 
-1. En el editor de Notebook, en el panel **Almacenes de lago** de la izquierda, seleccione **Agregar** para agregar un almacén de lago.
+1. En el editor de Notebook, en el panel **Explorador** de la izquierda, seleccione **+ Orígenes de datos** para agregar un almacén de lago.
 1. Seleccione **Nuevo almacén de lago**, seleccione **Agregar** y cree un nuevo **Almacén de lago** con un nombre válido de su elección.
 1. Cuando se le pida que detenga la sesión actual, seleccione **Detener ahora** para reiniciar el cuaderno.
 1. Cuando se cree y adjunte el almacén de lago al cuaderno, agregue una nueva celda de código que ejecute el código siguiente para crear un conjunto de datos y guardarlo en una tabla del almacén de lago:
