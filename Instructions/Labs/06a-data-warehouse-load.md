@@ -33,7 +33,7 @@ En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos 
 
 1. Descargue el archivo de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
-1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar carpeta** y, luego, cargue el archivo **sales.csv** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
+1. Vuelva a la pestaña del explorador web que contiene el almacén de lago y, en el menú **...** de la carpeta **Archivos** del panel **Explorador**, seleccione **Cargar** y **Cargar archivos** y, luego, cargue el archivo **sales.csv** del equipo local (o la máquina virtual de laboratorio, si procede) en el almacén de lago.
 
 1. Una vez cargados los archivos, seleccione **Archivos**. Compruebe que se ha cargado el archivo CSV, como se muestra aquí:
 
