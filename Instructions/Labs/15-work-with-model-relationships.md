@@ -26,10 +26,9 @@ En este ejercicio, abrirás una solución de Power BI Desktop previamente desarr
 
 ### Descargar archivo de inicio
 
-1. Descargue el [archivo de inicio de Análisis de ventas](https://aka.ms/fabric-relationships-starter) de `https://aka.ms/fabric-relationships-starter` y guárdelo en el equipo local (en cualquier carpeta).
+1. Abra el [archivo de inicio de Sales Analysis](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/15/Starter/Sales%20Analysis%20-%20Work%20with%20model%20relationships.pbix) y guárdelo en una ubicación que recuerde.
 
 1. Vaya al archivo descargado y ábralo en Power BI Desktop.
-    >Nota: Omita y cierre la advertencia en la que se le pide que aplique los cambios.
 
 ### Revisión del modelo de datos
 
@@ -166,6 +165,8 @@ En esta tarea, usarás la función USERELATIONSHIP para activar una relación in
 
 2. En la barra de fórmulas (situada debajo de la cinta), reemplaza el texto por la siguiente definición de medida y después presiona **Entrar**.
 
+    *Sugerencia: Todas las fórmulas están disponibles para copiar y pegar desde el archivo **D:\fabric\Allfiles\Labs\15\Assets\Snippets.txt**.*
+
     ```DAX
     Sales Shipped =
     CALCULATE (
@@ -212,7 +213,9 @@ En esta tarea, quitarás la relación existente con la columna **ShipDateKey**.
 
     ![](Images/work-with-model-relationships-image27.png)
 
-3. Cuando se le pida que confirme la eliminación, seleccione **Sí**.
+3. Cuando se te pida que confirmes la eliminación, selecciona **Aceptar**.
+
+    ![](Images/work-with-model-relationships-image28.png)
 
     *Al eliminar la relación, se produce un error con la medida **Ventas enviadas**. Volverás a escribir la fórmula de medida más adelante en este laboratorio.*
 
@@ -242,17 +245,17 @@ En esta tarea, deshabilitarás dos opciones de relación.
 
 En esta tarea, crearás una consulta para agregar otra tabla de fechas al modelo.
 
-1. En la ficha de cinta **Inicio**, dentro del grupo **Consultas**, seleccione el icono **Transformar datos**, que abre el **Editor de Power Query**.
+1. En la ficha de cinta **Inicio**, dentro del grupo **Consultas**, selecciona el icono **Transformar datos**.
 
     ![](Images/work-with-model-relationships-image33.png)
 
-    *Si se le pide que especifique cómo conectarse, **Editar credenciales**.*
+    *Si se te pide que especifiques cómo conectarte, selecciona **Editar credenciales** y especifica cómo iniciar sesión.*
 
     ![](Images/work-with-model-relationships-image52.png)
 
-    *Deje la configuración de conexión predeterminada para Windows con "Usar mis credenciales actuales" y, a continuación, **Conectar**.*
+    *Selecciona **Conectar***
 
-     ![](Images/work-with-model-relationships-image53.png)*Seleccione **Sí** para cerrar el mensaje de advertencia.*
+     ![](Images/work-with-model-relationships-image53.png)
 
 2. En la ventana **Editor de Power Query**, en el panel **Consultas** (ubicado a la izquierda), haz clic con el botón derecho en la consulta ** Fecha** y después selecciona **Referencia**.
 
