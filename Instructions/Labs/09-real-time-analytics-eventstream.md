@@ -57,6 +57,8 @@ En este tutorial, aprenderá a:
 
 2. Asegúrese de cambiar el botón a **Activo** y, a continuación, seleccione **Listo**.
 
+ > **Nota:** no es necesario seleccionar una carpeta, Fabric la creará automáticamente.
+
    ![Imagen de la habilitación del botón de alternancia de onlake](./Images/enable-onelake-toggle.png)
 
 ## Creación de un Eventstream
@@ -94,35 +96,16 @@ En este tutorial, aprenderá a:
    | Nombre del destino | MyStockData                                    |
    | Área de trabajo        | Área de trabajo en la que creó una base de datos KQL |
    | Base de datos KQL     | MyStockData                                    |
+   | Tabla de destino| MyStockData                                    |
+   | Formato de datos de entrada| Json                                           |
 
-3. Seleccione **Crear y configurar**.
+3. Seleccione **Agregar**.
 
-## Configuración de la ingesta de datos
-
-1. En el cuadro de diálogo **Ingerir datos**, seleccione **Nueva tabla** y escriba MyStockData.
-
-   ![Imagen sobre la inserción de datos de existencias](./Images/ingest-stream-data-to-kql.png)
-
-2. Seleccione **Next: Source** (Siguiente: Origen).
-3. En la página **Origen**, confirme el **Nombre de la conexión de datos** y seleccione **Siguiente: Esquema**.
-
-   ![Imagen del nombre del origen de datos](./Images/ingest-data.png)
-
-4. Los datos de entrada se descomprimen para obtener los datos de ejemplo, así que mantenga el tipo de compresión como sin comprimir.
-5. En la lista desplegable **Formato de datos**, seleccione **JSON**.
-
-   ![Imagen de Cambiar a JSON](./Images/injest-as-json.png)
-
-6. Después de esto, puede que sea necesario cambiar algunos o todos los tipos de datos de la secuencia de entrada a las tablas de destino.
-7. Para ello, seleccione **flecha abajo > Cambiar tipo de datos**. A continuación, compruebe que las columnas reflejan el tipo de datos correcto:
-
-   ![Imagen sobre cambiar los tipos de datos](./Images/change-data-type-in-es.png)
-
-8. Cuando termine, seleccione **Siguiente: Resumen**.
+> **Nota**: La ingesta de datos comenzará inmediatamente.
 
 Espere a que todos los pasos tengan una marca de verificación verde. Debe aparecer el título de página **Ingesta continua desde Eventsream establecida**. Después, seleccione **Cerrar** para volver a la página Eventstream.
 
-> **Nota**: Puede que sea necesario actualizar la página para ver la tabla después de haber establecido la conexión con el Eventstream.
+> **Nota**: puede que sea necesario actualizar la página para ver la tabla después de haber establecido la conexión con el Eventstream.
 
 ## Consultas KQL
 
@@ -143,7 +126,7 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 
    ![Imagen de los últimos 24 resultados de consulta de KQL](./Images/kql-query-results-last24.png)
 
-> **Nota**: Tenga en cuenta que los volúmenes de los datos de streaming superan los límites de consulta. Este comportamiento puede variar en función de la cantidad de datos transmitidos a la base de datos.
+> **Nota**: es posible que vea una advertencia de que ha superado los límites de consulta. Este comportamiento variará en función de la cantidad de datos transmitidos a la base de datos.
 
 Puede seguir navegando con las funciones de consulta integradas para familiarizarse con los datos.
 
