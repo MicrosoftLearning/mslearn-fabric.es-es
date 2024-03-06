@@ -42,17 +42,34 @@ El Lenguaje de consulta Kusto (KQL) se usa para consultar datos estáticos o de 
 3. Cuando se haya creado la nueva base de datos, seleccione la opción para obtener datos de un **Archivo local**. A continuación, use el asistente para importar los datos en una nueva tabla. Seleccione las siguientes opciones:
     - **Destino**:
         - **Base de datos**: *La base de datos que ha creado ya está seleccionada*.
-        - **Tabla**: *Cree una tabla denominada* **sales**.
-    - **Origen**:
-        - **Tipo de origen**: archivo
-        - **Cargar archivos**: *Arrastre o busque el archivo que descargó antes*.
-    - **Esquema**:
-        - **Tipo de compresión**: sin comprimir
-        - **Formato de datos**: CSV
-        - **Omitir el primer registro**: *Seleccionado*.
-        - **Nombre de asignación**: sales_mapping.
-    - **Resumen**:
-        - *Revise la vista previa de la tabla y cierre el asistente.*
+        - **Tabla**: *Cree una nueva tabla denominada* **sales** haciendo clic en el signo + a la izquierda de ***Nueva tabla***
+
+        ![Paso uno del asistente para nueva tabla](./Images/import-wizard-local-file-1.png?raw=true)
+
+        - Ahora verá que en la misma ventana aparece el hipervínculo **Arrastrar archivos aquí o Buscar archivos**.
+
+        ![Paso dos del asistente para nueva tabla](./Images/import-wizard-local-file-2.png?raw=true)
+
+        - busque o arrastre el **sales.csv** a la pantalla y espere a que el cuadro Estado cambie a una casilla verde y, a continuación, seleccione **Siguiente**
+
+        ![Paso tres del asistente para nueva tabla](./Images/import-wizard-local-file-3.png?raw=true)
+
+        - En esta pantalla verá que los encabezados de columna están en la primera fila aunque el sistema los detectó, todavía es necesario mover el control deslizante encima de estas líneas **Primera fila es el encabezado** de columna para evitar que se produzcan errores.
+        
+        ![Paso cuatro del asistente para nueva tabla](./Images/import-wizard-local-file-4.png?raw=true)
+
+        - Una vez que seleccione este control deslizante, verá que todo se ve bien para ir, seleccione el botón **Finalizar** en la parte inferior derecha del panel.
+
+        ![Paso cinco del asistente para nueva tabla](./Images/import-wizard-local-file-5.png?raw=true)
+
+        - Espere a que los pasos de la pantalla de resumen se completen, entre los que se incluyen:
+            - Crear tabla (ventas)
+            - crear asignación (sales_mapping)
+            - Puesta en cola de datos
+            - Ingesta
+        - Seleccione el botón **Cerrar**
+
+        ![Paso seis del asistente para nueva tabla](./Images/import-wizard-local-file-6.png?raw=true)
 
 > **Nota:** En este ejemplo, ha importado una cantidad muy pequeña de datos estáticos de un archivo, que está bien para los fines de este ejercicio. En realidad, Kusto se puede usar para analizar volúmenes de datos más grandes, incluidos datos en tiempo real de un origen de streaming como Azure Event Hubs.
 
