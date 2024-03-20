@@ -10,9 +10,9 @@ Data Activator de Microsoft Fabric realiza acciones en función de lo que sucede
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
-## Crear un área de trabajo
+## Creación de un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
@@ -61,7 +61,7 @@ Para familiarizarse con el modo *Diseño*, seleccione las distintas secciones de
 
 ### Modo de datos
 
-Si no está actualmente en modo *Datos*, seleccione la pestaña **Datos** en la parte inferior izquierda de la pantalla. En un ejemplo real, agregaría sus propios orígenes de datos desde los objetos visuales de EventStreams y Power BI aquí. Para este laboratorio, utiliza los datos de ejemplo que proporciona Data Activator. El ejemplo ya está configurado con tres EventStreams que supervisan el estado de entrega del paquete.
+Si no está actualmente en modo *Datos*, seleccione la pestaña **Datos** en la parte inferior izquierda de la pantalla. En un ejemplo real, agregaría sus propios orígenes de datos desde los objetos visuales de EventStreams y Power BI aquí. Para este laboratorio, utiliza los datos de ejemplo que proporciona Data Activator. Este ejemplo ya está configurado con tres EventStreams que supervisan el estado de entrega del paquete.
 
 ![Captura de pantalla del modo Datos de Reflex de Data Activator.](./Images/data-activator-data-tab.png)
 
@@ -119,7 +119,7 @@ Vamos a revisar lo que desea que haga el desencadenador: *Quiere crear un Reflex
 
     ![Captura de pantalla de la elección del tipo de condición de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-type.png)
 
-1. Ahora debe especificar los valores de la condición. Escriba ***33*** y ***44*** como valores de intervalo. Puesto que elige la condición de *intervalo numérico de salida*, el desencadenador debe activarse cuando la temperatura es inferior a *33* o superior a *44* grados.
+1. Ahora debe especificar los valores de la condición. Escriba ***33*** y ***41*** como valores de intervalo. Como se elige la condición de *intervalo numérico de salida*, el desencadenador se debe activar cuando la temperatura es inferior a *33* o superior a *41* grados.
 
     ![Captura de pantalla de la introducción de valores de condición de Diseño de Reflex de Data Activator.](./Images/data-activator-trigger-select-condition-define.png)
 
@@ -164,7 +164,7 @@ El único problema con este desencadenador es que mientras el desencadenador env
 
     ![Captura de pantalla de la adición de propiedad al desencadenador de Data Activator.](./Images/data-activator-trigger-add-property-existing-trigger.png)
 
-1. Puesto que ha actualizado el desencadenador, la acción correcta debe ser actualizar y no guardar el desencadenador, pero para este laboratorio hacemos lo contrario y seleccionamos el botón **Guardar** en lugar del botón **Actualizar** para ver también qué sucede. La razón por la que debería haber seleccionado el botón *Actualizar* es porque cuando selecciona *actualizar* el desencadenador, este guarda el desencadenador y actualiza el desencadenador que se está ejecutando actualmente con las nuevas condiciones. Si simplemente selecciona el botón *Guardar*, el desencadenador que se está ejecutando actualmente no usará las nuevas condiciones hasta que seleccione actualizar el desencadenador. Vamos a seguir y seleccionar el botón **Guardar**.
+1. Puesto que ha actualizado el desencadenador, la acción correcta debe ser actualizar y no guardar el desencadenador, pero para este laboratorio hacemos lo contrario y seleccionamos el botón **Guardar** en lugar del botón **Actualizar** para ver también qué sucede. La razón por la que debería haber seleccionado el botón *Actualizar* es porque cuando selecciona *actualizar* el desencadenador, este guarda el desencadenador y actualiza el desencadenador que se está ejecutando actualmente con las nuevas condiciones. Si simplemente selecciona el botón *Guardar*, el desencadenador que actualmente en ejecución no aplica las nuevas condiciones hasta que seleccione actualizar el desencadenador. Vamos a seguir y seleccionar el botón **Guardar**.
 
 1. Al haber seleccionado *Guardar *, en lugar de *Actualizar*, ha observado que el mensaje *Hay una actualización de la propiedad disponible. Realícela ahora para asegurarse de que el desencadenador tiene los cambios más recientes* aparece en la parte superior de la pantalla. El mensaje también tiene un botón *Actualizar*. Vamos a seguir y seleccionar el botón **Actualizar**.
 
