@@ -6,19 +6,17 @@ lab:
 
 # Trabajo con relaciones de modelo
 
-## Información general
+En este ejercicio, trabajará con relaciones de modelos específicamente para abordar la necesidad de dimensiones realizadoras de roles. Implicará trabajar con relaciones activas e inactivas, así como funciones de Data Analysis Expressions (DAX) que modifican el comportamiento de las relaciones.
 
-**El tiempo estimado para completar el laboratorio es de 45 minutos.**
-
-En este laboratorio, trabajarás con relaciones de modelo específicamente para abordar la necesidad de dimensiones realizadoras de roles. Implicará trabajar con relaciones activas e inactivas, así como funciones de Data Analysis Expressions (DAX) que modifican el comportamiento de las relaciones.
-
-En este laboratorio, aprenderá a:
+En este ejercicio aprenderá a hacer lo siguiente:
 
 - Interpretar las propiedades de relación en el diagrama del modelo.
-
 - Establecer propiedades de relación.
+- Usar funciones DAX que modifiquen el comportamiento de las relaciones.
 
-- Uso de las funciones DAX que modifiquen el comportamiento de las relaciones.
+Este laboratorio se realiza en **45** minutos aproximadamente.
+
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
 ## Explorar las relaciones de modelos
 
@@ -26,9 +24,10 @@ En este ejercicio, abrirás una solución de Power BI Desktop previamente desarr
 
 ### Descargar archivo de inicio
 
-1. Abra el [archivo de inicio de Sales Analysis](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/15/Starter/Sales%20Analysis%20-%20Work%20with%20model%20relationships.pbix) y guárdelo en una ubicación que recuerde.
+1. Descargue el [archivo de inicio de Análisis de ventas](https://aka.ms/fabric-relationships-starter) de `https://aka.ms/fabric-relationships-starter` y guárdelo en el equipo local (en cualquier carpeta).
 
 1. Vaya al archivo descargado y ábralo en Power BI Desktop.
+    >Nota: Omita y cierre la advertencia en la que se le pide que aplique los cambios.
 
 ### Revisión del modelo de datos
 
@@ -165,8 +164,6 @@ En esta tarea, usarás la función USERELATIONSHIP para activar una relación in
 
 2. En la barra de fórmulas (situada debajo de la cinta), reemplaza el texto por la siguiente definición de medida y después presiona **Entrar**.
 
-    *Sugerencia: Todas las fórmulas están disponibles para copiar y pegar desde el archivo **D:\fabric\Allfiles\Labs\15\Assets\Snippets.txt**.*
-
     ```DAX
     Sales Shipped =
     CALCULATE (
@@ -213,9 +210,7 @@ En esta tarea, quitarás la relación existente con la columna **ShipDateKey**.
 
     ![](Images/work-with-model-relationships-image27.png)
 
-3. Cuando se te pida que confirmes la eliminación, selecciona **Aceptar**.
-
-    ![](Images/work-with-model-relationships-image28.png)
+3. Cuando se le pida que confirme la eliminación, seleccione **Sí**.
 
     *Al eliminar la relación, se produce un error con la medida **Ventas enviadas**. Volverás a escribir la fórmula de medida más adelante en este laboratorio.*
 
@@ -245,17 +240,17 @@ En esta tarea, deshabilitarás dos opciones de relación.
 
 En esta tarea, crearás una consulta para agregar otra tabla de fechas al modelo.
 
-1. En la ficha de cinta **Inicio**, dentro del grupo **Consultas**, selecciona el icono **Transformar datos**.
+1. En la ficha de cinta **Inicio**, dentro del grupo **Consultas**, seleccione el icono **Transformar datos**, que abre el **Editor de Power Query**.
 
     ![](Images/work-with-model-relationships-image33.png)
 
-    *Si se te pide que especifiques cómo conectarte, selecciona **Editar credenciales** y especifica cómo iniciar sesión.*
+    *Si se le pide que especifique cómo conectarse, **Editar credenciales**.*
 
     ![](Images/work-with-model-relationships-image52.png)
 
-    *Selecciona **Conectar***
+    *Deje la configuración de conexión predeterminada para Windows con "Usar mis credenciales actuales" y, a continuación, **Conectar**.*
 
-     ![](Images/work-with-model-relationships-image53.png)
+     ![](Images/work-with-model-relationships-image53.png)*Seleccione **Sí** para cerrar el mensaje de advertencia.*
 
 2. En la ventana **Editor de Power Query**, en el panel **Consultas** (ubicado a la izquierda), haz clic con el botón derecho en la consulta ** Fecha** y después selecciona **Referencia**.
 

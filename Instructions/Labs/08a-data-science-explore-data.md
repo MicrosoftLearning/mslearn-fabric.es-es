@@ -10,9 +10,9 @@ En este laboratorio, usaremos cuadernos para la exploración de datos. Los cuade
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
-## Crear un área de trabajo
+## Creación de un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
@@ -185,7 +185,7 @@ Vamos a generar visualizaciones como gráficos de dispersión y diagramas de caj
    import matplotlib.pyplot as plt
    import seaborn as sns
 
-   # Scatter plot of Quantity vs. Price
+   # Scatter plot of BMI vs. Target variable
    plt.figure(figsize=(8, 6))
    sns.scatterplot(x='BMI', y='Y', data=df)
    plt.title('BMI vs. Target variable')
