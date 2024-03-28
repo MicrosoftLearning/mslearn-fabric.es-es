@@ -1,7 +1,7 @@
 ---
 lab:
-  title: "Introducción al análisis en tiempo real en Microsoft\_Fabric"
-  module: Get started with Real-Time Analytics in Microsoft Fabric
+  title: Introducción a Eventstream en Microsoft Fabric
+  module: Get started with Eventstream in Microsoft Fabric
 ---
 # Introducción a Eventstream en Análisis en tiempo real (RTA)
 

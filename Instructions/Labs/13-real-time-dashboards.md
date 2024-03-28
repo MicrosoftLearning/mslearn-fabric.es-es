@@ -7,13 +7,14 @@ lab:
 ---
 
 # Introducción a la consulta de una base de datos de Kusto en Microsoft Fabric
+
 Los paneles en tiempo real le permiten obtener información detallada desde Microsoft Fabric utilizando el Lenguaje de consulta de Kusto (KQL) para recuperar datos estructurados y no estructurados y representarlos en gráficos, diagramas de dispersión, tablas, etc. dentro de paneles que permiten una vinculación similar a la de las segmentaciones de Power BI. 
 
 Este laboratorio se realiza en **25** minutos aproximadamente.
 
-> **Nota**: Necesita una cuenta *educativa* o *profesional* de Microsoft para completar este ejercicio. Si no tiene una, puede [registrarse para una evaluación gratuita de Microsoft Office 365 E3 o superior](https://www.microsoft.com/microsoft-365/business/compare-more-office-365-for-business-plans).
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
-## Crear un área de trabajo
+## Creación de un área de trabajo
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
@@ -46,7 +47,7 @@ En este laboratorio, usará Análisis en tiempo real (RTA) en Fabric para crear 
  
    ![Imagen de opciones de selección con datos de ejemplo resaltados](./Images/load-sample-data.png)
 
-6. elija el cuadro **Análisis de métricas de Automoción** en las opciones de los datos de ejemplo.
+6. Elija el cuadro **Análisis de métricas de Automoción** en las opciones de los datos de ejemplo.
 
    ![Imagen de la elección de datos de análisis para el laboratorio](./Images/create-sample-data.png)
 
@@ -54,7 +55,7 @@ En este laboratorio, usará Análisis en tiempo real (RTA) en Fabric para crear 
 
    ![Datos que se cargan en la base de datos KQL](./Images/choose-automotive-operations-analytics.png)
 
-7. Una vez cargados los datos, verifíquelos en la base de datos KQL. Para realizar esta operación, seleccione los puntos suspensivos situados a la derecha de la tabla, vaya a **Consultar tabla** y seleccione **Mostrar 100 registros cualesquiera**.
+7. Una vez cargados los datos, verifíquelos en la base de datos KQL. Para realizar esta operación, seleccione los puntos suspensivos (...) situados a la derecha de la tabla, vaya a **Consultar tabla** y seleccione **Mostrar 100 registros cualesquiera**.
 
     ![Imagen de la selección de los 100 archivos superiores de la tabla RawServerMetrics](./Images/rawservermetrics-top-100.png)
 
@@ -80,7 +81,7 @@ Trips
 | sort by Borough asc 
 
 ```
-3. Presione el botón Ejecutar y compruebe que la consulta no tiene errores.
+3. Presione el botón **Ejecutar** y compruebe que la consulta no tiene errores.
 4. En el lado derecho del panel, seleccione la pestaña **Aplicación de formato de objeto visual** y complete el ***Nombre del icono*** y el ***Tipo de objeto visual***.
 
    ![Imagen del icono de aplicación de formato de objeto visual.](./Images/visual-formatting-tile.png)

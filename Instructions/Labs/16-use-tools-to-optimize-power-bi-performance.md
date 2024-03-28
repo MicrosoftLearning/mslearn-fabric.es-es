@@ -6,25 +6,20 @@ lab:
 
 # Uso de herramientas para optimizar el rendimiento de Power BI
 
-## Información general
-
-**El tiempo estimado para completar el laboratorio es de 30 minutos**
-
 En este laboratorio, aprenderás a usar dos herramientas externas para desarrollar, administrar y optimizar modelos de datos y consultas DAX.
 
-En este laboratorio, aprenderá a:
+En este ejercicio aprenderá a usar:
 
-- Usa el Analizador de procedimientos recomendados (BPA).
+- El Analizador de procedimientos recomendados (BPA) en Tabular Editor.
+- DAX Studio.
 
-- Uso de DAX Studio.
+Este laboratorio se realiza en unos **30** minutos.
+
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
 ## Introducción
 
-Para este laboratorio, vamos a usar Power BI Desktop, Tabular Editor y DAX Studio para optimizar un modelo semántico.
-
-### Descarga del archivo de inicio de Power BI
-
-1. Vaya a [GitHub](https://github.com/MicrosoftLearning/mslearn-fabric/blob/main/Allfiles/Labs/16/Starter%20File%20-%20Use%20tools%20to%20optimize%20Power%20BI%20performance.pbix) y descargue el **archivo de inicio**. Se trata de un archivo .pbix que se abre en Power BI Desktop. Use el menú de puntos suspensivos ... para obtener la opción de descarga para descargar el archivo .pbix sin formato.
+Para este laboratorio, instalará y usará Tabular Editor y DAX Studio para optimizar un modelo semántico.
 
 ## Usar el Analizador de procedimientos recomendados
 
@@ -32,34 +27,33 @@ En este ejercicio, instalarás Tabular Editor 2 y cargarás reglas del Analizado
 
 *BPA es una herramienta gratuita de terceros que te notifica posibles errores de modelado o cambios que puedes realizar para mejorar el diseño y el rendimiento de tu modelo. Incluye recomendaciones de nomenclatura, experiencia de usuario y optimizaciones comunes que puedes aplicar para mejorar el rendimiento. Para obtener más información, consulta [Reglas de procedimientos recomendados para mejorar el rendimiento de tu modelo](https://powerbi.microsoft.com/blog/best-practice-rules-to-improve-your-models-performance/).*
 
-
 ### Descarga e instalación del Tabular Editor 2
 
 Descarga e instalación de Tabular Editor 2 para habilitar la creación de grupos de cálculo.
 
-**Importante:***si ya has instalado Editor tabular 2 en tu entorno de máquina virtual, continúa con la siguiente tarea.*
+***Importante**: Si ya ha instalado Tabular Editor 2 en el entorno de máquina virtual, continúe con la siguiente tarea.*
 
 *Tabular Editor es una herramienta alternativa para crear modelos tabulares para Analysis Services y Power BI. Tabular Editor 2 es un proyecto de código abierto que puede editar un archivo BIM sin acceder a ningún dato del modelo.*
 
-1.  Asegúrate de que Power BI Desktop está cerrado.
+1. Asegúrate de que Power BI Desktop está cerrado.
 
-1.  En Microsoft Edge, ve a la página Tabular Editor Release.
+1. En Microsoft Edge, ve a la página Tabular Editor Release.
 
     ```https://github.com/TabularEditor/TabularEditor/releases```
-    
+
 1. Desplázate hacia abajo hasta la sección **Activos** y selecciona el archivo **TabularEditor.Installer.msi**. Esto iniciará la instalación del archivo.
 
 1. Tras finalizar, selecciona **Abrir archivo** para ejecutar el instalador.
 
-1.  En la ventana de instalación de Tabular Editor, selecciona **Siguiente**.
+1. En la ventana de instalación de Tabular Editor, selecciona **Siguiente**.
 
-1.  En el paso **Contrato de licencia**, si estás de acuerdo, selecciona **Acepto** y después **Siguiente**.
+1. En el paso **Contrato de licencia**, si estás de acuerdo, selecciona **Acepto** y después **Siguiente**.
 
-1.  En el paso **Seleccionar carpeta de instalación**, selecciona **Siguiente**.
+1. En el paso **Seleccionar carpeta de instalación**, selecciona **Siguiente**.
 
-1.  En el paso **Métodos abreviados de la aplicación**, selecciona **Siguiente**.
+1. En el paso **Métodos abreviados de la aplicación**, selecciona **Siguiente**.
 
-1.  En el paso **Confirmar instalación**, selecciona **Siguiente**. 
+1. En el paso **Confirmar instalación**, selecciona **Siguiente**.
 
     *Si se te solicita, selecciona **Sí** para permitir que la aplicación realice cambios.*
 
@@ -69,17 +63,19 @@ Descarga e instalación de Tabular Editor 2 para habilitar la creación de grupo
 
 ### Configurar Power BI Desktop
 
-En esta tarea, abrirá la solución de Power BI Desktop desarrollada que descargó anteriormente (**Uso de herramientas para optimizar el archivo performance.pbix de Power BI**).
+En esta tarea abrirás una solución de Power BI Desktop desarrollada previamente.
 
-1. Abra el archivo y, en la ventana **Guardar como**, guarde el archivo en una ubicación que pueda recordar con facilidad.
+1. Descargue el [archivo de inicio de Análisis de ventas](https://aka.ms/fabric-optimize-starter) de `https://aka.ms/fabric-optimize-starter` y guárdelo en una ubicación que recuerde.
+
+1. Vaya al archivo descargado y ábralo en Power BI Desktop.
 
 1. Selecciona la pestaña de cinta **Herramientas externas**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image8.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image8.png)
 
 1. Observa que puedes iniciar Tabular Editor desde esta pestaña de cinta.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image9.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image9.png)
 
     *Más adelante en este ejercicio, usarás el Tabular Editor para trabajar con BPA.*
 
@@ -89,11 +85,11 @@ En esta tarea revisarás el modelo de datos.
 
 1. En Power BI Desktop, en la parte izquierda, cambia a la vista **Modelo**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image10.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image10.png)
 
 2. Usa el diagrama de modelos para revisar el diseño del modelo.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image11.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image11.png)
 
     *El modelo consta de ocho tablas de dimensiones y una tabla de hechos. La tabla de hechos **Ventas** almacena los detalles de los pedidos de venta. Es un diseño de esquema de estrella clásico que incluye tablas de dimensiones de copo de nieve (**Categoría** > **Subcategoría** > **Producto**) para la dimensión del producto.*
 
@@ -107,7 +103,7 @@ En esta tarea cargarás reglas BPA.
 
 1. En la cinta **Herramientas externas**, seleccione **Tabular Editor**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image12.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image12.png)
 
     *Tabular Editor se abre en una nueva ventana y se conecta dinámicamente al modelo de datos hospedado en Power BI Desktop. Los cambios realizados en el modelo en Tabular Editor no se propagan a Power BI Desktop hasta que los guardes.*
 
@@ -115,13 +111,11 @@ En esta tarea cargarás reglas BPA.
 
     *Nota: A esto se le puede denominar la pestaña Advanced Scripting en versiones anteriores de Tabular Editor.*
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image13.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
 3. Copia y pega el siguiente script:
 
-    *Sugerencia: el script está disponible para copiar y pegar desde **D:\DP500\Allfiles\13\Assets\Snippets.txt**.*
-
-    ```
+    ```csharp
     System.Net.WebClient w = new System.Net.WebClient(); 
 
     string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
@@ -132,7 +126,7 @@ En esta tarea cargarás reglas BPA.
 
 4. Para ejecutar el script, en la barra de herramientas selecciona el comando **Run script**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image14.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image14.png)
 
     *Para usar las reglas BPA, debes cerrar y volver a abrir Tabular Editor.*
 
@@ -140,7 +134,7 @@ En esta tarea cargarás reglas BPA.
 
 6. Para volver a abrir Tabular Editor, en Power BI Desktop, en la cinta **Herramientas externas** selecciona **Tabular Editor**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image15.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image15.png)
 
 ### Revisión de las reglas BPA
 
@@ -148,11 +142,11 @@ En esta tarea revisarás las reglas BPA que cargaste en la tarea anterior.
 
 1. En Tabular Editor, en el menú, selecciona **Tools** > **Manage BPA Rules**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image16.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image16.png)
 
 2. En la ventana **Manage Best Practice Rules**, en la lista **Rule collections**, selecciona **Rules for the local user**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image17.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image17.png)
 
 3. En la lista **Rules for the local user**, desplázate hacia abajo en la lista de reglas.
 
@@ -170,13 +164,13 @@ En esta tarea revisarás las reglas BPA que cargaste en la tarea anterior.
 
 6. Desplázate hasta la parte inferior de la lista y después desactiva la regla **Set IsAvailableInMdx to false on non-attribute columns**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image18.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image18.png)
 
     *Puedes deshabilitar reglas individuales o categorías completas de reglas. BPA no comprobará las reglas deshabilitadas en el modelo. La eliminación de esta regla específica es mostrar cómo deshabilitar una regla.*
 
 7. Seleccione **Aceptar**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image19.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image19.png)
 
 ### Solución de problemas de BPA
 
@@ -184,7 +178,7 @@ En esta tarea abrirás BPA y revisarás los resultados de las comprobaciones.
 
 1. En el menú, selecciona **Tools** > **Best Practice Analyzer** (o presiona **F10).**
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image20.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image20.png)
 
 2. Si fuera necesario, maximiza la ventana **Best Practice Analyzer**.
 
@@ -192,27 +186,27 @@ En esta tarea abrirás BPA y revisarás los resultados de las comprobaciones.
 
 4. En la primera categoría, haz clic con el botón derecho en la tabla **"Product"** y luego selecciona **Ignore item**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image21.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image21.png)
 
     *Cuando un problema no es realmente un problema, puedes omitir ese elemento. Siempre puedes mostrar elementos omitidos mediante el comando **Show ignored** en la barra de herramientas.*
 
 5. Más abajo en la lista, en la categoría **Use the DIVIDE function for division**, haz clic con el botón derecho en **[Profit Margin]** y después selecciona **Go to object**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image22.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image22.png)
 
     *Este comando cambia a Tabular Editor y se centra en el objeto. Facilita la aplicación de una corrección al problema.*
 
 6. En el Editor de expresiones, modifica la fórmula DAX para usar la función [DIVIDE](https://docs.microsoft.com/dax/divide-function-dax) más eficaz (y segura), como se indica a continuación.
 
-    *Sugerencia: todas las fórmulas están disponibles para copiar y pegar desde **D:\DP500\Allfiles\13\Assets\Snippets.txt**.*
+    *Sugerencia: Todas las fórmulas están disponibles para copiar y pegar desde **D:\fabric\Allfiles\Labs\16\Snippets.txt**.*
 
-    ```
-    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )C#
+    ```dax
+    DIVIDE ( [Profit], SUM ( 'Sales'[Sales Amount] ) )
     ```
 
 7. Para guardar los cambios del modelo, en la barra de herramientas, selecciona el comando **Guardar cambios en la base de datos conectada** (o presiona **Ctrl+S**).
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image23.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image23.png)
 
     *Al guardar los cambios, se insertan modificaciones en el modelo de datos de Power BI Desktop.*
 
@@ -222,11 +216,11 @@ En esta tarea abrirás BPA y revisarás los resultados de las comprobaciones.
 
 10. Desplázate hacia abajo en la lista de problemas para buscar la categoría **Provide format string for "Date" columns**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image24.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image24.png)
 
 11. Haz clic con el botón derecho en el problema **"Date"[Date]** y selecciona **Generate fix script**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image25.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image25.png)
 
     *Este comando genera un script de C# y lo copia en el Portapapeles. También puedes usar el comando **Generate fix script** para generar y ejecutar el script. Sin embargo, podría ser más seguro revisar (y modificar) el script antes de ejecutarlo.*
 
@@ -235,18 +229,18 @@ En esta tarea abrirás BPA y revisarás los resultados de las comprobaciones.
 13. Cambia a Tabular Editor y selecciona la pestaña **C# Script**.
 
     *Nota: A esto se le puede denominar la pestaña Scripting avanzada en versiones anteriores de Tabular editor.*
-    
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image13.png)
+
+    ![](Images/use-tools-to-optimize-power-bi-performance-image13.png)
 
 14. Para pegar el script de corrección, haz clic con el botón derecho en el panel y presiona **Ctrl+V**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image27.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image27.png)
 
     *Puedes optar por realizar un cambio en la cadena de formato.*
 
 15. Para ejecutar el script, en la barra de herramientas selecciona el comando **Run script**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image14.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image14.png)
 
 16. Guarda los cambios de modelo.
 
@@ -254,13 +248,15 @@ En esta tarea abrirás BPA y revisarás los resultados de las comprobaciones.
 
 18. Guarde el archivo de Power BI Desktop.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image29.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image29.png)
 
     *También debes guardar el archivo de Power BI Desktop para asegurarte de que se guardan los cambios de Tabular Editor.*
 
+    *En el mensaje sobre los cambios pendientes, seleccione **Aplicar más adelante**.*
+
 ## Uso de DAX Studio
 
-Descarga e instala DAX Studio.
+En este ejercicio, usará DAX Studio para optimizar las consultas DAX en el archivo de informe de Power BI.
 
 *Según su sitio web, DAX Studio es “la herramienta definitiva para ejecutar y analizar consultas DAX en modelos tabulares de Microsoft”. Es una herramienta enriquecida para la creación, el diagnóstico, el ajuste del rendimiento y el análisis de DAX. Entre las características se incluyen la exploración de objetos, el seguimiento integrado, los desgloses de ejecución de consultas con estadísticas detalladas, resaltado de sintaxis DAX y formato.*
 
@@ -268,51 +264,49 @@ Descarga e instala DAX Studio.
 
 En esta tarea descargarás DAX Studio.
 
-Descarga e instala DAX Studio para optimizar las consultas DAX.
-
-1.  En Microsoft Edge, ve a la página de descargas de DAX Studio.
+1. En Microsoft Edge, ve a la página de descargas de DAX Studio.
 
     ```https://daxstudio.org/downloads/```
-    
-1. Selecciona **DAX Studio v.2.x.x (instalador):** esto iniciará la instalación del archivo.
+
+1. Seleccione **DaxStudio_3_X_XX_setup.exe (instalador)**; esto iniciará la instalación del archivo.
     *Nota: La versión de DAX Studio cambiará ligeramente con el tiempo. Descarga la versión más reciente.*
 
 1. Tras finalizar, selecciona **Abrir archivo** para ejecutar el instalador.
 
-    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31b.png)
+    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](Images/use-tools-to-optimize-power-bi-performance-image31b.png)
 
-1.  En la ventana del instalador de DAX Studio, selecciona **Instalar para todos los usuarios (recomendado).**
+1. En la ventana del instalador de DAX Studio, selecciona **Instalar para todos los usuarios (recomendado).**
 
 1. En la ventana Control de cuentas de usuario, selecciona Sí para permitir que la aplicación realice cambios en el dispositivo.
 
-    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31c.png)
+    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](Images/use-tools-to-optimize-power-bi-performance-image31c.png)
 
-1.  En el paso **Contrato de licencia**, si aceptas los términos de la licencia, selecciona **Acepto el contrato** y selecciona **Siguiente**.
+1. En el paso **Contrato de licencia**, si aceptas los términos de la licencia, selecciona **Acepto el contrato** y selecciona **Siguiente**.
 
-    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31d.png)
+    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](Images/use-tools-to-optimize-power-bi-performance-image31d.png)
 
 1. Selecciona **Siguiente** para usar la ubicación de destino predeterminada.
 1. Elige **Siguiente** para seleccionar los componentes predeterminados que deseas instalar.
 1. Selecciona **Siguiente** para colocar el acceso directo en la carpeta de menú inicio predeterminada.
 1. Selecciona **Crear un acceso directo de escritorio** y selecciona siguiente.
 
-    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31e.png)
+    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](Images/use-tools-to-optimize-power-bi-performance-image31e.png)
 1. Seleccione **Instalar**.
 
 1. Tras finalizar, con **Iniciar DAX Studio** seleccionado, selecciona **Finalizar**. Se abrirá DAX Studio.
-    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31f.png)
+    ![Interfaz gráfica de usuario/Descripción generada automáticamente de la aplicación.](Images/use-tools-to-optimize-power-bi-performance-image31f.png)
 
-1. En la ventana **Conectar**, selecciona la opción **Modelo PBI/SSDT**.
+1. En la ventana **Conectar**, seleccione la opción **Modelo de Power BI/SSDT**.
 
 1. En la lista desplegable correspondiente, asegúrate de que está seleccionado el modelo **Análisis de ventas: uso de herramientas para optimizar el rendimiento de Power BI**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image30.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image30.png)
 
     *Si no tienes abierto el archivo de inicio **Sales Analysis - Use tools to optimize Power BI performance**, no podrás conectarte. Asegúrate de que el archivo está abierto.*
 
 1. Seleccione **Conectar**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image31.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image31.png)
 
 1. Si es necesario, maximiza la ventana de DAX Studio.
 
@@ -322,70 +316,64 @@ En esta tarea, optimizarás una consulta mediante una fórmula de medida mejorad
 
 *Ten en cuenta que es difícil optimizar una consulta cuando los volúmenes del modelo de datos son pequeños. Este ejercicio se centra en el uso de DAX Studio en lugar de optimizar las consultas DAX.*
 
-1. En el menú **Archivo**, selecciona **Examinar**.
+1. En una ventana del explorador, descargue el archivo [Monthly Profit Growth.dax](https://aka.ms/fabric-optimize-dax) de `https://aka.ms/fabric-optimize-dax` y guárdelo en el equipo local (en cualquier carpeta).
 
-2. En la ventana **Abrir**, ve a la carpeta **D:\DP500\Allfiles\13\Assets**.
+   ![](https://github.com/MicrosoftLearning/mslearn-fabric/assets/34583336/58254cce-753e-4322-9060-536e12554aa7)
 
-3. Selecciona **Monthly Profit Growth.dax**.
+3. Cambie a la ventana de DAX Studio y, en el menú **Archivo**, seleccione **Examinar** para ir al archivo **Monthly Profit Growth.dax** y seleccione **Abrir**.
 
-4. Seleccione **Abrir**.
+    ![](Images/use-tools-to-optimize-power-bi-performance-image33.png)
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image33.png)
-
-5. Lee los comentarios en la parte superior del archivo y después revisa la consulta siguiente.
+6. Lee los comentarios en la parte superior del archivo y después revisa la consulta siguiente.
 
     *No es importante comprender la consulta en su totalidad.*
 
     *La consulta define dos medidas que determinan el crecimiento de beneficios mensuales. Actualmente, la consulta solo usa la primera medida (en la línea 72). Cuando no se usa una medida, no afecta a la ejecución de la consulta.*
 
-6. Para ejecutar un seguimiento del servidor y registrar información detallada de tiempo para la generación de perfiles de rendimiento, en la pestaña **Inicio** de la cinta de opciones, en el grupo **Seguimientos**, selecciona **Intervalos de servidor**.
+7. Para ejecutar un seguimiento del servidor y registrar información detallada de tiempo para la generación de perfiles de rendimiento, en la pestaña **Inicio** de la cinta de opciones, en el grupo **Seguimientos**, selecciona **Intervalos de servidor**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image34.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image34.png)
 
-7. Para ejecutar el script, en la pestaña **Inicio** de la cinta de opciones, en el grupo **Consulta**, selecciona el icono **Ejecutar**.
+8. Para ejecutar el script, en la pestaña **Inicio** de la cinta de opciones, en el grupo **Consulta**, selecciona el icono **Ejecutar**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image35.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image35.png)
 
-8. Revisa los resultados de la consulta en el panel inferior.
+9. Revisa los resultados de la consulta en el panel inferior.
 
     *La última columna muestra los resultados de la medida.*
 
-9. En el panel inferior, selecciona la pestaña **Intervalos de servidor**.
+10. En el panel inferior, selecciona la pestaña **Intervalos de servidor**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image36.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image36.png)
 
-10. Revisa las estadísticas disponibles en el lado izquierdo.
+11. Revisa las estadísticas disponibles en el lado izquierdo.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image37.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image37.png)
 
     *Desde la parte superior izquierda hasta la parte inferior derecha, las estadísticas indican cuántos milisegundos tardó en ejecutar la consulta y la duración que tardó la CPU del motor de almacenamiento (SE). En este caso (los resultados variarán), el motor de fórmulas (FE) tardó el 73,5 % del tiempo, mientras que el SE tardó el 26,5 % restante del tiempo. Hubo 34 consultas SE individuales y 21 aciertos de caché.*
 
-11. Vuelve a ejecutar la consulta y observa que todas las consultas SE proceden de la memoria caché de SE.
+12. Vuelve a ejecutar la consulta y observa que todas las consultas SE proceden de la memoria caché de SE.
 
     *Esto se debe a que los resultados se almacenaron en caché para su reutilización. A veces, en las pruebas, es posible que desees borrar la memoria caché. En ese caso, en la pestaña **Inicio** de la cinta de opciones, selecciona la flecha hacia abajo para el comando **Ejecutar**.*
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image38.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image38.png)
 
     *La segunda definición de medida proporciona un resultado más eficaz. Ahora actualizarás la consulta para usar la segunda medida.*
 
-12. En la línea 72, reemplaza la palabra **Bad** por **Better**.
+13. En la línea 72, reemplaza la palabra **Bad** por **Better**.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image39.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image39.png)
 
-13. Ejecuta la consulta y revisa las estadísticas de tiempo del servidor.
+14. Ejecuta la consulta y revisa las estadísticas de tiempo del servidor.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image40.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image40.png)
 
-14. Ejecútalo una segunda vez para dar lugar a aciertos de caché completa.
+15. Ejecútalo una segunda vez para dar lugar a aciertos de caché completa.
 
-    ![](./Images/dp500-use-tools-to-optimize-power-bi-performance-image41.png)
+    ![](Images/use-tools-to-optimize-power-bi-performance-image41.png)
 
     *En este caso, puedes determinar que la consulta "óptima", que usa variables y una función de inteligencia de tiempo, tiene un mejor rendimiento: una reducción de casi el 50 % en el tiempo de ejecución de consultas.*
 
 ### Finalización
 
-En esta tarea finalizarás.
-
-1. Para cerrar DAX Studio, en la pestaña **Archivo** de la cinta de opciones, selecciona **Salir**.
-
-2. Cierre Power BI Desktop.
+Para concluir este ejercicio, cierre todas las aplicaciones; no es necesario guardar los archivos.
