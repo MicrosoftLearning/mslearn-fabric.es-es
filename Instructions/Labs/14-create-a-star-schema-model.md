@@ -6,17 +6,17 @@ lab:
 
 # Creación y exploración de un modelo semántico
 
-## Información general
-
-**El tiempo estimado para completar el laboratorio es de 30 minutos**
-
-En este laboratorio, usará la interfaz de Fabric para desarrollar un modelo de datos a través de los datos de NY Taxi de ejemplo en un almacenamiento de datos de Fabric.
+En este ejercicio, usará Microsoft Fabric para desarrollar un modelo de datos para los datos de NY Taxi de ejemplo en un almacenamiento de datos.
 
 Practicará lo siguiente:
 
 - Creación de un modelo semántico personalizado a partir de un almacenamiento de datos de Fabric.
 - Creación de relaciones y organización del diagrama del modelo.
 - Exploración de los datos del modelo semántico directamente en Fabric.
+
+Este laboratorio se realiza en unos **30** minutos.
+
+> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
 ## Creación de un área de trabajo
 
