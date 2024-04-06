@@ -12,7 +12,7 @@ Al completar este laboratorio, obtendrá experiencia práctica en aprendizaje au
 
 Este laboratorio se tarda aproximadamente **20** minutos en completarse.
 
-> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> **Nota**: Necesitarás una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
 ## Creación de un área de trabajo
 
