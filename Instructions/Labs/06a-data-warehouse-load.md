@@ -237,7 +237,7 @@ Vamos a ejecutar algunas consultas analíticas para validar los datos en el alma
     ORDER BY TotalSales DESC;
     ```
 
-    > **Nota:** Los resultados de esta consulta muestran el cliente superior para cada una de las categorías: Bicicleta, casco y guantes, en función de sus ventas totales. Por ejemplo, **Carson Butler** es el cliente principal de la categoría **Bicicleta**.
+    > **Nota:** Los resultados de esta consulta muestran el cliente superior para cada una de las categorías: Bicicleta, casco y guantes, en función de sus ventas totales. Por ejemplo, **Joan Coleman** es el cliente principal de la categoría **Guantes**.
     >
     > La información de categoría se extrajo de la columna `ItemName` mediante la manipulación de cadenas, ya que no hay ninguna columna de categoría independiente en la tabla de dimensiones. Este enfoque supone que los nombres de elemento siguen una convención de nomenclatura coherente. Si los nombres de elemento no siguen una convención de nomenclatura coherente, es posible que los resultados no reflejen con precisión la categoría verdadera de cada elemento.
 
