@@ -97,8 +97,8 @@ Normalmente, un almacenamiento de datos relacional consta de tablas de *hechos* 
     - **Asumir integridad referencial**: No seleccionado
 
 4. Repita el proceso para crear relaciones de varios a uno entre las tablas siguientes:
-    - **FactOrderSales.CustomerKey** &#8594; **DimCustomer.CustomerKey**
-    - **FactOrderSales.SalesOrderDateKey** &#8594; **DimDate.DateKey**
+    - **FactSalesOrder.CustomerKey** &#8594; **DimCustomer.CustomerKey**
+    - **FactSalesOrder.SalesOrderDateKey** &#8594; **DimDate.DateKey**
 
     Cuando se hayan definido todas las relaciones, el modelo debe tener este aspecto:
 

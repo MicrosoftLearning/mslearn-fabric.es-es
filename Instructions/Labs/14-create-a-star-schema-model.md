@@ -39,7 +39,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacenamiento de
 
 1. En el centro de la interfaz de usuario del almacenamiento de datos, verá algunas maneras diferentes de cargar datos en el almacenamiento. Seleccione **Datos de ejemplo** para cargar datos de NYC Taxi en el almacenamiento de datos. Este proceso tardará unos minutos.
 
-1. Una vez cargados los datos de ejemplo, use el panel **Explorador** de la derecha para ver qué tablas y vistas ya existen en el almacenamiento de datos de ejemplo.
+1. Una vez cargados los datos de ejemplo, use el panel **Explorador** de la izquierda para ver qué tablas y vistas ya existen en el almacenamiento de datos de ejemplo.
 
 1. Seleccione la pestaña **Informes** de la cinta de opciones y elija **Nuevo modelo semántico**. Esto le permite crear un nuevo modelo semántico con solo tablas y vistas específicas desde el almacenamiento de datos para su uso por parte de los equipos de datos y la empresa para crear informes.
 
