@@ -149,9 +149,9 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
 1. El objeto DataFrame solo incluye los datos del archivo **2019.csv**. Modifique el código para que la ruta de acceso del archivo use un carácter comodín \* para leer los datos de los pedidos de ventas de todos los archivos de la carpeta **orders**:
 
     ```python
-    from pyspark.sql.types import *
+   from pyspark.sql.types import *
 
-    orderSchema = StructType([
+   orderSchema = StructType([
        StructField("SalesOrderNumber", StringType()),
        StructField("SalesOrderLineNumber", IntegerType()),
        StructField("OrderDate", DateType()),
@@ -163,8 +163,8 @@ Ahora está listo para ejecutar código que carga los datos en un objeto *DataFr
        StructField("Tax", FloatType())
        ])
 
-    df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
-    display(df)
+   df = spark.read.format("csv").schema(orderSchema).load("Files/orders/*.csv")
+   display(df)
     ```
 
 1. Ejecute la celda de código modificada y revise la salida, que ahora debe incluir las ventas de 2019, 2020 y 2021.
