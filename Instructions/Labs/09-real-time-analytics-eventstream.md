@@ -147,6 +147,6 @@ Puede seguir navegando con las funciones integradas y familiarizarse con los dat
 ## Limpieza de recursos
 
 En este ejercicio, ha creado una base de datos KQL y ha configurado un streaming continuo con Eventstream. Después, ha consultado los datos con KQL y SQL. Si ha terminado de explorar la base de datos KQL, puede eliminar el área de trabajo que ha creado para este ejercicio.
-1. En la barra de la izquierda, seleccione el icono del área de trabajo.
-2. En el menú ... de la barra de herramientas, seleccione Configuración del área de trabajo.
-3. En la sección Otros, seleccione Quitar esta área de trabajo.
+1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
+2. En la página del área de trabajo, seleccione **Configuración del área de trabajo**.
+3. En la parte inferior de la sección **General**, seleccione **Quitar esta área de trabajo**.

@@ -323,5 +323,5 @@ En este ejercicio, ha aprendido a trabajar con tablas Delta en Microsoft Fabric.
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+2. En la página del área de trabajo, seleccione **Configuración del área de trabajo**.
+3. En la parte inferior de la sección **General**, seleccione **Quitar esta área de trabajo**.
