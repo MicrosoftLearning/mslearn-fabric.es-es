@@ -198,6 +198,7 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
       ) \
       .execute()
     ```
+13. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
 
     Esta operación es importante porque permite actualizar los registros existentes en la tabla según los valores de columnas específicas e insertar nuevos registros cuando no se encuentren coincidencias. Este es un requisito común cuando se cargan datos desde un sistema de origen que pueden contener actualizaciones de registros existentes y nuevos.
 
@@ -610,5 +611,5 @@ En este ejercicio, ha aprendido a crear una arquitectura de medallas en un almac
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+2. En la página del área de trabajo, seleccione **Configuración del área de trabajo**.
+3. En la parte inferior de la sección **General**, seleccione **Quitar esta área de trabajo**.
