@@ -39,7 +39,7 @@ Empiece por crear un área de trabajo, una nueva instancia de almacén de lago y
 
 1. En **Archivos**, seleccione **[...]** para crear una **Nueva subcarpeta** denominada **RawData**.
 
-1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **RawData > ... > Propiedades**.
+1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **Archivos > ... > Propiedades**.
 
 1. Copie la **ruta de acceso de ABFS** de la carpeta **RawData** en un bloc de notas vacío para su uso posterior, que debería tener un aspecto similar al siguiente:  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -217,7 +217,7 @@ Este laboratorio se centra en la ingesta de datos, que realmente explica el proc
     display(opttable_df.limit(10))
     ```
 
-1. Ahora, seleccione la flecha &#9660; situada junto al botón **Ejecutar celda** para la primera de estas dos consultas y, en la lista desplegable, seleccione **Ejecutar esta celda y todas las siguientes**.
+1. Ahora, seleccione la flecha &#9660; situada junto al botón **Ejecutar celda** para la primera de estas dos consultas y, en la lista desplegable, seleccione **Ejecutar esta celda y debajo**.
 
     Esto ejecutará las dos últimas celdas de código. Observe la diferencia de tiempo de ejecución entre consultar la tabla con datos no optimizados y una tabla con datos optimizados.
 
@@ -228,5 +228,5 @@ En este ejercicio, usó cuadernos con PySpark en Fabric para cargar datos y guar
 Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En la página del área de trabajo, seleccione **Configuración del área de trabajo**.
-3. En la parte inferior de la sección **General**, seleccione **Quitar esta área de trabajo**.
+2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
+3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.

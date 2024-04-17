@@ -135,6 +135,6 @@ Si ha terminado de explorar flujos de datos en Microsoft Fabric, puede eliminar 
 
 1. Vaya a Microsoft Fabric en el explorador.
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-1. En la página del área de trabajo, seleccione **Configuración del área de trabajo**.
-1. En la parte inferior de la sección **General**, seleccione **Quitar esta área de trabajo**.
+1. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
+1. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
 1. No guarde los cambios en Power BI Desktop ni elimine el archivo .pbix si ya está guardado.
