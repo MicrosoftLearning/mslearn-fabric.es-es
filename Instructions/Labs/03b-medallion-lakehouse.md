@@ -198,6 +198,7 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
       ) \
       .execute()
     ```
+13. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
 
     Esta operación es importante porque permite actualizar los registros existentes en la tabla según los valores de columnas específicas e insertar nuevos registros cuando no se encuentren coincidencias. Este es un requisito común cuando se cargan datos desde un sistema de origen que pueden contener actualizaciones de registros existentes y nuevos.
 
