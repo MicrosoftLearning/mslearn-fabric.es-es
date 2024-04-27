@@ -138,4 +138,4 @@ Si ha terminado de explorar la base de datos KQL, puede eliminar el área de tra
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
