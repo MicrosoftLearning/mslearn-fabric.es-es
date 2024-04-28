@@ -43,7 +43,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 ## Cargar un archivo
 
-Fabric proporciona varias formas de cargar datos en el almacén de lago, incluida la compatibilidad integrada con canalizaciones que copian orígenes de datos externos y flujos de datos (Gen 2) que puede definir con herramientas visuales basadas en Power Query. Sin embargo, una de las formas más sencillas de ingerir pequeñas cantidades de datos es cargar archivos o carpetas desde su PC local (o la máquina virtual del laboratorio si procede).
+Fabric proporciona varias formas de cargar datos en el almacén de lago, incluida la compatibilidad integrada con canalizaciones que copian datos de orígenes externos y flujos de datos (Gen 2) que puede definir con herramientas visuales basadas en Power Query. Sin embargo, una de las formas más sencillas de ingerir pequeñas cantidades de datos es cargar archivos o carpetas desde su PC local (o la máquina virtual del laboratorio si procede).
 
 1. Descargue el archivo [sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) de `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`, guárdelo como **sales.csv** en su PC local (o máquina virtual del laboratorio si procede).
 
@@ -169,4 +169,4 @@ Si ha terminado de explorar el almacén de lago, puede eliminar el área de trab
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
