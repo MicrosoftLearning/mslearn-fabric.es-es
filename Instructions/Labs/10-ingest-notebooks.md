@@ -39,7 +39,7 @@ Empiece por crear un área de trabajo, una nueva instancia de almacén de lago y
 
 1. En **Archivos**, seleccione **[...]** para crear una **Nueva subcarpeta** denominada **RawData**.
 
-1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **Archivos > ... > Propiedades**.
+1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **RawData > ... > Propiedades**.
 
 1. Copie la **ruta de acceso de ABFS** de la carpeta **RawData** en un bloc de notas vacío para su uso posterior, que debería tener un aspecto similar al siguiente:  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
