@@ -39,7 +39,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar datos** en una canalización para extraer los datos de un origen y copiarlos en un archivo del almacén de lago.
 
-1. En la página **Inicio** del almacén de lago, seleccione **Nueva canalización de datos** y cree una canalización de datos llamada **Ingerir datos de ventas**.
+1. En la página **Inicio** de su instancia de Lakehouse, seleccione **Obtener** de datos y, a continuación, seleccione **Nueva canalización de datos**y cree una canalización de datos denominada **Ingesta de datos de ventas**.
 2. Si el Asistente para **copiar datos** no se abre automáticamente, seleccione **Copiar datos** en la página del editor de canalizaciones.
 3. En el Asistente para **copiar datos**, en la página **Elegir un origen de datos**, en la sección **Orígenes de datos**, seleccione la pestaña **Protocolo genérico** y, luego, elija **HTTP**.
 
