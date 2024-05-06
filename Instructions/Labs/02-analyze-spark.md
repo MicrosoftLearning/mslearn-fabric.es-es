@@ -358,7 +358,7 @@ Aunque resulta útil poder insertar instrucciones SQL en una celda que contenga 
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Ejecute la celda y revise los resultados. Observe lo siguiente:
     - La línea `%%sql` al principio de la celda (llamada *magic*) indica que se debe usar el entorno de ejecución del lenguaje Spark SQL para ejecutar el código en esta celda en lugar de PySpark.
     - El código SQL hace referencia a la tabla **salesorders** que creó anteriormente.
