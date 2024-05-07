@@ -49,6 +49,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexión**: Crear nueva conexión.
     - **Nombre de la conexión**: *especifique un nombre único*.
+    - **Puerta de enlace de datos**: (ninguna)
     - **Tipo de autenticación**: Básica (*deje el nombre de usuario y la contraseña en blanco*)
 5. Seleccione **Siguiente**. A continuación, asegúrese de que se seleccionan las siguientes opciones:
     - **Dirección URL relativa**: *dejar en blanco*
@@ -64,7 +65,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **Primera fila como encabezado**: seleccionada
     - **Tipo de compresión**: ninguno
 7. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
-8. En la página **Elegir destino de datos**, seleccione su almacén de lago existente. Luego, seleccione **Siguiente**.
+8. En la página **Conectarse al destino de datos**, seleccione su almacén de lago existente. Luego, seleccione **Siguiente**.
 9. Establezca las siguientes opciones de destino de datos y, luego, seleccione **Siguiente**:
     - **Carpeta raíz**: Archivos.
     - **Nombre de la ruta de acceso de la carpeta**: new_data.
@@ -180,6 +181,8 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
 7. En la pestaña **Inicio**, use el icono **&#128427;** (*Guardar*) para guardar la canalización. A continuación, use el botón **&#9655; Ejecutar** para ejecutar la canalización y espere a que se completen todas las actividades.
 
     ![Captura de pantalla de una canalización con una actividad Flujo de datos.](./Images/pipeline-run.png)
+
+> Nota: En caso de que reciba el mensaje de error *Las consultas de Spark SQL solo son posibles en el contexto de un almacén de lago. Adjunte un almacén de lago para continuar*: Abra el cuaderno, seleccione el almacén de lago que creó en el panel izquierdo, seleccione **Quitar todos los almacenes de lago** y, a continuación, vuelva a agregarlo. Vuelva al diseñador de canalizaciones y seleccione **&#9655; Ejecutar**.
 
 8. En la barra de menús central, en el borde izquierdo del portal, seleccione su almacén de lago.
 9. En el panel **Explorador**, expanda **Tablas** y seleccione la tabla **new_sales** para ver una vista previa de los datos que contiene. Esta tabla se creó mediante el cuaderno cuando la canalización lo ejecutó.

@@ -98,6 +98,7 @@ Cuando se crea un almacén de lago y se definen tablas en él, se crea automáti
    GROUP BY Item
    ORDER BY Revenue DESC;
     ```
+> **Nota**: Si está en una máquina virtual de laboratorio y tiene problemas para escribir la consulta SQL, puede descargar el archivo [01-Snippets.txt](https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt) de `https://github.com/MicrosoftLearning/mslearn-fabric/raw/main/Allfiles/Labs/01/Assets/01-Snippets.txt`, guardándolo en la máquina virtual. A continuación, puede copiar la consulta desde el archivo de texto.
 
 3. Use el botón **&#9655; Ejecutar** para ejecutar la consulta y ver los resultados, que deben mostrar los ingresos totales por cada producto.
 
@@ -134,9 +135,11 @@ Las tablas del almacén de lago se agregan automáticamente a un modelo semánti
 
 1. En la parte inferior de la página Punto de conexión de SQL, seleccione la pestaña **Modelo**. Se muestra el esquema del modelo de datos del modelo semántico.
 
-    ![Captura de pantalla de un modelo semántico.](./Images/data-model.png)
+    ![Captura de pantalla 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
 
-    > **Nota**: En este ejercicio, el modelo semántico consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
+    > **Nota 1**: En este ejercicio, el modelo semántico consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
+    
+    > **Nota 2**: Las vistas `frequently_run_queries`, `long_running_queries`, `exec_sessions_history` y `exec_requests_history` forman parte del esquema de `queryinsights` creado automáticamente por Fabric. Es una característica que proporciona una vista holística de la actividad de consulta histórica en el punto de conexión de análisis SQL. Dado que esta característica está fuera del ámbito de este ejercicio, esas vistas deben omitirse por ahora.
 
 2. En la cinta de menús, seleccione la pestaña **Informes** y elija **Nuevo informe**. Se abre una nueva pestaña del explorador en la que puede diseñar el informe.
 
