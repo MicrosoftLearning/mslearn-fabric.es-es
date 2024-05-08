@@ -94,7 +94,7 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
     La salida muestra las filas y columnas del conjunto de datos de diabetes.
 
 1. Hay dos pestañas en la parte superior de la tabla representada: **Tabla** y **Gráfico**. Seleccionar **Gráfico**.
-1. Seleccione las **opciones Ver** en la parte superior derecha del gráfico para cambiar la visualización.
+1. Seleccione **Personalizar gráfico** en la parte superior derecha del gráfico para cambiar la visualización.
 1. Cambie el gráfico a la siguiente configuración:
     * **Tipo de gráfico**: `Box plot`
     * **Clave**: *dejar en blanco*
@@ -112,8 +112,7 @@ Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede 
    df.head()
     ```
 
-1. Seleccione **Datos** en la cinta de opciones del cuaderno y, a continuación, seleccione el desplegable **Transformar DataFrame en Data Wrangler**.
-1. Seleccione el conjunto de datos `df`. Cuando se inicia Data Wrangler, se genera una introducción descriptiva del dataframe en el panel **Resumen**.
+1. Seleccione **Data Wrangler** en la barra de herramientas del cuaderno y, luego, seleccione el conjunto de datos `df`. Cuando se inicia Data Wrangler, se genera una introducción descriptiva del dataframe en el panel **Resumen**.
 
     Actualmente, la columna de etiqueta es `Y`, que es una variable continua. Para entrenar un modelo de Machine Learning que prediga Y, debe entrenar un modelo de regresión. Los valores (predichos) de Y pueden ser difíciles de interpretar. En su lugar, podríamos explorar la posibilidad de entrenar un modelo de clasificación que prediga si alguien tiene un riesgo bajo o alto de desarrollar diabetes. Para poder entrenar un modelo de clasificación, debe crear una columna de etiqueta binaria basada en los valores de `Y`.
 
