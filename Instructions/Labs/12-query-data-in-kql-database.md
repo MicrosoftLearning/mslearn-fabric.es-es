@@ -20,18 +20,18 @@ Este laboratorio se realiza en **25** minutos aproximadamente.
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Análisis en tiempo real**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Inteligencia en tiempo real**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-En este laboratorio, usará Análisis en tiempo real (RTA) en Fabric para crear una base de datos KQL a partir de una secuencia de eventos de muestra. El análisis en tiempo real proporciona un conjunto de datos de ejemplo que puede utilizar para explorar las funcionalidades de RTA. Usará estos datos de muestra para crear consultas KQL/SQL y conjuntos de consultas que analicen datos en tiempo real y permitan otros usos en procesos posteriores.
+En este laboratorio, usará Inteligencia en tiempo real en Fabric para crear una base de datos KQL a partir de una secuencia de eventos de muestra. Inteligencia en tiempo real proporciona un conjunto de datos de ejemplo que puede usar para explorar las funcionalidades de Inteligencia en tiempo real. Usará estos datos de muestra para crear consultas KQL/SQL y conjuntos de consultas que analicen datos en tiempo real y permitan otros usos en procesos posteriores.
 
 ## Creación de una base de datos KQL
 
-1. En **Análisis en tiempo real**, seleccione la casilla **Base de datos KQL**.
+1. En **Inteligencia en tiempo real**, seleccione la casilla **Base de datos KQL**.
 
    ![Imagen de la elección de la base de datos KQL](./Images/select-kqldatabase.png)
 
