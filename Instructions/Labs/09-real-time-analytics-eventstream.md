@@ -3,7 +3,7 @@ lab:
   title: Introducción a Eventstream en Microsoft Fabric
   module: Get started with Eventstream in Microsoft Fabric
 ---
-# Introducción a Eventstream en Análisis en tiempo real (RTA)
+# Introducción a Eventstream en Inteligencia en tiempo real
 
 Eventstream es una característica de Microsoft Fabric que captura, transforma y enruta eventos en tiempo real a varios destinos con una experiencia sin escritura de código. A Eventstream puede agregar orígenes de datos de eventos, destinos de enrutamiento y el procesador de eventos cuando sea necesaria una transformación. EventStore de Microsoft Fabric es una opción de supervisión que mantiene eventos del clúster y proporciona una manera de conocer el estado del clúster o de las cargas de trabajo en un momento dado. Se puede consultar el servicio EventStore sobre los eventos que están disponibles para cada entidad y tipo de entidad del clúster. Esto significa que puede consultar eventos en distintos niveles, como clústeres, nodos, aplicaciones, servicios, particiones y réplicas de particiones. El servicio EventStore también tiene la capacidad de correlacionar los eventos del clúster. El examen de los eventos que se escribieron al mismo tiempo desde distintas entidades y que pueden haberse afectado entre sí permite al servicio EventStore vincular estos eventos para identificar las causas de las actividades del clúster. Otra opción para la supervisión y el diagnóstico de clústeres de Microsoft Fabric es agregar y recopilar eventos con EventFlow.
 
@@ -21,7 +21,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
 
    ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
-5. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Análisis en tiempo real**.
+5. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Inteligencia en tiempo real**.
 
 ## Escenario
 
@@ -29,41 +29,52 @@ Con los Eventstreams de Fabric, puede administrar fácilmente los datos de event
 
 Este laboratorio se basa en datos de streaming de ejemplo denominados Stock Market Data. Los datos de ejemplo de Stock Market son un conjunto de datos de una bolsa de valores con una columna de esquema preestablecida, como la hora, el símbolo, el precio, el volumen, etc. Usará estos datos de ejemplo para simular eventos en tiempo real de los precios de las acciones y analizarlos con varios destinos, como la base de datos KQL.
 
-Use la funcionalidad de streaming y consulta de Análisis en tiempo real para responder a preguntas clave sobre las estadísticas bursátiles. En este escenario, vamos a aprovechar al máximo el asistente en lugar de crear manualmente algunos componentes por separado, como la base de datos KQL.
+Use la funcionalidad de streaming y consulta de Inteligencia en tiempo real para responder a preguntas clave sobre las estadísticas bursátiles. En este escenario, vamos a aprovechar al máximo el asistente en lugar de crear manualmente algunos componentes por separado, como la base de datos KQL.
 
 En este tutorial, aprenderá a:
 
+- Creación de instancia de Eventhouse
 - Crear una base de datos KQL
 - Habilitar la copia de datos en OneLake
 - Crear un Eventstream
 - Transmitir datos de un Eventstream a la base de datos KQL
-- Explorar datos con KQL y SQL.
+- Explorar datos con KQL y SQL\
+
+## Creación de un centro de eventos de inteligencia en tiempo real
+
+1. Seleccione la opción inteligencia en tiempo real en Microsoft Fabric.
+1. Seleccione Eventhouse en la barra de menús y asigne un nombre al centro de eventos.
+    
+    ![Imagen de la creación de un centro de eventos](./Images/create-eventhouse.png)
 
 ## Creación de una base de datos KQL
 
-1. En **Análisis en tiempo real**, seleccione la casilla **Base de datos KQL**.
+1. En el panel **Eventhouse en Inteligencia en tiempo real**, seleccione la casilla **Base de datos KQL +**.
+1. Tendrá la opción de asignar un nombre a la base de datos y seleccionar un **Nueva base de datos (valor predeterminado)** o crear una **base de datos de acceso directo (seguidor)**.
+1. Seleccione **Crear**.
 
-   ![Imagen de la elección de kqldatabase](./Images/select-kqldatabase.png)
+     >[!Note]
+     > La característica de base de datos de seguidor le permite adjuntar una base de datos ubicada en otro clúster al clúster de Azure Data Explorer. La base de datos del seguidor se adjunta en modo de solo lectura, lo que permite ver los datos y ejecutar consultas en los datos que se han ingerido en la base de datos del responsable. La base de datos del seguidor sincroniza los cambios en las bases de datos del responsable. Debido a la sincronización, hay un retraso de datos que va de unos segundos a unos minutos en la disponibilidad de los datos. La duración del retraso depende del tamaño total de los metadatos de la base de datos del responsable. Las bases de datos del responsable y el seguidor usan la misma cuenta de almacenamiento para capturar los datos. El almacenamiento pertenece a la base de datos del responsable. La base de datos del seguidor ve los datos sin necesidad de ingerirlos. Dado que la base de datos adjunta es de solo lectura, los datos, las tablas y las directivas de la base de datos no se pueden modificar, excepto en el caso de la directiva de almacenamiento en caché, las entidades de seguridad y los permisos.
 
-2. Se le pedirá que asigne un **Nombre** a la base de datos KQL.
+   ![Imagen de la elección de kqldatabase](./Images/create-kql-database-eventhouse.png)
+
+4. Se le pedirá que asigne un **Nombre** a la base de datos KQL.
 
    ![Imagen de nombrar kqldatabase](./Images/name-kqldatabase.png)
 
-3. Dele un nombre a la base de datos KQL que sea fácil de recordar, como **MyStockData**, y presione **Crear**.
+5. Dele un nombre a la base de datos KQL que sea fácil de recordar, como **Eventhouse-HR**, y presione **Crear**.
 
-1. En el panel **Detalles de la base de datos**, seleccione el icono de lápiz para activar la disponibilidad en OneLake.
+6. En el panel **Detalles de la base de datos**, seleccione el icono de lápiz para activar la disponibilidad en OneLake.
 
-   ![Imagen de la habilitación de OnLake](./Images/enable-onelake-availability.png)
+   [ ![Imagen de la habilitación de OnLake](./Images/enable-onelake-availability.png) ](./Images/enable-onelake-availability-large.png)
 
-2. Asegúrese de cambiar el botón a **Activo** y, a continuación, seleccione **Listo**.
-
- > **Nota:** no es necesario seleccionar una carpeta, Fabric la creará automáticamente.
+7. Asegúrese de cambiar el botón a **Activo** y, a continuación, seleccione **Listo**.
 
    ![Imagen de la habilitación del botón de alternancia de onlake](./Images/enable-onelake-toggle.png)
 
 ## Creación de un Eventstream
 
-1. En la barra de menús, seleccione **Análisis en tiempo real** (el icono tiene un aspecto similar a ![Logotipo de RTA](./Images/rta_logo.png)).
+1. En la barra de menús, seleccione **Inteligencia en tiempo real** (el icono es similar al ![logotipo de inteligencia en tiempo real](./Images/rta_logo.png))
 2. En **Nuevo**, seleccione **EventStream (versión preliminar)**
 
    ![Imagen de la elección de Eventstream](./Images/select-eventstream.png)
@@ -72,40 +83,80 @@ En este tutorial, aprenderá a:
 
    ![Imagen de nombrar Eventstream](./Images/name-eventstream.png)
 
-## Establecer un origen y un destino de Eventstream
+4. **Nombre** el **nuevo Eventstream** y seleccione la opción **funcionalidades mejoradas (versión preliminar)** y seleccione el botón **Crear**.
+
+     >[!Nota:] La creación de la nueva secuencia de eventos en el área de trabajo se completará en unos instantes. Una vez establecido, se le redirigirá automáticamente al editor principal, listo para empezar a integrar orígenes en el flujo de eventos.
+
+## Establecer un origen de la transmisión de eventos
 
 1. En el lienzo Eventstream, seleccione **Nuevo origen** en la lista desplegable y elija **Datos de ejemplo**.
 
-   ![Imagen del lienzo de EventStream](./Images/real-time-analytics-canvas.png)
+    [ ![Imágen de uso de datos de Sampel](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
 
-2. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar**.
+2.  En el **Agregar origen**, asigne un nombre al origen y seleccione **Bicicletas compatibles con Reflex)
+1.  Seleccione el botón **Agregar**.
 
-   | Campo       | Valor recomendado |
-   | ----------- | ----------------- |
-   | Nombre de origen | StockData         |
-   | Datos de ejemplo | Stock Market      |
+    ![Selección y nombre del flujo de eventos de datos de ejemplo](./Images/eventstream-sample-data.png)
 
-3. Ahora agregue un destino seleccionando **Nuevo destino** y, a continuación, seleccione **Base de datos KQL**.
+1. Una vez que seleccione el botón **Agregar**, la secuencia se asignará y se le redirigirá automáticamente al **lienzo de la transmisión de eventos**.
 
-   ![Imagen del destino de EventStream](./Images/new-kql-destination.png)
+   [ ![Revisar el lienzo de transmisión de eventos](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
 
-4. En la configuración de la base de datos KQL, use la tabla siguiente para completar la configuración.
+3. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar**.
+ 
+ > [!NOTA:] Después de crear el origen de datos de ejemplo, verá que se ha agregado a la transmisión de eventos en el lienzo en modo de edición. Para implementar estos datos de ejemplo recién agregados, seleccione **Publicar**.
 
-   | Campo            | Valor recomendado                              |
-   | ---------------- | ---------------------------------------------- |
-   | Nombre del destino | MyStockData                                    |
-   | Área de trabajo        | Área de trabajo en la que creó una base de datos KQL |
-   | Base de datos KQL     | MyStockData                                    |
-   | Tabla de destino| MyStockData                                    |
-   | Formato de datos de entrada| Json                                           |
+## Agregar unos eventos de transformación o agregar actividad de destino
 
-3. Seleccione **Agregar**.
+1. Después de publicar, puede seleccionar **Transformar eventos o agregar destino** y, a continuación, seleccione **base de datos KQL** como opción.
 
-> **Nota**: La ingesta de datos comenzará inmediatamente.
+   [ ![establecer la base de datos KQL como destino de la transmisión de eventos](./Images/select-kql-destination.png) ](./Images/select-kql-destination-large.png)
 
-Espere a que todos los pasos tengan una marca de verificación verde. Debe aparecer el título de página **Ingesta continua desde Eventsream establecida**. Después, seleccione **Cerrar** para volver a la página Eventstream.
 
-> **Nota**: puede que sea necesario actualizar la página para ver la tabla después de haber establecido la conexión con el Eventstream.
+2. Verá un nuevo panel lateral abierto que ofrece muchas opciones. Escriba los detalles necesarios de la base de datos KQL.
+
+   [ ![transmisión de eventos de base de datos KQL con modos de ingesta](./Images/kql-database-event-processing-before-ingestion.png) ](./Images/kql-database-event-processing-before-ingestion.png)
+
+    - **Modo de ingesta de datos:** Hay dos maneras de ingerir datos en la base de datos KQL:
+        - ***Ingesta directa***: ingerir datos directamente en una tabla KQL sin ninguna transformación.
+        - ***Procesamiento de eventos antes de la ingesta***: transforme los datos con el procesador de eventos antes de enviarlos a una tabla KQL.      
+        
+        > [!WARNING]
+        > **Advertencia:** **NO** puede editar el modo de ingesta una vez que se agrega el destino de la base de datos KQL a la transmisión de eventos.     
+
+   - **Nombre de destino**: escriba un nombre para este destino de Eventstream, como "kql-dest".
+   - **Área de trabajo**: dónde se encuentra la base de datos KQL.
+   - **Base de datos KQL**: nombre de la base de datos KQL.
+   - **Tabla de destino**: nombre de la tabla KQL. También puede escribir un nombre para crear una nueva tabla, por ejemplo, "bike-count".
+   - **Formato de datos de entrada:** Elija JSON como formato de datos para la tabla KQL.
+
+
+3. Seleccione **Guardar**. 
+4. Seleccione **Publish**.
+
+## Transformación de los eventos
+
+1. En el lienzo **transmisión de eventos**, seleccione **Transformar eventos**.
+
+    A Seleccione **Grupo por**.
+
+    B. Seleccione **Editar** representado por el icono ***lápiz***.
+
+    C. Rellene las propiedades de la selección de configuración de **Grupo por**
+
+    [ ![Agregar grupo por al evento de transformación.](./Images/eventstream-add-aggregates.png) ](./Images/eventstream-add-aggregates-large.png)
+
+2. Una vez creado el evento de transformación **Grupo por**, deberá conectarlo desde la **transmisión de eventos** a **Grupo por**. Puede hacerlo sin usar código, haga clic en punto del lado derecho **transmisión de eventos** y arrástralo al punto del lado izquierdo del nuevo cuadro **Grupo por**.
+
+   [ ![Agregar vínculo entre transmisión de eventos y Grupo por.](./Images/group-by-drag-connectors.png) ](./Images/group-by-drag-connectors-large.png)
+
+3. De la misma manera, puede pasar el ratón sobre la flecha entre la **transmisión de eventos** y el ***kql_dest*** y seleccione el ***poder reconectar***
+
+   [ ![Quitar un vínculo entre dos eventos](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
+
+    > [!NOTA:] Siempre que agregue o quite conectores, deberá volver a configurar los objetos de destino.
+
+
 
 ## Consultas KQL
 
@@ -113,36 +164,73 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 
 > **Nota**: El Editor de KQL incluye la sintaxis y el resaltado de IntelliSense, lo que permite conocer rápidamente el Lenguaje de consulta Kusto (KQL).
 
-1. Vaya a la base de datos KQL que ha creado e hidratado denominada **MyStockData**.
-2. En el árbol Datos, seleccione el menú Más [...] en la tabla MyStockData. Seleccione Tabla de consulta > Mostrar 100 registros cualesquiera.
+1. Vaya a la base de datos KQL que ha creado e hidratado:
 
-   ![Imagen del conjunto de consultas de KQL](./Images/kql-query-sample.png)
+    A  Seleccione el **kql_dest** 
+
+    B. Seleccione el hipervínculo **Abrir elemento** ubicado en la fila **Elemento relacionado**
+
+   [ ![Quitar un vínculo entre dos eventos](./Images/navigate-to-data.png) ](./Images/navigate-to-data-large.png)
+
+1. En el árbol Datos, seleccione el menú Más [...] en la tabla ***Bike_sum***. Seleccione Tabla de consulta > Mostrar 100 registros cualesquiera.
+
+   [ ![Quitar un vínculo entre dos eventos](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
 
 3. La consulta de ejemplo se abre en el panel **Comprobar los datos** con el contexto de tabla ya rellenado. Esta primera consulta usa el operador take para devolver un número de registros de ejemplo y es útil para echar un primer vistazo a la estructura de datos y los valores posibles. Las consultas de ejemplo que se rellenan automáticamente se ejecutan automáticamente. Puede ver los resultados de la consulta en el panel de resultados.
 
    ![Imagen de los resultados de consulta de KQL](./Images/kql-query-results.png)
 
-4. Vuelva al árbol de datos para seleccionar la siguiente consulta, que usa los operadores where y between para devolver los registros ingeridos en las últimas 24 horas.
+4. Vuelva al árbol de datos para seleccionar la siguiente consulta, que usa el operador summarize para contar el número de registros ingeridos en intervalos de 15 minutos.
 
-   ![Imagen de los últimos 24 resultados de consulta de KQL](./Images/kql-query-results-last24.png)
+   ![Imagen de los resultados de consulta de KQL](./Images/kql-query-results-15min-intervals.png)
 
 > **Nota**: es posible que vea una advertencia de que ha superado los límites de consulta. Este comportamiento variará en función de la cantidad de datos transmitidos a la base de datos.
 
 Puede seguir navegando con las funciones de consulta integradas para familiarizarse con los datos.
 
-## Consultas SQL de ejemplo
+## Consulta con Copilot
 
 El editor de consultas admite el uso de T-SQL además de su lenguaje de consulta principal, el Lenguaje de consulta Kusto (KQL). T-SQL puede ser útil para las herramientas que no pueden usar KQL. Para obtener más información, vea [Consulta de datos mediante T-SQL](https://learn.microsoft.com/en-us/azure/data-explorer/t-sql).
 
 1. De nuevo en el árbol Datos, seleccione el **menú Más** [...] en la tabla MyStockData. Seleccione **Tabla de consulta > SQL > Mostrar 100 registros cualesquiera**.
 
-   ![Imagen de ejemplo de consulta SQL](./Images/sql-query-sample.png)
+   [ ![Imagen de ejemplo de consulta SQL](./Images/sql-query-sample.png) ](./Images/sql-query-sample-large.png)
 
 2. Sitúe el cursor en algún lugar de la consulta y seleccione **Ejecutar** o presione **Mayús + Entrar**.
 
    ![Imagen de los resultados de consulta SQL](./Images/sql-query-results.png)
 
-Puede seguir navegando con las funciones integradas y familiarizarse con los datos usando SQL o KQL. Aquí finaliza la lección.
+Puede seguir navegando con las funciones integradas y familiarizarse con los datos usando SQL o KQL. 
+
+## Características con el conjunto de consultas
+
+Los conjuntos de consultas de las bases de datos de KQL (lenguaje de consulta Kusto) se usan para diversos propósitos, principalmente para ejecutar consultas, ver y personalizar los resultados de las consultas en los datos de una base de datos KQL. Son un componente clave en las funcionalidades de consulta de datos de Microsoft Fabric, lo que permite a los usuarios:
+
+ - **Ejecutar consultas:** Ejecute consultas KQL para recuperar datos de una base de datos KQL.
+ - **Personalizar resultados:** Vea y modifique los resultados de la consulta, lo que facilita el análisis e interpretación de los datos.
+ - **Guardar y compartir consultas:** Cree varias pestañas dentro de un conjunto de consultas para guardar las consultas para usarlas posteriormente o compartirlas con otras personas para la exploración de datos colaborativas.
+ - **Admite funciones de SQL:** Al usar KQL para crear consultas, los conjuntos de consultas también admiten muchas funciones SQL, lo que proporciona flexibilidad en la consulta de datos.
+ - **Aprovechar Copilot:** Una vez que haya guardado consultas como un conjunto de consultas KQL, puede verlas
+
+Para guardar un conjunto de consultas es sencillo y tiene un par de enfoques. 
+
+1. En la **base de datos de KQL** mientras usa la herramienta **Explorar los datos**, puede seleccionar simplemente **Guardar como conjunto de consultas KQL**
+
+   ![Guardar el conjunto de consultas KQL desde Explorar los datos](./Images/save-as-queryset.png)
+
+2. Otro enfoque es desde la página de aterrizaje de Inteligencia en tiempo real seleccionando el botón **conjunto de consultas KQL** de la página y, a continuación, asigna un nombre al **conjunto de consultas**
+
+   ![Creación de un nuevo conjunto de consultas KQL desde la página de aterrizaje de Inteligencia en tiempo real](./Images/select-create-new-queryset.png)
+
+3. Una vez que esté en la **página de aterrizaje del conjunto de consultas** verá un botón **Copilot** en la barra de herramientas, selecciónelo para abrir el **panel Copilot** para formular preguntas sobre los datos.
+
+    [ ![Abrir Copilot desde la barra de menús](./Images/open-copilot-in-queryset.png) ](./Images/open-copilot-in-queryset-large.png)
+
+4. En el **panel Copilot** simplemente escriba su pregunta y **Copilot** generará la consulta KQL y le permitirá ***copiar*** o ***insertar** la consulta en la ventana del conjunto de consultas. 
+
+    [ ![escribir una consulta de Copilot haciendo una pregunta](./Images/copilot-queryset-results.png) ](./Images/copilot-queryset-results-large.png)
+
+5. Desde este punto, tiene la opción de realizar consultas individuales y usarlas en paneles o informes de Power BI con los botones **Anclar al panel** o **Crear informe de PowerBI**.
 
 ## Limpieza de recursos
 
@@ -150,3 +238,4 @@ En este ejercicio, ha creado una base de datos KQL y ha configurado un streaming
 1. En la barra de la izquierda, seleccione el icono del área de trabajo.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
 3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+.
