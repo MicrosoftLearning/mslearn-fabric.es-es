@@ -50,7 +50,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **Conexión**: Crear nueva conexión.
     - **Nombre de la conexión**: *especifique un nombre único*.
     - **Puerta de enlace de datos**: (ninguna)
-    - **Tipo de autenticación**: Básica (*deje el nombre de usuario y la contraseña en blanco*)
+    - **Tipo de autenticación**: Anónima.
 5. Seleccione **Siguiente**. A continuación, asegúrese de que se seleccionan las siguientes opciones:
     - **Dirección URL relativa**: *dejar en blanco*
     - **Request method** (Método de solicitud): GET
@@ -149,8 +149,7 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
     - **General**:
         - **Nombre**: Eliminar archivos antiguos.
     - **Origen**
-        - **Tipo de almacén de datos**: Área de trabajo.
-        - **Almacén de datos del área de trabajo**: *Su almacén de lago*.
+        - **Conexión**: *Almacén de lago*
         - **Tipo de ruta de acceso de archivo**: ruta de acceso de archivo comodín.
         - **Ruta de acceso de la carpeta**: Archivos / **new_data**.
         - **Nombre de archivo comodín**: *.csv.        
