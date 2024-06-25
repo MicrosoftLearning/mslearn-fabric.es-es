@@ -60,16 +60,23 @@ Ahora creará relaciones entre las tablas para analizar y visualizar los datos d
      *Nota: Un modelo semántico predeterminado se crea automáticamente cuando se crea un punto de conexión de Warehouse o SQL Analytics en Microsoft Fabric y hereda la lógica de negocios de la instancia principal de Lakehouse o Warehouse. Un modelo semántico que cree usted mismo, como hemos hecho aquí, es un modelo personalizado que puede diseñar y modificar según sus necesidades y preferencias específicas. Puede crear un modelo semántico personalizado mediante Power BI Desktop, el servicio Power BI u otras herramientas que se conectan a Microsoft Fabric.*
 
 1. Seleccione **Abrir modelo de datos en la cinta de opciones**.
-   
+
     Ahora creará relaciones entre las tablas. Si está familiarizado con la creación de relaciones en Power BI Desktop, esto le resultará conocido.
 
     *Al revisar el concepto de esquema de estrella, organizaremos las tablas de nuestro modelo en una tabla de hechos y tablas de dimensiones. En este modelo, la tabla **Trip** es nuestra tabla de hechos y nuestras dimensiones son **Date**, **Geography** y **Weather**.*
 
-1. Cree una relación entre la tabla **Date** y la tabla **Trip** mediante la columna **DateID**. **Seleccione la columna DateID** de la tabla **Date** y **arrástrela y suéltela encima de la columna DateID de la tabla Trip**. Como alternativa, puede seleccionar **Administrar relaciones** en la cinta de opciones, seguida de **Nueva relación**.
+1. Cree una relación entre la tabla **Date** y la tabla **Trip** mediante la columna **DateID**.
 
-1. Asegúrese de que la relación sea una relación de tipo **Uno a varios** de la tabla **Date** a la tabla **Trip**.
+    **Seleccione la columna DateID** de la tabla **Date** y *arrástrela y suéltela encima de la columna DateID de la tabla Trip*.
 
-1. Cree relaciones con la tabla de hechos **Trip** a partir de las dimensiones **Geography** y **Weather**, repitiendo el paso anterior. Asegúrese también de que estas relaciones sean **Uno a varios**, con una ocurrencia de la clave en la tabla de dimensiones y varias en la tabla de hechos. 
+    Asegúrese de que la relación sea una relación de tipo **Uno a varios** de la tabla **Date** a la tabla **Trip**.
+
+1. Cree dos relaciones más en la tabla de datos **Trip** de la siguiente manera:
+
+   - **Geography [GeographyID]** a **Trip [DropoffGeographyID]** (1:Many)
+   - **Weather [GeographyID]** a **Trip [DropoffGeographyID]** (1:Many)
+
+    > **Nota**: debe cambiar la cardinalidad predeterminada de la relación a **1:Many** para ambas relaciones.
 
 1. Arrastre las tablas a su posición para que la tabla de hechos **Trip** se encuentre en la parte inferior del diagrama y las tablas restantes, que son tablas de dimensiones, estén alrededor de la tabla de hechos.
 
@@ -104,4 +111,3 @@ Ahora tiene un modelo semántico creado fuera del almacenamiento que tiene relac
 1. Después de haber guardado la exploración, vuelva al área de trabajo para ver el almacenamiento de datos, el modelo semántico predeterminado, el modelo semántico que ha creado y la exploración.
 
     ![Captura de pantalla de un área de trabajo en Fabric que muestra un almacenamiento de datos, un modelo semántico predeterminado, un modelo semántico y una exploración de datos.](./Images/semantic-model-workspace.png)
-

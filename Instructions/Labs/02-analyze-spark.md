@@ -270,11 +270,11 @@ Una tarea común para los ingenieros de datos es ingerir datos en un formato o e
 
     > **Nota**: Normalmente, el formato *Parquet* es el preferido para los archivos de datos que se emplearán en análisis posteriores o para su ingesta en un almacén analítico. Parquet es un formato muy eficaz que es compatible con la mayoría de los sistemas de análisis de datos a gran escala. De hecho, a veces el requisito de transformación de datos puede ser simplemente convertir datos de otro formato (como CSV) a Parquet.
 
-2. Ejecute la celda y espere a que aparezca el mensaje de que se han guardado los datos. A continuación, en el panel **Lakehouses** de la izquierda, en el menú **...** del nodo **Archivos**, seleccione **Actualizar** y elija la carpeta **transformed_orders** para comprobar que contiene una nueva carpeta denominada **pedidos**, que a su vez contiene uno o varios archivos Parquet.
+2. Ejecute la celda y espere a que aparezca el mensaje de que se han guardado los datos. A continuación, en el panel **Lakehouses** de la izquierda, en el menú **...** del nodo **Archivos**, seleccione **Actualizar**; y seleccione la carpeta **transformed_data** para comprobar que contiene una nueva carpeta denominada **pedidos**, que a su vez contiene uno o varios archivos Parquet.
 
     ![Captura de pantalla de una carpeta que contiene archivos Parquet.](./Images/saved-parquet.png)
 
-3. Agregue una nueva celda con el código siguiente para cargar un nuevo objeto DataFrame desde los archivos Parquet de la carpeta **transformed_orders/orders**:
+3. Agregue una nueva celda con el código siguiente para cargar un nuevo dataframe de los archivos parquet en la carpeta **transformed_data/orders** :
 
     ```Python
    orders_df = spark.read.format("parquet").load("Files/transformed_data/orders")
@@ -358,7 +358,7 @@ Aunque resulta útil poder insertar instrucciones SQL en una celda que contenga 
    GROUP BY YEAR(OrderDate)
    ORDER BY OrderYear;
     ```
-
+ 
 2. Ejecute la celda y revise los resultados. Observe lo siguiente:
     - La línea `%%sql` al principio de la celda (llamada *magic*) indica que se debe usar el entorno de ejecución del lenguaje Spark SQL para ejecutar el código en esta celda en lugar de PySpark.
     - El código SQL hace referencia a la tabla **salesorders** que creó anteriormente.
@@ -587,4 +587,4 @@ Si ha terminado de explorar el almacén de lago, puede eliminar el área de trab
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.

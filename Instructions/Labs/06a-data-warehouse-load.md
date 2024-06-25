@@ -29,7 +29,7 @@ En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos 
 
 1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
 
-    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio descargará un archivo CVS en el equipo local (o máquina virtual de laboratorio si procede) y, a continuación, lo cargará en el almacén de lago.
+    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio descargará un archivo CSV en el equipo local (o máquina virtual de laboratorio si procede) y a continuación, lo cargará en el almacén de lago.
 
 1. Descargue el archivo de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/raw/main/sales.csv`.
 
@@ -249,4 +249,4 @@ Si ha terminado de explorar el almacenamiento de datos, puede eliminar el área 
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.

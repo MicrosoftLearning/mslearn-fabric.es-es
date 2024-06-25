@@ -93,7 +93,7 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
 6. Seleccione **Publicar** para publicar el flujo de datos. A continuación, espere a que se cree el flujo de datos **Dataflow 1** en el área de trabajo.
 
-7. Una vez publicado, puede hacer clic con el botón derecho en el flujo de datos del área de trabajo, seleccionar **Propiedades** y cambiar el nombre del flujo de datos.
+7. Una vez publicado, puede hacer clic en los puntos suspensivos **(...)** junto al flujo de datos del área de trabajo, seleccione **Propiedades**y cambie el nombre del flujo de datos.
 
 ## Adición de un flujo de datos a una canalización
 
@@ -136,5 +136,4 @@ Si ha terminado de explorar flujos de datos en Microsoft Fabric, puede eliminar 
 1. Vaya a Microsoft Fabric en el explorador.
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 1. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-1. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
-1. No guarde los cambios en Power BI Desktop ni elimine el archivo .pbix si ya está guardado.
+1. En la sección **General**, seleccione **Quitar esta área de trabajo**.

@@ -39,7 +39,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar datos** en una canalización para extraer los datos de un origen y copiarlos en un archivo del almacén de lago.
 
-1. En la página **Inicio** del almacén de lago, seleccione **Nueva canalización de datos** y cree una canalización de datos llamada **Ingerir datos de ventas**.
+1. En la página **Inicio** de su instancia de Lakehouse, seleccione **Obtener** de datos y, a continuación, seleccione **Nueva canalización de datos**y cree una canalización de datos denominada **Ingesta de datos de ventas**.
 2. Si el Asistente para **copiar datos** no se abre automáticamente, seleccione **Copiar datos** en la página del editor de canalizaciones.
 3. En el Asistente para **copiar datos**, en la página **Elegir un origen de datos**, en la sección **Orígenes de datos**, seleccione la pestaña **Protocolo genérico** y, luego, elija **HTTP**.
 
@@ -49,7 +49,8 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexión**: Crear nueva conexión.
     - **Nombre de la conexión**: *especifique un nombre único*.
-    - **Tipo de autenticación**: Básica (*deje el nombre de usuario y la contraseña en blanco*)
+    - **Puerta de enlace de datos**: (ninguna)
+    - **Tipo de autenticación**: Anónima.
 5. Seleccione **Siguiente**. A continuación, asegúrese de que se seleccionan las siguientes opciones:
     - **Dirección URL relativa**: *dejar en blanco*
     - **Request method** (Método de solicitud): GET
@@ -64,7 +65,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **Primera fila como encabezado**: seleccionada
     - **Tipo de compresión**: ninguno
 7. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
-8. En la página **Elegir destino de datos**, seleccione su almacén de lago existente. Luego, seleccione **Siguiente**.
+8. En la página **Conectarse al destino de datos**, seleccione su almacén de lago existente. Luego, seleccione **Siguiente**.
 9. Establezca las siguientes opciones de destino de datos y, luego, seleccione **Siguiente**:
     - **Carpeta raíz**: Archivos.
     - **Nombre de la ruta de acceso de la carpeta**: new_data.
@@ -148,8 +149,7 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
     - **General**:
         - **Nombre**: Eliminar archivos antiguos.
     - **Origen**
-        - **Tipo de almacén de datos**: Área de trabajo.
-        - **Almacén de datos del área de trabajo**: *Su almacén de lago*.
+        - **Conexión**: *Almacén de lago*
         - **Tipo de ruta de acceso de archivo**: ruta de acceso de archivo comodín.
         - **Ruta de acceso de la carpeta**: Archivos / **new_data**.
         - **Nombre de archivo comodín**: *.csv.        
@@ -181,6 +181,8 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
 
     ![Captura de pantalla de una canalización con una actividad Flujo de datos.](./Images/pipeline-run.png)
 
+> Nota: En caso de que reciba el mensaje de error *Las consultas de Spark SQL solo son posibles en el contexto de un almacén de lago. Adjunte un almacén de lago para continuar*: Abra el cuaderno, seleccione el almacén de lago que creó en el panel izquierdo, seleccione **Quitar todos los almacenes de lago** y, a continuación, vuelva a agregarlo. Vuelva al diseñador de canalizaciones y seleccione **&#9655; Ejecutar**.
+
 8. En la barra de menús central, en el borde izquierdo del portal, seleccione su almacén de lago.
 9. En el panel **Explorador**, expanda **Tablas** y seleccione la tabla **new_sales** para ver una vista previa de los datos que contiene. Esta tabla se creó mediante el cuaderno cuando la canalización lo ejecutó.
 
@@ -194,4 +196,4 @@ Si ha terminado de explorar el almacén de lago, puede eliminar el área de trab
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.

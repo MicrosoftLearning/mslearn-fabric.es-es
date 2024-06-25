@@ -130,4 +130,4 @@ Si ha terminado de explorar el almacenamiento de datos, puede eliminar el área 
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.

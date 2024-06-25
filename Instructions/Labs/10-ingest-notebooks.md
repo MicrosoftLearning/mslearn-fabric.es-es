@@ -39,7 +39,7 @@ Empiece por crear un área de trabajo, una nueva instancia de almacén de lago y
 
 1. En **Archivos**, seleccione **[...]** para crear una **Nueva subcarpeta** denominada **RawData**.
 
-1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **Archivos > ... > Propiedades**.
+1. En el Explorador de Almacén de lago dentro del almacén de lago, seleccione **RawData > ... > Propiedades**.
 
 1. Copie la **ruta de acceso de ABFS** de la carpeta **RawData** en un bloc de notas vacío para su uso posterior, que debería tener un aspecto similar al siguiente:  `abfss://{workspace_name}@onelake.dfs.fabric.microsoft.com/{lakehouse_name}.Lakehouse/Files/{folder_name}/{file_name}`
 
@@ -229,4 +229,4 @@ Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado pa
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **Otros**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
