@@ -167,7 +167,7 @@ Para usar el modelo, será necesario un conjunto de datos de detalles de pacient
 
    # Save the data in a delta table
    table_name = "diabetes_test"
-   df.write.format("delta").mode("overwrite").save(f"Tables/{table_name}")
+   df.write.format("delta").mode("overwrite").saveAsTable(table_name)
    print(f"Spark dataframe saved to delta table: {table_name}")
     ```
 
@@ -196,7 +196,7 @@ Ahora se puede usar el modelo que se entrenó anteriormente para generar predicc
    df_test = model.transform(df)
 
    # Save the results (the original features PLUS the prediction)
-   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").save(f"Tables/{table_name}")
+   df_test.write.format('delta').mode("overwrite").option("mergeSchema", "true").saveAsTable(table_name)
     ```
 
 1. Cuando se finalice el código, seleccione el **...** situado junto a la tabla **diabetes_test** del panel **Explorador de almacenes de lago** y seleccione **Actualizar**. Se agregó un nuevo campo **predicciones**.

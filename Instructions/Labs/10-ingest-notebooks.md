@@ -143,42 +143,6 @@ Es probable que la tarea de ingesta de datos no termine solo con cargar un archi
 
 Ahora se ha conectado correctamente a datos externos, los ha escrito en un archivo parquet, ha cargado los datos en un DataFrame, ha transformado los datos y los ha cargado en una tabla Delta.
 
-## Optimización de escrituras de tabla Delta
-
-Probablemente esté usando macrodatos en su organización y por eso eligió cuadernos de Fabric para la ingesta de datos, por lo que también se explicará cómo optimizar la ingesta y las lecturas de los datos. En primer lugar, repetiremos los pasos para transformar y escribir en una tabla Delta con optimizaciones de escritura incluidas.
-
-1. Cree una celda de código e inserte el código siguiente:
-
-    ```python
-    from pyspark.sql.functions import col, to_timestamp, current_timestamp, year, month
- 
-    # Read the parquet data from the specified path
-    raw_df = spark.read.parquet(output_parquet_path)    
-
-    # Add dataload_datetime column with current timestamp
-    opt_df = raw_df.withColumn("dataload_datetime", current_timestamp())
-    
-    # Filter columns to exclude any NULL values in storeAndFwdFlag
-    opt_df = opt_df.filter(opt_df["storeAndFwdFlag"].isNotNull())
-    
-    # Enable V-Order
-    spark.conf.set("spark.sql.parquet.vorder.enabled", "true")
-    
-    # Enable automatic Delta optimized write
-    spark.conf.set("spark.microsoft.delta.optimizeWrite.enabled", "true")
-    
-    # Load the filtered data into a Delta table
-    table_name = "yellow_taxi_opt"  # New table name
-    opt_df.write.format("delta").mode("append").saveAsTable(table_name)
-    
-    # Display results
-    display(opt_df.limit(1))
-    ```
-
-1. Confirme que tiene los mismos resultados que antes del código de optimización.
-
-Ahora, tome nota de los tiempos de ejecución de ambos bloques de código. Los tiempos variarán, pero puede ver un aumento claro del rendimiento con el código optimizado.
-
 ## Análisis de datos de tabla Delta con consultas SQL
 
 Este laboratorio se centra en la ingesta de datos, que realmente explica el proceso de *extracción, transformación y carga*, pero también es útil para obtener una vista previa de los datos.
@@ -223,7 +187,7 @@ Este laboratorio se centra en la ingesta de datos, que realmente explica el proc
 
 ## Limpieza de recursos
 
-En este ejercicio, usó cuadernos con PySpark en Fabric para cargar datos y guardarlos en Parquet. A continuación, usó ese archivo de Parquet para transformar aún más los datos y las escrituras optimizadas de la tabla Delta. Por último, usó SQL para consultar las tablas Delta.
+En este ejercicio, usó cuadernos con PySpark en Fabric para cargar datos y guardarlos en Parquet. A continuación, usó ese archivo de Parquet para transformar aún más los datos. Por último, usó SQL para consultar las tablas Delta.
 
 Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
