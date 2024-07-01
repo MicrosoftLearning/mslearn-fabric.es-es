@@ -105,7 +105,7 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
 
 Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede ejecutar código en un cuaderno o usar el Wrangler de datos para generar código automáticamente.
 
-1. Los datos se cargan como un dataframe de Spark. Para iniciar Data Wrangler, debe convertir los datos en un dataframe de Pandas. Ejecute el código siguiente en su cuaderno:
+1. Los datos se cargan como un dataframe de Spark. Aunque Data Wrangler acepta DataFrames de Spark o Pandas, actualmente está optimizado para trabajar con Pandas. Por lo tanto, convertirá los datos en un DataFrame de Pandas. Ejecute el código siguiente en su cuaderno:
 
     ```python
    df = df.toPandas()
