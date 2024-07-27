@@ -123,7 +123,7 @@ Es probable que la tarea de ingesta de datos no termine solo con cargar un archi
     filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
     
     # Load the filtered data into a Delta table
-    table_name = "yellow_taxi"  # Replace with your desired table name
+    table_name = "yellow_taxi"
     filtered_df.write.format("delta").mode("append").saveAsTable(table_name)
     
     # Display results
@@ -164,26 +164,11 @@ Este laboratorio se centra en la ingesta de datos, que realmente explica el proc
     display(table_df.limit(10))
     ```
 
-1. Cree otra celda de código e inserte este código también:
+1. Seleccione **&#9655; Ejecutar celda** junto a la celda de código.
 
-    ```python
-    # Load table into df
-    delta_table_name = "yellow_taxi_opt"
-    opttable_df = spark.read.format("delta").table(delta_table_name)
-    
-    # Create temp SQL table
-    opttable_df.createOrReplaceTempView("yellow_taxi_opt")
-    
-    # SQL Query to confirm
-    opttable_df = spark.sql('SELECT * FROM yellow_taxi_opt')
-    
-    # Display results
-    display(opttable_df.limit(10))
-    ```
+     A muchos analistas de datos les gusta trabajar con sintaxis SQL. Spark SQL es una API de lenguaje SQL en Spark que puedes usar para ejecutar instrucciones SQL o incluso conservar datos en tablas relacionales.
 
-1. Ahora, seleccione la flecha &#9660; situada junto al botón **Ejecutar celda** para la primera de estas dos consultas y, en la lista desplegable, seleccione **Ejecutar esta celda y debajo**.
-
-    Esto ejecutará las dos últimas celdas de código. Observe la diferencia de tiempo de ejecución entre consultar la tabla con datos no optimizados y una tabla con datos optimizados.
+   El código que acaba de ejecutar crea una vista *relacional* de los datos de un DataFrame y, a continuación, usa la biblioteca **spark.sql** para insertar la sintaxis de Spark SQL en el código de Python, consultar la vista y devolver los resultados como un DataFrame.
 
 ## Limpieza de recursos
 
