@@ -53,8 +53,7 @@ En este tutorial, aprenderá a:
 1. Tendrá la opción de asignar un nombre a la base de datos y seleccionar un **Nueva base de datos (valor predeterminado)** o crear una **base de datos de acceso directo (seguidor)**.
 1. Seleccione **Crear**.
 
-     >[!Note]
-     > La característica de base de datos de seguidor le permite adjuntar una base de datos ubicada en otro clúster al clúster de Azure Data Explorer. La base de datos del seguidor se adjunta en modo de solo lectura, lo que permite ver los datos y ejecutar consultas en los datos que se han ingerido en la base de datos del responsable. La base de datos del seguidor sincroniza los cambios en las bases de datos del responsable. Debido a la sincronización, hay un retraso de datos que va de unos segundos a unos minutos en la disponibilidad de los datos. La duración del retraso depende del tamaño total de los metadatos de la base de datos del responsable. Las bases de datos del responsable y el seguidor usan la misma cuenta de almacenamiento para capturar los datos. El almacenamiento pertenece a la base de datos del responsable. La base de datos del seguidor ve los datos sin necesidad de ingerirlos. Dado que la base de datos adjunta es de solo lectura, los datos, las tablas y las directivas de la base de datos no se pueden modificar, excepto en el caso de la directiva de almacenamiento en caché, las entidades de seguridad y los permisos.
+     >**Nota:** La característica de base de datos de seguidor te permite adjuntar una base de datos ubicada en otro clúster al de Azure Data Explorer. La base de datos del seguidor se adjunta en modo de solo lectura, lo que permite ver los datos y ejecutar consultas en los datos que se han ingerido en la base de datos del responsable. La base de datos del seguidor sincroniza los cambios en las bases de datos del responsable. Debido a la sincronización, hay un retraso de datos que va de unos segundos a unos minutos en la disponibilidad de los datos. La duración del retraso depende del tamaño total de los metadatos de la base de datos del responsable. Las bases de datos del responsable y el seguidor usan la misma cuenta de almacenamiento para capturar los datos. El almacenamiento pertenece a la base de datos del responsable. La base de datos del seguidor ve los datos sin necesidad de ingerirlos. Dado que la base de datos adjunta es de solo lectura, los datos, las tablas y las directivas de la base de datos no se pueden modificar, excepto en el caso de la directiva de almacenamiento en caché, las entidades de seguridad y los permisos.
 
    ![Imagen de la elección de kqldatabase](./Images/create-kql-database-eventhouse.png)
 
@@ -75,17 +74,15 @@ En este tutorial, aprenderá a:
 ## Creación de un Eventstream
 
 1. En la barra de menús, seleccione **Inteligencia en tiempo real** (el icono es similar al ![logotipo de inteligencia en tiempo real](./Images/rta_logo.png))
-2. En **Nuevo**, seleccione **EventStream (versión preliminar)**
+2. En **Nuevo**, selecciona **Eventstream**
 
    ![Imagen de la elección de Eventstream](./Images/select-eventstream.png)
 
-3. Se le pedirá que le dé un **Nombre** al Eventstream. Asigne un nombre al EventStream que sea fácil de recordar, como **MyStockES**, y presione el botón **Crear**.
+3. Se le pedirá que le dé un **Nombre** al Eventstream. Asigna a EventStream un nombre que sea fácil de recordar, como **MyStockES**, selecciona la opción **Funcionalidades mejoradas (versión preliminar)** y selecciona el botón **Crear**.
 
    ![Imagen de nombrar Eventstream](./Images/name-eventstream.png)
 
-4. **Nombre** el **nuevo Eventstream** y seleccione la opción **funcionalidades mejoradas (versión preliminar)** y seleccione el botón **Crear**.
-
-     >[!Nota:] La creación de la nueva secuencia de eventos en el área de trabajo se completará en unos instantes. Una vez establecido, se le redirigirá automáticamente al editor principal, listo para empezar a integrar orígenes en el flujo de eventos.
+     >**Nota:** La creación del nuevo flujo de eventos en el área de trabajo se completará en unos instantes. Una vez establecido, se le redirigirá automáticamente al editor principal, listo para empezar a integrar orígenes en el flujo de eventos.
 
 ## Establecer un origen de la transmisión de eventos
 
@@ -93,18 +90,16 @@ En este tutorial, aprenderá a:
 
     [ ![Imágen de uso de datos de Sampel](./Images/eventstream-select-sample-data.png) ](./Images/eventstream-select-sample-data-large.png#lightbox)
 
-2.  En el **Agregar origen**, asigne un nombre al origen y seleccione **Bicicletas compatibles con Reflex)
-1.  Seleccione el botón **Agregar**.
+2.  En **Agregar origen**, asigna un nombre al origen y selecciona **Bicicletas (compatibles con Reflex)**
+3.  Seleccione el botón **Agregar**.
 
     ![Selección y nombre del flujo de eventos de datos de ejemplo](./Images/eventstream-sample-data.png)
 
-1. Una vez que seleccione el botón **Agregar**, la secuencia se asignará y se le redirigirá automáticamente al **lienzo de la transmisión de eventos**.
+4. Una vez que seleccione el botón **Agregar**, la secuencia se asignará y se le redirigirá automáticamente al **lienzo de la transmisión de eventos**.
 
    [ ![Revisar el lienzo de transmisión de eventos](./Images/real-time-intelligence-eventstream-sourced.png) ](./Images/real-time-intelligence-eventstream-sourced-large.png#lightbox)
-
-3. Escriba los valores de los datos de ejemplo como se muestra en la tabla siguiente y, a continuación, seleccione **Agregar**.
  
- > [!NOTA:] Después de crear el origen de datos de ejemplo, verá que se ha agregado a la transmisión de eventos en el lienzo en modo de edición. Para implementar estos datos de ejemplo recién agregados, seleccione **Publicar**.
+ > **Nota:** Después de crear el origen de datos de ejemplo, verás que se ha agregado a Eventstream en el lienzo en modo de edición. Para implementar estos datos de ejemplo recién agregados, seleccione **Publicar**.
 
 ## Agregar unos eventos de transformación o agregar actividad de destino
 
@@ -121,10 +116,9 @@ En este tutorial, aprenderá a:
         - ***Ingesta directa***: ingerir datos directamente en una tabla KQL sin ninguna transformación.
         - ***Procesamiento de eventos antes de la ingesta***: transforme los datos con el procesador de eventos antes de enviarlos a una tabla KQL.      
         
-        > [!WARNING]
         > **Advertencia:** **NO** puede editar el modo de ingesta una vez que se agrega el destino de la base de datos KQL a la transmisión de eventos.     
 
-   - **Nombre de destino**: escriba un nombre para este destino de Eventstream, como "kql-dest".
+   - **Nombre de destino:** especifica un nombre para este destino de Eventstream, como "kql-dest".
    - **Área de trabajo**: dónde se encuentra la base de datos KQL.
    - **Base de datos KQL**: nombre de la base de datos KQL.
    - **Tabla de destino**: nombre de la tabla KQL. También puede escribir un nombre para crear una nueva tabla, por ejemplo, "bike-count".
@@ -138,25 +132,32 @@ En este tutorial, aprenderá a:
 
 1. En el lienzo **transmisión de eventos**, seleccione **Transformar eventos**.
 
+    ![Agrega Agrupar por al evento de transformación.](./Images/eventstream-add-aggregates.png)
+
     A Seleccione **Grupo por**.
 
     B. Seleccione **Editar** representado por el icono ***lápiz***.
 
-    C. Rellene las propiedades de la selección de configuración de **Grupo por**
+    C. Una vez creado el evento de transformación **Grupo por**, deberá conectarlo desde la **transmisión de eventos** a **Grupo por**. Puede hacerlo sin usar código, haga clic en punto del lado derecho **transmisión de eventos** y arrástralo al punto del lado izquierdo del nuevo cuadro **Grupo por**. 
 
-    [ ![Agregar grupo por al evento de transformación.](./Images/eventstream-add-aggregates.png) ](./Images/eventstream-add-aggregates-large.png)
+    ![Agrega un vínculo entre Eventstream y Agrupar por.](./Images/group-by-drag-connectors.png)    
 
-2. Una vez creado el evento de transformación **Grupo por**, deberá conectarlo desde la **transmisión de eventos** a **Grupo por**. Puede hacerlo sin usar código, haga clic en punto del lado derecho **transmisión de eventos** y arrástralo al punto del lado izquierdo del nuevo cuadro **Grupo por**.
+2. Rellena las propiedades de la sección de configuración de **Agrupar por**:
+    - **Nombre de la operación:** especifica un nombre para este evento de transformación
+    - **Tipo de agregado:** Suma
+    - **Campo:** No_Bikes
+    - **Nombre:** SUM_No_Bikes
+    - **Agrupar agregaciones por:** calle
+      
+3. Seleccione **Agregar** y, luego, seleccione **Guardar**.
 
-   [ ![Agregar vínculo entre transmisión de eventos y Grupo por.](./Images/group-by-drag-connectors.png) ](./Images/group-by-drag-connectors-large.png)
-
-3. De la misma manera, puede pasar el ratón sobre la flecha entre la **transmisión de eventos** y el ***kql_dest*** y seleccione el ***poder reconectar***
+4. De la misma manera, puedes pasar el ratón sobre la flecha entre el **flujo de eventos** y el ***kql_dest*** y seleccionar la ***papelera**. Luego, puedes conectar el evento **Agrupar por** a **kql-dest**.
 
    [ ![Quitar un vínculo entre dos eventos](./Images/delete-flow-arrows.png) ](./Images/delete-flow-arrows-large.png)
 
-    > [!NOTA:] Siempre que agregue o quite conectores, deberá volver a configurar los objetos de destino.
+    > **Nota:** Siempre que agregues o quites conectores, deberás volver a configurar los objetos de destino.
 
-
+5. Selecciona el lápiz de **kql-dest** y crea una nueva tabla de destino denominada **Bike_sum** que recibirá la salida del evento **Agrupar por**.
 
 ## Consultas KQL
 
@@ -166,7 +167,7 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 
 1. Vaya a la base de datos KQL que ha creado e hidratado:
 
-    A  Seleccione el **kql_dest** 
+    A  Selecciona el **kql-dest** 
 
     B. Seleccione el hipervínculo **Abrir elemento** ubicado en la fila **Elemento relacionado**
 
@@ -176,11 +177,11 @@ El Lenguaje de consulta Kusto (KQL) es una solicitud de solo lectura para proces
 
    [ ![Quitar un vínculo entre dos eventos](./Images/kql-query-sample.png) ](./Images/kql-query-sample-large.png)
 
-3. La consulta de ejemplo se abre en el panel **Comprobar los datos** con el contexto de tabla ya rellenado. Esta primera consulta usa el operador take para devolver un número de registros de ejemplo y es útil para echar un primer vistazo a la estructura de datos y los valores posibles. Las consultas de ejemplo que se rellenan automáticamente se ejecutan automáticamente. Puede ver los resultados de la consulta en el panel de resultados.
+3. La consulta de ejemplo se abre en el panel **Comprobar los datos** con el contexto de tabla ya rellenado. Esta primera consulta usa el operador `take` para devolver un número de registros de ejemplo y es útil para echar un primer vistazo a la estructura de datos y los valores posibles. Las consultas de ejemplo que se rellenan automáticamente se ejecutan automáticamente. Puede ver los resultados de la consulta en el panel de resultados.
 
    ![Imagen de los resultados de consulta de KQL](./Images/kql-query-results.png)
 
-4. Vuelva al árbol de datos para seleccionar la siguiente consulta, que usa el operador summarize para contar el número de registros ingeridos en intervalos de 15 minutos.
+4. Vuelve al árbol de datos para seleccionar la siguiente consulta **Resumen de ingesta por hora**, que usa el operador `summarize` para contar el número de registros ingeridos en un intervalo determinado.
 
    ![Imagen de los resultados de consulta de KQL](./Images/kql-query-results-15min-intervals.png)
 
