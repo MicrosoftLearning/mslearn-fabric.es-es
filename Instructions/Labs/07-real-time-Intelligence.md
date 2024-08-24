@@ -44,7 +44,7 @@ El Lenguaje de consulta Kusto (KQL) se usa para consultar datos estáticos o de 
 
    El Centro de eventos se usa para agrupar y administrar las bases de datos entre proyectos. Una base de datos KQL vacía se crea automáticamente con el nombre del centro de eventos.
    
-3. Cuando se haya creado la nueva base de datos, seleccione la opción para obtener datos de un **Archivo local**. A continuación, use el asistente para importar los datos en una nueva tabla. Seleccione las siguientes opciones:
+3. Una vez creada la nueva base de datos, selecciónala de la lista de la izquierda en Bases de Datos KQL. Luego selecciona la opción para obtener datos del **archivo local**. Utiliza el asistente para importar los datos a una nueva tabla seleccionando las siguientes opciones:
     - **Destino**:
         - **Base de datos**: *La base de datos que ha creado ya está seleccionada*.
         - **Tabla**: *Cree una nueva tabla denominada* **sales** haciendo clic en el signo + a la izquierda de ***Nueva tabla***
@@ -59,7 +59,7 @@ El Lenguaje de consulta Kusto (KQL) se usa para consultar datos estáticos o de 
 
         ![Paso tres del asistente para nueva tabla](./Images/import-wizard-local-file-3.png?raw=true)
 
-        - En esta pantalla verá que los encabezados de columna están en la primera fila aunque el sistema los detectó, todavía es necesario mover el control deslizante encima de estas líneas **Primera fila es el encabezado** de columna para evitar que se produzcan errores.
+        - En esta pantalla verás que los encabezados de columna están en la primera fila aunque el sistema los ha detectado. Todavía es necesario mover el control deslizante que está encima de estas líneas **Primera fila es el encabezado de columna** para evitar que se produzcan errores.
         
         ![Paso cuatro del asistente para nueva tabla](./Images/import-wizard-local-file-4.png?raw=true)
 

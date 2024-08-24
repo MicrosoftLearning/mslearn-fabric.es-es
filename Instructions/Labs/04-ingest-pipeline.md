@@ -40,12 +40,13 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar datos** en una canalización para extraer los datos de un origen y copiarlos en un archivo del almacén de lago.
 
 1. En la página **Inicio** de su instancia de Lakehouse, seleccione **Obtener** de datos y, a continuación, seleccione **Nueva canalización de datos**y cree una canalización de datos denominada **Ingesta de datos de ventas**.
-2. Si el Asistente para **copiar datos** no se abre automáticamente, seleccione **Copiar datos** en la página del editor de canalizaciones.
-3. En el Asistente para **copiar datos**, en la página **Elegir un origen de datos**, en la sección **Orígenes de datos**, seleccione la pestaña **Protocolo genérico** y, luego, elija **HTTP**.
+2. Si el asistente **Copiar datos** no se abre automáticamente, selecciona **Copiar datos > Utilizar asistente de copia** en la página del editor de canalización.
+3. En el asistente **Copiar datos**, en la página **Elegir un origen de datos**, escribe HTTP en la barra de búsqueda y luego selecciona **HTTP** en la sección **Nuevos orígenes**.
+
 
     ![Captura de pantalla de la página "Elegir origen de datos".](./Images/choose-data-source.png)
 
-4. Seleccione **Siguiente** y, luego, elija **Crear nueva conexión** y escriba la siguiente configuración para la conexión al origen de datos:
+4. En el panel **Conectarse al origen de datos**, especifica la siguiente configuración para la conexión a tu origen de datos:
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexión**: Crear nueva conexión.
     - **Nombre de la conexión**: *especifique un nombre único*.
@@ -65,7 +66,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **Primera fila como encabezado**: seleccionada
     - **Tipo de compresión**: ninguno
 7. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
-8. En la página **Conectarse al destino de datos**, seleccione su almacén de lago existente. Luego, seleccione **Siguiente**.
+8. En la página **Elegir destino de datos**, selecciona **Centro de datos OneLake** y luego selecciona tu almacén de lago existente.
 9. Establezca las siguientes opciones de destino de datos y, luego, seleccione **Siguiente**:
     - **Carpeta raíz**: Archivos.
     - **Nombre de la ruta de acceso de la carpeta**: new_data.
