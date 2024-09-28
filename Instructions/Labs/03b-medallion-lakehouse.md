@@ -16,7 +16,7 @@ Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Ingeniería de datos de Synapse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
 2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -436,7 +436,7 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
 12. **Agregue otro bloque de código** para crear el dataframe **product_silver**.
   
     ```python
-    from pyspark.sql.functions import col, split, lit
+    from pyspark.sql.functions import col, split, lit, when
     
     # Create product_silver dataframe
     
