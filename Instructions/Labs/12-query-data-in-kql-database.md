@@ -1,6 +1,6 @@
 ---
 lab:
-  title: Consultas de datos en bases de datos KQL
+  title: Introducción a la consulta de una base de datos de Kusto en Microsoft Fabric
   module: Query data from a Kusto Query database in Microsoft Fabric
 ---
 
@@ -18,9 +18,9 @@ Este laboratorio se realiza en **25** minutos aproximadamente.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com), seleccione **Inteligencia en tiempo real**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.

@@ -16,9 +16,9 @@ Este laboratorio se tarda aproximadamente **25** minutos en completarse.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En un explorador, vaya a la página principal de Microsoft Fabric en `https://app.fabric.microsoft.com` y, si fuera necesario, inicie sesión con sus credenciales de Fabric.
+1. En un explorador, desplázate a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` y, si fuera necesario, inicia sesión con tus credenciales de Fabric.
 1. En la página principal de Fabric, seleccione **Ciencia de datos de Synapse**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
