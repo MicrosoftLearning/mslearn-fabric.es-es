@@ -4,7 +4,7 @@ lab:
   module: Load data into a warehouse in Microsoft Fabric
 ---
 
-# Carga de datos en un almacenamiento mediante T-SQL
+# Carga de datos en un almacenamiento
 
 En Microsoft Fabric, un almacenamiento de datos proporciona una base de datos relacional para análisis a gran escala. A diferencia del punto de conexión de SQL de solo lectura predeterminado para las tablas definidas en un almacén de lago, un almacenamiento de datos proporciona semántica de SQL completa; incluida la capacidad de insertar, actualizar y eliminar datos de las tablas.
 
