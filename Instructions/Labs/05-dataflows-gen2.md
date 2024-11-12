@@ -4,7 +4,7 @@ lab:
   module: Ingest Data with Dataflows Gen2 in Microsoft Fabric
 ---
 
-# Creación y uso de un flujo de datos (Gen2) en Microsoft Fabric
+# Creación y uso de flujos de datos (Gen2) en Microsoft Fabric
 
 En Microsoft Fabric, los flujos de datos (Gen2) se conectan a varios orígenes de datos y realizan transformaciones en Power Query Online. Luego, se pueden usar en canalizaciones de datos para ingerir datos en un almacén de lago u otro almacén analítico, o para definir un conjunto de datos para un informe de Power BI.
 
@@ -18,7 +18,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -82,7 +82,7 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
    ![Página de configuración del destino de datos.](./Images/data-destination-target.png)
 
-4. En la página **Elegir configuración de destino**, seleccione **Anexar** y, luego, **Guardar configuración**.
+4. Selecciona **Siguiente** y, en la página **Elegir configuración de destino**, deshabilita la opción **Usar configuración automática**, selecciona **Anexar** y, después, **Guardar configuración**.
     > **Nota:** se recomienda usar el editor de *Power Query* para actualizar los tipos de datos, pero también es posible hacerlo desde esta página, si lo prefiere.
 
     ![Página de configuración del destino de datos.](./Images/destination-settings.png)
@@ -92,8 +92,6 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
    ![Consulta con un destino de almacén de lago.](./Images/lakehouse-destination.png)
 
 6. Seleccione **Publicar** para publicar el flujo de datos. A continuación, espere a que se cree el flujo de datos **Dataflow 1** en el área de trabajo.
-
-7. Una vez publicado, puede hacer clic en los puntos suspensivos **(...)** junto al flujo de datos del área de trabajo, seleccione **Propiedades**y cambie el nombre del flujo de datos.
 
 ## Adición de un flujo de datos a una canalización
 
@@ -123,7 +121,7 @@ Puede incluir un flujo de datos como actividad en una canalización. Las canaliz
 
    ![Tabla cargada por un flujo de datos.](./Images/loaded-table.png)
 
-> **Sugerencia**: Use el *conector de flujos de datos* de Power BI Desktop para conectarse directamente a las transformaciones de datos realizadas con el flujo de datos.
+> **Sugerencia**: En Power BI Desktop, puedes conectarte directamente a las transformaciones de datos realizadas con tu flujo de datos mediante el conector de *Flujos de datos de Power BI (heredado)*.
 >
 > También puede realizar transformaciones adicionales, publicarlas como un nuevo conjunto de datos y distribuirlas con la audiencia prevista en el caso de conjuntos de datos especializados.
 >
@@ -135,5 +133,5 @@ Si ha terminado de explorar flujos de datos en Microsoft Fabric, puede eliminar 
 
 1. Vaya a Microsoft Fabric en el explorador.
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-1. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-1. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+1. En el menú **...** de la barra de herramientas, selecciona **Configuración del área de trabajo**.
+1. En la sección **General**, selecciona **Quitar esta área de trabajo**.

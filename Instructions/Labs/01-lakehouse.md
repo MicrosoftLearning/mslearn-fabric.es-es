@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Crear un Lakehouse
+# Creación de un almacén de lago de Microsoft Fabric
 
 Las soluciones de análisis de datos a gran escala se han creado tradicionalmente en torno a un *almacén de datos*, donde los datos se guardan en tablas relacionales y se consultan con el lenguaje SQL. El aumento de los "macrodatos" (caracterizados por los grandes *volúmenes*, la gran *variedad* y la alta *velocidad* de los nuevos recursos de datos), junto con la disponibilidad de tecnologías de proceso distribuido a escala de nube y almacenamiento de bajo costo, ha dado lugar a un enfoque alternativo para el almacenamiento de datos analíticos: el *lago de datos*. En un lago de datos, los datos se almacenan como archivos sin imponer un esquema fijo para el almacenamiento. Cada vez más, los ingenieros y analistas de datos buscan beneficiarse de las mejores características de ambos enfoques combinándolos en un *almacén de lago de datos*, donde los datos se almacenan en archivos en un lago de datos y se les aplica un esquema relacional en forma de capa de metadatos para poder consultarlos con la semántica SQL tradicional.
 
@@ -171,5 +171,5 @@ En este ejercicio, ha creado un almacén de lago y ha importado datos en él. Ha
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+2. En el menú **...** de la barra de herramientas, selecciona **Configuración del área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.

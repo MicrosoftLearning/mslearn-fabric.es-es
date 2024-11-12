@@ -4,7 +4,7 @@ lab:
   module: Secure a Microsoft Fabric data warehouse
 ---
 
-# Protección de los datos en un almacenamiento de datos
+# Asegure un almacenamiento de datos de Microsoft Fabric
 
 Los permisos de Microsoft Fabric y los permisos de SQL granulares funcionan conjuntamente para controlar el acceso al almacenamiento y los permisos de usuario. En este ejercicio, protegerá los datos mediante permisos granulares, seguridad de nivel de columna, seguridad de nivel de fila y enmascaramiento dinámico de datos.
 
@@ -17,8 +17,8 @@ Este laboratorio se realiza en **45** minutos aproximadamente.
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Synapse Data Warehouse**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-empty-workspace.png)
@@ -258,5 +258,5 @@ Fabric tiene un modelo de permisos que permite controlar el acceso a los datos e
 En este ejercicio, ha aplicado reglas de enmascaramiento dinámico de datos a las columnas de una tabla, ha aplicado la seguridad de nivel de fila, ha implementado la seguridad de nivel de columna y ha configurado permisos detallados de SQL mediante T-SQL.
 
 1. En la barra de navegación izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú de la barra de herramientas superior, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+2. En el menú de la barra de herramientas superior, selecciona **Configuración del área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
