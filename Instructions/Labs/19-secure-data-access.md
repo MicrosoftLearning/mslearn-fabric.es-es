@@ -8,8 +8,6 @@ lab:
 
 Microsoft Fabric ofrece un modelo de seguridad de varias capas para administrar el acceso a datos. La seguridad se puede establecer para todo un área de trabajo, para elementos individuales o mediante permisos pormenorizados en cada motor de Fabric. En este ejercicio, protegerás los datos mediante el área de trabajo y los controles de acceso a elementos y los roles de acceso a datos de OneLake.
 
-> **Nota**: para completar los ejercicios de este laboratorio, necesitarás dos usuarios: un usuario debe tener asignado el rol de administrador del área de trabajo y al otro se le asignará permisos en todo este laboratorio. Para asignar roles a las áreas de trabajo, consulta [Concesión de acceso al área de trabajo](https://learn.microsoft.com/fabric/get-started/give-access-workspaces).
-
 Este laboratorio se realiza en **45** minutos aproximadamente.
 
 ## Creación de un área de trabajo
