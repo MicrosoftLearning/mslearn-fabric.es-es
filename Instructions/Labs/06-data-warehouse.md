@@ -125,7 +125,7 @@ La mayoría de las consultas de un almacenamiento de datos relacional implican a
    ORDER BY CalendarYear, MonthOfYear;
     ```
 
-    Ten en cuenta que los atributos de la dimensión de fecha te permiten agregar las medidas de la tabla de hechos en varios niveles jerárquicos, en este caso, año y mes. Se trata de un patrón común en los almacenamientos de datos.
+    Tenga en cuenta que los atributos de la dimensión de tiempo permiten agregar las medidas de la tabla de hechos en varios niveles jerárquicos, en este caso, año y mes. Se trata de un patrón común en los almacenamientos de datos.
 
 2. Modifique la consulta de la siguiente manera para agregar una segunda dimensión a la agregación.
 
@@ -217,7 +217,7 @@ Puede visualizar fácilmente los datos en una sola consulta o en el almacenamien
       - **ProductKey**
       - **ProductAltKey** 
 
-1. Ahora está listo para compilar un informe y poner este conjunto de datos a disposición de otros usuarios. En el menú Informes, selecciona **Nuevo informe**. Se abrirá una nueva ventana, donde puede crear un informe de Power BI.
+1. Ahora está listo para compilar un informe y poner este conjunto de datos a disposición de otros usuarios. En el menú Inicio, seleccione **Nuevo informe**. Se abrirá una nueva ventana, donde puede crear un informe de Power BI.
 
 1. En el panel **Datos**, expanda **FactSalesOrder**. Tenga en cuenta que las columnas ocultas ya no están visibles. 
 

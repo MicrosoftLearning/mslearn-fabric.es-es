@@ -4,7 +4,7 @@ lab:
   module: Secure a Microsoft Fabric data warehouse
 ---
 
-# Asegure un almacenamiento de datos de Microsoft Fabric
+# Protección de los datos en un almacenamiento de datos
 
 Los permisos de Microsoft Fabric y los permisos de SQL granulares funcionan conjuntamente para controlar el acceso al almacenamiento y los permisos de usuario. En este ejercicio, protegerá los datos mediante permisos granulares, seguridad de nivel de columna, seguridad de nivel de fila y enmascaramiento dinámico de datos.
 

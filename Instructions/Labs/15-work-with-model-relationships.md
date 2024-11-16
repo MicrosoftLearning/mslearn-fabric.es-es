@@ -88,7 +88,7 @@ En esta tarea, visualizarás los datos de ventas por fecha y cambiarás el estad
 
     *Para aclarar qué año fiscal, es una buena idea cambiar el nombre del campo visual (o agregar un título al objeto visual).*
 
-7. En el panel **Visualizaciones** del objeto visual de tabla, en el área **Columnas**, selecciona la flecha abajo y, después, selecciona **Cambiar nombre para este objeto visual**.
+7. En el panel **Visualizaciones** del objeto visual de tabla, en el área **Valores**, selecciona la flecha abajo y después selecciona **Cambiar nombre para este objeto visual**.
 
     ![](Images/work-with-model-relationships-image11.png)
 
@@ -190,7 +190,7 @@ En esta tarea, usarás la función USERELATIONSHIP para activar una relación in
 
     *Otro enfoque consiste en crear una tabla de modelos diferente para cada dimensión de rol. Lo harás en el ejercicio siguiente.*
 
-6. Para quitar la medida del objeto visual de tabla, en el panel **Visualizaciones**, desde el área **Columnas**, para el campo **Ventas enviadas**, presiona **X**.
+6. Para quitar la medida del objeto visual de tabla, en el panel **Visualizaciones**, desde el área **Valores**, para el campo **Ventas enviadas**, presiona **X**.
 
     ![](Images/work-with-model-relationships-image25.png)
 
@@ -304,13 +304,13 @@ En esta tarea, visualizarás los datos de fecha de envío en un nuevo objeto vis
 
 5. Mueve el nuevo objeto visual de tabla a la derecha del objeto visual de tabla existente.
 
-6. Selecciona el nuevo objeto visual de tabla y después, en el panel **Visualizaciones**, en el área **Columnas**, quita el campo **Año de pedido**.
+6. Selecciona el nuevo objeto visual de tabla y después, en el panel **Visualizaciones**, en el área **Valores**, quita el campo **Año de pedido**.
 
     ![](Images/work-with-model-relationships-image42.png)
 
 7. En el panel **Datos**, expande para abrir la tabla **Fecha de envío**.
 
-8. Para agregar un nuevo campo al nuevo objeto visual de tabla, desde la tabla **Fecha de envío**, arrastra el campo **Año de envío** al área **Columnas**, encima del campo **Importe de ventas**.
+8. Para agregar un nuevo campo al nuevo objeto visual de tabla, desde la tabla **Fecha de envío**, arrastra el campo **Año de envío** al área **Valores**, encima del campo **Importe de ventas**.
 
     ![](Images/work-with-model-relationships-image43.png)
 
