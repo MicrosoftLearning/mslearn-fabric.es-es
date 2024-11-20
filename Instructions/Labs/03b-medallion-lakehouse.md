@@ -14,10 +14,10 @@ Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
-2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Power BI**.
+2. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
@@ -33,9 +33,9 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los datos que va analizar.
 
-1. En la página de inicio de **Ingeniería de datos de Synapse**, cree un nuevo **Lakehouse** denominado **Sales**.
+1. En el área de trabajo que acabas de crear, crea un nuevo **almacén de lago** denominado **Sales** haciendo clic en el botón **Nuevo elemento**.
 
-    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
+    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Después, debes ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
 1. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraiga los archivos y guárdelos con sus nombres originales en el equipo local (o máquina virtual de laboratorio, si procede). Debe haber 3 archivos con datos de ventas de 3 años: 2019.csv, 2020.csv y 2021.csv.
 
@@ -206,15 +206,15 @@ Ahora tiene datos en la tabla Delta de plata que están listos para ser aún má
 
 ## Exploración de datos en la capa Silver mediante el punto de conexión de SQL
 
-Ahora que tiene datos en la capa Silver, puede usar el punto de conexión de SQL para explorar los datos y realizar algunos análisis básicos. Esta es una buena opción para usted si está familiarizado con SQL y desea realizar una exploración básica de los datos. En este ejercicio, se usa la vista punto de conexión de SQL en Fabric, pero tenga en cuenta que también puede usar otras herramientas como SQL Server Management Studio (SSMS) y Azure Data Explorer.
+Ahora que tienes datos en la capa de plata, puedes usar el punto de conexión de análisis SQL para explorar los datos y realizar algunos análisis básicos. Esto es útil si estás familiarizado con SQL y quieres hacer una exploración básica de los datos. En este ejercicio, se usa la vista de punto de conexión de SQL en Fabric, pero también puedes usar otras herramientas como SQL Server Management Studio (SSMS) y Azure Data Explorer.
 
-1. Vuelva al área de trabajo y observe que ahora tiene algunos recursos enumerados. Seleccione **Punto de conexión de SQL** para abrir el almacén de lago de datos en la vista de punto de conexión de SQL.
+1. Navega de nuevo a tu área de trabajo; verás que ahora tienes varios elementos en la lista. Selecciona el **punto de conexión de análisis SQL Sales** para abrir el almacén de lago en la vista de punto de conexión de análisis SQL.
 
     ![Captura de pantalla del punto de conexión de SQL en un el almacén de lago de datos.](./Images/sql-endpoint-item.png)
 
 2. Seleccione **Nueva consulta SQL** en la cinta de opciones, que abrirá un editor de consultas SQL. Tenga en cuenta que puede cambiar el nombre de la consulta mediante el elemento de menú **...** situado junto al nombre de consulta existente en el panel del explorador del almacén de lago de datos.
 
-   Vamos a ejecutar dos consultas SQL para explorar los datos.
+   Después, ejecutarás dos consultas SQL para explorar los datos.
 
 3. Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
@@ -230,7 +230,7 @@ Ahora que tiene datos en la capa Silver, puede usar el punto de conexión de SQL
 
     ![Captura de pantalla de los resultados de una consulta SQL en un almacén de lago de datos.](./Images/total-sales-sql.png)
 
-4. Ahora echaremos un vistazo a qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
+4. Luego, debes revisar qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
     ```sql
     SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
@@ -247,13 +247,13 @@ La exploración de datos en la capa Silver es útil para el análisis básico, p
 
 Ha tomado correctamente los datos de la capa de bronce, los ha transformado y cargado en una tabla Delta de plata. Ahora usará un nuevo cuaderno para transformar los datos aún más, modelarlos en un esquema de estrella y cargarlos en tablas Delta de oro.
 
-Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en este ejercicio se usan cuadernos independientes para demostrar el proceso de transformación de datos de bronce a plata y, a continuación, de plata a oro. Esto puede ayudar con la depuración, la solución de problemas y la reutilización.
+Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio vas a utilizar cuadernos separados para demostrar el proceso de transformación de datos de bronce a plata y luego de plata a oro. Esto puede ayudar con la depuración, la solución de problemas y la reutilización.
 
-1. Vuelva a la página principal de **Ingeniería de datos** y cree un cuaderno llamado **Transformar datos para oro**.
+1. Vuelve a la página principal del área de trabajo y crea un cuaderno llamado **Transformar datos para oro**.
 
-2. En el panel de exploración de almacenes de lago, agregue su almacén de lago **Sales** seleccionando **Agregar** y seleccionando entonces el almacén de lago **Sales** que creó anteriormente. Debería ver la tabla **sales_silver** en la sección **Tablas** del panel de exploración.
+2. En el panel de exploración de almacenes de lago, agregue su almacén de lago **Sales** seleccionando **Agregar** y seleccionando entonces el almacén de lago **Sales** que creó anteriormente. En la ventana **Agregar almacén de lago**, selecciona **Almacén de lago existente sin esquema**. Debería ver la tabla **sales_silver** en la sección **Tablas** del panel de exploración.
 
-3. En el bloque de código existente, quite el texto reutilizable y **agregue el código siguiente** para cargar datos al dataframe y comenzar a crear el esquema de estrella, después ejecútelo:
+3. En el bloque de código existente, elimina el texto comentado y **agrega el siguiente código** para cargar datos en tu marco de datos y empezar a construir tu esquema de estrella, luego ejecútalo:
 
    ```python
     # Load data to the dataframe as a starting point to create the gold layer
@@ -326,13 +326,13 @@ Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en e
           "Month": "updates.Month",
           "Year": "updates.Year",
           "mmmyyyy": "updates.mmmyyyy",
-          "yyyymm": "yyyymm"
+          "yyyymm": "updates.yyyymm"
         }
       ) \
       .execute()
     ```
 
-    ¡Enhorabuena! La dimensión de fecha está configurada. Ahora creará la dimensión del cliente.
+    La dimensión de fecha ahora está configurada. Ahora creará la dimensión del cliente.
 7. Para crear la tabla de dimensiones de cliente, **agregue un nuevo bloque de código**, pegue y ejecute el código siguiente:
 
     ```python
@@ -598,7 +598,7 @@ Tenga en cuenta que no puede usar el **modelo semántico predeterminado** que se
    - dimproduct_gold
    - factsales_gold
 
-    Esto abrirá el modelo semántico en Fabric, donde podrá crear relaciones y medidas como se muestra aquí:
+    Esto abrirá el modelo semántico en Fabric, donde podrás crear relaciones y medidas.
 
     ![Captura de pantalla de un modelo semántico en Fabric.](./Images/dataset-relationships.png)
 
