@@ -21,8 +21,6 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 3. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-   ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace-medallion.png)
-
 5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un modelo semántico de Power BI.
 
     ![Captura de pantalla de la página de configuración del área de trabajo en Fabric.](./Images/workspace-settings.png)
@@ -153,8 +151,6 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
 10. Ejecute la celda para ejecutar el código mediante el botón ****&#9655;** (*Ejecutar celda*)**.
 
 11. Seleccione **...** en la sección Tablas en el panel del explorador del almacén de lago y seleccione **Actualizar**. Ahora debería ver la nueva tabla **sales_silver** en la lista. **&#9650;** (icono de triángulo) indica que es una tabla Delta.
-
-    ![Captura de pantalla de la tabla sales_silver en un almacén de lago.](./Images/sales-silver-table.png)
 
     > **Nota**: si no ve la nueva tabla, espere unos segundos y vuelva a seleccionar **Actualizar**, o actualice la pestaña del explorador.
 
@@ -598,7 +594,7 @@ Tenga en cuenta que no puede usar el **modelo semántico predeterminado** que se
    - dimproduct_gold
    - factsales_gold
 
-    Esto abrirá el modelo semántico en Fabric, donde podrás crear relaciones y medidas.
+    Esto abrirá el modelo semántico en Fabric, donde podrá crear relaciones y medidas como se muestra aquí:
 
     ![Captura de pantalla de un modelo semántico en Fabric.](./Images/dataset-relationships.png)
 
