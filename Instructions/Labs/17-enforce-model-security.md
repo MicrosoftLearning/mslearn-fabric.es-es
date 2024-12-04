@@ -4,7 +4,7 @@ lab:
   module: Design and build tabular models
 ---
 
-# Aplicación de seguridad de los modelos
+# Aplicar la seguridad del modelo semántico
 
 En este ejercicio, actualizará un modelo de datos previamente desarrollado para obligar al uso de la seguridad. En concreto, los vendedores de la empresa Adventure Works solo deben poder ver los datos de ventas relacionados con su región de ventas asignada.
 

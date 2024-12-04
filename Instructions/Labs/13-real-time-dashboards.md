@@ -1,7 +1,7 @@
 ---
 lab:
-  title: "Paneles en tiempo real en Microsoft\_Fabric"
-  module: Get Started with Real-Time Dashboards in Microsoft Fabric
+  title: "Introducción a los paneles en tiempo real en Microsoft\_Fabric"
+  module: Get started with Real-Time Dashboards in Microsoft Fabric
 ---
 
 # Introducción a los paneles en tiempo real en Microsoft Fabric
@@ -17,7 +17,7 @@ Este laboratorio se realiza en **25** minutos aproximadamente.
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*). O bien, puede usar un área de trabajo existente para crear un panel en tiempo real.
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
@@ -176,5 +176,5 @@ La actualización automática es una funcionalidad que permite actualizar autom�
 En este ejercicio, creó una base de datos KQL y configuró un conjunto de datos de ejemplo para realizar consultas. Después, ha consultado los datos con KQL y SQL. Si ha terminado de explorar la base de datos KQL, puede eliminar el área de trabajo que ha creado para este ejercicio.
 1. En la barra de la izquierda, seleccione el **icono** del área de trabajo.
 2. En el menú ... de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
 

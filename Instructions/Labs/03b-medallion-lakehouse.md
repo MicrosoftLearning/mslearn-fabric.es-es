@@ -14,12 +14,14 @@ Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Power BI**.
-2. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
+2. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
 4. Cuando se abra la nueva área de trabajo, debe estar vacía.
+
+   ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace-medallion.png)
 
 5. Vaya a la configuración del área de trabajo y habilite la característica en vista previa (GB) **Edición del modelo de datos**. Esto le permitirá crear relaciones entre tablas en el almacén de lago de datos mediante un modelo semántico de Power BI.
 
@@ -31,9 +33,9 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los datos que va analizar.
 
-1. En el área de trabajo que acabas de crear, crea un nuevo **almacén de lago** denominado **Sales** haciendo clic en el botón **Nuevo elemento**.
+1. En la página de inicio de **Ingeniería de datos de Synapse**, cree un nuevo **Lakehouse** denominado **Sales**.
 
-    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Después, debes ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
+    Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio simplemente descargará un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargará en el almacén de lago.
 
 1. Descargue el archivo de datos de este ejercicio desde `https://github.com/MicrosoftLearning/dp-data/blob/main/orders.zip`. Extraiga los archivos y guárdelos con sus nombres originales en el equipo local (o máquina virtual de laboratorio, si procede). Debe haber 3 archivos con datos de ventas de 3 años: 2019.csv, 2020.csv y 2021.csv.
 
@@ -152,6 +154,8 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
 
 11. Seleccione **...** en la sección Tablas en el panel del explorador del almacén de lago y seleccione **Actualizar**. Ahora debería ver la nueva tabla **sales_silver** en la lista. **&#9650;** (icono de triángulo) indica que es una tabla Delta.
 
+    ![Captura de pantalla de la tabla sales_silver en un almacén de lago.](./Images/sales-silver-table.png)
+
     > **Nota**: si no ve la nueva tabla, espere unos segundos y vuelva a seleccionar **Actualizar**, o actualice la pestaña del explorador.
 
 12. Ahora va a realizar una **operación upsert** en una tabla Delta, actualizando los registros existentes según unas condiciones específicas e insertando nuevos registros cuando no se encuentren coincidencias. Agregue un nuevo bloque de código y pegue el siguiente código:
@@ -202,15 +206,15 @@ Ahora tiene datos en la tabla Delta de plata que están listos para ser aún má
 
 ## Exploración de datos en la capa Silver mediante el punto de conexión de SQL
 
-Ahora que tienes datos en la capa de plata, puedes usar el punto de conexión de análisis SQL para explorar los datos y realizar algunos análisis básicos. Esto es útil si estás familiarizado con SQL y quieres hacer una exploración básica de los datos. En este ejercicio, se usa la vista de punto de conexión de SQL en Fabric, pero también puedes usar otras herramientas como SQL Server Management Studio (SSMS) y Azure Data Explorer.
+Ahora que tiene datos en la capa Silver, puede usar el punto de conexión de SQL para explorar los datos y realizar algunos análisis básicos. Esta es una buena opción para usted si está familiarizado con SQL y desea realizar una exploración básica de los datos. En este ejercicio, se usa la vista punto de conexión de SQL en Fabric, pero tenga en cuenta que también puede usar otras herramientas como SQL Server Management Studio (SSMS) y Azure Data Explorer.
 
-1. Navega de nuevo a tu área de trabajo; verás que ahora tienes varios elementos en la lista. Selecciona el **punto de conexión de análisis SQL Sales** para abrir el almacén de lago en la vista de punto de conexión de análisis SQL.
+1. Vuelva al área de trabajo y observe que ahora tiene algunos recursos enumerados. Seleccione **Punto de conexión de SQL** para abrir el almacén de lago de datos en la vista de punto de conexión de SQL.
 
     ![Captura de pantalla del punto de conexión de SQL en un el almacén de lago de datos.](./Images/sql-endpoint-item.png)
 
 2. Seleccione **Nueva consulta SQL** en la cinta de opciones, que abrirá un editor de consultas SQL. Tenga en cuenta que puede cambiar el nombre de la consulta mediante el elemento de menú **...** situado junto al nombre de consulta existente en el panel del explorador del almacén de lago de datos.
 
-   Después, ejecutarás dos consultas SQL para explorar los datos.
+   Vamos a ejecutar dos consultas SQL para explorar los datos.
 
 3. Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
@@ -226,7 +230,7 @@ Ahora que tienes datos en la capa de plata, puedes usar el punto de conexión de
 
     ![Captura de pantalla de los resultados de una consulta SQL en un almacén de lago de datos.](./Images/total-sales-sql.png)
 
-4. Luego, debes revisar qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
+4. Ahora echaremos un vistazo a qué clientes compran más (en términos de cantidad). Pegue la consulta siguiente en el editor de consultas y seleccione **Ejecutar**:
 
     ```sql
     SELECT TOP 10 CustomerName, SUM(Quantity) AS TotalQuantity
@@ -243,13 +247,13 @@ La exploración de datos en la capa Silver es útil para el análisis básico, p
 
 Ha tomado correctamente los datos de la capa de bronce, los ha transformado y cargado en una tabla Delta de plata. Ahora usará un nuevo cuaderno para transformar los datos aún más, modelarlos en un esquema de estrella y cargarlos en tablas Delta de oro.
 
-Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio vas a utilizar cuadernos separados para demostrar el proceso de transformación de datos de bronce a plata y luego de plata a oro. Esto puede ayudar con la depuración, la solución de problemas y la reutilización.
+Tenga en cuenta que podría haber hecho todo esto en un solo cuaderno, pero en este ejercicio se usan cuadernos independientes para demostrar el proceso de transformación de datos de bronce a plata y, a continuación, de plata a oro. Esto puede ayudar con la depuración, la solución de problemas y la reutilización.
 
-1. Vuelve a la página principal del área de trabajo y crea un cuaderno llamado **Transformar datos para oro**.
+1. Vuelva a la página principal de **Ingeniería de datos** y cree un cuaderno llamado **Transformar datos para oro**.
 
-2. En el panel de exploración de almacenes de lago, agregue su almacén de lago **Sales** seleccionando **Agregar** y seleccionando entonces el almacén de lago **Sales** que creó anteriormente. En la ventana **Agregar almacén de lago**, selecciona **Almacén de lago existente sin esquema**. Debería ver la tabla **sales_silver** en la sección **Tablas** del panel de exploración.
+2. En el panel de exploración de almacenes de lago, agregue su almacén de lago **Sales** seleccionando **Agregar** y seleccionando entonces el almacén de lago **Sales** que creó anteriormente. Debería ver la tabla **sales_silver** en la sección **Tablas** del panel de exploración.
 
-3. En el bloque de código existente, elimina el texto comentado y **agrega el siguiente código** para cargar datos en tu marco de datos y empezar a construir tu esquema de estrella, luego ejecútalo:
+3. En el bloque de código existente, quite el texto reutilizable y **agregue el código siguiente** para cargar datos al dataframe y comenzar a crear el esquema de estrella, después ejecútelo:
 
    ```python
     # Load data to the dataframe as a starting point to create the gold layer
@@ -305,10 +309,10 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
     
     dfUpdates = dfdimDate_gold
     
-    deltaTable.alias('gold') \
+    deltaTable.alias('silver') \
       .merge(
         dfUpdates.alias('updates'),
-        'gold.OrderDate = updates.OrderDate'
+        'silver.OrderDate = updates.OrderDate'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -322,13 +326,13 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
           "Month": "updates.Month",
           "Year": "updates.Year",
           "mmmyyyy": "updates.mmmyyyy",
-          "yyyymm": "updates.yyyymm"
+          "yyyymm": "yyyymm"
         }
       ) \
       .execute()
     ```
 
-    La dimensión de fecha ahora está configurada. Ahora creará la dimensión del cliente.
+    ¡Enhorabuena! La dimensión de fecha está configurada. Ahora creará la dimensión del cliente.
 7. Para crear la tabla de dimensiones de cliente, **agregue un nuevo bloque de código**, pegue y ejecute el código siguiente:
 
     ```python
@@ -393,10 +397,10 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
     
     dfUpdates = dfdimCustomer_gold
     
-    deltaTable.alias('gold') \
+    deltaTable.alias('silver') \
       .merge(
         dfUpdates.alias('updates'),
-        'gold.CustomerName = updates.CustomerName AND gold.Email = updates.Email'
+        'silver.CustomerName = updates.CustomerName AND silver.Email = updates.Email'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -432,7 +436,7 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
 12. **Agregue otro bloque de código** para crear el dataframe **product_silver**.
   
     ```python
-    from pyspark.sql.functions import col, split, lit, when
+    from pyspark.sql.functions import col, split, lit
     
     # Create product_silver dataframe
     
@@ -475,10 +479,10 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
             
     dfUpdates = dfdimProduct_gold
             
-    deltaTable.alias('gold') \
+    deltaTable.alias('silver') \
       .merge(
             dfUpdates.alias('updates'),
-            'gold.ItemName = updates.ItemName AND gold.ItemInfo = updates.ItemInfo'
+            'silver.ItemName = updates.ItemName AND silver.ItemInfo = updates.ItemInfo'
             ) \
             .whenMatchedUpdate(set =
             {
@@ -552,10 +556,10 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
     
     dfUpdates = dffactSales_gold
     
-    deltaTable.alias('gold') \
+    deltaTable.alias('silver') \
       .merge(
         dfUpdates.alias('updates'),
-        'gold.OrderDate = updates.OrderDate AND gold.CustomerID = updates.CustomerID AND gold.ItemID = updates.ItemID'
+        'silver.OrderDate = updates.OrderDate AND silver.CustomerID = updates.CustomerID AND silver.ItemID = updates.ItemID'
       ) \
        .whenMatchedUpdate(set =
         {
@@ -607,5 +611,5 @@ En este ejercicio, ha aprendido a crear una arquitectura de medallas en un almac
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, selecciona **Configuración del área de trabajo**.
-3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
+2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
+3. En la sección **General**, seleccione **Quitar esta área de trabajo**.

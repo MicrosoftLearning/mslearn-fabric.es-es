@@ -16,11 +16,11 @@ Este laboratorio se tarda en completar **60** minutos aproximadamente.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Ingeniería de datos**.
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -29,11 +29,11 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos en el cual ingerirá los datos.
 
-1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. En la página principal de **Ingeniería de datos**, crea un nuevo **almacén de lago de datos** con el nombre que prefieras.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago sin **tablas** ni **archivos**.
 
-1. En la pestaña **Vista de lago** del panel de la izquierda, en el menú **...** del nodo **Archivos**, seleccione **Nueva subcarpeta** y cree una subcarpeta llamada **new_data**.
+1. En el panel del **Explorador** de la izquierda, en el menú **...** del nodo **Archivos**, selecciona **Nueva subcarpeta** y crea una subcarpeta llamada **new_data**.
 
 ## Crear una canalización
 
@@ -41,7 +41,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
 
 1. En la página **Inicio** de su instancia de Lakehouse, seleccione **Obtener** de datos y, a continuación, seleccione **Nueva canalización de datos**y cree una canalización de datos denominada **Ingesta de datos de ventas**.
 2. Si el asistente **Copiar datos** no se abre automáticamente, selecciona **Copiar datos > Utilizar asistente de copia** en la página del editor de canalización.
-3. En el asistente **Copiar datos**, en la página **Elegir un origen de datos**, escribe HTTP en la barra de búsqueda y luego selecciona **HTTP** en la sección **Nuevos orígenes**.
+3. En el Asistente para **copiar datos**, en la página **Elegir origen de datos**, escribe HTTP en la barra de búsqueda y luego selecciona **HTTP** en la sección **Nuevos orígenes**.
 
 
     ![Captura de pantalla de la página "Elegir origen de datos".](./Images/choose-data-source.png)
@@ -66,8 +66,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
     - **Primera fila como encabezado**: seleccionada
     - **Tipo de compresión**: ninguno
 7. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
-8. En la página **Elegir destino de datos**, selecciona **Centro de datos OneLake** y luego selecciona tu almacén de lago existente.
-9. Establezca las siguientes opciones de destino de datos y, luego, seleccione **Siguiente**:
+8. En la página **Conectar al destino de datos**, establece las siguientes opciones de destino de datos y, a continuación, selecciona **Siguiente**:
     - **Carpeta raíz**: Archivos.
     - **Nombre de la ruta de acceso de la carpeta**: new_data.
     - **Nombre de archivo**: sales.csv.
@@ -142,7 +141,7 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
 Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en una tabla, puede incorporarlo a una canalización para crear un proceso de ETL reutilizable.
 
 1. En la barra de menús central, a la izquierda, seleccione la canalización **Ingerir datos de ventas** que creó anteriormente.
-2. En la pestaña **Actividades**, en la lista **Más actividades**, seleccione **Eliminar datos**. A continuación, coloque la nueva actividad **Eliminar datos** a la izquierda de la actividad **Copiar datos** y conecte su salida **Al finalizar** a la actividad **Copiar datos**, como se muestra aquí:
+2. En la pestaña **Actividades**, en la lista **Todas las actividades**, selecciona **Eliminar datos**. A continuación, coloque la nueva actividad **Eliminar datos** a la izquierda de la actividad **Copiar datos** y conecte su salida **Al finalizar** a la actividad **Copiar datos**, como se muestra aquí:
 
     ![Captura de pantalla de una canalización con las actividades Eliminar datos y Copiar datos.](./Images/delete-data-activity.png)
 
@@ -196,5 +195,5 @@ En este ejercicio, ha aprendido a implementar una canalización en Microsoft Fab
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+1. Selecciona **Configuración del área de trabajo** y, en la sección **General**, desplázate hacia abajo y selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Eliminar** para eliminar el área de trabajo.

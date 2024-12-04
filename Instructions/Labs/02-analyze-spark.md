@@ -23,26 +23,26 @@ Para poder trabajar con datos en Fabric, debes crear un área de trabajo.
 1. Asigna un nombre a la nueva área de trabajo y, en la sección **Avanzado**, selecciona el modo de licencia adecuado. Si has iniciado una versión de prueba de Microsoft Fabric, selecciona Prueba.
 1. Selecciona **Aplicar** para crear un área de trabajo vacía.
  
-    ![Imagen de pantalla de los archivos CSV cargados en una nueva área de trabajo de Fabric.](Images/uploaded-files.jpg)
+    ![Imagen de pantalla de una nuevo área de trabajo de Fabric.](Images/new-workspace.jpg)
 
 ## Creación de un almacén de lago y carga de archivos
 
-Ahora que tienes un área de trabajo, puedes crear un almacén de lago para los archivos de datos. En el área de trabajo nueva, selecciona **Nuevo** y **Almacén de lago**. Asigna un nombre al almacén de lago y selecciona **Crear**. Después de un breve retraso, se crea un nuevo almacén de lago.
+Ahora que tienes un área de trabajo, puedes crear un almacén de lago para los archivos de datos. En el área de trabajo nueva, selecciona **+ Nuevo elemento** y **Almacén de lago de datos**. Asigna un nombre al almacén de lago y selecciona **Crear**. Después de un breve retraso, se crea un nuevo almacén de lago.
 
 Ahora puedes ingerir datos en el almacén de lago. Hay varias maneras de hacerlo, pero de momento descargarás y extraerás una carpeta de archivos de texto en el equipo local (o máquina virtual de laboratorio si procede) y, luego, los cargarás en el almacén de lago.
 
-1. Descarga los archivos de datos de https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip.
+1. Descarga los archivos de datos de `https://github.com/MicrosoftLearning/dp-data/raw/main/orders.zip`.
 1. Extraer el archivo comprimido y comprueba que tienes una carpeta denominada *orders* que contiene los archivos CSV 2019.csv, 2020.csvy 2021.csv.
 1. Vuelve a tu nuevo almacén de lago. En el panel **Explorador**, selecciona el menú de puntos suspensivos **...** situado junto a la carpeta **Archivos** después, selecciona **Cargar** y **Cargar carpeta**. Ve a la carpeta orders del equipo local (o máquina virtual de laboratorio si procede) y selecciona **Cargar**.
 1. Una vez cargados los archivos, expande **Archivos** y selecciona la carpeta **orders**. Comprueba que se ha cargado el archivo CSV, como se muestra aquí:
 
-    ![Imagen de pantalla de una nuevo área de trabajo de Fabric.](Images/new-workspace.jpg)
+    ![Imagen de pantalla de los archivos CSV cargados en una nueva área de trabajo de Fabric.](Images/uploaded-files.jpg)
 
 ## Creación de un cuaderno
 
 Ahora puedes crear un cuaderno de Fabric para trabajar con los datos. Los cuadernos proporcionan un entorno interactivo en el que puedes escribir y ejecutar código.
 
-1. Selecciona el área de trabajo y, a continuación, selecciona **Nuevo** y **Cuaderno**. Al cabo de unos segundos, se abrirá un nuevo cuaderno que contiene una sola celda. Los cuadernos se componen de una o varias celdas que pueden contener código o Markdown (texto con formato).
+1. Selecciona tu área de trabajo y, a continuación, selecciona **+ Nuevo elemento** y **Cuaderno**. Al cabo de unos segundos, se abrirá un nuevo cuaderno que contiene una sola celda. Los cuadernos se componen de una o varias celdas que pueden contener código o Markdown (texto con formato).
 1. Fabric asigna un nombre a cada cuaderno que crees, como Cuaderno 1, Cuaderno 2, etc. Haz clic en el panel de nombres situado encima de la pestaña **Inicio** del menú para cambiar el nombre a algo más descriptivo.
 1. Selecciona la primera celda (que actualmente es una celda de código) y, luego, en la barra de herramientas en la parte superior derecha, usa el botón **M↓** para convertirla en una celda de Markdown. El texto dentro de la celda se mostrará como texto con formato.
 1. Usa el botón 🖉 (Editar) para cambiar la celda al modo de edición y, luego, modifica el Markdown de la siguiente manera.
@@ -65,7 +65,7 @@ Ahora que has creado una área de trabajo, un almacén de lago y un cuaderno est
 
 1. Selecciona el área de trabajo nueva en la barra izquierda. Verás una lista de los elementos dentro del área de trabajo, incluidos el almacén de lago y el cuaderno.
 2. Selecciona el almacén de lago para mostrar el panel Explorador, incluida la carpeta **orders**.
-3. En el menú superior, selecciona **Abrir cuaderno**, **Bloc de notas existente** y, a continuación, abre el cuaderno que creaste anteriormente. El cuaderno debe estar abierto junto al panel Explorador. Expande los almacenes de lago, expande la lista Archivos y selecciona la carpeta orders. Los archivos CSV que cargaste se muestran junto al editor de cuadernos, de la siguiente manera:
+3. En el menú superior, selecciona **Abrir cuaderno**, **Cuaderno existente** y, a continuación, abre el cuaderno que creaste anteriormente. El cuaderno debe estar abierto junto al panel Explorador. Expande los almacenes de lago, expande la lista Archivos y selecciona la carpeta orders. Los archivos CSV que cargaste se muestran junto al editor de cuadernos, de la siguiente manera:
 
     ![Imagen de pantalla de archivos CSV en la vista Explorador.](Images/explorer-notebook-view.jpg)
 
@@ -156,7 +156,7 @@ El objeto DataFrame proporciona funcionalidad adicional, como la capacidad de fi
 
 ### Filtrado de un DataFrame
 
-1. Agrega una celda de código seleccionando **+ Código** que aparece al mantener el puntero encima o debajo de la celda actual o su salida. Como alternativa, en el menú de cinta, selecciona **Editar** y **+ Agregar** celda de código.
+1. Agrega una celda de código seleccionando **+ Código** que aparece al mantener el puntero encima o debajo de la celda actual o su salida. Como alternativa, en el menú de cinta, selecciona **Editar** y **+ Agregar celda de código debajo**.
 
 2.  El código siguiente filtra los datos para que solo se devuelvan dos columnas. También usa *count* y *distinct* para resumir el número de registros:
 
@@ -300,7 +300,7 @@ Al tratar con grandes volúmenes de datos, la creación de particiones puede mej
     print ("Transformed data saved!")
     ```
 
-2.  Ejecuta la celda y espera a que aparezca el mensaje de que se han guardado los datos. A continuación, en el panel Almacén de lago de la izquierda, en ... el menú ... del nodo Archivos, selecciona **Actualizar** y expande la carpeta partitioned_orders para comprobar que contiene una jerarquía de carpetas llamadas *Year=xxxx*, cada una de las cuales contiene carpetas llamadas *Month=xxxx*. Cada carpeta Month contiene un archivo Parquet con los pedidos de ese mes.
+2.  Ejecuta la celda y espera a que aparezca el mensaje de que se han guardado los datos. A continuación, en el panel Almacén de lago de la izquierda, en ... del nodo Archivos, selecciona **Actualizar** y expande la carpeta partitioned_data para comprobar que contiene una jerarquía de carpetas llamada *Year=xxxx*, cada una de las cuales contiene carpetas llamadas *Month=xxxx*. Cada carpeta Month contiene un archivo Parquet con los pedidos de ese mes.
 
     ![Imagen de pantalla en la que se muestran los datos con particiones por año y mes.](Images/partitioned-data.jpg)
 

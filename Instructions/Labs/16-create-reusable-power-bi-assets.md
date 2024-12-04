@@ -106,7 +106,7 @@ En esta tarea, agregarás una nueva tabla porque el modelo semántico no tiene t
 1. Quita la columna RANK.
 1. Selecciona **Cerrar y aplicar** para cargar los datos transformados en el modelo semántico.
 1. Selecciona **Aceptar** si te aparece un cuadro de diálogo para *Posible riesgo de seguridad*.
-1. **Guarde** el archivo.
+1. **Guarda** el archivo.
 1. Si se te solicita, **no actualices** al formato mejorado de Informe de Power BI.
 
 ### Revisión de los detalles del archivo del proyecto de Power BI
@@ -115,7 +115,7 @@ En esta tarea, realizaremos cambios en el informe de Power BI Desktop y veremos 
 
 1. En el explorador de archivos, busca la carpeta de archivos ***YourReport*.SemanticModel**.
 1. Abre la carpeta de definición y observa los diferentes archivos.
-1. Abre el archivo **relationships.tmdl** en el Bloc de notas, y observa que hay 9 relaciones enumeradas. Cierre el archivo .
+1. Abre el archivo **relationships.tmdl** en el Bloc de notas, y observa que hay 9 relaciones enumeradas. Cierra el archivo.
 1. De vuelta en Power BI Desktop, ve a la pestaña **Modelado** de la cinta.
 1. Selecciona **Administrar relaciones** y observa que hay 9 relaciones.
 1. Crea una nueva relación de la siguiente manera:
@@ -126,7 +126,7 @@ En esta tarea, realizaremos cambios en el informe de Power BI Desktop y veremos 
 
     ![Captura de pantalla de un cuadro de diálogo de nueva relación configurado como se ha descrito anteriormente.](./Images/power-bi-new-relationship-us-population.png)
 
-1. **Guarde** el archivo.
+1. **Guarda** el archivo.
 1. Vuelve al archivo **relationships.tmdl** y observa que se ha agregado una nueva relación.
 
 > Estos cambios en los archivos planos son rastreables en los sistemas de control de código fuente, a diferencia de los archivos *.pbix* que son binarios.
@@ -150,7 +150,7 @@ En esta tarea, agregarás una medida y un objeto visual para ampliar el modelo s
 1. Busca la nueva medida **Sales per Capita** y arrástrala al lienzo.
 1. Arrastra los campos **Ventas \| Ventas**, **Población de EE.UU. \| Estado** y **Población de EE.UU. \| Población** al mismo objeto visual.
 
-   > *Los laboratorios usan una notación abreviada para hacer referencia a un campo. Tendrá este aspecto: **Sales \| Unit Price** (Ventas | Precio unitario). En este ejemplo, **Sales** (Ventas) es el nombre de la tabla y **Unit Price** (Precio unitario) es el nombre del campo.*
+   > *Los laboratorios usan una notación abreviada para hacer referencia a un campo. Tendrá este aspecto: **Sales \| Unit Price**. En este ejemplo, **Sales** es el nombre de la tabla y **Unit Price** es el nombre del campo.*
 
 1. Selecciona el objeto visual y cámbialo a una **Tabla**.
 1. Observa el formato incoherente de los datos Sales per Capita y Population.
@@ -162,7 +162,7 @@ En esta tarea, agregarás una medida y un objeto visual para ampliar el modelo s
 
     > Sugerencia: si creas accidentalmente una medida en la tabla incorrecta, puedes cambiar fácilmente la tabla Inicio, como se muestra en la imagen anterior.
 
-1. Guarde el archivo.
+1. Guarda el archivo.
 
 > La tabla debe ser similar a la siguiente imagen con cuatro columnas y números con el formato correcto.
 
@@ -240,6 +240,6 @@ En esta tarea, publicarás el archivo del proyecto Power BI y examinarás los el
 
 > Cuando los modelos semánticos se relacionan con otros modelos semánticos, se conoce como encadenamiento. En este laboratorio, el modelo semántico de inicio se encadena al modelo semántico recién creado, lo que permite su reutilización para un propósito especializado.
 
-## Limpiar
+## Limpieza
 
 Has completado correctamente este ejercicio. Has creado archivos del proyecto y plantilla de Power BI y modelos semánticos especializados e informes. Puedes eliminar de forma segura el área de trabajo y todos los recursos locales.

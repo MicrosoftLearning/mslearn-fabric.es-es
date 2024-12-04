@@ -17,8 +17,8 @@ Este laboratorio se realiza en unos **30** minutos.
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -115,14 +115,13 @@ Ahora que tiene una tabla de datos en la base de datos, puede usar código KQL p
     ```
 
 8. Ejecute la consulta y revise los resultados, que deben contener los ingresos netos totales de cada producto entre el 1 de enero y el 31 de diciembre de 2020 por nombre de producto en orden ascendente.
-9. Seleccione **Guardar como conjunto de consultas KQL** y guarde la consulta como **Ingresos por producto**.
 
 ## Creación de un informe de Power BI a partir de un conjunto de consultas KQL
 
 Puede usar el conjunto de consultas KQL como base para un informe de Power BI.
 
 1. En el editor del workbench del conjunto de consultas, ejecute la consulta y espere los resultados.
-2. Seleccione **Crear informe de Power BI** y espere a que se abra el editor de informes.
+2. Selecciona **Power BI** y espera a que se abra el editor de informes.
 3. En el editor de informes, en el panel **Datos**, expanda **Resultado de la consulta de Kusto** y seleccione los campos **Item** y **TotalRevenue**.
 4. En el lienzo de diseño del informe, seleccione la visualización de tabla que se ha agregado y, en el panel **Visualizaciones**, seleccione **Gráfico de barras agrupadas**.
 
@@ -143,4 +142,4 @@ Si ha terminado de explorar la base de datos KQL, puede eliminar el área de tra
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo.
 2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.

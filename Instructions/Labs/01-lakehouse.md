@@ -4,7 +4,7 @@ lab:
   module: Get started with lakehouses in Microsoft Fabric
 ---
 
-# Crear un Lakehouse
+# Creación de un almacén de lago de Microsoft Fabric
 
 Las soluciones de análisis de datos a gran escala se han creado tradicionalmente en torno a un *almacén de datos*, donde los datos se guardan en tablas relacionales y se consultan con el lenguaje SQL. El aumento de los "macrodatos" (caracterizados por los grandes *volúmenes*, la gran *variedad* y la alta *velocidad* de los nuevos recursos de datos), junto con la disponibilidad de tecnologías de proceso distribuido a escala de nube y almacenamiento de bajo costo, ha dado lugar a un enfoque alternativo para el almacenamiento de datos analíticos: el *lago de datos*. En un lago de datos, los datos se almacenan como archivos sin imponer un esquema fijo para el almacenamiento. Cada vez más, los ingenieros y analistas de datos buscan beneficiarse de las mejores características de ambos enfoques combinándolos en un *almacén de lago de datos*, donde los datos se almacenan en archivos en un lago de datos y se les aplica un esquema relacional en forma de capa de metadatos para poder consultarlos con la semántica SQL tradicional.
 
@@ -16,9 +16,9 @@ Este laboratorio se realiza en unos **30** minutos.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Ingeniería de datos**.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia en la sección **Avanzado** que incluya la capacidad de Fabric (*Prueba*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -27,9 +27,9 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 ## Crear un almacén de lago
 
-Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos para los archivos de datos.
+Ahora que tienes un área de trabajo, es el momento de crear un almacén de lago de datos para los archivos de datos.
 
-1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. En la página principal de **Ingeniería de datos**, crea un nuevo **almacén de lago de datos** con el nombre que prefieras.
 
     Después de un minuto o así, se habrá creado un nuevo almacén de lago:
 
@@ -69,7 +69,7 @@ En muchos casos, los datos con los que necesita trabajar en el almacén de lago 
 Los datos de ventas que cargó están en un archivo, con el que los analistas e ingenieros de datos pueden trabajar directamente usando código de Apache Spark. Sin embargo, en muchos casos es posible que desee cargar los datos del archivo en una tabla para poder consultarlos con SQL.
 
 1. En la página **Inicio**, seleccione la carpeta **Archivos/datos** para ver el archivo **sales.csv** que contiene.
-2. En el menú **...** del archivo **sales.csv**, seleccione **Cargar en tablas**.
+2. En el menú **...** del archivo **sales.csv**, selecciona **Cargar en tablas** > **Nueva tabla**.
 3. En el cuadro de diálogo **Cargar en tabla**, establezca el nombre de la tabla en **sales** y confirme la operación de carga. Espere a que se cree y se cargue la tabla.
 
     > **Sugerencia:** Si la tabla **sales** no aparece automáticamente, en el menú **...** de la carpeta **Tablas**, seleccione **Actualizar**.
@@ -108,7 +108,7 @@ Cuando se crea un almacén de lago y se definen tablas en él, se crea automáti
 
 Aunque muchos profesionales de los datos están familiarizados con SQL, los analistas de datos con experiencia en el uso de Power BI pueden aplicar sus conocimientos de Power Query para crear consultas visuales.
 
-1. En la barra de herramientas, seleccione **Nueva consulta visual**.
+1. En la barra de herramientas, expande la opción **Nueva consulta SQL** y selecciona **Nueva consulta visual**.
 2. Arrastre la tabla **sales** al nuevo panel de editor de consultas visuales que se abre para crear una consulta con Power Query como se muestra aquí: 
 
     ![Captura de pantalla de una consulta visual.](./Images/visual-query.png)
@@ -133,9 +133,9 @@ Aunque muchos profesionales de los datos están familiarizados con SQL, los anal
 Las tablas del almacén de lago se agregan automáticamente a un modelo semántico predeterminado para la generación de informes con Power BI.
 
 
-1. En la parte inferior de la página Punto de conexión de SQL, seleccione la pestaña **Modelo**. Se muestra el esquema del modelo de datos del modelo semántico.
+1. En la barra de herramientas, selecciona **Diseños de modelo**. Se muestra el esquema del modelo de datos para el modelo semántico.
 
-    ![Captura de pantalla 2024-04-29 155248](https://github.com/afelix-95/mslearn-fabric/assets/148110824/ba9bd67d-8968-4c46-ac7a-f96a9f697f4c)
+    ![Captura de pantalla de diseños de modelo](./Images/lakehouse-model-layouts.png)
 
     > **Nota 1**: En este ejercicio, el modelo semántico consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
     
@@ -171,5 +171,5 @@ En este ejercicio, ha creado un almacén de lago y ha importado datos en él. Ha
 Si ha terminado de explorar el almacén de lago, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+2. En la barra de herramientas, selecciona **Configuración del área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
