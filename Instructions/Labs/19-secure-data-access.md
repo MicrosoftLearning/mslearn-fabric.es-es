@@ -14,7 +14,7 @@ Este laboratorio se realiza en **45** minutos aproximadamente.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Synapse Data Warehouse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Data Warehouse**.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -27,7 +27,7 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 A continuación, crearás un almacenamiento de datos en el área de trabajo que has creado:
 
-1. En la página principal de Synapse Data Warehouse, Selecciona el acceso directo **Almacén de muestra** para crear un nuevo almacén con el nombre que prefieras.  
+1. En la página principal de Data Warehouse, selecciona el acceso directo **Almacén de muestra** para crear un nuevo almacén con el nombre que prefieras.  
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén:
 
@@ -38,7 +38,7 @@ A continuación, crearás un almacén de lago en el área de trabajo que has cre
 
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a 🗇).
 2. Selecciona el área de trabajo que creaste.
-3. En el área de trabajo, selecciona el botón **+ Nuevo** y, a continuación, selecciona **Almacén de lago**. Crea un nuevo almacén de lago con el nombre que prefieras.
+3. En el área de trabajo, selecciona el botón **+ Nuevo elemento** y, a continuación, selecciona **Almacén de lago**. Crea un nuevo almacén de lago con el nombre que prefieras.
 
    Después de un minuto o así, se habrá creado un nuevo almacén de lago:
 
@@ -102,7 +102,7 @@ Los permisos de elemento controlan el acceso a elementos individuales de Fabric 
 
 10. Vuelve a la ventana del explorador donde has iniciado sesión como segundo usuario. Actualiza la vista del explorador.  
 
-11. El segundo usuario ya no tiene acceso al área de trabajo y, en su lugar, solo tiene acceso al almacén. Ya no puedes examinar áreas de trabajo en el panel de navegación izquierdo para encontrar el almacén. Selecciona **Centro de datos de OneLake** en el menú de navegación izquierdo para encontrar el almacén. 
+11. El segundo usuario ya no tiene acceso al área de trabajo y, en su lugar, solo tiene acceso al almacén. Ya no puedes examinar áreas de trabajo en el panel de navegación izquierdo para encontrar el almacén. Selecciona **OneLake** en el menú de navegación izquierdo para encontrar el almacén. 
 
 12. Selecciona el almacén. En la pantalla que aparece, selecciona **Abrir** en la barra de menú superior.
 
@@ -115,7 +115,7 @@ Los roles de acceso a datos de OneLake te permiten crear roles personalizados en
 En este ejercicio, asignarás un permiso de elemento y crearás un rol de acceso a datos de OneLake. Además, descubrirás cómo funcionan conjuntamente para restringir el acceso a los datos de un almacén de lago.  
 
 1. Permanece en el explorador donde has iniciado sesión como segundo usuario.  
-2. Selecciona **Centro de datos de OneLake** en la barra de navegación del lado izquierdo. El segundo usuario no ve el almacén de lago.  
+2. Selecciona **OneLake** en la barra de navegación del lado izquierdo. El segundo usuario no ve el almacén de lago.  
 3. Vuelve al explorador donde has iniciado sesión como administrador del área de trabajo.
 4. Selecciona **Áreas de trabajo** en el menú izquierdo y selecciona tu área de trabajo. Mantén el puntero sobre el nombre del almacén de lago.  
 5. Selecciona en los puntos suspensivos (**...**) a la derecha de los puntos suspensivos y selecciona **Administrar permisos**
@@ -129,7 +129,7 @@ En este ejercicio, asignarás un permiso de elemento y crearás un rol de acceso
 
 8. Selecciona **Conceder**. El segundo usuario ahora tiene permisos de lectura en el almacén de lago. El permiso de lectura solo permite al usuario ver los metadatos del almacén de lago, pero no los datos subyacentes. A continuación, validaremos esto.
 9. Vuelve al explorador donde has iniciado sesión como segundo usuario. Actualiza el explorador.
-10. Selecciona el **Centro de datos de OneLake** en el menú de navegación izquierdo.  
+10. Selecciona **OneLake** en el menú de navegación izquierdo.  
 11. Selecciona el almacén de lago y ábrelo. 
 12. Selecciona **Abrir** en la barra de menú superior. No puedes expandir las tablas o archivos aunque se haya concedido permiso de lectura. A continuación, concede al segundo usuario acceso a una carpeta específica mediante permisos de acceso a datos de OneLake.
 13. Vuelve al explorador donde has iniciado sesión como administrador del área de trabajo.
@@ -140,7 +140,7 @@ En este ejercicio, asignarás un permiso de elemento y crearás un rol de acceso
 
       ![Captura de pantalla de la característica Administrar el acceso a datos de OneLake (versión preliminar) en la barra de menú de Fabric.](./Images/manage-onelake-roles.png)
 
-14. Selecciona nuevo rol en la pantalla **Acceso a datos de OneLake administrado (versión preliminar)** que aparece.
+14. Selecciona nuevo rol en la pantalla **Administrar el acceso a datos de OneLake (versión preliminar)** que aparece.
   
       ![Captura de pantalla de la nueva funcionalidad de rol en la característica de administración de acceso a datos de OneLake.](./Images/create-onelake-role.png)
 

@@ -17,7 +17,7 @@ Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`.
-1. En la barra de menús de la izquierda, selecciona **Nueva área de trabajo**.
+1. En la barra de menús de la izquierda, selecciona **Nuevo espacio de trabajo**.
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
@@ -64,7 +64,7 @@ El editor de consultas SQL proporciona compatibilidad con IntelliSense, finaliza
 
 En primer lugar, configurarás un punto de conexión de GraphQL para exponer los datos de pedidos de ventas. Este punto de conexión te permitirá consultar pedidos de ventas en función de varios parámetros, como la fecha, el cliente y el producto.
 
-1. En el portal de Fabric, ve a tu área de trabajo y selecciona **+ Nuevo elemento**.
+1. En el portal de Fabric, ve a tu espacio de trabajo y selecciona **+ Nuevo elemento**.
 1. Ve a la sección **Desarrollo de datos** y selecciona **API para GraphQL**.
 1. Proporciona un nombre y selecciona **Crear**.
 1. En la página principal de la API para GraphQL, selecciona **Seleccionar origen de datos**.
@@ -86,7 +86,7 @@ Esto impedirá cualquier modificación o actualización de los datos a través d
 
 ## Consulta de datos mediante GraphQL
 
-Ahora, vamos a consultar los datos mediante GraphQL para buscar todos los productos cuyos nombres comienzan por *"HL Road Frame."*
+Ahora, vamos a consultar los datos mediante GraphQL para buscar todos los productos cuyos nombres comienzan por *"HL Road Frame".*
 
 1. En el editor de consultas de GraphQL, escribe y ejecuta la siguiente consulta.
 

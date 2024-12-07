@@ -17,7 +17,7 @@ Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`.
-1. En la barra de menús de la izquierda, selecciona **Nueva área de trabajo**.
+1. En la barra de menús de la izquierda, selecciona **Nuevo espacio de trabajo**.
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
@@ -102,15 +102,14 @@ Integrarás datos externos sobre días festivos públicos con pedido de venta. A
 
     ```sql
     INSERT INTO SalesLT.PublicHolidays (CountryOrRegion, HolidayName, Date, IsPaidTimeOff)
-    SELECT CountryOrRegion, HolidayName, Date, IsPaidTimeOff
-    FROM OPENROWSET 
-    (BULK 'abs://holidaydatacontainer@azureopendatastorage.blob.core.windows.net/Processed/*.parquet'
-    , FORMAT = 'PARQUET') AS [PublicHolidays]
-    WHERE countryorRegion in ('Canada', 'United Kingdom', 'United States')
-        AND YEAR([date]) = 2024
+    VALUES
+        ('Canada', 'Victoria Day', '2024-02-19', 1),
+        ('United Kingdom', 'Christmas Day', '2024-12-25', 1),
+        ('United Kingdom', 'Spring Bank Holiday', '2024-05-27', 1),
+        ('United States', 'Thanksgiving Day', '2024-11-28', 1);
     ```
     
-    Esta consulta lee los datos de días festivos de los archivos Parquet en Azure Blob Storage, los filtra para incluir solo días festivos en Canadá, el Reino Unido y los Estados Unidos para el año 2024 y, después, inserta estos datos filtrados en la tabla `SalesLT.PublicHolidays`.    
+    En este ejemplo, esta consulta inserta días festivos en Canadá, el Reino Unido y los Estados Unidos para el año 2024 en la tabla `SalesLT.PublicHolidays`.    
 
 1. En un Editor de Power Query nuevo o existente, escribe y ejecuta el siguiente código T-SQL.
 
@@ -190,7 +189,7 @@ Vamos a crear una vista basada en la consulta que hemos usado anteriormente y ag
 
 > **Más información**: consulta [¿Qué es Microsoft Fabric?](https://learn.microsoft.com/fabric/get-started/microsoft-fabric-overview) en la documentación de Microsoft Fabric para obtener más información sobre otros componentes disponibles en la plataforma.
 
-En este ejercicio, has creado, importado datos externos, realizado consultas y protegido datos en una base de datos SQL en Microsoft Fabric.
+En este ejercicio, has creado, realizado consultas y protegido datos en una base de datos SQL en Microsoft Fabric.
 
 ## Limpieza de recursos
 

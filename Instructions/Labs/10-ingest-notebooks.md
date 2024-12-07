@@ -18,11 +18,11 @@ Dado que también está trabajando con un conjunto de datos de ejemplo, la optim
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, seleccione **Ingeniería de datos de Synapse**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Prémium* o *Fabric*).
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Ingeniería de datos**.
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -31,7 +31,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Empiece por crear un área de trabajo, una nueva instancia de almacén de lago y una carpeta de destino en el almacén de lago.
 
-1. En el área de trabajo, seleccione **+ Nuevo > Almacén de lago**, proporcione un nombre y **Crear**.
+1. En el área de trabajo, selecciona **+ Nuevo elemento > Almacén de lago de datos**, proporciona un nombre y selecciona **Crear**.
 
     > **Nota:** podría tardar unos minutos en crear un nuevo almacén de lago sin **Tablas** o **Archivos**.
 
@@ -85,15 +85,15 @@ Cree un cuaderno de Fabric y conéctese al origen de datos externo con PySpark.
 1. Inserte el código siguiente en una **nueva celda de código**:
 
     ```python
-        # Declare file name    
-        file_name = "yellow_taxi"
+    # Declare file name    
+    file_name = "yellow_taxi"
     
-        # Construct destination path
-        output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
-        print(output_parquet_path)
+    # Construct destination path
+    output_parquet_path = f"**InsertABFSPathHere**/{file_name}"
+    print(output_parquet_path)
         
-        # Load the first 1000 rows as a Parquet file
-        blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
+    # Load the first 1000 rows as a Parquet file
+    blob_df.limit(1000).write.mode("overwrite").parquet(output_parquet_path)
     ```
 
 1. Agregue la ruta de acceso ABFS **RawData** y seleccione **&#9655; Ejecutar celda** para escribir 1000 filas en un archivo yellow_taxi.parquet.
@@ -120,7 +120,7 @@ Es probable que la tarea de ingesta de datos no termine solo con cargar un archi
     filtered_df = raw_df.withColumn("dataload_datetime", current_timestamp())
     
     # Filter columns to exclude any NULL values in storeAndFwdFlag
-    filtered_df = filtered_df.filter(raw_df["storeAndFwdFlag"].isNotNull())
+    filtered_df = filtered_df.filter(col("storeAndFwdFlag").isNotNull())
     
     # Load the filtered data into a Delta table
     table_name = "yellow_taxi"
@@ -177,5 +177,5 @@ En este ejercicio, usó cuadernos con PySpark en Fabric para cargar datos y guar
 Si ha terminado de explorar, puede eliminar el área de trabajo que ha creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+1. Selecciona **Configuración del área de trabajo** y, en la sección **General**, desplázate hacia abajo y selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Eliminar** para eliminar el área de trabajo.
