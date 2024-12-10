@@ -16,7 +16,7 @@ Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Synapse Data Warehouse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Data Warehouse**.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -27,7 +27,7 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos para cargar el almacenamiento. Creará una instancia de Data Lakehouse para los archivos de datos que va a usar para cargar el almacenamiento.
 
-1. En la página principal de **Ingeniería de datos de Synapse**, cree un nuevo **almacén de lago** con el nombre que prefiera.
+1. Selecciona **+ Nuevo elemento** y crea un nuevo **Almacén de lago de datos** con el nombre que prefieras.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago vacío. Debe ingerir algunos datos en el almacén de lago de datos para su análisis. Hay varias maneras de hacerlo, pero en este ejercicio descargará un archivo CSV en el equipo local (o máquina virtual de laboratorio si procede) y a continuación, lo cargará en el almacén de lago.
 
@@ -54,7 +54,7 @@ En nuestro escenario, dado que no tenemos datos disponibles, debemos ingerirlos 
 
 Ahora que tiene un área de trabajo, una instancia de un almacén de lago y la tabla de ventas con los datos que necesita, es el momento de crear un almacenamiento de datos. La página principal de Synapse Data Warehouse incluye un acceso directo para crear un nuevo almacén:
 
-1. En la página principal de **Synapse Data Warehouse**, cree un nuevo **almacenamiento** con el nombre que prefiera.
+1. En la página principal de **Almacenamiento de datos**, cree un nuevo **almacenamiento** con el nombre que prefiera.
 
     Al cabo de un minuto más o menos, se creará un nuevo almacenamiento:
 
@@ -66,7 +66,7 @@ Vamos a crear las tablas de hechos y las dimensiones de los datos de Sales. Tamb
 
 1. En el área de trabajo, seleccione el almacén que creó.
 
-1. En el almacén **Explorer**, seleccione **Nueva consulta SQL** y, a continuación, copie y ejecute la siguiente consulta.
+1. En la barra de herramientas del almacén, selecciona **Nueva consulta SQL** y después copia y ejecuta la siguiente consulta.
 
     ```sql
     CREATE SCHEMA [Sales]
@@ -248,5 +248,5 @@ En este ejercicio, ha creado una instancia de almacén de lago y un almacenamien
 Si ha terminado de explorar el almacenamiento de datos, puede eliminar el área de trabajo que creó para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, selecciona **Configuración del área de trabajo**.
-3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Configuración del área de trabajo** y, en la sección **General**, desplázate hacia abajo y selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Eliminar** para eliminar el área de trabajo.

@@ -101,37 +101,30 @@ En esta tarea crearás dos roles estáticos.
 
     ![](Images/enforce-model-security-image13.png)
 
-4. En la ventana **Administrar roles**, selecciona **Crear**.
+4. En la ventana **Administrar roles**, selecciona **+ Nuevo**.
 
-    ![](Images/enforce-model-security-image14.png)
+5. Para asignar un nombre al rol, reemplaza el texto seleccionado *Sin título* por **Australia** y después presiona **Entrar**.
 
-5. Para asignar un nombre al rol, reemplaza el texto seleccionado por **Australia** y presiona **Entrar**.
-
-    ![](Images/enforce-model-security-image15.png)
-
-6. En la lista **Tablas**, para la tabla **Territorio de ventas**, selecciona los puntos suspensivos y luego selecciona **Agregar filtro** > **[Región]**.
+6. En la lista **Seleccionar tablas**, selecciona **Territorio de ventas** y después, en la sección **Filtrar datos**, selecciona **+ Nuevo**.
+  
+7. En la fila de la nueva regla, establece la siguiente configuración:
+    * **Columna**: Región
+    * **Condición**: Es igual a
+    * **Valor**: Australia
 
     ![](Images/enforce-model-security-image16.png)
 
-7. En el cuadro **Expresión DAX de filtro de tabla**, reemplaza **Valor** por **Australia**.
+    *Esta regla filtra la columna **Región** por el valor **Australia**.*
 
-    ![](Images/enforce-model-security-image17.png)
+10. Para crear otro rol, presiona **+ Nuevo** en la sección **Roles**.
 
-    *Esta expresión filtra la columna **Región** por el valor **Australia**.*
-
-8. Para crear otro rol, presiona **Crear**.
-
-    ![](Images/enforce-model-security-image18.png)
-
-9. Repite los pasos de esta tarea para crear un rol denominado **Canadá** que filtre la columna **Región** por **Canadá**.
+11. Repite los pasos de esta tarea para crear un rol denominado **Canadá** que filtre la columna **Región** por **Canadá**.
 
     ![](Images/enforce-model-security-image19.png)
 
     *En este laboratorio crearás solo los dos roles. Ten en cuenta, sin embargo, que en una solución real, se debe crear un rol para cada una de las 11 regiones de Adventure Works.*
 
-10. Seleccione **Guardar**.
-
-    ![](Images/enforce-model-security-image20.png)
+12. Seleccione **Guardar**.
 
 ### Validación de los roles estáticos
 
@@ -247,19 +240,13 @@ En esta tarea, limpiará la solución quitando el modelo semántico y los roles 
 
     ![](Images/enforce-model-security-image39.png)
 
-5. En la ventana **Administrar roles**, para quitar el primer rol, selecciona **Eliminar**.
+5. En la ventana **Administrar roles**, para quitar el primer rol, selecciona los puntos suspensivos junto a él y después selecciona **Eliminar**.
 
     ![](Images/enforce-model-security-image40.png)
 
-6. Cuando se te pida que confirmes la eliminación, presiona **Sí, eliminar**.
+6. Quita también el segundo rol.
 
-    ![](Images/enforce-model-security-image41.png)
-
-7. Quita también el segundo rol.
-
-8. Seleccione **Guardar**.
-
-    ![](Images/enforce-model-security-image42.png)
+7. Seleccione **Guardar**.
 
 ## Creación de un rol dinámico
 

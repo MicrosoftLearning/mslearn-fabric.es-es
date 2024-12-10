@@ -16,7 +16,7 @@ Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Synapse Data Warehouse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Data Warehouse**.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -183,5 +183,5 @@ En este ejercicio, ha usado consultas para obtener información de los datos en 
 Si ha terminado de explorar el almacenamiento de datos, puede eliminar el área de trabajo que creó para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo para ver todos los elementos que contiene.
-2. En el menú **...** de la barra de herramientas, selecciona **Configuración del área de trabajo**.
-3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Configuración del área de trabajo** y, en la sección **General**, desplázate hacia abajo y selecciona **Quitar esta área de trabajo**.
+1. Selecciona **Eliminar** para eliminar el área de trabajo.
