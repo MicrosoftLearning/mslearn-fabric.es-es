@@ -1,54 +1,53 @@
 ---
 lab:
-  title: Introducción a Eventstream en Microsoft Fabric
-  module: Get started with Eventstream in Microsoft Fabric
+  title: Ingesta de datos en tiempo real con Eventstream de Microsoft Fabric
+  module: Ingest real-time data with Eventstream in Microsoft Fabric
 ---
-# Introducción a Eventstream en Microsoft Fabric
+# Ingesta de datos en tiempo real con Eventstream de Microsoft Fabric
 
-Eventstream es una característica de Microsoft Fabric que captura, transforma y enruta eventos en tiempo real a varios destinos con una experiencia sin escritura de código. A Eventstream puede agregar orígenes de datos de eventos, destinos de enrutamiento y el procesador de eventos cuando sea necesaria una transformación. EventStore de Microsoft Fabric es una opción de supervisión que mantiene eventos del clúster y proporciona una manera de conocer el estado del clúster o de las cargas de trabajo en un momento dado. Se puede consultar el servicio EventStore sobre los eventos que están disponibles para cada entidad y tipo de entidad del clúster. Esto significa que puede consultar eventos en distintos niveles, como clústeres, nodos, aplicaciones, servicios, particiones y réplicas de particiones. El servicio EventStore también tiene la capacidad de correlacionar los eventos del clúster. El examen de los eventos que se escribieron al mismo tiempo desde distintas entidades y que pueden haberse afectado entre sí permite al servicio EventStore vincular estos eventos para identificar las causas de las actividades del clúster. Otra opción para la supervisión y el diagnóstico de clústeres de Microsoft Fabric es agregar y recopilar eventos con EventFlow.
+Eventstream es una característica de Microsoft Fabric que captura, transforma y enruta eventos en tiempo real a varios destinos. Puedes agregar orígenes de datos de eventos, destinos y transformaciones al flujo de eventos.
+
+En este ejercicio, ingerirás datos de un origen de datos de ejemplo que emite un flujo de eventos relacionados con observaciones de puntos de recogida de bicicletas de un sistema de uso compartido de bicicletas en el que las personas pueden alquilar bicicletas dentro de una ciudad.
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> **Nota**: Necesitas un [inquilino de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para completar este ejercicio.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
-1. Inicia sesión en la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` y selecciona **Power BI**.
-2. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-3. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia que incluya capacidad de Fabric (*Versión de prueba*, *Premium* o *Fabric*).
-4. Cuando se abra la nueva área de trabajo, estará vacía, como se muestra aquí:
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
+1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
-   ![Captura de pantalla de un área de trabajo vacía en Power BI.](./Images/new-workspace.png)
-5. En la parte inferior izquierda del portal de Power BI, seleccione el icono de **Power BI** y cambie a la experiencia **Inteligencia en tiempo real**.
+    ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Creación de un centro de eventos de inteligencia en tiempo real
+## Creación de instancia de Eventhouse
 
-1. En la página principal de Inteligencia en tiempo real en Microsoft Fabric, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
+Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fabric que necesitarás para tu solución de inteligencia en tiempo real. Empezaremos por crear un centro de eventos.
+
+1. En la barra de menús de la izquierda, selecciona **Inicio**; y después, en la página principal de Inteligencia en tiempo real, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
 1. Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
 
     ![Captura de pantalla de un nuevo centro de eventos](./Images/create-eventhouse.png)
 
-## Creación de una base de datos KQL
+1. En el panel de la izquierda, ten en cuenta que el centro de eventos contiene una base de datos KQL con el mismo nombre que el centro de eventos.
+1. Selecciona la base de datos KQL para verla.
 
-1. En el panel **Eventhouse en Inteligencia en tiempo real**, seleccione la casilla **Base de datos KQL +**.
-1. Tendrás la opción de crear una **Nueva base de datos ( predeterminada)** o crear una **Nueva base de datos de acceso directo ( seguidor)**.
-
-    >**Nota:** La característica de base de datos de seguidor te permite adjuntar una base de datos ubicada en otro clúster al de Azure Data Explorer. La base de datos del seguidor se adjunta en modo de solo lectura, lo que permite ver los datos y ejecutar consultas en los datos que se han ingerido en la base de datos del responsable. La base de datos del seguidor sincroniza los cambios en las bases de datos del responsable. Debido a la sincronización, hay un retraso de datos que va de unos segundos a unos minutos en la disponibilidad de los datos. La duración del retraso depende del tamaño total de los metadatos de la base de datos del responsable. Las bases de datos del responsable y el seguidor usan la misma cuenta de almacenamiento para capturar los datos. El almacenamiento pertenece a la base de datos del responsable. La base de datos del seguidor ve los datos sin necesidad de ingerirlos. Dado que la base de datos adjunta es de solo lectura, los datos, las tablas y las directivas de la base de datos no se pueden modificar, excepto en el caso de la directiva de almacenamiento en caché, las entidades de seguridad y los permisos.
-
-1. Crea una nueva base de datos y asígnale el nombre `Eventhouse-DB`.
+    Actualmente no hay tablas en la base de datos. En el resto de este ejercicio, usarás un flujo de eventos para cargar datos de un origen en tiempo real en una tabla.
 
 ## Creación de un Eventstream
 
 1. En la página principal de la base de datos KQL, selecciona **Obtener datos**.
-2. Para el origen de datos, selecciona **Eventstream** > **Nuevo flujo de eventos**. Asigna un nombre al flujo de eventos `bicycle-data`.
+2. Para el origen de datos, selecciona **Eventstream** > **Nuevo flujo de eventos**. Asigna un nombre al flujo de eventos `Bicycle-data`.
 
     La creación del nuevo flujo de eventos en el área de trabajo se completará en unos instantes. Una vez establecido, se le redirigirá automáticamente al editor principal, listo para empezar a integrar orígenes en el flujo de eventos.
 
-    ![Captura de pantalla de un nuevo flujo de eventos.](./Images//name-eventstream.png)
+    ![Captura de pantalla de un nuevo flujo de eventos.](./Images/empty-eventstream.png)
 
-## Establecer un origen de la transmisión de eventos
+## Agregar un origen
 
 1. En el lienzo Eventstream, selecciona **Usar datos de ejemplo**.
 2. Asigna un nombre al origen `Bicycles` y selecciona los datos de muestra **Bicicletas**.
@@ -59,33 +58,44 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 ## Agregar un destino
 
-1. En la lista desplegable **Transformar eventos o agregar destino**, selecciona **Centro de eventos**.
+1. Usa el icono **+** a la derecha del nodo **Bici-datos** para agregar un nuevo nodo **Centro de eventos**.
+1. Usa el icono *lápiz* en el nuevo nodo del centro de eventos para editarlo.
 1. En el panel **Eventhouse**, establece las siguientes opciones de configuración.
    - **Modo de ingesta de datos:**: procesamiento de eventos antes de la ingesta
-   - **Nombre del destino:**`Bicycle-database`
+   - **Nombre del destino:**`bikes-table`
    - **Área de trabajo:***selecciona el área de trabajo que has creado al principio de este ejercicio*
    - **Eventhouse**: *selecciona tu centro de eventos*
-   - **Base de datos KQL:** Eventhouse-DB
-   - **Tabla de destino:** crea una nueva tabla denominada `bike-count`
+   - **Base de datos KQL:** *selecciona la base de datos KQL.*
+   - **Tabla de destino:** crea una nueva tabla denominada `bikes`
    - **Formato de datos de entrada:** JSON
 
-   ![Flujo de eventos de base de datos KQL con modos de ingesta](./Images/kql-database-event-processing-before-ingestion.png)
+   ![Configuración del destino del flujo de eventos.](./Images/kql-database-event-processing-before-ingestion.png)
 
 1. En el panel **Eventhouse**, selecciona **Guardar**. 
 1. En la barra de herramientas, seleccione **Publicar**.
-1. Espera aproximadamente un minuto a que se active el destino de los datos.
+1. Espera aproximadamente un minuto a que se active el destino de los datos. Después, selecciona el nodo **bikes-table** en el lienzo de diseño y visualiza el panel **Versión preliminar de datos** inferior para ver los últimos datos que se han ingerido:
 
-## Visualización de datos capturados
+   ![Una tabla de destino de un flujo de eventos.](./Images/stream-data-preview.png)
 
-El flujo de eventos que has creado toma datos del origen de ejemplo de datos de bicicletas y los carga en la base de datos del centro de eventos. Puedes ver los datos capturados al consultar la tabla de la base de datos.
+1. Espera unos minutos y después usa el botón **Actualizar** para actualizar el panel **Versión preliminar de datos**. El flujo se ejecuta de forma perpetua, por lo que es posible que se hayan agregado nuevos datos a la tabla.
+1. Debajo del lienzo de diseño del flujo de eventos, consulta la pestaña **Información de datos** para ver los detalles de los eventos de datos que se han capturado.
 
-1. En la barra de menús de la izquierda, selecciona tu base de datos **Eventhouse-DB**.
-1. En el menú **...** de la base de datos **Eventhouse-DB** KQL, selecciona **Consultar datos**.
-1. En el panel de consulta, modifica la primera consulta de ejemplo como se muestra aquí:
+## Consulta de los datos capturados
+
+El flujo de eventos que has creado toma datos del origen de ejemplo de datos de bicicletas y los carga en la base de datos del centro de eventos. Puedes analizar los datos capturados al consultar la tabla de la base de datos.
+
+1. En la barra de menú de la izquierda, selecciona tu base de datos KQL.
+1. En la pestaña **Base de datos**, de la barra de herramientas de tu base de datos KQL, usa el botón **Actualizar** para actualizar la vista hasta que veas la tabla **bikes** debajo de la base de datos. Después selecciona la tabla **bikes**.
+
+   ![Una tabla en una base de datos KQL.](./Images/kql-table.png)
+
+1. En el menú **...** de la tabla **bikes**, selecciona **Consultar tabla** > **Registros ingeridos en las últimas 24 horas**.
+1. En el panel de consulta, ten en cuenta que se ha generado y ejecutado la consulta siguiente, con los resultados que se muestran debajo:
 
     ```kql
-    ['bike-count']
-    | take 100
+    // See the most recent data - records ingested in the last 24 hours.
+    bikes
+    | where ingestion_time() between (now(-1d) .. now())
     ```
 
 1. Selecciona el código de consulta y ejecútalo para ver 100 filas de datos de la tabla.
@@ -98,7 +108,6 @@ Los datos capturados no se modifican desde el origen. En muchos escenarios, es p
 
 1. En la barra de menús de la izquierda, selecciona el flujo de eventos **Bicycle-data**.
 1. En la barra de herramientas, selecciona **Editar** para editar el flujo de eventos.
-
 1. En el menú **Transformar eventos**, selecciona **Agrupar por** para agregar un nuevo nodo **Agrupar por** al flujo de eventos.
 1. Arrastra una conexión desde la salida del nodo **Bicycle-data** a la entrada del nuevo nodo **Agrupar por** y después usa el icono del *lápiz* en el nodo **Agrupar por** para editarla.
 
@@ -107,7 +116,7 @@ Los datos capturados no se modifican desde el origen. En muchos escenarios, es p
 1. Configura las propiedades de la sección de configuración **Agrupar por**:
     - **Nombre de la operación:** GroupByStreet
     - **Tipo de agregado:***seleccionar* Suma
-    - **Campo:***selecciona* No_Bikes. *Después selecciona **Agregar** para crear la función* SUM_No_Bikes
+    - **Campo:***selecciona* No_Bikes. *Después selecciona **Agregar** para crear la función* SUMA de No_Bikes
     - **Agrupar agregaciones por (opcional):** Calle
     - **Ventana de tiempo**: saltos de tamaño constante
     - **Duración**: 5 segundos
@@ -115,42 +124,114 @@ Los datos capturados no se modifican desde el origen. En muchos escenarios, es p
 
     > **Nota**: Esta configuración hará que la secuencia de eventos calcule el número total de bicicletas en cada calle cada 5 segundos.
       
-1. Guarda la configuración y vuelve al lienzo del flujo de eventos, donde se indica un error (porque necesitas almacenar la salida del grupo por transformación en algún lugar).
+1. Guarda la configuración y vuelve al lienzo del flujo de eventos, donde se indica un error (porque necesitas almacenar la salida de la transformación en algún lugar).
 
 1. Usa el icono **+** a la derecha del nodo **GroupByStreet** para agregar un nuevo nodo **Centro de eventos**.
 1. Configura el nuevo nodo del centro de eventos con las siguientes opciones:
    - **Modo de ingesta de datos:**: procesamiento de eventos antes de la ingesta
-   - **Nombre del destino:**`Bicycle-database`
+   - **Nombre del destino:**`bikes-by-street-table`
    - **Área de trabajo:***selecciona el área de trabajo que has creado al principio de este ejercicio*
-   - **Centro de eventos**: *selecciona tu centro de eventos*
-   - **Base de datos KQL:** Eventhouse-DB
+   - **Eventhouse**: *selecciona tu centro de eventos*
+   - **Base de datos KQL:** *selecciona la base de datos KQL.*
    - **Tabla de destino:** crea una nueva tabla denominada `bikes-by-street`
    - **Formato de datos de entrada:** JSON
 
-   ![Captura de pantalla de una tabla para los datos agrupados.](./Images/group-by-table.png)
+    ![Captura de pantalla de una tabla para los datos agrupados.](./Images/group-by-table.png)
 
 1. En el panel **Eventhouse**, selecciona **Guardar**. 
 1. En la barra de herramientas, seleccione **Publicar**.
 1. Espere aproximadamente un minuto a que se activen los cambios.
+1. En el lienzo de diseño, selecciona el nodo **bikes-by-street-table** y visualiza el panel **Vista previa de datos** debajo del lienzo.
 
-## Visualización de los datos transformados
+    ![Captura de pantalla de una tabla para los datos agrupados.](./Images/stream-table-with-windows.png)
 
-Ahora puedes ver los datos de bicicletas que se han transformado y cargado en una tabla mediante tu flujo de eventos.
+    Ten en cuenta que los datos trasformados incluyen el campo de agrupación que has especificado (**Calle**), la agregación que has especificado (**SUM_no_Bikes**) y un campo de marca de tiempo que indica el final de la ventana de saltos de tamaño constante de 5 segundos en la que se ha producido el evento (**Window_End_Time**).
 
-1. En la barra de menús de la izquierda, selecciona tu base de datos **Eventhouse-DB**.
-1. En el menú **...** de la base de datos **Eventhouse-DB** KQL, selecciona **Consultar datos**.
-1. En el panel de consulta, modifica una consulta de ejemplo como se muestra aquí:
+## Consultar los datos transformados
+
+Ahora puedes consultar los datos de bicicletas que se han transformado y cargado en una tabla mediante tu flujo de eventos.
+
+1. En la barra de menú de la izquierda, selecciona tu base de datos KQL.
+1. 1. En la pestaña **Base de datos**, de la barra de herramientas de tu base de datos KQL, usa el botón **Actualizar** para actualizar la vista hasta que veas la tabla **bikes-by-street** debajo de la base de datos.
+1. En el menú **...** de la tabla **bikes-by-street**, selecciona **Consultar datos** > **Mostrar 100 registros cualesquiera**.
+1. En el panel de consulta, ten en cuenta que se genera y ejecuta la consulta siguiente:
 
     ```kql
     ['bikes-by-street']
     | take 100
     ```
 
-1. Selecciona el código de consulta y ejecútalo para ver las primeras 100 filas de la tabla.
+1. Modifica la consulta KQL para recuperar el número total de bicicletas por calle en cada ventana de 5 segundos:
 
-    ![Captura de pantalla de una consulta KQL.](./Images/kql-group-query.png)
+    ```kql
+    ['bikes-by-street']
+    | summarize TotalBikes = sum(tolong(SUM_No_Bikes)) by Window_End_Time, Street
+    | sort by Window_End_Time desc , Street asc
+    ```
 
-    > **Sugerencia**: También puedes consultar la tabla mediante la sintaxis SQL. Por ejemplo, prueba la consulta `SELECT TOP 100 * FROM bikes-by-street`.
+1. Selecciona la consulta modificada y ejecútala.
+
+    Los resultados muestran el número de bicicletas observadas en cada calle dentro de cada período de 5 segundos.
+
+    ![Captura de pantalla de una consulta que devuelve datos agrupados.](./Images/kql-group-query.png)
+
+<!--
+## Add an Activator destination
+
+So far, you've used an eventstream to load data into tables in an eventhouse. You can also direct streams to an activator and automate actions based on values in the event data.
+
+1. In the menu bar on the left, return to the **Bicycle-data** eventstream. Then in the eventstream page, on the toolbar, select **Edit**.
+1. In the **Add destination** menu, select **Activator**. Then drag a connection from the output of the **Bicycle-data** stream to the input of the new Activator destination.
+1. Configure the new Activator destination with the following settings:
+    - **Destination name**: `low-bikes-activator`
+    - **Workspace**: *Select your workspace*
+    - **Activator**: *Create a **new** activator named `low-bikes`*
+    - **Input data format**: Json
+
+    ![Screenshot of an Activator destination.](./Images/activator-destination.png)
+
+1. Save the new destination.
+1. In the menu bar on the left, select your workspace to see all of the items you have created so far in this exercise - including the new **low-bikes** activator.
+1. Select the **low-bikes** activator to view its page, and then on the activator page select **Get data**.
+1. On the **select a data source** dialog box, scroll down until you see **Data streams** and then select the **Bicycle-data-stream**.
+
+    ![Screenshot of data sources for an activator.](./Images/select-activator-stream.png)
+
+1. Use the **Next**,  **Connect**, and **Finish** buttons to connect the stream to the activator.
+
+    > **Tip**: If the data preview obscures the **Next** button, close the dialog box, select the stream again, and click **Next** before the preview is rendered.
+
+1. When the stream has been connected, the activator page displays the **Events** tab:
+
+    ![Screenshot of the activator Events page.](./Images/activator-events-page.png)
+
+1. Add a new rule, and configure its definition with the following settings:
+    - **Monitor**:
+        - **Event**: Bicycle-data-stream-event
+    - **Condition**
+        - **Condition 1**:
+            - **Operation**: Numeric state: Is less than or equal to
+            - **Column**: No_Bikes
+            - **Value**: 3
+            - **Default type**: Same as window size
+    - **Action**:
+        - **Type**: Email
+        - **To**: *The email address for the account you are using in this exercise*
+        - **Subject**: `Low bikes`
+        - **Headline**: `The number of bikes is low`
+        - **Message**: `More bikes are needed.`
+        - **Context**: *Select the **Neighborhood**, **Street**, and **No-Bikes** columns.
+
+    ![Screenshot of an activator rule definition.](./Images/activator-rule.png)
+
+1. Save and start the rule.
+1. View the **Analytics** tab for the rule, which should show each instance if the condition being met as the stream of events is ingested by your eventstream.
+
+    Each instance will result in an email being sent notifying you of low bikes, which will result in a large numbers of emails, so...
+
+1. On the toolbar, select **Stop** to stop the rule from being processed.
+
+-->
 
 ## Limpieza de recursos
 

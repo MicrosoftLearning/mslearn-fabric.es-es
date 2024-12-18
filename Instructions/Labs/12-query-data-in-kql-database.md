@@ -1,18 +1,18 @@
 ---
 lab:
-  title: Introducción a la consulta de una base de datos KQL en Microsoft Fabric
-  module: Query data from a KQL database in Microsoft Fabric
+  title: Trabajo con los datos de un centro de eventos de Microsoft Fabric
+  module: Work with data in a Microsoft Fabric eventhouse
 ---
 
-# Introducción a la consulta de una base de datos KQL en Microsoft Fabric
+# Trabajo con los datos de un centro de eventos de Microsoft Fabric
 
-Un conjunto de consultas KQL es una herramienta que permite ejecutar consultas, modificar y mostrar los resultados de la consulta desde una base de datos KQL. Puede vincular cada pestaña del conjunto de consultas KQL a una base de datos KQL diferente y guardar las consultas para su uso futuro o compartirlas con otras personas para el análisis de datos. También puede cambiar la base de datos KQL para cualquier pestaña, de forma que pueda comparar los resultados de la consulta de diferentes orígenes de datos.
+En Microsoft Fabric, un *centro de enventos* se usa para almacenar datos en tiempo real relacionados con eventos; a menudo capturados desde un origen de datos de streaming mediante un *flujo de datos*.
 
-En este ejercicio, realizarás el rol de un analista encargado de consultar un conjunto de datos de los datos de carreras de taxi de Nueva York. Use KQL para consultar estos datos y recopilar información con el fin de obtener conclusiones informativas sobre los datos.
+Dentro de un centro de eventos, los datos se almacenan en una o varias bases de datos KQL, cada una de las cuales contiene tablas y otros objetos que puedes consultar mediante Lenguaje de consulta Kusto (KQL) o un subconjunto de Lenguaje de consulta estructurado (SQL).
 
-> **Sugerencia**: el conjunto de consultas KQL usa el lenguaje de consulta Kusto, que es compatible con muchas funciones SQL, para crear consultas. Para obtener más información sobre KQL, consulta [Información general sobre el Lenguaje de consulta Kusto (KQL)](https://learn.microsoft.com/azure/data-explorer/kusto/query/?context=%2Ffabric%2Fcontext%2Fcontext).
+En este ejercicio, crearás y rellenarás un centro de eventos con algunos datos de ejemplo relacionados con carreras de taxi y después consultarás los datos mediante KQL y SQL.
 
-Este laboratorio se realiza en **25** minutos aproximadamente.
+Este ejercicio se realiza en aproximadamente **25** minutos.
 
 ## Creación de un área de trabajo
 
@@ -27,13 +27,20 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la capacidad
 
 ## Creación de instancia de Eventhouse
 
+Ahora que tienes un área de trabajo compatible con una capacidad de Fabric, puedes crear un centro de eventos en él.
+
 1. En la página principal de **Inteligencia en tiempo real**, crea un nuevo **Centro de eventos** con el nombre que prefieras. Cuando se haya creado el centro de eventos, cierra las indicaciones o sugerencias que se muestran hasta que veas la página del centro de eventos:
 
    ![Captura de pantalla de un nuevo centro de eventos.](./Images/create-eventhouse.png)
-   
-1. En el menú **...** de la base de datos KQL que se ha creado en el centro de eventos, selecciona **Obtener datos** > **Muestra**. A continuación, elige los datos de muestra de **Análisis de operaciones de automoción**.
 
-1. Una vez finalizada la carga de datos, comprueba que se ha creado la tabla **Automoción**.
+1. En el panel de la izquierda, ten en cuenta que el centro de eventos contiene una base de datos KQL con el mismo nombre que el centro de eventos.
+1. Selecciona la base de datos KQL para verla.
+
+    Actualmente no hay tablas en la base de datos. En el resto de este ejercicio, usarás un flujo de eventos para cargar datos de un origen en tiempo real en una tabla.
+   
+1. En la página de la base de datos KQL, selecciona **Obtener datos** > **Ejemplo**. A continuación, elige los datos de muestra de **Análisis de operaciones de automoción**.
+
+1. Una vez finalizada la carga de los datos (que puede tardar algún tiempo), comprueba que se ha creado la tabla **Automoción**.
 
    ![Captura de pantalla de la tabla Automoción en una base de datos de centro de eventos.](./Images/choose-automotive-operations-analytics.png)
 
@@ -156,7 +163,7 @@ La base de datos KQL no admite Transact-SQL de forma nativa, pero proporciona un
 
 1. En el conjunto de consultas, agrega y ejecuta la siguiente consulta de Transact-SQL: 
 
-    ```sql  
+    ```sql
     SELECT TOP 100 * from Automotive
     ```
 

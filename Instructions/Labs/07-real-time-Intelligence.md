@@ -6,7 +6,7 @@ lab:
 
 # Introducción a inteligencia en tiempo real en Microsoft Fabric
 
-Microsoft Fabric proporciona un centro en tiempo real en el que puedes crear soluciones analíticas para secuencias de datos en tiempo real. En este ejercicio, explorarás algunas de las características principales de las funcionalidades de inteligencia en tiempo real de Microsoft Fabric para familiarizarte con ellas.
+Microsoft Fabric proporciona inteligencia en tiempo real, lo que le permite crear soluciones analíticas para flujos de datos en tiempo real. En este ejercicio, usarás las funcionalidades de inteligencia en tiempo real de Microsoft Fabric para ingerir, analizar y visualizar un flujo de datos de mercado de valores en tiempo real.
 
 Este laboratorio se realiza en unos **30** minutos.
 
@@ -23,51 +23,65 @@ Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con l
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
+## Crear un Eventstream
+
+Ahora estás listo para buscar e ingerir datos en tiempo real desde un origen de streaming. Para ello, se iniciará en el centro en tiempo real de Fabric.
+
+> **Sugerencia**: La primera vez que uses el centro en tiempo real, es posible que aparezcan algunas sugerencias de *introducción*. Puedes cerrarlas.
+
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real**.
+
+    El centro en tiempo real proporciona una manera fácil de buscar y administrar orígenes de datos de streaming.
+
+    ![Captura de pantalla del centro en tiempo real de Fabric.](./Images/real-time-hub.png)
+
+1. En el centro en tiempo real, en la sección **Conectar a**, selecciona **Orígenes de datos**.
+1. Busca el origen de datos de ejemplo **Mercado de valores** y selecciona **Conectar**. Después, en el asistente **Conectar**, nombra el origen `stock` y edita el nombre predeterminado del flujo de eventos para cambiarlo a `stock-data`. El flujo predeterminado asociado a estos datos se denominará automáticamente *stock-data-stream*:
+
+    ![Captura de pantalla de un nuevo flujo de eventos.](./Images/name-eventstream.png)
+
+1. Selecciona **Siguiente** y espera a que se creen el origen y el flujo de eventos, después selecciona **Abrir flujo de eventos**. El flujo de eventos mostrará el origen **existencias** y el **stock-data-stream** en el lienzo de diseño:
+
+   ![Captura de pantalla del lienzo del flujo de eventos.](./Images/new-stock-stream.png)
+
 ## Creación de instancia de Eventhouse
 
-Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fabric que necesitarás para tu solución de inteligencia en tiempo real. Empezaremos creando un centro de eventos, que contiene una base de datos KQL para los datos en tiempo real.
+El flujo de eventos ingiere los datos de existencias en tiempo real, pero actualmente no hace nada con él. Vamos a crear un centro de eventos donde podamos almacenar los datos capturados en una tabla.
 
 1. En la barra de menús de la izquierda, selecciona **Inicio**; y después, en la página principal de Inteligencia en tiempo real, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
-1. Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
+
+    Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
 
     ![Captura de pantalla de un nuevo centro de eventos](./Images/create-eventhouse.png)
 
 1. En el panel de la izquierda, ten en cuenta que el centro de eventos contiene una base de datos KQL con el mismo nombre que el centro de eventos. Puedes crear tablas para los datos en tiempo real de esta base de datos o crear bases de datos adicionales según sea necesario.
 1. Selecciona la base de datos y ten en cuenta que hay un *conjunto de consultas* asociado. Este archivo contiene algunas consultas KQL de ejemplo que puedes usar para empezar a consultar las tablas de la base de datos.
 
-    Sin embargo, actualmente no hay tablas que consultar. Vamos a resolver ese problema mediante un flujo de eventos para ingerir algunos datos de la base de datos.
-
-## Crear un Eventstream
+    Sin embargo, actualmente no hay tablas que consultar. Vamos a resolver ese problema mediante la obtención de datos del flujo de eventos de una nueva tabla.
 
 1. En la página principal de la base de datos KQL, selecciona **Obtener datos**.
-2. Para el origen de datos, selecciona **Eventstream** > **Nuevo flujo de eventos**. Asigna un nombre al flujo de eventos `stock-stream`.
+1. Para el origen de datos, selecciona **Flujo de eventos** > **Flujo de eventos existente**.
+1. En el panel **Seleccionar o crear una tabla de destino**, crea una nueva tabla denominada `stock`. Después, en el panel **Configurar el origen de datos**, selecciona tu área de trabajo y el flujo de eventos **stock-data** y asigna a la conexión el nombre `stock-data`.
 
-    La creación de tu nuevo flujo de eventos se completará en unos instantes. Una vez establecido, se le redirigirá automáticamente al editor principal, listo para empezar a integrar orígenes en el flujo de eventos.
+   ![Captura de pantalla de la configuración para cargar una tabla desde un flujo de eventos.](./Images/configure-destination.png)
 
-    ![Captura de pantalla de un nuevo flujo de eventos.](./Images//name-eventstream.png)
+1. Usa el botón **Siguiente** para completar los pasos para inspeccionar los datos y después finalizar la configuración. Después cierra la ventana de configuración para ver tu centro de eventos con la tabla Existencias.
 
-1.  En el lienzo del flujo de eventos, selecciona **Usar datos de ejemplo**.
-1. Asigna un nombre al origen `Stock` y selecciona los datos de ejemplo **Mercado de valores**.
+   ![Captura de pantalla y centro de eventos con una tabla.](./Images/eventhouse-with-table.png)
 
-    El flujo se asignará y se mostrará automáticamente en el **lienzo del flujo de eventos**.
+    Se ha creado la conexión entre el flujo y la tabla. Vamos a comprobarlo en el flujo de eventos.
 
-   ![Captura de pantalla del lienzo del flujo de eventos.](./Images/new-stock-stream.png)
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real** y después consulta la página **Mis flujos de datos**. La tabla **Existencias** y el flujo **stock-data-stream** deben aparecer en la lista.
 
-1. En la lista desplegable **Transformar eventos o agregar destino**, en la sección **Destinos**, selecciona **Eventhouse**.
-1. En el panel **Eventhouse**, establece las siguientes opciones de configuración.
-   - **Modo de ingesta de datos:**: procesamiento de eventos antes de la ingesta
-   - **Nombre del destino:**`stock-table`
-   - **Área de trabajo:***selecciona el área de trabajo que has creado al principio de este ejercicio*
-   - **Eventhouse**: *selecciona tu centro de eventos*
-   - **Base de datos KQL:** *selecciona la base de datos KQL del centro de eventos.*
-   - **Tabla de destino:** crea una nueva tabla denominada `stock`
-   - **Formato de datos de entrada:** JSON
+   ![Captura de pantalla de la página Mis flujos en el centro en tiempo real.](./Images/my-data-streams.png)
 
-   ![Flujo de eventos de base de datos KQL con modos de ingesta](./Images/configure-destination.png)
+1. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
 
-1. En el panel **Eventhouse**, selecciona **Guardar**.
-1. En la barra de herramientas, seleccione **Publicar**.
-1. Espera aproximadamente un minuto a que se active el destino de los datos.
+    El flujo de eventos muestra ahora un destino para el flujo:
+
+   ![Captura de pantalla de un flujo de eventos con un destino.](./Images/eventstream-destination.png)
+
+    > **Sugerencia**: selecciona el destino en el lienzo de diseño y, si no se muestra ninguna versión preliminar de datos debajo de él, selecciona **Actualizar**.
 
     En este ejercicio, has creado una secuencia de eventos muy sencilla que captura datos en tiempo real y los carga en una tabla. En una solución real, normalmente añadirías transformaciones para agregar los datos a través de ventanas temporales (por ejemplo, para capturar el precio medio de cada acción durante períodos de cinco minutos).
 
