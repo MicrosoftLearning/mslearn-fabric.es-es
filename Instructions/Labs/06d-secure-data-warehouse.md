@@ -16,7 +16,7 @@ Este laboratorio se realiza en **45** minutos aproximadamente.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Synapse Data Warehouse**.
+1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Data Warehouse**.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -29,9 +29,9 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 A continuación, creará un almacenamiento de datos en el área de trabajo que ha creado. La página principal de Synapse Data Warehouse incluye un acceso directo para crear un nuevo almacén:
 
-1. En la página principal de **Synapse Data Warehouse**, cree un nuevo **almacenamiento** con el nombre que prefiera.
+1. En la página principal de **Almacenamiento de datos**, crea un nuevo **Almacenamiento** con el nombre que prefieras.
 
-    Al cabo de un minuto más o menos, se creará un nuevo almacenamiento:
+    Al cabo de un minuto más o menos, se creará un nuevo almacén:
 
     ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-empty-data-warehouse.png)
 
@@ -39,7 +39,7 @@ A continuación, creará un almacenamiento de datos en el área de trabajo que h
 
 Las reglas de enmascaramiento dinámico de datos se aplican en columnas individuales en el nivel de tabla para que todas las consultas se vean afectadas por el enmascaramiento. Los usuarios que no tengan permiso explícito para ver datos confidenciales ven los valores enmascarados en los resultados de la consulta, mientras que los usuarios con permiso explícito para ver los datos los ven sin enmascarar. Hay cuatro tipos de máscara: predeterminado, correo electrónico, aleatorio y cadena personalizada. En este ejercicio, aplicará una máscara predeterminada, una máscara de correo electrónico y una máscara de cadena personalizada.
 
-1. En su almacén, seleccione el icono **T-SQL** y sustituya el código SQL predeterminado por las siguientes instrucciones T-SQL para crear una tabla e insertar y visualizar datos.  
+1. En tu almacén, selecciona el icono **T-SQL** y usa las siguientes instrucciones T-SQL para crear una tabla e insertar y visualizar datos.  
 
     ```T-SQL
    CREATE TABLE dbo.Customers
@@ -91,7 +91,7 @@ Las reglas de enmascaramiento dinámico de datos se aplican en columnas individu
 
 La seguridad de nivel de fila (RLS) se puede usar para limitar el acceso a las filas en función de la identidad o el rol del usuario que ejecuta una consulta. En este ejercicio, va a restrigir el acceso a las filas mediante la creación de una directiva de seguridad y un predicado de seguridad definido como una función con valores de tabla insertados.
 
-1. En el almacén que creó en el último ejercicio, seleccione la lista desplegable **Nueva consulta SQL**.  En el encabezado **En blanco**, seleccione **Nueva consulta SQL**.
+1. En el almacén que has creado en el último ejercicio, selecciona el desplegable **Nueva consulta SQL** y selecciona **Nueva consulta SQL**.
 
 2. Cree una tabla e inserte datos. Para que pueda probar la seguridad a nivel de filas en un paso posterior, sustituya `username1@your_domain.com` por un nombre de usuario de su entorno y sustituya `username2@your_domain.com` por su nombre de usuario.
 
@@ -166,7 +166,7 @@ La seguridad de nivel de fila (RLS) se puede usar para limitar el acceso a las f
 
 La seguridad de nivel de columna permite designar qué usuarios pueden acceder a columnas específicas de una tabla. Se implementa mediante la emisión de una instrucción `GRANT` o `DENY` en una tabla que especifica una lista de columnas y el usuario o rol que pueden o no pueden leerlas. Para simplificar la administración de acceso, asigne permisos a los roles en lugar de a usuarios individuales. En este ejercicio, creará una tabla, concederá acceso a un subconjunto de columnas de la tabla y comprobará que las columnas restringidas no las pueden ver otro usuario que no sea usted.
 
-1. En el almacén que creó en el ejercicio anterior, seleccione la lista desplegable **Nueva consulta SQL**. En el encabezado **En blanco**, seleccione **Nueva consulta SQL**.  
+1. En el almacén que has creado en el ejercicio anterior, selecciona el desplegable **Nueva consulta SQL** y después **Nueva consulta SQL**.  
 
 2. Cree una tabla e inserte datos en ella.
 

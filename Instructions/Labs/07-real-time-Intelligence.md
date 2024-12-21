@@ -6,15 +6,15 @@ lab:
 
 # Introducción a inteligencia en tiempo real en Microsoft Fabric
 
-Microsoft Fabric proporciona un entorno de ejecución que puede usar para almacenar y consultar datos con el Lenguaje de consulta Kusto (KQL). Kusto está optimizado para datos que incluyen un componente de serie temporal, como los datos en tiempo real de archivos de registro o dispositivos IoT.
+Microsoft Fabric proporciona inteligencia en tiempo real, lo que le permite crear soluciones analíticas para flujos de datos en tiempo real. En este ejercicio, usarás las funcionalidades de inteligencia en tiempo real de Microsoft Fabric para ingerir, analizar y visualizar un flujo de datos de mercado de valores en tiempo real.
 
 Este laboratorio se realiza en unos **30** minutos.
 
-> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> **Nota**: Necesitas un [inquilino de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para completar este ejercicio.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
 1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
@@ -23,123 +23,156 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Descarga de un archivo para la base de datos KQL
+## Crear un Eventstream
 
-Ahora que tiene un área de trabajo, es el momento de descargar el archivo de datos que va a analizar.
+Ahora estás listo para buscar e ingerir datos en tiempo real desde un origen de streaming. Para ello, se iniciará en el centro en tiempo real de Fabric.
 
-1. Descargue el archivo de datos para este ejercicio desde [https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv](https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv) y guárdelo como **sales.csv** en su PC local (o su máquina virtual del laboratorio si procede).
-1. Vuelva a la ventana del explorador con la experiencia **Microsoft Fabric**.
+> **Sugerencia**: La primera vez que uses el centro en tiempo real, es posible que aparezcan algunas sugerencias de *introducción*. Puedes cerrarlas.
 
-## Creación de una base de datos KQL
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real**.
 
-El Lenguaje de consulta Kusto (KQL) se usa para consultar datos estáticos o de streaming en una tabla que se define en una base de datos KQL. Para analizar los datos de ventas, debe crear una tabla en una base de datos KQL e ingerir los datos del archivo.
+    El centro en tiempo real proporciona una manera fácil de buscar y administrar orígenes de datos de streaming.
 
-1. En la parte inferior izquierda del portal, cambie a la experiencia Inteligencia en tiempo real.
+    ![Captura de pantalla del centro en tiempo real de Fabric.](./Images/real-time-hub.png)
 
-    ![Captura de pantalla del menú del conmutador de experiencias.](./Images/fabric-real-time.png)
+1. En el centro en tiempo real, en la sección **Conectar a**, selecciona **Orígenes de datos**.
+1. Busca el origen de datos de ejemplo **Mercado de valores** y selecciona **Conectar**. Después, en el asistente **Conectar**, nombra el origen `stock` y edita el nombre predeterminado del flujo de eventos para cambiarlo a `stock-data`. El flujo predeterminado asociado a estos datos se denominará automáticamente *stock-data-stream*:
 
-2. En la página principal de Inteligencia en tiempo real, cree un nuevo **Centro de eventos** con el nombre que prefiera.
+    ![Captura de pantalla de un nuevo flujo de eventos.](./Images/name-eventstream.png)
 
-   ![Captura de pantalla del Editor de RTI con Eventhouse resaltado.](./Images/create-kql-db.png)
+1. Selecciona **Siguiente** y espera a que se creen el origen y el flujo de eventos, después selecciona **Abrir flujo de eventos**. El flujo de eventos mostrará el origen **existencias** y el **stock-data-stream** en el lienzo de diseño:
 
-   El Centro de eventos se usa para agrupar y administrar las bases de datos entre proyectos. Una base de datos KQL vacía se crea automáticamente con el nombre del centro de eventos.
-   
-3. Una vez creada la nueva base de datos, selecciónala de la lista de la izquierda en Bases de Datos KQL. Luego selecciona la opción para obtener datos del **archivo local**. Utiliza el asistente para importar los datos a una nueva tabla seleccionando las siguientes opciones:
-    - **Destino**:
-        - **Base de datos**: *La base de datos que ha creado ya está seleccionada*.
-        - **Tabla**: *Cree una nueva tabla denominada* **sales** haciendo clic en el signo + a la izquierda de ***Nueva tabla***
+   ![Captura de pantalla del lienzo del flujo de eventos.](./Images/new-stock-stream.png)
 
-        ![Paso uno del asistente para nueva tabla](./Images/import-wizard-local-file-1.png?raw=true)
+## Creación de instancia de Eventhouse
 
-        - Ahora verá que en la misma ventana aparece el hipervínculo **Arrastrar archivos aquí o Buscar archivos**.
+El flujo de eventos ingiere los datos de existencias en tiempo real, pero actualmente no hace nada con él. Vamos a crear un centro de eventos donde podamos almacenar los datos capturados en una tabla.
 
-        ![Paso dos del asistente para nueva tabla](./Images/import-wizard-local-file-2.png?raw=true)
+1. En la barra de menús de la izquierda, selecciona **Inicio**; y después, en la página principal de Inteligencia en tiempo real, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
 
-        - busque o arrastre el **sales.csv** a la pantalla y espere a que el cuadro Estado cambie a una casilla verde y, a continuación, seleccione **Siguiente**
+    Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
 
-        ![Paso tres del asistente para nueva tabla](./Images/import-wizard-local-file-3.png?raw=true)
+    ![Captura de pantalla de un nuevo centro de eventos](./Images/create-eventhouse.png)
 
-        - En esta pantalla verás que los encabezados de columna están en la primera fila aunque el sistema los ha detectado. Todavía es necesario mover el control deslizante que está encima de estas líneas **Primera fila es el encabezado de columna** para evitar que se produzcan errores.
-        
-        ![Paso cuatro del asistente para nueva tabla](./Images/import-wizard-local-file-4.png?raw=true)
+1. En el panel de la izquierda, ten en cuenta que el centro de eventos contiene una base de datos KQL con el mismo nombre que el centro de eventos. Puedes crear tablas para los datos en tiempo real de esta base de datos o crear bases de datos adicionales según sea necesario.
+1. Selecciona la base de datos y ten en cuenta que hay un *conjunto de consultas* asociado. Este archivo contiene algunas consultas KQL de ejemplo que puedes usar para empezar a consultar las tablas de la base de datos.
 
-        - Una vez que seleccione este control deslizante, verá que todo se ve bien para ir, seleccione el botón **Finalizar** en la parte inferior derecha del panel.
+    Sin embargo, actualmente no hay tablas que consultar. Vamos a resolver ese problema mediante la obtención de datos del flujo de eventos de una nueva tabla.
 
-        ![Paso cinco del asistente para nueva tabla](./Images/import-wizard-local-file-5.png?raw=true)
+1. En la página principal de la base de datos KQL, selecciona **Obtener datos**.
+1. Para el origen de datos, selecciona **Flujo de eventos** > **Flujo de eventos existente**.
+1. En el panel **Seleccionar o crear una tabla de destino**, crea una nueva tabla denominada `stock`. Después, en el panel **Configurar el origen de datos**, selecciona tu área de trabajo y el flujo de eventos **stock-data** y asigna a la conexión el nombre `stock-data`.
 
-        - Espere a que los pasos de la pantalla de resumen se completen, entre los que se incluyen:
-            - Crear tabla (ventas)
-            - crear asignación (sales_mapping)
-            - Puesta en cola de datos
-            - Ingesta
-        - Seleccione el botón **Cerrar**
+   ![Captura de pantalla de la configuración para cargar una tabla desde un flujo de eventos.](./Images/configure-destination.png)
 
-        ![Paso seis del asistente para nueva tabla](./Images/import-wizard-local-file-6.png?raw=true)
+1. Usa el botón **Siguiente** para completar los pasos para inspeccionar los datos y después finalizar la configuración. Después cierra la ventana de configuración para ver tu centro de eventos con la tabla Existencias.
 
-> **Nota:** En este ejemplo, ha importado una cantidad muy pequeña de datos estáticos de un archivo, que está bien para los fines de este ejercicio. En realidad, Kusto se puede usar para analizar volúmenes de datos más grandes, incluidos datos en tiempo real de un origen de streaming como Azure Event Hubs.
+   ![Captura de pantalla y centro de eventos con una tabla.](./Images/eventhouse-with-table.png)
 
-## Uso de KQL para consultar la tabla "sales"
+    Se ha creado la conexión entre el flujo y la tabla. Vamos a comprobarlo en el flujo de eventos.
 
-Ahora que tiene una tabla de datos en la base de datos, puede usar código KQL para consultarla.
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real** y después consulta la página **Mis flujos de datos**. La tabla **Existencias** y el flujo **stock-data-stream** deben aparecer en la lista.
 
-1. Asegúrese de que tiene resaltada la tabla **sales**. En la barra de menús, seleccione la lista desplegable **Tabla de consultas** y seleccione **Mostrar 100 registros cualesquiera**.
+   ![Captura de pantalla de la página Mis flujos en el centro en tiempo real.](./Images/my-data-streams.png)
 
-2. Se abre un nuevo panel con la consulta y el resultado. 
+1. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
 
-3. Modifique la consulta del siguiente modo:
+    El flujo de eventos muestra ahora un destino para el flujo:
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
+   ![Captura de pantalla de un flujo de eventos con un destino.](./Images/eventstream-destination.png)
+
+    > **Sugerencia**: selecciona el destino en el lienzo de diseño y, si no se muestra ninguna versión preliminar de datos debajo de él, selecciona **Actualizar**.
+
+    En este ejercicio, has creado una secuencia de eventos muy sencilla que captura datos en tiempo real y los carga en una tabla. En una solución real, normalmente añadirías transformaciones para agregar los datos a través de ventanas temporales (por ejemplo, para capturar el precio medio de cada acción durante períodos de cinco minutos).
+
+    Ahora vamos a explorar cómo puedes consultar y analizar los datos capturados.
+
+## Consulta de los datos capturados
+
+La secuencia de eventos captura los datos del mercado de valores en tiempo real y los carga en una tabla de la base de datos KQL. Puedes consultar esta tabla para ver los datos capturados.
+
+1. En la barra de menús de la izquierda, selecciona la base de datos del centro de eventos.
+1. Selecciona el *conjunto de consultas* para tu base de datos.
+1. En el panel de consulta, modifica la primera consulta de ejemplo como se muestra aquí:
+
+    ```kql
+    stock
+    | take 100
     ```
 
-4. Ejecuta la consulta. A continuación, revise los resultados, que deben contener solo las filas de los pedidos de ventas del producto *Road-250 Black, 48*.
+1. Selecciona el código de consulta y ejecútalo para ver 100 filas de datos de la tabla.
 
-5. Modifique la consulta del siguiente modo:
+    ![Captura de pantalla de una consulta KQL.](./Images/kql-stock-query.png)
 
-    ```kusto
-   sales
-   | where Item == 'Road-250 Black, 48'
-   | where datetime_part('year', OrderDate) > 2020
+1. Revisa los resultados y después modifica la consulta para obtener el precio medio de cada símbolo de acciones de los últimos 5 minutos:
+
+    ```kql
+    stock
+    | where ["time"] > ago(5m)
+    | summarize avgPrice = avg(todecimal(bidPrice)) by symbol
+    | project symbol, avgPrice
     ```
 
-6. Ejecute la consulta y revise los resultados, que solo deben contener los pedidos de ventas de *Road-250 Black, 48* realizados después de 2020.
+1. Resalta la consulta modificada y ejecútalo para ver los resultados.
+1. Espera unos segundos, ejecútala de nuevo y observa que los precios promedio cambian a medida que se agregan nuevos datos a la tabla desde la secuencia en tiempo real.
 
-7. Modifique la consulta del siguiente modo:
+## Creación de paneles en tiempo real
 
-    ```kusto
-   sales
-   | where OrderDate between (datetime(2020-01-01 00:00:00) .. datetime(2020-12-31 23:59:59))
-   | summarize TotalNetRevenue = sum(UnitPrice) by Item
-   | sort by Item asc
-    ```
+Ahora que tienes una tabla que se rellena mediante la secuencia de datos, puedes usar un panel en tiempo real para visualizar los datos.
 
-8. Ejecute la consulta y revise los resultados, que deben contener los ingresos netos totales de cada producto entre el 1 de enero y el 31 de diciembre de 2020 por nombre de producto en orden ascendente.
+1. En el editor de consultas, selecciona la consulta KQL que has usado para recuperar los precios promedio de las acciones durante los últimos cinco minutos.
+1. En la barra de herramientas, selecciona **Anclar al panel**. Después, ancla la consulta **en un nuevo panel de control** con la siguiente configuración:
+    - **Nombre de panel **: `Stock Dashboard`
+    - **Nombre del icono**: `Average Prices`
+1. Crea el panel y ábrelo. Debería ser parecido a este:
 
-## Creación de un informe de Power BI a partir de un conjunto de consultas KQL
+    ![Captura de pantalla de un nuevo panel.](./Images/stock-dashboard-table.png)
 
-Puede usar el conjunto de consultas KQL como base para un informe de Power BI.
+1. En la parte superior del panel de control, cambia del modo **Visualización** al modo **Edición**.
+1. Selecciona el icono **Editar** (*lápiz*) del icono **Precios promedio**.
+1. En el panel **Formato visual**, cambia el **Objeto visual** de *Tabla* a *Gráfico de columnas*:
 
-1. En el editor del workbench del conjunto de consultas, ejecute la consulta y espere los resultados.
-2. Selecciona **Power BI** y espera a que se abra el editor de informes.
-3. En el editor de informes, en el panel **Datos**, expanda **Resultado de la consulta de Kusto** y seleccione los campos **Item** y **TotalRevenue**.
-4. En el lienzo de diseño del informe, seleccione la visualización de tabla que se ha agregado y, en el panel **Visualizaciones**, seleccione **Gráfico de barras agrupadas**.
+    ![Captura de pantalla de un icono de panel que se está editando.](./Images/edit-dashboard-tile.png)
 
-    ![Captura de pantalla de un informe de una consulta KQL.](./Images/kql-report.png)
+1. En la parte superior del panel, selecciona **Aplicar cambios** y consulta tu panel modificado:
 
-5. En la ventana de **Power BI**, en el menú **Archivo**, seleccione **Guardar**. A continuación, guarde el informe como **Ingresos por artículo.pbix** en el área de trabajo donde se han definido el almacén de lago y la base de datos KQL con una etiqueta de confidencialidad **No empresarial**.
-6. Cierre la ventana de **Power BI** y, en la barra de la izquierda, seleccione el icono del área de trabajo.
+    ![Captura de pantalla de un panel de control con un icono de gráfico.](./Images/stock-dashboard-chart.png)
 
-    Actualice la página Área de trabajo si es necesario para ver todos los elementos que contiene.
+    Ahora tienes una visualización en vivo de los datos de existencias en tiempo real.
 
-7. En la lista de elementos del área de trabajo, observe que aparece el informe **Ingresos por artículo**.
+## Crear una alerta
+
+La inteligencia en tiempo real de Microsoft Fabric incluye una tecnología denominada *Activator*, que puede desencadenar acciones basadas en eventos en tiempo real. Vamos a usarlo para avisarte cuando el precio promedio de las acciones aumente una cantidad específica.
+
+1. En la ventana del panel que contiene la visualización de precios de acciones, en la barra de herramientas, selecciona **Establecer alerta**.
+1. En el panel **Establecer alerta**, crea una alerta con la siguiente configuración:
+    - **Ejecutar consulta cada**: 5 minutos
+    - **Comprobar**: en cada evento agrupado por
+    - **Campo de agrupación**: símbolo
+    - **Cuándo**: avgPrice
+    - **Condición**: aumenta
+    - **Valor**: 100
+    - **Acción**: Enviarme un correo electrónico
+    - **Guardar ubicación**:
+        - **Área de trabajo**: *tu área de trabajo*
+        - **Elemento**: crear un nuevo elemento
+        - **Nombre del nuevo elemento**: *nombre único que prefieras*.
+
+    ![Captura de pantalla de la configuración de alertas.](./Images/configure-activator.png)
+
+1. Crea la alerta y espera a que se guarde. Después, cierra el panel para confirmar que se ha creado.
+1. En la barra de menús de la izquierda, selecciona la página de tu área de trabajo (guarda los cambios no guardados en tu panel si se te solicita).
+1. En la página del área de trabajo, consulta los elementos que has creado en este ejercicio, incluyendo el activador de la alerta.
+1. Abre el activador, y en su página, en el nodo **avgPrice**, selecciona el identificador único de tu alerta. Después, consulta su pestaña **Historial**.
+
+    Es posible que la alerta no se haya desencadenado, en cuyo caso el historial no contendrá datos. Si el precio medio de las acciones cambia en más de 100, el activador te enviará un correo electrónico y la alerta se registrará en el historial.
 
 ## Limpieza de recursos
 
-En este ejercicio, ha creado un almacén de lago, una base de datos KQL para analizar los datos cargados en el almacén de lago. Ha usado KQL para consultar los datos y crear un conjunto de consultas, que luego ha usado para crear un informe de Power BI.
+En este ejercicio, has creado un centro de eventos, has ingerido datos en tiempo real mediante una secuencia de eventos, has consultado los datos ingeridos en una tabla de base de datos KQL, has creado un panel en tiempo real para visualizar los datos en tiempo real y has configurado una alerta mediante Activator.
 
-Si ha terminado de explorar la base de datos KQL, puede eliminar el área de trabajo que ha creado para este ejercicio.
+Si has terminado de explorar la inteligencia en tiempo real en Fabric, puedes eliminar el área de trabajo que has creado para este ejercicio.
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo.
-2. En el menú **...** de la barra de herramientas, seleccione **Configuración del área de trabajo**.
+2. En la barra de herramientas, selecciona **Configuración del área de trabajo**.
 3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
