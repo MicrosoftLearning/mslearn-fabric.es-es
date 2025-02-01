@@ -31,7 +31,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacenamiento de
 
     Al cabo de un minuto más o menos, se creará un nuevo almacenamiento:
 
-    ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-data-warehouse.png)
+    ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-data-warehouse2.png)
 
 ## Creación de tablas e inserción de datos
 
@@ -195,7 +195,7 @@ En lugar de escribir código SQL, puede usar el diseñador gráfico de consultas
 
 1. Si está interesado en examinar los datos de un solo producto, de acuerdo con una solicitud de administrador, ahora puede usar la columna **ProductName** para filtrar los datos de la consulta. Filtre la columna **ProductName** para ver solo los datos de **Cable Lock**.
 
-1. Desde aquí, puede analizar los resultados de esta única consulta seleccionando **Visualizar resultados** o **Abrir en Excel**. Ahora puede ver exactamente lo que solicitó el administrador, por lo que no es necesario seguir analizando los resultados.
+1. Desde aquí, puedes analizar los resultados de esta única consulta con la selección de **Visualizar resultados** o **Descargar archivo de Excel**. Ahora puede ver exactamente lo que solicitó el administrador, por lo que no es necesario seguir analizando los resultados.
 
 ### Visualización de los datos
 
@@ -232,7 +232,7 @@ Puede visualizar fácilmente los datos en una sola consulta o en el almacenamien
 
 1. En el menú **Archivo**, seleccione **Guardar**. A continuación, guarde el informe como **Informe de ventas** en el área de trabajo que creó anteriormente.
 
-1. En el centro de menús de la izquierda, vuelva al área de trabajo. Tenga en cuenta que ahora tiene tres elementos guardados en el área de trabajo: el almacenamiento de datos, su conjunto de datos predeterminado y el informe que ha creado.
+1. En el centro de menús de la izquierda, vuelva al área de trabajo. Ten en cuenta que ahora tienes tres elementos guardados en el área de trabajo: el almacenamiento de datos, su modelo semántico predeterminado y el informe que has creado.
 
     ![Captura de pantalla del área de trabajo con los tres elementos mostrados.](./Images/workspace-items.png)
 

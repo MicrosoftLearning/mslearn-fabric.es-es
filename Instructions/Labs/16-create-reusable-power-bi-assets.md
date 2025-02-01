@@ -16,7 +16,7 @@ Este ejercicio debería tardar en completarse **30** minutos aproximadamente.
 
 Antes de comenzar este ejercicio, debes abrir un explorador web y escribir la siguiente dirección URL para descargar la carpeta zip:
 
-`https://github.com/MicrosoftLearning/mslearn-fabric/raw/Main/Allfiles/Labs/16b/16-reusable-assets.zip`
+`https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrae la carpeta a la carpeta **C:\sers\student\Downloads\16-reusable-assets**.
 
@@ -33,7 +33,7 @@ En esta tarea, usarás un informe existente para crear un modelo semántico comp
 1. En el nuevo cuadro de diálogo Explorador de archivos, ve al archivo de inicio *.pbix*, selecciónalo y selecciona **Abrir** para cargarlo.
 1. Observa cómo ahora tienes dos elementos diferentes en el espacio de trabajo con el mismo nombre:
 
-    - Informe
+    - Report
     - Modelo semántico
 
 1. Abre el informe y observa el tema de color usado. *Cambiarás esto en una tarea posterior.*

@@ -190,7 +190,7 @@ Esta tarea se basa en la existencia de un grupo de seguridad **Salespeople_Austr
 
     ![](Images/enforce-model-security-image32.png)
 
-    *La opción **Seguridad** admite la asignación de entidades de seguridad de Microsoft Azure Active Directory (Azure AD), que incluye grupos de seguridad y usuarios.*
+    *La opción **Seguridad** es compatible con la asignación de entidades de seguridad de Microsoft Entra, que incluye grupos de seguridad y usuarios.*
 
 4. A la izquierda, observa la lista de roles y que **Australia** está seleccionada.
 
