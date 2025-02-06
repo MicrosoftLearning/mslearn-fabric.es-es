@@ -10,15 +10,15 @@ Un almacén de lago de datos es un almacén de datos analíticos común para sol
 
 Fabric también admite Apache Spark, lo que le permite escribir y ejecutar código para procesar datos a gran escala. Al combinar las funcionalidades de canalización y de Spark en Fabric, puede implementar una lógica compleja de ingesta de datos que copia los datos de orígenes externos en el almacenamiento de OneLake en el que se basa el almacén de lago y, luego, usa código de Spark para realizar transformaciones de datos personalizadas antes de cargarlos en tablas para su análisis.
 
-Este laboratorio se tarda en completar **60** minutos aproximadamente.
+Este laboratorio tardará aproximadamente **45** minutos en completarse.
 
-> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> **Nota**: Necesitarás una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
 
 ## Creación de un área de trabajo
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Ingeniería de datos**.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -29,7 +29,9 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago de datos en el cual ingerirá los datos.
 
-1. En la página principal de **Ingeniería de datos**, crea un nuevo **almacén de lago de datos** con el nombre que prefieras.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Ingeniería de datos*, selecciona **Almacén de lago de datos**. Asígnale un nombre único que elijas.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén de lago sin **tablas** ni **archivos**.
 
