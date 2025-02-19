@@ -18,6 +18,7 @@ Este ejercicio se realiza en aproximadamente **25** minutos.
 
 Antes de trabajar con datos de Fabric, cree un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -29,7 +30,7 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la capacidad
 Ahora que tienes un área de trabajo compatible con una capacidad de Fabric, puedes crear un centro de eventos en él.
 
 1. En la barra de menús de la izquierda, selecciona **Cargas de trabajo**. Después, selecciona el icono **Inteligencia en tiempo real**.
-1. En la página principal de **Inteligencia en tiempo real**, en el icono *Explorar ejemplo de inteligencia en tiempo real*, selecciona **Abrir**. Creará automáticamente un Eventhouse denominado **RTISample**:
+1. En la página principal de **Inteligencia en tiempo real**, selecciona el icono de **ejemplo de Explorar inteligencia en tiempo real**. Creará automáticamente un Eventhouse denominado **RTISample**:
 
    ![Captura de pantalla de un nuevo Eventhouse con datos de ejemplo.](./Images/create-eventhouse-sample.png)
 
@@ -221,7 +222,7 @@ La base de datos KQL no admite Transact-SQL de forma nativa, pero proporciona un
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     ORDER BY Neighbourhood ASC;
     ```
 
@@ -239,7 +240,7 @@ La base de datos KQL no admite Transact-SQL de forma nativa, pero proporciona un
     GROUP BY CASE
                WHEN Neighbourhood IS NULL OR Neighbourhood = '' THEN 'Unidentified'
                ELSE Neighbourhood
-             END;
+             END
     HAVING Neighbourhood = 'Chelsea'
     ORDER BY Neibourhood ASC;
     ```
