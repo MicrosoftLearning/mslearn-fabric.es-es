@@ -16,6 +16,7 @@ Este laboratorio se realiza en unos **30** minutos.
 
 Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -47,7 +48,9 @@ Ahora estás listo para buscar e ingerir datos en tiempo real desde un origen de
 
 El flujo de eventos ingiere los datos de existencias en tiempo real, pero actualmente no hace nada con él. Vamos a crear un centro de eventos donde podamos almacenar los datos capturados en una tabla.
 
-1. En la barra de menús de la izquierda, selecciona **Inicio**; y después, en la página principal de Inteligencia en tiempo real, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Inteligencia en tiempo real*, selecciona **Eventhouse**. Asígnale un nombre único que elijas.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
 
     Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
 
@@ -60,7 +63,7 @@ El flujo de eventos ingiere los datos de existencias en tiempo real, pero actual
 
 1. En la página principal de la base de datos KQL, selecciona **Obtener datos**.
 1. Para el origen de datos, selecciona **Flujo de eventos** > **Flujo de eventos existente**.
-1. En el panel **Seleccionar o crear una tabla de destino**, crea una nueva tabla denominada `stock`. Después, en el panel **Configurar el origen de datos**, selecciona tu área de trabajo y el flujo de eventos **stock-data** y asigna a la conexión el nombre `stock-data`.
+1. En el panel **Seleccionar o crear una tabla de destino**, crea una nueva tabla denominada `stock`. Después, en el panel **Configurar el origen de datos**, selecciona tu área de trabajo y el flujo de eventos **stock-data** y asigna a la conexión el nombre `stock-table`.
 
    ![Captura de pantalla de la configuración para cargar una tabla desde un flujo de eventos.](./Images/configure-destination.png)
 
@@ -70,11 +73,7 @@ El flujo de eventos ingiere los datos de existencias en tiempo real, pero actual
 
     Se ha creado la conexión entre el flujo y la tabla. Vamos a comprobarlo en el flujo de eventos.
 
-1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real** y después consulta la página **Mis flujos de datos**. La tabla **Existencias** y el flujo **stock-data-stream** deben aparecer en la lista.
-
-   ![Captura de pantalla de la página Mis flujos en el centro en tiempo real.](./Images/my-data-streams.png)
-
-1. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real** y después consulta la página **Mis flujos de datos**. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
 
     El flujo de eventos muestra ahora un destino para el flujo:
 

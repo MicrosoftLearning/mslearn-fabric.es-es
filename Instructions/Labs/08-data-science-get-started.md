@@ -16,11 +16,10 @@ Este laboratorio se tarda aproximadamente **20** minutos en completarse.
 
 ## Creación de un área de trabajo
 
-Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluación gratuita de Fabric habilitada.
+Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. Ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` en un explorador.
-1. Seleccione **Ciencia de datos de Synapse**.
-1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
+1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
@@ -30,7 +29,9 @@ Antes de trabajar con datos de Fabric, cree un área de trabajo con la evaluaci�
 
 Para ejecutar código, puede crear un *cuaderno*. Los cuadernos proporcionan un entorno interactivo en el que puede escribir y ejecutar código (en varios lenguajes).
 
-1. En la página principal de **Ciencia de datos de Synapse**, cree un nuevo **cuaderno**.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Ciencia de datos*, selecciona **Bloc de notas**. Asígnale un nombre único que elijas.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
 
     Al cabo de unos segundos, se abrirá un nuevo cuaderno que contiene una sola *celda*. Los cuadernos se componen de una o varias celdas que pueden contener *código* o *Markdown* (texto con formato).
 
@@ -93,13 +94,12 @@ Ahora está listo para ejecutar código para obtener los datos y entrenar un mod
 
     La salida muestra las filas y columnas del conjunto de datos de diabetes.
 
-1. Hay dos pestañas en la parte superior de la tabla representada: **Tabla** y **Gráfico**. Seleccionar **Gráfico**.
-1. Seleccione **Personalizar gráfico** en la parte superior derecha del gráfico para cambiar la visualización.
-1. Cambie el gráfico a la siguiente configuración:
+1. Hay dos pestañas en la parte superior de la tabla representada: **Tabla** y **+ Nuevo gráfico**. Seleccione **+ Nuevo gráfico**.
+1. Selecciona la opción **Compilar mía propia** a la derecha del gráfico para crear una nueva visualización.
+1. Selecciona la siguiente configuración de gráfico:
     * **Tipo de gráfico**: `Box plot`
-    * **Clave**: *dejar en blanco*
-    * **Valores**: `Y`
-1. Seleccione **Aplicar** para representar la nueva visualización y explorar la salida.
+    * **Eje Y**: `Y`
+1. Revisa la salida que muestra la distribución de la columna de etiqueta `Y`.
 
 ## Preparación de los datos
 
@@ -121,8 +121,8 @@ Ahora que ha ingerido y explorado los datos, puede transformar los datos. Puede 
 1. Cree una nueva columna con la siguiente configuración:
     * **Nombre de la columna**: `Risk`
     * **Fórmula de la columna**: `(df['Y'] > 211.5).astype(int)`
-1. Revise la nueva columna `Risk` que se agrega a la versión preliminar. Compruebe que el número de filas con valor `1` debe ser aproximadamente el 25 % de todas las filas (ya que es el percentil 75 de `Y`).
 1. Seleccione **Aplicar**.
+1. Revise la nueva columna `Risk` que se agrega a la versión preliminar. Compruebe que el número de filas con valor `1` debe ser aproximadamente el 25 % de todas las filas (ya que es el percentil 75 de `Y`).
 1. Seleccione **Agregar código al cuaderno**.
 1. Ejecute la celda con el código que ha generado Data Wrangler.
 1. Ejecute el código siguiente en una nueva celda para comprobar que la columna `Risk` tiene la forma esperada:
@@ -215,7 +215,7 @@ Microsoft Fabric realizará un seguimiento de todos los experimentos y le permit
 
     > **Sugerencia:** Si ve que no hay ninguna ejecución de experimentos registrada, actualice la página.
 
-1. Revise las **métricas de ejecución** para explorar la precisión del modelo de regresión.
+1. Revisa las **métricas de ejecución** para explorar cómo es la precisión de tu modelo de regresión.
 1. Vuelva a la página principal y seleccione el experimento `diabetes-classification` para abrirlo.
 1. Revise las **métricas de ejecución** para explorar la precisión del modelo de clasificación. Tenga en cuenta que el tipo de métrica es diferente, ya que ha entrenado otro tipo de modelo.
 
