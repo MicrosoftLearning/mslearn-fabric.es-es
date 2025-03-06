@@ -242,7 +242,7 @@ La base de datos KQL no admite Transact-SQL de forma nativa, pero proporciona un
                ELSE Neighbourhood
              END
     HAVING Neighbourhood = 'Chelsea'
-    ORDER BY Neibourhood ASC;
+    ORDER BY Neighbourhood ASC;
     ```
 
 ## Limpieza de recursos

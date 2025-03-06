@@ -17,7 +17,7 @@ Este laboratorio se realiza en unos **30** minutos.
 
 Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Real-Time Intelligence**.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -28,7 +28,7 @@ Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con l
 
 Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fabric que necesitarás para tu solución de inteligencia en tiempo real. Empezaremos por crear un centro de eventos.
 
-1. En la barra de menús de la izquierda, selecciona **Inicio**; y después, en la página principal de Inteligencia en tiempo real, crea un nuevo **Centro de eventos** con el nombre único que prefieras.
+1. En el área de trabajo que acabas de crear, selecciona **+ Nuevo elemento**. En el panel *Nuevo elemento*, selecciona **Eventhouse** y asígnale el nombre único que prefieras.
 1. Cierra las sugerencias o avisos que se muestran hasta que veas tu nuevo centro de eventos vacío.
 
     ![Captura de pantalla de un nuevo centro de eventos](./Images/create-eventhouse.png)
@@ -58,8 +58,7 @@ Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fa
 
 ## Agregar un destino
 
-1. Usa el icono **+** a la derecha del nodo **Bici-datos** para agregar un nuevo nodo **Centro de eventos**.
-1. Usa el icono *lápiz* en el nuevo nodo del centro de eventos para editarlo.
+1. Selecciona el icono **Transformar eventos o agregar destino** y busca **Eventhouse**.
 1. En el panel **Eventhouse**, establece las siguientes opciones de configuración.
    - **Modo de ingesta de datos:**: procesamiento de eventos antes de la ingesta
    - **Nombre del destino:**`bikes-table`
