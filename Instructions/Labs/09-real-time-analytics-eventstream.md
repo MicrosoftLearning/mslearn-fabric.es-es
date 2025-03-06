@@ -17,6 +17,7 @@ Este laboratorio se realiza en unos **30** minutos.
 
 Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -57,8 +58,7 @@ Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fa
 
 ## Agregar un destino
 
-1. Usa el icono **+** a la derecha del nodo **Bici-datos** para agregar un nuevo nodo **Centro de eventos**.
-1. Usa el icono *lápiz* en el nuevo nodo del centro de eventos para editarlo.
+1. Selecciona el icono **Transformar eventos o agregar destino** y busca **Eventhouse**.
 1. En el panel **Eventhouse**, establece las siguientes opciones de configuración.
    - **Modo de ingesta de datos:**: procesamiento de eventos antes de la ingesta
    - **Nombre del destino:**`bikes-table`
