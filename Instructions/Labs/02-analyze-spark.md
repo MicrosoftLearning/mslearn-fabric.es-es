@@ -18,7 +18,7 @@ Este laboratorio tardará aproximadamente 45 minutos en completarse.
 
 Para poder trabajar con datos en Fabric, debes crear un área de trabajo.
 
-1. En la página principal de [Microsoft Fabric](https://app.fabric.microsoft.com) en https://app.fabric.microsoft.com, selecciona experiencia de **Ingeniería de datos**.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menú izquierda, selecciona **Áreas de trabajo** (🗇) y **Nueva área de trabajo**.
 1. Asigna un nombre a la nueva área de trabajo y, en la sección **Avanzado**, selecciona el modo de licencia adecuado. Si has iniciado una versión de prueba de Microsoft Fabric, selecciona Prueba.
 1. Selecciona **Aplicar** para crear un área de trabajo vacía.

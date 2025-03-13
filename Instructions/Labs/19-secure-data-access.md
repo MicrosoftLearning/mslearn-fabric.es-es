@@ -14,7 +14,7 @@ Este laboratorio se realiza en **45** minutos aproximadamente.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric), en `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Data Warehouse**.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -27,7 +27,9 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 A continuación, crearás un almacenamiento de datos en el área de trabajo que has creado:
 
-1. En la página principal de Data Warehouse, selecciona el acceso directo **Almacén de muestra** para crear un nuevo almacén con el nombre que prefieras.  
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Almacenamiento de datos*, selecciona **Almacén de muestra** y crea un nuevo almacenamiento de datos con el nombre que prefieras.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén:
 
