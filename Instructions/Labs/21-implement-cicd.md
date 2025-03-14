@@ -16,7 +16,7 @@ Este laboratorio se realiza en **20** minutos aproximadamente.
 
 Crea tres áreas de trabajo con la versión de prueba de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) de `https://app.fabric.microsoft.com/home?experience=fabric`, selecciona **Microsoft Fabric** y, después, **Ingeniero de datos** en la barra de menús inferior de la izquierda.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 2. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 3. Crea una nueva área de trabajo denominada Development y selecciona un modo de licencia que incluya la capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 4. Repite los pasos 1 y 2 y crea dos áreas de trabajo más denominadas Pruebas y Producción. Las áreas de trabajo son: Desarrollo, Pruebas y Producción.

@@ -16,7 +16,7 @@ Este laboratorio se tarda aproximadamente **30** minutos en completarse.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric`.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona **Nuevo espacio de trabajo**.
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -27,8 +27,10 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
 Ahora que tienes un área de trabajo, es el momento de crear una base de datos SQL.
 
-1. En el portal de Fabric, selecciona **+ Nuevo elemento** en el panel izquierdo.
-1. Ve a la sección **Almacenar datos** y selecciona **SQL Database**.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Bases de datos*, selecciona **base de datos SQL**.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
+
 1. Escribe **AdventureWorksLT** como nombre de la base de datos y selecciona **Crear**.
 1. Una vez que hayas creado la base de datos, puedes cargar datos de ejemplo en la base de datos desde la tarjeta **Datos de ejemplo**.
 

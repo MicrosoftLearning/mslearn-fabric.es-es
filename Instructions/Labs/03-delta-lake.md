@@ -17,7 +17,7 @@ Este ejercicio debería tardar en completarse **45** minutos aproximadamente
 
 Primero, crea un área de trabajo con la *versión de prueba* de Fabric habilitada.
 
-1. En la página principal de Microsoft Fabric en `https://app.fabric.microsoft.com`, selecciona experiencia de **Ingeniería de datos**.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, selecciona el **Áreas de trabajo** (🗇).
 1. Crea una **nueva área de trabajo** con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (versión de prueba, Premium o Fabric).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -28,7 +28,10 @@ Primero, crea un área de trabajo con la *versión de prueba* de Fabric habilita
 
 Ahora que tienes un área de trabajo, es el momento de crear un almacén de lago de datos y cargar algunos archivos.
 
-1. En la página principal de **Ingeniería de datos**, crea un nuevo **almacén de lago de datos** con el nombre que prefieras. 
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Ingeniería de datos*, selecciona **Almacén de lago de datos**. Asígnale un nombre único que elijas.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
+
 1. Hay varias maneras de ingerir datos, pero en este ejercicio descargarás un archivo de texto en el equipo local (o máquina virtual de laboratorio, si procede) y, luego, lo cargarás en el almacén de lago. Descarga el [archivo de datos](https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv) de `https://github.com/MicrosoftLearning/dp-data/raw/main/products.csv`, guárdalo como *products.csv*.
 1.  Vuelve a la pestaña del explorador web que contiene el almacén de lago y, en el panel Explorador, junto a la carpeta **Archivos**, selecciona ... menú.  Crea una **Nueva subcarpeta** denominada *products*.
 1.  En ... menú de la carpeta products, **carga** el archivo *products.csv* desde el equipo local (o máquina virtual de laboratorio, si procede).
