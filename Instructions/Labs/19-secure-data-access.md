@@ -46,7 +46,7 @@ A continuación, crearás un almacén de lago en el área de trabajo que has cre
 
     ![Captura de pantalla de un nuevo almacén de lago en Fabric.](./Images/new-sample-lakehouse.png)
 
-4. Selecciona el icono **Iniciar con datos de ejemplo**. Después de un minuto o así, el almacén de lago se rellenará con datos.
+4. Selecciona el icono **Iniciar con datos de ejemplo** y, a continuación, selecciona el ejemplo **Días festivos públicos**. Después de un minuto o así, el almacén de lago se rellenará con datos.
 
 ## Aplicación del control de acceso al área de trabajo
 
