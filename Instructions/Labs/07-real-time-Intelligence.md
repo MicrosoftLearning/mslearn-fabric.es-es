@@ -44,7 +44,7 @@ Ahora estás listo para buscar e ingerir datos en tiempo real desde un origen de
 
    ![Captura de pantalla del lienzo del flujo de eventos.](./Images/new-stock-stream.png)
 
-## Creación de instancia de Eventhouse
+## Creación de instancias de Event house
 
 El flujo de eventos ingiere los datos de existencias en tiempo real, pero actualmente no hace nada con él. Vamos a crear un centro de eventos donde podamos almacenar los datos capturados en una tabla.
 

@@ -30,20 +30,16 @@ Luego crea una canalización de implementación.
 
 1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo**.
 2. Selecciona **Canalizaciones de implementación** y, luego, **Nueva canalización**.
-3. En la ventana **Agregar una nueva canalización de implementación**, asigna un nombre único a la canalización.
-4. Acepta los valores predeterminados en la ventana **Personalizar las fases**.  
-
-   ![Captura de pantalla de las fases de canalización.](./Images/customize-stages.png)
-
-5. Selecciona **Crear**.
+3. En la ventana **Agregar una nueva canalización de implementación**, asigna un nombre único a la canalización y selecciona **Siguiente**.
+4. En la nueva ventana de canalización, selecciona **Crear y continuar**.
 
 ## Asignación de áreas de trabajo a las fases de una canalización de implementación
 
 Asigna áreas de trabajo a las fases de la canalización de implementación.
 
 1. En la barra de menús de la izquierda, selecciona la canalización que has creado. 
-2. En la ventana que aparece, selecciona la palabra **Seleccionar** en cada fase de implementación y selecciona el nombre del área de trabajo que coincida con el nombre de la fase.
-3. Selecciona **Asignar un área de trabajo** para cada fase de implementación.
+2. En la ventana que aparece, expande las opciones de **Asignar un área de trabajo** en cada fase de implementación y selecciona el nombre del área de trabajo que coincida con el nombre de la fase.
+3. Activa la marca de verificación **Asignar** para cada fase de implementación.
 
   ![Captura de pantalla de la canalización de implementación.](./Images/deployment-pipeline.png)
 
@@ -53,16 +49,17 @@ Los elementos de Fabric aún no se han creado en las áreas de trabajo. A contin
 
 1. En la barra de menús de la izquierda, selecciona el **Áreas de trabajo**.
 2. Selecciona el área de trabajo **Desarrollo**.
-3. Selecciona **Nuevo elemento**.
+3. Seleccione **Nuevo elemento**.
 4. En la ventana que aparece, selecciona **Almacén de lago** y, en la **ventana Nuevo almacén de lago**, denomina al almacén de lago, **LabLakehouse**.
 5. Selecciona **Crear**.
 6. En la ventana Explorador de almacenes de lago, selecciona **Iniciar con datos de ejemplo** para rellenar el nuevo almacén de lago con datos.
 
   ![Captura de pantalla del Explorador de almacenes de lago.](./Images/lakehouse-explorer.png)
 
+7. Selecciona el ejemplo **NYCTaxi**.
 8. En la barra de menús de la izquierda, selecciona la canalización que has creado.
-9. En la fase **Desarrollo**, selecciona **>** hasta que veas **Almacenes de lago**. El almacén de lago se muestra como nuevo contenido en la fase Desarrollo. Entre las fases **Desarrollo** y **Pruebas**, hay una **X** naranja dentro de un círculo. La **X** naranja indica que las fases de desarrollo y pruebas no están sincronizadas.
-10. Selecciona la flecha hacia abajo debajo de la **X** naranja para comparar el contenido en los entornos de desarrollo y pruebas. Selecciona **Comparar**. LabLakehouse solo existe en la fase Desarrollo.  
+9. Selecciona la fase **Desarrollo** y, en el lienzo de la canalización de implementación, puedes ver el almacén de lago que creaste como elemento de fase. En el borde izquierdo de la fase **Prueba**, hay una **X** dentro de un círculo. La **X** indica que las fases de desarrollo y pruebas no están sincronizadas.
+10. Selecciona la fase **Prueba** y, en el lienzo de la canalización de implementación, puedes ver que el almacén de lago que creaste es solo un elemento de fase en el origen, que en este caso hace referencia a la fase **Desarrollo**.  
 
   ![Captura de pantalla de la canalización de implementación que muestra errores de coincidencia de contenido entre las fases.](./Images/lab-pipeline-compare.png)
 
