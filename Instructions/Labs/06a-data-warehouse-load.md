@@ -60,7 +60,7 @@ Ahora que tiene un área de trabajo, una instancia de un almacén de lago y la t
 
     Al cabo de un minuto más o menos, se creará un nuevo almacén:
 
-    ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-data-warehouse.png)
+    ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-empty-data-warehouse.png)
 
 ## Creación de una tabla de hechos, dimensiones y vista
 
@@ -109,6 +109,8 @@ Vamos a crear las tablas de hechos y las dimensiones de los datos de Sales. Tamb
     > **Importante:** En un almacenamiento de datos, las restricciones de clave externa no siempre son necesarias en el nivel de tabla. Aunque las restricciones de clave externa pueden ayudar a garantizar la integridad de los datos, también pueden sobrecargar el proceso ETL (extracción, transformación, carga) y ralentizar la carga de datos. La decisión de usar restricciones de clave externa en un almacenamiento de datos debe basarse en una consideración cuidadosa de las ventajas entre la integridad y el rendimiento de los datos.
 
 1. In el **Explorer**, vaya a **Esquemas>> Sales >> Tablas**. Tenga en cuenta las tablas *Fact_Sales*, *Dim_Customer* y *Dim_Item* que acaba de crear.
+
+    > **Nota**: si no puedes ver los nuevos esquemas, abre el menú **...** para **Tablas** en el panel **Explorador** y selecciona **Actualizar**.
 
 1. Abra un nuevo **Nuevo editor de consultas SQL** y, a continuación, copie y ejecute la siguiente consulta. Actualice *<your lakehouse name>* con el almacén de lago que creó.
 
