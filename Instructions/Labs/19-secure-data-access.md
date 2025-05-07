@@ -21,17 +21,15 @@ Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluaci�
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-empty-workspace.png)
 
-> **Nota**: al crear un área de trabajo, te conviertes automáticamente en miembro del rol de administrador del área de trabajo. 
+> **Nota**: al crear un área de trabajo, te conviertes automáticamente en miembro del rol de administrador del área de trabajo.
 
 ## Creación del almacenamiento de datos
 
 A continuación, crearás un almacenamiento de datos en el área de trabajo que has creado:
 
-1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Almacenamiento de datos*, selecciona **Almacén de muestra** y crea un nuevo almacenamiento de datos con el nombre que prefieras.
+1. Haz clic en **+ Nuevo elemento**. En la página *Nuevo elemento*, en la sección *Almacenar datos*, selecciona **Almacén de muestra** y crea un nuevo almacenamiento de datos con el nombre que prefieras.
 
-    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**).
-
-    Al cabo de un minuto más o menos, se creará un nuevo almacén:
+     Al cabo de un minuto más o menos, se creará un nuevo almacén:
 
     ![Captura de pantalla de un nuevo almacenamiento.](./Images/new-sample-warehouse.png)
 
@@ -156,8 +154,6 @@ En este ejercicio, asignarás un permiso de elemento y crearás un rol de acceso
 
 17. Vuelve al explorador donde has iniciado sesión como segundo usuario. Asegúrate de que todavía estás en la página donde está abierto el almacén de lago. Actualiza el explorador.  
 18. Selecciona la tabla **publicholidays** y espera a que se carguen los datos. Solo los datos de la tabla publicholidays son accesibles para el usuario porque el usuario se asignó al rol personalizado de acceso a datos de OneLake. El rol les permite ver solo los datos de la tabla publicholidays, no los datos de ninguna de las otras tablas, archivos o carpetas.
-
-       ![Captura de pantalla del rol de acceso a datos de OneLake que permite al usuario ver.](./Images/custom-role-view.png)
 
 ## Limpieza de recursos
 
