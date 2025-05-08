@@ -67,7 +67,7 @@ En este ejercicio, agregarás un usuario a un rol de área de trabajo, aplicará
 7. A continuación, asigna el rol **Espectador de área de trabajo** al segundo usuario y observa que el rol concede acceso de lectura al almacén en el área de trabajo.  
 8. Vuelve a la ventana del explorador en la que has iniciado sesión como administrador del área de trabajo. Asegúrate de que sigues en la página que muestra el área de trabajo que has creado. Debes tener los nuevos elementos del área de trabajo y el almacén de ejemplo y el almacén de lago, que se muestran en la parte inferior de la página.
 9. Selecciona **Administrar acceso** en la parte superior derecha de la pantalla.
-10. Selecciona **Agregar personas o grupos**. Escribe el correo electrónico del segundo usuario con el que estás probando. Selecciona **Agregar** para asignar el usuario al rol **Espectador** del área de trabajo. 
+10. Selecciona **Agregar personas o grupos**. Escribe el correo electrónico del segundo usuario con el que estás probando. Selecciona **Agregar** para asignar el usuario al rol **Espectador** del área de trabajo.
 11. Vuelve a la ventana del explorador InPrivate donde has iniciado sesión como segundo usuario y selecciona el botón Actualizar en el explorador para actualizar los permisos de sesión asignados al segundo usuario.
 12. Selecciona el icono **Áreas de trabajo** de la barra de menús de la izquierda (el icono tiene un aspecto similar a &#128455;) y selecciona el nombre del área de trabajo que creaste como usuario administrador del área de trabajo. El segundo usuario ahora puede ver todos los elementos del área de trabajo porque se les asignó el rol **Espectador de área de trabajo**.
 
@@ -100,7 +100,7 @@ Los permisos de elemento controlan el acceso a elementos individuales de Fabric 
 
 9. Seleccionar **Conceder**
 
-10. Vuelve a la ventana del explorador donde has iniciado sesión como segundo usuario. Actualiza la vista del explorador.  
+10. Vuelve a la ventana del explorador donde has iniciado sesión como segundo usuario. Actualiza la vista del explorador.
 
 11. El segundo usuario ya no tiene acceso al área de trabajo y, en su lugar, solo tiene acceso al almacén. Ya no puedes examinar áreas de trabajo en el panel de navegación izquierdo para encontrar el almacén. Selecciona **OneLake** en el menú de navegación izquierdo para encontrar el almacén. 
 
