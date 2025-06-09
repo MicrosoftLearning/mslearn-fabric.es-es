@@ -75,15 +75,6 @@ El editor de consultas SQL proporciona compatibilidad con IntelliSense, finaliza
 
     ```sql
     SELECT TOP 10 
-    G.City, 
-    COUNT(*) AS TotalTrips 
-    FROM dbo.Trip AS T
-    JOIN dbo.Geography AS G
-        ON T.PickupGeographyID=G.GeographyID
-    GROUP BY G.City
-    ORDER BY TotalTrips DESC;
-    
-    SELECT TOP 10 
         G.City, 
         COUNT(*) AS TotalTrips 
     FROM dbo.Trip AS T

@@ -12,15 +12,16 @@ Fabric también admite Apache Spark, lo que le permite escribir y ejecutar códi
 
 Este laboratorio tardará aproximadamente **45** minutos en completarse.
 
-> **Nota**: Necesitarás una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> [!Note] 
+> Para completar este ejercicio, necesitas acceder a un [inquilino de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial).
 
 ## Creación de un área de trabajo
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo con la evaluación gratuita de Fabric habilitada.
 
-1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
-1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
-1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) en `https://app.fabric.microsoft.com/home?experience=fabric-developer` e inicia sesión con tus credenciales de Fabric.
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia en la sección **Avanzado** que incluya la capacidad de Fabric (*Prueba*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
@@ -41,54 +42,52 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar datos** en una canalización para extraer los datos de un origen y copiarlos en un archivo del almacén de lago.
 
-1. En la página **Inicio** de su instancia de Lakehouse, seleccione **Obtener** de datos y, a continuación, seleccione **Nueva canalización de datos**y cree una canalización de datos denominada **Ingesta de datos de ventas**.
-2. Si el asistente **Copiar datos** no se abre automáticamente, selecciona **Copiar datos > Utilizar asistente de copia** en la página del editor de canalización.
-3. En el Asistente para **copiar datos**, en la página **Elegir origen de datos**, escribe HTTP en la barra de búsqueda y luego selecciona **HTTP** en la sección **Nuevos orígenes**.
-
+1. En la página **Inicio** de tu instancia de tu almacén de lago, selecciona **Obtener datos**, selecciona **Nueva canalización de datos** y crea una canalización de datos denominada `Ingest Sales Data`.
+1. Si el asistente **Copiar datos** no se abre automáticamente, selecciona **Copiar datos > Utilizar asistente de copia** en la página del editor de canalización.
+1. En el Asistente para **copiar datos**, en la página **Elegir origen de datos**, escribe HTTP en la barra de búsqueda y luego selecciona **HTTP** en la sección **Nuevos orígenes**.
 
     ![Captura de pantalla de la página "Elegir origen de datos".](./Images/choose-data-source.png)
 
-4. En el panel **Conectarse al origen de datos**, especifica la siguiente configuración para la conexión a tu origen de datos:
+1. En el panel **Conectarse al origen de datos**, especifica la siguiente configuración para la conexión a tu origen de datos:
     - **URL**: `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/sales.csv`
     - **Conexión**: Crear nueva conexión.
     - **Nombre de la conexión**: *especifique un nombre único*.
     - **Puerta de enlace de datos**: (ninguna)
     - **Tipo de autenticación**: Anónima.
-5. Seleccione **Siguiente**. A continuación, asegúrese de que se seleccionan las siguientes opciones:
+1. Seleccione **Siguiente**. A continuación, asegúrese de que se seleccionan las siguientes opciones:
     - **Dirección URL relativa**: *dejar en blanco*
     - **Request method** (Método de solicitud): GET
     - **Encabezados adicionales**: *dejar en blanco*
     - **Copia binaria**: <u>sin</u> seleccionar
     - **Tiempo de espera de solicitud**: *dejar en blanco*
     - **Número máximo de conexiones simultáneas**: *dejar en blanco*
-6. Seleccione **Siguiente** y espere a que se muestreen los datos y, luego, asegúrese de que se seleccionan las siguientes opciones de configuración:
+1. Seleccione **Siguiente** y espere a que se muestreen los datos y, luego, asegúrese de que se seleccionan las siguientes opciones de configuración:
     - **Formato de archivo**: DelimitedText
     - **Delimitador de columna**: coma (,)
     - **Delimitador de fila**: avance de línea (\n)
     - **Primera fila como encabezado**: seleccionada
     - **Tipo de compresión**: ninguno
-7. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
-8. En la página **Conectar al destino de datos**, establece las siguientes opciones de destino de datos y, a continuación, selecciona **Siguiente**:
+1. Seleccione **Vista previa de datos** para ver un ejemplo de los datos que se ingerirán. A continuación, cierre la vista previa de datos y seleccione **Siguiente**.
+1. En la página **Conectar al destino de datos**, establece las siguientes opciones de destino de datos y, a continuación, selecciona **Siguiente**:
     - **Carpeta raíz**: Archivos.
     - **Nombre de la ruta de acceso de la carpeta**: new_data.
     - **Nombre de archivo**: sales.csv.
     - **Comportamiento de copia**: ninguno
-10. Establezca las siguientes opciones de formato de archivo y seleccione **Siguiente**:
+1. Establezca las siguientes opciones de formato de archivo y seleccione **Siguiente**:
     - **Formato de archivo**: DelimitedText
     - **Delimitador de columna**: coma (,)
     - **Delimitador de fila**: avance de línea (\n)
     - **Agregar encabezado al archivo**: seleccionado
     - **Tipo de compresión**: ninguno
-11. En la página **Copiar resumen**, revise los detalles de la operación de copia y, luego, seleccione **Guardar y ejecutar**.
+1. En la página **Copiar resumen**, revise los detalles de la operación de copia y, luego, seleccione **Guardar y ejecutar**.
 
     Se crea una nueva canalización que contiene una actividad **Copiar datos**, como se muestra aquí:
 
     ![Captura de pantalla de una canalización con una actividad Copiar datos.](./Images/copy-data-pipeline.png)
 
-12. Cuando la canalización comienza a ejecutarse, puede supervisar su estado en el panel **Salida** en el diseñador de canalizaciones. Use el icono **&#8635;** (*Actualizar*) para actualizar el estado y espere hasta que la operación se haya realizado correctamente.
-
-13. En la barra de menús de la izquierda, seleccione el almacén de lago.
-14. En la página **Inicio**, en el panel **Explorador de almacenes de lago**, expanda **Archivos** y seleccione la carpeta **new_data** para comprobar que se ha copiado el archivo **sales.csv**.
+1. Cuando la canalización comienza a ejecutarse, puede supervisar su estado en el panel **Salida** en el diseñador de canalizaciones. Use el icono **&#8635;** (*Actualizar*) para actualizar el estado y espere hasta que la operación se haya realizado correctamente.
+1. En la barra de menús de la izquierda, seleccione el almacén de lago.
+1. En la página **Inicio**, en el panel **Explorador**, expande **Archivos** y selecciona la carpeta **new_data** para comprobar que se ha copiado el archivo **sales.csv**.
 
 ## Creación de un cuaderno
 
@@ -133,8 +132,8 @@ Una manera sencilla de ingerir datos consiste en usar una actividad **Copiar dat
 
     > **Nota**: Dado que esta es la primera vez que ha ejecutado código de Spark en esta sesión, se debe iniciar el grupo de Spark. Esto significa que la primera celda puede tardar un minuto o así en completarse.
 
-6. Una vez completada la ejecución del cuaderno, en el panel **Explorador de almacenes de lago** de la izquierda, en el menú **...** de **Tablas**, seleccione **Actualizar** y compruebe que se ha creado una tabla **sales**.
-7. En la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno. A continuación, establezca el **nombre** del cuaderno en **Cargar ventas** y cierre el panel de configuración.
+6. Una vez completada la ejecución del cuaderno, en el panel **Explorador** de la izquierda, en el menú **...** de **Tablas**, selecciona **Actualizar** y comprueba que se ha creado una tabla **sales**.
+7. En la barra de menús del cuaderno, use el icono ⚙️ **Configuración** para ver la configuración del cuaderno. A continuación, establece el **Nombre** del cuaderno en `Load Sales` y cierra el panel de configuración.
 8. En la barra de menús central, a la izquierda, seleccione el almacén de lago.
 9. En el panel **Explorador**, actualice la vista. A continuación, expanda **Tablas** y seleccione la tabla **sales** para ver una vista previa de los datos que contiene.
 
@@ -148,13 +147,13 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
     ![Captura de pantalla de una canalización con las actividades Eliminar datos y Copiar datos.](./Images/delete-data-activity.png)
 
 3. Seleccione la actividad **Eliminar datos** y, en el panel debajo del lienzo de diseño, establezca las propiedades siguientes:
-    - **General**:
-        - **Nombre**: Eliminar archivos antiguos.
+    - **General:**
+        - **Nombre**: `Delete old files`
     - **Origen**
         - **Conexión**: *Almacén de lago*
         - **Tipo de ruta de acceso de archivo**: ruta de acceso de archivo comodín.
         - **Ruta de acceso de la carpeta**: Archivos / **new_data**.
-        - **Nombre de archivo comodín**: *.csv.        
+        - **Nombre de archivo comodín**: `*.csv`        
         - **Recursivamente**: *Seleccionado*.
     - **Configuración del registro**:
         - **Habilitar registro**: *<u>No </u>seleccionado*.
@@ -167,8 +166,8 @@ Ahora que ha implementado un cuaderno para transformar los datos y cargarlos en 
     ![Captura de pantalla de una canalización con actividades Copiar datos y Cuaderno.](./Images/pipeline.png)
 
 6. Seleccione la actividad **Cuaderno** y, luego, en el panel debajo del lienzo de diseño, establezca las siguientes propiedades:
-    - **General**:
-        - **Nombre**: Cargar cuaderno de ventas.
+    - **General:**
+        - **Nombre**: `Load Sales notebook`
     - **Configuración**:
         - **Cuaderno**: Cargar ventas.
         - **Parámetros base**: *agregue un nuevo parámetro con las siguientes propiedades:*

@@ -58,7 +58,7 @@ En esta tarea, crearás un informe mediante la conexión al modelo semántico pu
     ![Captura de pantalla de las opciones disponibles en la categoría Características de la versión preliminar.](./Images/power-bi-enable-tmdl.png)
 
 1. Selecciona **Guardar como** elige el tipo de archivo seleccionando la flecha en el menú desplegable al asignar un nombre al archivo.
-1. Selecciona la extensión de archivo **.*.pbip***, elige un nombre para tu informe y guárdalo en una carpeta que recuerdes.
+1. Selecciona la extensión de archivo **.pbip**, elige un nombre para tu informe y guárdalo en una carpeta que recuerdes.
 
     ![Captura de pantalla de la selección Guardar como con el menú desplegable expandido.](./Images/power-bi-save-file-types.png)
 
@@ -74,10 +74,10 @@ En esta tarea, crearás un informe mediante la conexión al modelo semántico pu
 
 Veamos cómo se reflejan los cambios en Power BI Desktop en los archivos .tmdl.
 
-1. En el escritorio, usa el Explorador de archivos para ir a la carpeta donde has guardado el archivo *.*.pbip**.
+1. En el escritorio, usa el Explorador de archivos para ir a la carpeta donde has guardado el archivo **.pbip**.
 1. Verás los siguientes elementos:
 
-    - Archivo YourReport.*.pbip*
+    - Archivo YourReport.pbip
     - Carpeta YourReport.Report
     - Carpeta YourReport.SemanticModel
     - Archivo de código fuente Ignore de Git .gitignore
@@ -94,7 +94,7 @@ En esta tarea, agregarás una nueva tabla porque el modelo semántico no tiene t
 
 1. Aparecerá el cuadro de diálogo Desde web una vez conectado. Mantén seleccionado el botón de radio Básico. Escribe la siguiente ruta del archivo como ruta de acceso URL.
 
-    `"C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html"`
+    `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
 1. Selecciona el cuadro **Tablas HTML > Tabla 2** y, después, selecciona **Transformar datos** para continuar.
 
