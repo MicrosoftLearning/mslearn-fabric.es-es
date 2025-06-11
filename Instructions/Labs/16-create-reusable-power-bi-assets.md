@@ -6,7 +6,7 @@ lab:
 
 # Creación de recursos reutilizables de Power BI
 
-En este ejercicio, crearás recursos reutilizables para que sean compatibles con el modelo semántico y el desarrollo de informes. Estos recursos incluyen archivos de proyecto y plantilla de Power BI y modelos semánticos compartidos. Al final, explorarás la vista de linaje de cómo se relacionan estos elementos entre sí en el servicio Power BI.
+En este ejercicio, crearás recursos reutilizables para que sean compatibles con el modelo semántico y el desarrollo de informes. Estos recursos incluyen archivos de proyecto y plantilla de Power BI y modelos semánticos compartidos. Al final, la vista de linaje muestra cómo se relacionan estos elementos entre sí en el servicio Power BI.
 
    > Nota: este ejercicio no requiere una licencia de Fabric y se puede completar en un entorno de Power BI o Microsoft Fabric.
 
@@ -19,27 +19,6 @@ Antes de comenzar este ejercicio, debes abrir un explorador web y escribir la si
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/16b/16-reusable-assets.zip`
 
 Extrae la carpeta a la carpeta **C:\sers\student\Downloads\16-reusable-assets**.
-
-## Publicación de un informe en el servicio Power BI
-
-En esta tarea, usarás un informe existente para crear un modelo semántico compartido para reutilizarlo para desarrollar otros informes.
-
-1. Desde un explorador web, ve e inicia sesión en el servicio Fabric: [https://app.fabric.microsoft.com](https://app.fabric.microsoft.com)
-1. Ve a la experiencia de Power BI y crea un nuevo espacio de trabajo con un nombre único de tu elección.
-
-    ![Captura de pantalla del panel Espacio de trabajo con el botón + Nuevo espacio de trabajo.](./Images/power-bi-new-workspace.png)
-
-1. En la cinta superior de tu nuevo espacio de trabajo, selecciona **Cargar > Examinar**.
-1. En el nuevo cuadro de diálogo Explorador de archivos, ve al archivo de inicio *.pbix*, selecciónalo y selecciona **Abrir** para cargarlo.
-1. Observa cómo ahora tienes dos elementos diferentes en el espacio de trabajo con el mismo nombre:
-
-    - Report
-    - Modelo semántico
-
-1. Abre el informe y observa el tema de color usado. *Cambiarás esto en una tarea posterior.*
-1. Ya puedes cerrar el explorador web.
-
-> Los archivos de Power BI *.pbix* contienen tanto el modelo semántico como los objetos visuales del informe. Al publicar informes en el servicio, estos elementos se separan. Verás esta separación de nuevo más tarde.
 
 ## Creación de un nuevo proyecto de Power BI
 
@@ -219,26 +198,23 @@ En esta tarea, crearás un archivo de plantilla para que puedas compartir un arc
 
 > Ahora tienes una plantilla con un tema coherente sin datos cargados previamente.
 
-## Publicación y exploración de los recursos
+### Revisión del estado final
 
-En esta tarea, publicarás el archivo del proyecto Power BI y examinarás los elementos relacionados mediante la vista Linaje en el servicio.
+En la captura de pantalla siguiente, ha creado el archivo de proyecto de Power BI y lo ha publicado en un área de trabajo. Después, ha navegado al área de trabajo en el servicio Power BI y ha cambiado a la **vista de linaje** para ver cómo su nuevo informe depende de otros orígenes de datos.
 
-> Importante: hemos creado un modelo local de DirectQuery al agregar el origen de datos HTML. Los informes publicados requieren de una puerta de enlace para acceder a los datos locales, por lo que recibirás un error. Esto no afecta al valor de esta tarea, pero puede resultar confuso.
+De izquierda a derecha, los siguientes elementos son visibles:
 
-1. En el archivo del proyecto Power BI, selecciona **Publicar**.
-1. **Guarda** el archivo, si se te solicita.
-1. **No actualices** la versión de *PBIR*, si se te solicita.
-1. Selecciona el área de trabajo que creaste al principio de este ejercicio.
-1. Selecciona **Abrir "YourReport.*.pbip*" en Power BI** cuando recibas el mensaje de que se publicó el archivo, pero está desconectado.
+- Orígenes de datos: 2 archivos text/csv y una conexión de SQL Server.
+- Modelo semántico 16-Starter-Sales Analysis, que está conectado a los orígenes de datos.
+- El informe 16-Starter-Sales Analysis, que está conectado al modelo semántico 16-Starter-Sales Analysis.
+- Mi nuevo modelo semántico de informe, que está conectado al modelo semántico 16-Starter-Sales Analysis.
+- Mi nuevo informe, que está conectado al nuevo modelo semántico de informe.
 
-    ![Captura de pantalla del mensaje de que el archivo se publicó, pero está desconectado.](./Images/power-bi-published-disconnected-message.png)
+> Cuando los modelos semánticos se relacionan con otros modelos semánticos, se conoce como **encadenamiento**. En este laboratorio, el modelo semántico de inicio se encadena al modelo semántico recién creado, lo que permite su reutilización para un propósito especializado.
 
-1. Una vez que te encuentres en el área de trabajo, puedes ver el modelo semántico e informe anteriores, y el nuevo modelo semántico e informe.
-1. En la esquina derecha debajo de Configuración del área de trabajo, selecciona **Vista de linaje** para ver cómo depende el nuevo informe de otros orígenes de datos.
+![Captura de pantalla de la vista de linaje con una base de datos y dos archivos de texto que se conectan a un único modelo semántico desde nuestro archivo de inicio. Ese mismo modelo semántico se conecta al informe de archivos de inicio y tiene un nuevo modelo semántico conectado al nuevo informe.](./Images/power-bi-lineage-view.png)
 
-    ![Captura de pantalla de la vista de linaje con una base de datos y dos archivos de texto que se conectan a un único modelo semántico desde nuestro archivo de inicio. Ese mismo modelo semántico se conecta al informe de archivos de inicio y tiene un nuevo modelo semántico conectado al nuevo informe.](./Images/power-bi-lineage-view.png)
 
-> Cuando los modelos semánticos se relacionan con otros modelos semánticos, se conoce como encadenamiento. En este laboratorio, el modelo semántico de inicio se encadena al modelo semántico recién creado, lo que permite su reutilización para un propósito especializado.
 
 ## Limpieza
 
