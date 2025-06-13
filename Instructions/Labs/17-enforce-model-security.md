@@ -1,7 +1,7 @@
 ---
 lab:
   title: Aplicar la seguridad del modelo semántico
-  module: Design and build tabular models
+  module: Enforce semantic model security
 ---
 
 # Aplicar la seguridad del modelo semántico
@@ -17,7 +17,7 @@ En este ejercicio aprenderá a hacer lo siguiente:
 
 Este laboratorio se realiza en **45** minutos aproximadamente.
 
-> **Nota**: Necesitará una [evaluación gratuita de Microsoft Fabric](https://learn.microsoft.com/fabric/get-started/fabric-trial) para realizar este ejercicio.
+> **Nota**: Necesita acceso a un entorno de Power BI para completar este ejercicio.
 
 ## Introducción
 
@@ -33,7 +33,7 @@ En este ejercicio prepararás el entorno.
 
 ### Inicio de sesión en el servicio Power BI
 
-En esta tarea iniciarás sesión en el servicio Power BI, iniciarás una licencia de prueba y crearás un área de trabajo.
+En esta tarea, iniciará sesión en el servicio Power BI, comenzarás una licencia de prueba y accederás a "Mi área de trabajo".
 
 1. En un explorador web, vaya a `https://app.powerbi.com/`.
 
@@ -43,19 +43,9 @@ En esta tarea iniciarás sesión en el servicio Power BI, iniciarás una licenci
 
     *Sugerencia: la experiencia del explorador web de Power BI se conoce como el **servicio Power BI**.*
 
-### Creación de un área de trabajo
+## Creación de roles estáticos
 
-En esta tarea crearás un área de trabajo.
-
-1. En el servicio de Power BI, para crear un área de trabajo, en el panel **Navegación** (situado a la izquierda), seleccione **Áreas de trabajo** y, a continuación, **+ Nueva área de trabajo**.
-
-2. En el panel **Crear un área de trabajo** (situado en la parte derecha), en el cuadro **Nombre**, escriba un nombre para el área de trabajo.
-
-    *El nombre debe ser único dentro del inquilino.*
-
-3. Seleccione **Aplicar**.
-
-    *Una vez creado, se abre el área de trabajo. En un ejercicio posterior, publicará un modelo semántico en esta área de trabajo.*
+En este ejercicio, creará y validará roles estáticos y, después, verá cómo asignaría entidades de seguridad a los roles de modelo semántico.
 
 ### Revisión del modelo de datos
 
@@ -78,10 +68,6 @@ En esta tarea revisarás el modelo de datos.
 4. Observa que la tabla incluye una columna **Región**.
 
     *La columna **Región** almacena las regiones de ventas de Adventure Works. En esta organización, los vendedores solo pueden ver datos relacionados con su región de ventas asignada. En este laboratorio, implementarás dos técnicas de seguridad de nivel de fila diferentes para aplicar permisos de datos.*
-
-## Creación de roles estáticos
-
-En este ejercicio, creará y validará roles estáticos y, después, verá cómo asignaría entidades de seguridad a los roles de modelo semántico.
 
 ### Creación de roles estáticos
 
@@ -166,7 +152,7 @@ En esta tarea, publicará el informe.
 
     ![](Images/enforce-model-security-image28.png)
 
-3. En la ventana **Publicar en Power BI**, selecciona el área de trabajo y luego **Seleccionar**.
+3. En la ventana **Publicar en Power BI**, seleccione **"Mi área de trabajo"** y luego **Seleccionar**.
 
     ![](Images/enforce-model-security-image29.png)
 
@@ -174,11 +160,11 @@ En esta tarea, publicará el informe.
 
     ![](Images/enforce-model-security-image30.png)
 
-### Configuración de la seguridad de nivel de fila (*opcional*)
+#### Configuración de la seguridad de nivel de fila (opcional)
 
 En esta tarea verás cómo configurar la seguridad de nivel de fila en el servicio Power BI.
 
-Esta tarea se basa en la existencia de un grupo de seguridad **Salespeople_Australia** en el inquilino en el que trabajas. Este grupo de seguridad NO existe automáticamente en el inquilino. Si tienes permisos en el inquilino, puedes seguir los pasos que se indican abajo. Si usas un inquilino proporcionado para el aprendizaje, no tendrás los permisos adecuados para crear grupos de seguridad. Lee las tareas, pero ten en cuenta que no podrás completarlas debido a que no existe el grupo de seguridad. **Después de leer el material, continúa con la tarea Limpieza.**
+> Esta tarea se basa en la existencia de un grupo de seguridad **Salespeople_Australia** en el inquilino en el que trabaja. Este grupo de seguridad NO existe automáticamente en el inquilino. Si tienes permisos en el inquilino, puedes seguir los pasos que se indican abajo. Si usas un inquilino proporcionado para el aprendizaje, no tendrás los permisos adecuados para crear grupos de seguridad. Lee las tareas, pero ten en cuenta que no podrás completarlas debido a que no existe el grupo de seguridad. **Después de leer el material, continúa con la tarea Limpieza.**
 
 1. Cambia al servicio Power BI (explorador web).
 
@@ -218,7 +204,7 @@ Esta tarea se basa en la existencia de un grupo de seguridad **Salespeople_Austr
 
     *En el ejercicio siguiente, crearás un rol dinámico controlado por datos. Este enfoque de diseño puede ayudar a solucionar estas desventajas.*
 
-8. Para volver a la página de aterrizaje del área de trabajo, en el panel **Navegación**, selecciona el área de trabajo.
+8. Para volver a la página de aterrizaje del área de trabajo, en el panel **Navegación**, seleccione el área de trabajo.
 
 ### Limpiar la solución
 
@@ -440,11 +426,11 @@ En esta tarea validarás el rol dinámico.
 
 En esta tarea, finalizarás el diseño publicando el informe y asignando un grupo de seguridad al rol.
 
-*Los pasos de esta tarea son deliberadamente breves. Para obtener detalles completos de los pasos, consulta los pasos de tarea del ejercicio anterior.*
+*Los pasos de esta tarea son deliberadamente breves. Para obtener detalles completos de los pasos, consulte los pasos de tarea del ejercicio anterior.*
 
 1. Guarde el archivo de Power BI Desktop.
 
-2. Publica el informe en el área de trabajo que creaste al principio del laboratorio.
+2. Publique el informe en **"Mi área de trabajo"**
 
 3. Cierre Power BI Desktop.
 
