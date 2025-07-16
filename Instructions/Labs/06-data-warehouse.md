@@ -176,7 +176,7 @@ Un almacenamiento de datos en Microsoft Fabric tiene muchas de las mismas funcio
    ORDER BY CalendarYear, MonthOfYear, SalesRegion;
     ```
 
-### Creación de una consulta visual
+## Creación de una consulta visual
 
 En lugar de escribir código SQL, puede usar el diseñador gráfico de consultas para consultar las tablas en el almacenamiento de datos. Esta experiencia es similar a Power Query en línea, donde puede crear pasos de transformación de datos sin código. En el caso de tareas más complejas, puede usar el lenguaje M (Mashup) de Power Query.
 
@@ -199,48 +199,9 @@ En lugar de escribir código SQL, puede usar el diseñador gráfico de consultas
 
 1. Desde aquí, puedes analizar los resultados de esta única consulta con la selección de **Visualizar resultados** o **Descargar archivo de Excel**. Ahora puede ver exactamente lo que solicitó el administrador, por lo que no es necesario seguir analizando los resultados.
 
-### Visualización de los datos
-
-Puede visualizar fácilmente los datos en una sola consulta o en el almacenamiento de datos. Antes de visualizarlos, oculte las columnas o tablas que no sean fáciles de usar para los diseñadores de informes.
-
-1. Selecciona el botón **Diseños de modelo**. 
-
-1. Oculte las columnas siguientes de las tablas Fact y Dimension que no son necesarias para crear un informe. Tenga en cuenta que esta acción no quita las columnas del modelo, simplemente las oculta de la vista en el lienzo del informe.
-   1. FactSalesOrder
-      - **SalesOrderDateKey**
-      - **CustomerKey**
-      - **ProductKey**
-   1. DimCustomer
-      - **CustomerKey**
-      - **CustomerAltKey**
-   1. DimDate
-      - **DateKey**
-      - **DateAltKey**
-   1. DimProduct
-      - **ProductKey**
-      - **ProductAltKey** 
-
-1. Ahora está listo para compilar un informe y poner este conjunto de datos a disposición de otros usuarios. En el menú Informes, selecciona **Nuevo informe**. Se abrirá una nueva ventana, donde puede crear un informe de Power BI.
-
-1. En el panel **Datos**, expanda **FactSalesOrder**. Tenga en cuenta que las columnas ocultas ya no están visibles. 
-
-1. Seleccione **SalesTotal**. Esta acción agregará la columna al **lienzo del informe**. Dado que la columna es un valor numérico, el objeto visual predeterminado es un **gráfico de columnas**.
-1. Asegúrese de que el gráfico de columnas del lienzo está activo (con un borde gris y controladores) y, luego, seleccione **Categoría** en la tabla **DimProduct** para agregar una categoría al gráfico de columnas.
-1. En el panel **Visualizaciones**, cambie el tipo de gráfico de un gráfico de columnas a un **gráfico de barras agrupado**. A continuación, cambie el tamaño del gráfico según sea necesario para asegurarse de que las categorías son legibles.
-
-    ![Captura de pantalla del panel Visualizaciones con el gráfico de barras seleccionado.](./Images/visualizations-pane.png)
-
-1. En el panel **Visualizaciones**, seleccione la pestaña **Dar formato a su objeto visual** y, en la subpestaña **General**, en la sección **Título**, cambie el **texto** a **Ventas totales por categoría**.
-
-1. En el menú **Archivo**, seleccione **Guardar**. A continuación, guarde el informe como **Informe de ventas** en el área de trabajo que creó anteriormente.
-
-1. En el centro de menús de la izquierda, vuelva al área de trabajo. Ten en cuenta que ahora tienes tres elementos guardados en el área de trabajo: el almacenamiento de datos, su modelo semántico predeterminado y el informe que has creado.
-
-    ![Captura de pantalla del área de trabajo con los tres elementos mostrados.](./Images/workspace-items.png)
-
 ## Limpieza de recursos
 
-En este ejercicio, ha creado un almacenamiento de datos que contiene varias tablas. Ha usado SQL para insertar datos en las tablas y consultarlas. También se ha usado la herramienta de consulta visual. Por último, ha mejorado el modelo de datos para el conjunto de datos predeterminado del almacenamiento de datos y lo ha usado como origen del informe.
+En este ejercicio, ha creado un almacenamiento de datos que contiene varias tablas. Ha usado SQL para insertar datos en las tablas y tablas consultadas mediante T-SQL y la herramienta de consulta visual. Por último, has mejorado el modelo de datos para el conjunto de datos predeterminado del almacén de datos para análisis e informes de bajada.
 
 Si ha terminado de explorar el almacenamiento de datos, puede eliminar el área de trabajo que creó para este ejercicio.
 

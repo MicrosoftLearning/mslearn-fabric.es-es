@@ -66,15 +66,17 @@ Los elementos de Fabric aún no se han creado en las áreas de trabajo. A contin
 ## Implementación de contenido entre las fases
 
 Implementa el almacén de lago desde la fase **Desarrollo** en las fases **Pruebas** y **Producción**.
-1. Selecciona el botón **Implementar** en la fase **Desarrollo** de la canalización para copiar el almacén de lago en su estado actual en la fase de texto. 
-2. En la ventana **Implementar en la siguiente fase**, selecciona **Implementar**.
-3. Hay una X naranja entre las fases de pruebas y producción. Selecciona la flecha hacia abajo situada debajo de la X naranja. El almacén de lago existe en las fases de desarrollo y pruebas, pero aún no en la fase Producción.
-4. En la fase **Pruebas**, selecciona **Implementar**.
-5. En la ventana **Implementar en la siguiente fase**, selecciona **Implementar**. La marca de verificación verde entre las fases indica que todas las fases están sincronizadas y contienen el mismo contenido.
-6. El uso de canalizaciones de implementación para implementar entre fases también actualiza el contenido de las áreas de trabajo correspondientes a la fase Implementación. Vamos a confirmarlo.
-7. En la barra de menús de la izquierda, selecciona el **Áreas de trabajo**.
-8. Selecciona el área de trabajo **Pruebas**. El almacén de lago se copió allí.
-9. Abre el área de trabajo **Producción** en el icono **Áreas de trabajo** del menú izquierdo. El almacén de lago también se copió en el área de trabajo Producción.
+1. Seleccione la fase de **prueba** en el lienzo de la canalización de implementación.
+1. En el lienzo de la canalización de implementación, active la casilla situada junto al elemento de almacén de lago de datos. Después, selecciona el botón **Implementar** para copiar el almacén de lago de datos en su estado actual en la fase de **prueba**.
+1. En la ventana **Implementar en la siguiente fase** que aparece, seleccione **Implementar**.
+ Ahora hay una X en un círculo en la fase producción en el lienzo de la canalización de implementación. El almacén del lago de datos se encuentra en las fases de desarrollo y prueba, pero aún no en la de producción.
+1. Seleccione la fase de **producción** en el lienzo de implementación.
+1. En el lienzo de la canalización de implementación, active la casilla situada junto al elemento de almacén de lago de datos. Después, seleccione el botón **Implementar** para copiar el almacén de lago de datos en su estado actual a la fase de **producción**.
+1. En la ventana **Implementar en la siguiente fase** que aparece, seleccione **Implementar**. Las marcas de verificación verdes entre las fases indica que todas las fases están sincronizadas y contienen el mismo contenido.
+1. El uso de canalizaciones de implementación para implementar entre fases también actualiza el contenido de las áreas de trabajo correspondientes a la fase Implementación. Vamos a confirmarlo.
+1. En la barra de menús de la izquierda, selecciona el **Áreas de trabajo**.
+1. Selecciona el área de trabajo **Pruebas**. El almacén de lago se copió allí.
+1. Abre el área de trabajo **Producción** en el icono **Áreas de trabajo** del menú izquierdo. El almacén de lago también se copió en el área de trabajo Producción.
 
 ## Limpieza
 

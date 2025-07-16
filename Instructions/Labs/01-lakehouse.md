@@ -130,42 +130,6 @@ Aunque muchos profesionales de los datos están familiarizados con SQL, los anal
 
     ![Captura de pantalla de una consulta visual con resultados.](./Images/visual-query-results.png)
 
-## Creación de un informe
-
-Las tablas del almacén de lago se agregan automáticamente a un modelo semántico predeterminado para la generación de informes con Power BI.
-
-
-1. En la barra de herramientas, selecciona **Diseños de modelo**. Se muestra el esquema del modelo de datos para el modelo semántico.
-
-    ![Captura de pantalla de diseños de modelo](./Images/lakehouse-model-layouts.png)
-
-    > **Nota 1**: En este ejercicio, el modelo semántico consta de una sola tabla. En un escenario real, es probable que cree varias tablas en el almacén de lago, cada una de las cuales se incluiría en el modelo. Después, podría definir relaciones entre estas tablas en el modelo.
-    
-    > **Nota 2**: Las vistas **frequently_run_queries**, **long_running_queries**, **exec_sessions_history** y **exec_requests_history** forman parte del esquema **queryinsights** creado automáticamente por Fabric. Es una característica que proporciona una vista holística de la actividad de consulta histórica en el punto de conexión de análisis SQL. Dado que esta característica está fuera del ámbito de este ejercicio, esas vistas deben omitirse por ahora.
-
-2. En la cinta de menús, seleccione la pestaña **Informes** y elija **Nuevo informe**. La página actual cambiará a una vista del diseñador de informes.
-
-    ![Captura de pantalla del diseñador de informes.](./Images/report-designer.png)
-
-3. En el panel **Datos** de la derecha, expanda la tabla **sales**. Seleccione los siguientes campos:
-    - **Elemento**
-    - **Cantidad**
-
-    Se agrega una visualización de tabla al informe:
-
-    ![Captura de pantalla de un informe que contiene una tabla.](./Images/table-visualization.png)
-
-4. Oculte los paneles **Datos** y **Filtros** para crear más espacio. Asegúrese de que está seleccionada la visualización de tabla y, en el panel **Visualizaciones**, cambie la visualización a un **Gráfico de barras agrupadas** y ajústele el tamaño como se muestra aquí.
-
-    ![Captura de pantalla de un informe que contiene un gráfico de barras agrupadas.](./Images/clustered-bar-chart.png)
-
-5. En el menú **Archivo**, seleccione **Guardar**. Después, guarda el informe como `Item Sales Report` en el área de trabajo que creaste anteriormente.
-6. Ahora, en la barra de menús del centro de conectividad de la izquierda, selecciona tu área de trabajo para comprobar que contiene los siguientes elementos:
-    - Almacén de lago.
-    - Punto de conexión de análisis SQL del almacén de lago.
-    - Modelo semántico predeterminado para las tablas del almacén de lago.
-    - **Informe de ventas de artículos**.
-
 ## Limpieza de recursos
 
 En este ejercicio, ha creado un almacén de lago y ha importado datos en él. Ha visto que un almacén de lago consta de tablas y archivos guardados en un almacén de datos OneLake. Las tablas administradas se pueden consultar mediante SQL y se incluyen en un modelo semántico predeterminado para admitir visualizaciones de datos.

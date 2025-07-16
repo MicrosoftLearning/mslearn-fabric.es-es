@@ -16,7 +16,7 @@ Este laboratorio se realiza en unos **30** minutos.
 
 Antes de trabajar con datos de Fabric, crea un área de trabajo en un inquilino con la capacidad de Fabric habilitada.
 
-1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
+1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric-developer) en `https://app.fabric.microsoft.com/home?experience=fabric-developer` e inicia sesión con tus credenciales de Fabric.
 1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Cree una nueva área de trabajo con el nombre que prefiera y seleccione un modo de licencia en la sección **Avanzado** que incluya la capacidad de Fabric (*Prueba*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
@@ -44,12 +44,10 @@ Ahora que tienes un área de trabajo, es el momento de crear un almacén de lago
 En Microsoft Fabric, puedes usar un flujo de datos (Gen2) para ingerir datos de una amplia gama de orígenes. En este ejercicio, usarás un flujo de datos para obtener datos de un archivo CSV y cargarlos en una tabla en tu almacén de lago de datos.
 
 1. En la página **Inicio** de tu almacén de lago de datos, en el menú **Obtener datos**, selecciona **Nuevo flujo de datos Gen2**.
-
-   Se crea y abre un nuevo flujo de datos denominado **Flujo de datos 1**.
+1. Asigna un nombre al nuevo flujo de datos `Get Product Data` y selecciona **Crear**.
 
     ![Captura de pantalla de un nuevo flujo de datos.](./Images/new-data-flow.png)
 
-1. En la parte superior izquierda de la página de flujo de datos, selecciona **Flujo de datos 1** para ver sus detalles y cambia el nombre del flujo de datos a **Obtener datos del producto**.
 1. En el nuevo diseñador de flujo de datos, selecciona **Importar desde un archivo de texto/CSV**. Después, completa el asistente para obtener datos para crear una conexión de datos mediante la vinculación a `https://raw.githubusercontent.com/MicrosoftLearning/dp-data/main/products.csv` con autenticación anónima. Cuando hayas completado el asistente, se mostrará una vista previa de los datos en el diseñador de flujo de datos similar a la siguiente:
 
     ![Captura de pantalla de una consulta de flujo de datos.](./Images/data-flow-query.png)
@@ -68,15 +66,17 @@ En Microsoft Fabric, puedes usar un flujo de datos (Gen2) para ingerir datos de 
 
 En Microsoft Fabric, puedes usar cuadernos para ejecutar código de Spark.
 
-1. En el centro de navegación, selecciona **Inicio**. En la página principal de Ingeniería de datos, crea un nuevo **cuaderno**.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *Nuevo*, en la sección *Ingeniería de datos*, selecciona **Cuaderno**.
 
     Se creará y se abrirá un nuevo cuaderno denominado **Notebook 1**.
 
     ![Captura de pantalla de un nuevo cuaderno.](./Images/new-notebook.png)
 
-1. En la parte superior izquierda de la libreta, selecciona **Cuaderno de notas 1** para ver sus detalles y cambia su nombre a **Consultar productos**.
-1. En el editor de cuaderno, en el panel **Explorador**, selecciona **Lakehouses** y agrega el almacén de lago de datos que creaste anteriormente.
-1. En el menú **...** de la tabla **Products**, selecciona **Cargar datos** > **Spark**. Esto agrega una nueva celda de código al cuaderno, como se muestra aquí:
+1. En la parte superior izquierda del cuaderno, selecciona **Cuaderno 1** para ver sus detalles y cambia su nombre a `Query Products`.
+1. En el editor de cuaderno, en el panel **Explorador**, selecciona **Agregar elementos de datos** y luego selecciona **Orígenes de datos existentes**.
+1. Agrega el almacén de lago que creaste anteriormente.
+1. Expande el elemento de almacén de lago hasta llegar a la tabla de **productos**.
+1. En el menú **...** de la tabla **productos**, selecciona **Cargar datos** > **Spark**. Esto agrega una nueva celda de código al cuaderno, como se muestra aquí:
 
     ![Captura de pantalla de un cuaderno con código para consultar una tabla.](./Images/load-spark.png)
 
