@@ -39,7 +39,7 @@ Ahora que tiene un área de trabajo, es el momento de crear un almacén de lago 
 
 Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una manera de hacerlo es definir un flujo de datos que encapsula un proceso de *extracción, transformación y carga* (ETL).
 
-1. En la página principal de tu área de trabajo, selecciona **Obtener datos** > **Nuevo flujo de datos Gen2**. Al cabo de unos segundos, se abre el Editor de Power Query para el nuevo flujo de datos, como se muestra aquí.
+1. En la página principal del almacén de lago de datos, selecciona **Obtener datos** > **Nuevo flujo de datos Gen2**. Al cabo de unos segundos, se abre el Editor de Power Query para el nuevo flujo de datos, como se muestra aquí.
 
  ![Nuevo flujo de datos.](./Images/new-dataflow.png)
 
@@ -74,7 +74,7 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
 1. En la cinta de opciones de la barra de herramientas, seleccione la pestaña **Inicio**. A continuación, en el menú desplegable **Agregar destino de datos**, seleccione **Almacén de lago**.
 
-   > **Nota:** Si esta opción está atenuada, es posible que ya tenga un conjunto de destino de datos. Compruebe el destino de los datos en la parte inferior del panel "Configuración de la consulta" en el lado derecho del Editor de Power Query. Si ya se ha establecido un destino, puede cambiarlo con el engranaje.
+   > **Nota:** Si esta opción está atenuada, es posible que ya tenga un conjunto de destino de datos. Compruebe el destino de los datos en la parte inferior del panel "Configuración de la consulta" en el lado derecho del Editor de Power Query. Si ya se ha establecido un destino predeterminado, puedes quitarlo y agregar uno nuevo.
 
 2. En el cuadro de diálogo **Conectarse al destino de datos**, edite la conexión e inicie sesión con su cuenta organizativa de Power BI para establecer la identidad que usa el flujo de datos para acceder al almacén de lago.
 
@@ -93,13 +93,13 @@ Ahora que tiene un almacén de lago, debe ingerir en él algunos datos. Una mane
 
    ![Consulta con un destino de almacén de lago.](./Images/lakehouse-destination.png)
 
-6. Seleccione **Publicar** para publicar el flujo de datos. A continuación, espere a que se cree el flujo de datos **Dataflow 1** en el área de trabajo.
+6. En la cinta de opciones de la barra de herramientas, selecciona la pestaña **Inicio**. A continuación, selecciona **Guardar y ejecutar** y espera a que se cree el flujo de datos **Flujo de datos 1** en el área de trabajo.
 
 ## Adición de un flujo de datos a una canalización
 
 Puede incluir un flujo de datos como actividad en una canalización. Las canalizaciones se usan para orquestar las actividades de ingesta y procesamiento de datos, lo que permite combinar flujos de datos con otros tipos de operaciones en un único proceso programado. Se pueden crear canalizaciones en unas cuantas experiencias diferentes, incluida la experiencia Data Factory.
 
-1. En el área de trabajo habilitada para Fabric, asegúrese de que todavía está en la experiencia **Ingeniería de datos**. Selecciona **+ Nuevo elemento** > **Canalización de datos** y, cuando se te solicite, crea una canalización nueva llamada **Cargar datos**.
+1. En el área de trabajo habilitada para Fabric, selecciona **+ Nuevo elemento** > **Canalización de datos** y, cuando se te solicite, crea una canalización llamada **Cargar datos**.
 
    Se abre el editor de canalizaciones.
 
@@ -107,7 +107,7 @@ Puede incluir un flujo de datos como actividad en una canalización. Las canaliz
 
    > **Sugerencia**: Si el Asistente para copiar datos se abre automáticamente, ciérralo.
 
-2. Seleccione **Agregar actividad de canalización** y agregue una actividad **Flujo de datos** a la canalización.
+2. Selecciona **Actividad de canalización** y agrega una actividad **Flujo de datos** a la canalización.
 
 3. Con la nueva actividad **Dataflow1** seleccionada, en la pestaña **Configuración**, en la lista desplegable **Flujo de datos**, seleccione **Dataflow 1** (el flujo de datos que creó anteriormente).
 

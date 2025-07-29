@@ -22,31 +22,24 @@ Extrae la carpeta a la carpeta **C:\sers\student\Downloads\16-reusable-assets**.
 
 ## Creación de un nuevo proyecto de Power BI
 
-En esta tarea, crearás un informe mediante la conexión al modelo semántico publicado y lo guardarás como un archivo de proyecto de Power BI (*.pbip*). Los archivos del proyecto de Power BI almacenan los detalles del modelo semántico y del informe en archivos planos que funcionan con el control de código fuente. Puedes usar Visual Studio Code para modificar estos archivos o Git para realizar un seguimiento de los cambios.
+En esta tarea, guardarás un informe como un archivo de proyecto de Power BI (*.pbip*). Los archivos del proyecto de Power BI almacenan los detalles del modelo semántico y del informe en archivos planos que funcionan con el control de código fuente. Puedes usar Visual Studio Code para modificar estos archivos o Git para realizar un seguimiento de los cambios.
 
-1. En el escritorio, abre la aplicación Power BI Desktop y crea un informe en blanco.
-
-    > Cuando se te solicite, inicia sesión con la misma cuenta que se está usando en el servicio Fabric.
+1. Abre el archivo **16-Starter-Sales Analysis.pbix** dentro de la carpeta **16-reutilizable-assets**.
 
 1. Selecciona **Archivo** > **Opciones y configuración** > **Opciones** > **Características de la versión preliminar** y selecciona la opción **Almacenar modelo semántico con formato TMDL** y **Aceptar**.
 
-    > Esto permite guardar el modelo semántico mediante el lenguaje de definición de modelos tabulares (TMDL), que actualmente es una característica en versión preliminar.
-
-1. Si se te pide que reinicies Power BI Desktop, hazlo antes de continuar con el ejercicio.
+    > Esto permite guardar el modelo semántico mediante el lenguaje de definición de modelos tabulares (TMDL), que actualmente es una característica en versión preliminar. Si se te pide que reinicies Power BI Desktop, hazlo antes de continuar con el ejercicio.
 
     ![Captura de pantalla de las opciones disponibles en la categoría Características de la versión preliminar.](./Images/power-bi-enable-tmdl.png)
 
-1. Selecciona **Guardar como** elige el tipo de archivo seleccionando la flecha en el menú desplegable al asignar un nombre al archivo.
+1. Selecciona **Guardar como** y elige el tipo de archivo seleccionando la flecha en el menú desplegable al asignar un nombre al archivo.
+
 1. Selecciona la extensión de archivo **.pbip**, elige un nombre para tu informe y guárdalo en una carpeta que recuerdes.
 
     ![Captura de pantalla de la selección Guardar como con el menú desplegable expandido.](./Images/power-bi-save-file-types.png)
 
 1. Observa en la parte superior de la ventana de Power BI Desktop que el nombre de tu informe tiene **(Proyecto de Power BI)** junto a él.
-1. En la cinta Inicio, ve a **Obtener datos > Modelos semánticos de Power BI** para conectarte al modelo semántico publicado.
 
-    ![Captura de pantalla del conector del modelo semántico de Power BI en la sección Obtener datos.](./Images/power-bi-connect-semantic-models.png)
-
-1. Una vez conectado, deberías ver 9 tablas en el panel Datos.
 1. Vuelve a **guardar** el archivo.
 
 ### Revisión de los detalles del archivo del proyecto de Power BI
@@ -66,12 +59,8 @@ Veamos cómo se reflejan los cambios en Power BI Desktop en los archivos .tmdl.
 En esta tarea, agregarás una nueva tabla porque el modelo semántico no tiene todos los datos que necesitas.
 
 1. En Power BI Desktop, ve a **Obtener datos > Web** para agregar los nuevos datos.
-1. Observa el mensaje de que se requiere una conexión DirectQuery. Elige **Agregar un modelo local** para continuar.
-1. El nuevo cuadro de diálogo te mostrará una base de datos y tablas para que elijas. Selecciona todo y **Enviar**.
 
-    > El modelo semántico se trata como una base de datos de Analysis Server de SQL Server.
-
-1. Aparecerá el cuadro de diálogo Desde web una vez conectado. Mantén seleccionado el botón de radio Básico. Escribe la siguiente ruta del archivo como ruta de acceso URL.
+1. Aparecerá el cuadro de diálogo Desde web una vez conectado. Mantenga seleccionado el botón de radio **Básico**. Escribe la siguiente ruta del archivo como ruta de acceso URL.
 
     `C:\Users\Student\Downloads\16-reusable-assets\us-resident-population-estimates-2020.html`
 
@@ -88,7 +77,7 @@ En esta tarea, agregarás una nueva tabla porque el modelo semántico no tiene t
 1. **Guarda** el archivo.
 1. Si se te solicita, **no actualices** al formato mejorado de Informe de Power BI.
 
-### Revisión de los detalles del archivo del proyecto de Power BI
+### Creación de una relación
 
 En esta tarea, realizaremos cambios en el informe de Power BI Desktop y veremos los cambios en los archivos .tmdl planos.
 
@@ -200,7 +189,7 @@ En esta tarea, crearás un archivo de plantilla para que puedas compartir un arc
 
 ### Revisión del estado final
 
-En la captura de pantalla siguiente, ha creado el archivo de proyecto de Power BI y lo ha publicado en un área de trabajo. Después, ha navegado al área de trabajo en el servicio Power BI y ha cambiado a la **vista de linaje** para ver cómo su nuevo informe depende de otros orígenes de datos.
+En esta tarea, revisarás la captura de pantalla siguiente del resultado final de las tareas realizadas en el ejercicio. Para lograr este estado, has creado el archivo de proyecto de Power BI y lo has publicado en un área de trabajo. Después, has navegado al área de trabajo en el servicio Power BI y has cambiado a la **vista Linaje** para ver cómo depende el nuevo informe de otros orígenes de datos.
 
 De izquierda a derecha, los siguientes elementos son visibles:
 

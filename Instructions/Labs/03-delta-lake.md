@@ -67,6 +67,7 @@ Ahora puedes crear un cuaderno de Fabric para trabajar con los datos. Los cuader
     ```
 
 1. Haz clic en cualquier parte del cuaderno fuera de la celda para dejar de editarlo.
+1. En el panel **Explorador**, selecciona **Agregar elementos de datos** y, a continuación, selecciona **Orígenes de datos existentes**. Conéctate al almacén de lago de datos que creaste anteriormente.
 1. Agrega una nueva celda de código y agrega el código siguiente para leer los datos de productos en un DataFrame mediante un esquema definido:
 
     ```python
