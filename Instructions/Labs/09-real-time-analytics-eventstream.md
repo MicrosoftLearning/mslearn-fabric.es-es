@@ -18,13 +18,13 @@ Este laboratorio se realiza en unos **30** minutos.
 Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
 1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
-1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Creación de instancia de Eventhouse
+## Creación de instancias de Event house
 
 Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fabric que necesitarás para tu solución de inteligencia en tiempo real. Empezaremos por crear un centro de eventos.
 
@@ -97,7 +97,7 @@ El flujo de eventos que has creado toma datos del origen de ejemplo de datos de 
     | where ingestion_time() between (now(-1d) .. now())
     ```
 
-1. Selecciona el código de consulta y ejecútalo para ver 100 filas de datos de la tabla.
+1. Seleccione el código de consulta y ejecútalo para ver 24 horas de datos de la tabla.
 
     ![Captura de pantalla de una consulta KQL.](./Images/kql-query.png)
 
@@ -240,5 +240,5 @@ Si ha terminado de explorar la base de datos KQL, puede eliminar el área de tra
 
 1. En la barra de la izquierda, seleccione el icono del área de trabajo.
 2. En la barra de herramientas, selecciona **Configuración del área de trabajo**.
-3. En la sección **General**, seleccione **Quitar esta área de trabajo**.
+3. En la sección **General**, selecciona **Quitar esta área de trabajo**.
 .
