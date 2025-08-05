@@ -204,6 +204,8 @@ Ahora que tiene datos en la capa de bronce del almacén de datos, puede usar un 
 
     Ahora tiene datos en la tabla Delta de plata que están listos para ser aún más transformados y modelados.
 
+1. Después de ejecutar la última celda, seleccione la pestaña **Ejecutar** encima de la cinta y, después, seleccione **Detener sesión** para detener el recurso de proceso que usa el cuaderno.
+
 ## Exploración de datos en la capa Silver mediante el punto de conexión de SQL
 
 Ahora que tienes datos en la capa de plata, puedes usar el punto de conexión de análisis SQL para explorar los datos y realizar algunos análisis básicos. Esto es útil si estás familiarizado con SQL y quieres hacer una exploración básica de los datos. En este ejercicio, se usa la vista de punto de conexión de SQL en Fabric, pero también puedes usar otras herramientas como SQL Server Management Studio (SSMS) y Azure Data Explorer.
@@ -260,6 +262,8 @@ Podrías haber hecho todo esto en un único cuaderno, pero para este ejercicio v
    df = spark.read.table("Sales.sales_silver")
     ```
 
+    > **Nota**: Si recibe un error `[TooManyRequestsForCapacity]` al ejecutar la primera celda, asegúrese de que ha detenido la sesión que se ejecutaba antes en el primer cuaderno.
+ 
 1. **Agregue un nuevo bloque de código** y pegue el código siguiente para crear la tabla de dimensiones y ejecútelo:
 
     ```python
