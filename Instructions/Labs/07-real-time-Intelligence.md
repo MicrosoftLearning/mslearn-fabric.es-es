@@ -40,7 +40,7 @@ Ahora estás listo para buscar e ingerir datos en tiempo real desde un origen de
 
     ![Captura de pantalla de un nuevo flujo de eventos.](./Images/name-eventstream.png)
 
-1. Selecciona **Siguiente** y espera a que se creen el origen y el flujo de eventos, después selecciona **Abrir flujo de eventos**. El flujo de eventos mostrará el origen **existencias** y el **stock-data-stream** en el lienzo de diseño:
+1. Seleccione **Next**, luego **Connect** y espere a que se creen el origen y el Eventstream. A continuación, seleccione **Open eventstream**. El flujo de eventos mostrará el origen **existencias** y el **stock-data-stream** en el lienzo de diseño:
 
    ![Captura de pantalla del lienzo del flujo de eventos.](./Images/new-stock-stream.png)
 
@@ -73,7 +73,7 @@ El flujo de eventos ingiere los datos de existencias en tiempo real, pero actual
 
     Se ha creado la conexión entre el flujo y la tabla. Vamos a comprobarlo en el flujo de eventos.
 
-1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real** y después consulta la página **Mis flujos de datos**. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
+1. En la barra de menús de la izquierda, selecciona el centro en **tiempo real**. En el menú **...** para el flujo **stock-data-stream**, selecciona **Abrir flujo de eventos**.
 
     El flujo de eventos muestra ahora un destino para el flujo:
 
@@ -119,14 +119,14 @@ La secuencia de eventos captura los datos del mercado de valores en tiempo real 
 Ahora que tienes una tabla que se rellena mediante la secuencia de datos, puedes usar un panel en tiempo real para visualizar los datos.
 
 1. En el editor de consultas, selecciona la consulta KQL que has usado para recuperar los precios promedio de las acciones durante los últimos cinco minutos.
-1. En la barra de herramientas, selecciona **Anclar al panel**. Después, ancla la consulta **en un nuevo panel de control** con la siguiente configuración:
+1. En la barra de herramientas, seleccione **Save to dashboard**. Después, ancla la consulta **en un nuevo panel de control** con la siguiente configuración:
     - **Nombre de panel **: `Stock Dashboard`
     - **Nombre del icono**: `Average Prices`
-1. Crea el panel y ábrelo. Debería ser parecido a este:
+1. Crea el panel y ábrelo. Debería tener este aspecto:
 
     ![Captura de pantalla de un nuevo panel.](./Images/stock-dashboard-table.png)
 
-1. En la parte superior del panel de control, cambia del modo **Visualización** al modo **Edición**.
+1. En la parte superior del panel, cambie del modo **Viewing** al modo **Editing**.
 1. Selecciona el icono **Editar** (*lápiz*) del icono **Precios promedio**.
 1. En el panel **Formato visual**, cambia el **Objeto visual** de *Tabla* a *Gráfico de columnas*:
 
