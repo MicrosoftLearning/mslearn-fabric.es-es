@@ -1,6 +1,11 @@
-# Uso de Data Activator en Fabric
+---
+lab:
+  title: Uso de Activator en Microsoft Fabric
+  module: Use Activator in Microsoft Fabric
+---
+# Uso de Activator en Fabric
 
-Data Activator de Microsoft Fabric realiza acciones en función de lo que sucede en los datos. Un activador permite supervisar los datos y crear desencadenadores para reaccionar ante los cambios en ellos.
+Activator de Microsoft Fabric realiza acciones en función de lo que sucede en los datos. Un activador permite supervisar los datos y crear desencadenadores para reaccionar ante los cambios en ellos.
 
 Este laboratorio se realiza en unos **30** minutos.
 
@@ -35,7 +40,7 @@ A continuación, cree un activador en el área de trabajo que creó:
 
     Después de un minuto o así, se creará un nuevo activador:
 
-    ![Captura de pantalla de la pantalla Inicio de Data Activator.](./Images/activator-home-screen.png)
+    ![Captura de pantalla de la pantalla Inicio de Activator.](./Images/activator-home-screen.png)
 
     En un entorno de producción real, usaría sus propios datos. Sin embargo, para este laboratorio, se utilizan los datos de ejemplo que proporciona el activador. 
 
@@ -45,7 +50,7 @@ A continuación, cree un activador en el área de trabajo que creó:
 
 1. Seleccione la lista desplegable junto al nombre del activador actual en la esquina superior izquierda y cambie el nombre a ***Activador de envíos de Contoso*** para nuestro ejemplo.
 
-    ![Captura de pantalla de la pantalla Inicio de Reflex de Data Activator.](./Images/activator-reflex-home-screen.png)
+    ![Captura de pantalla de la pantalla principal de Activator.](./Images/activator-reflex-home-screen.png)
 
 Ya se ha creado ahora nuestro proyecto de activador, y podemos empezar a navegar por sus objetos, propiedades y reglas.
 
@@ -104,7 +109,7 @@ Vamos a revisar lo que quiere que haga la regla: *Desea crear una regla de alert
 1. Seleccione **Crear**.
 1. Se crea una nueva regla con el nombre predeterminado de *Temperature alert*. Cambie el nombre a ***Medicine temp out of range***; para ello, seleccione el icono de lápiz situado junto al nombre de la regla en el panel central.
 
-    ![Recorte de pantalla de la nueva regla de Data Activator.](./Images/activator-new-rule.png)
+    ![Recorte de pantalla de la nueva regla de Activator.](./Images/activator-new-rule.png)
 
     Hasta ahora se ha definido la propiedad y la condición en la que desea que se active la regla, pero eso todavía no se incluyen todos los parámetros necesarios. Todavía tiene que asegurarse de que el desencadenador solo se activa para la *ciudad* de **Redmond** y para el tipo de *cuidado especial* de **Medicamento**. Vamos a añadir un par de filtros para esas condiciones.  
 
@@ -124,7 +129,7 @@ Vamos a revisar lo que quiere que haga la regla: *Desea crear una regla de alert
     - **Encabezado**: *Temperatura demasiado alta*
     - **Contexto**: seleccione la propiedad *Temperature* en la lista de casillas.
 
-    ![Captura de pantalla de la acción Definir del activador de datos.](./Images/activator-define-action.png)
+    ![Captura de pantalla de la acción definir de Activator.](./Images/activator-define-action.png)
 
 1. Seleccione **Guardar e iniciar**.
 
