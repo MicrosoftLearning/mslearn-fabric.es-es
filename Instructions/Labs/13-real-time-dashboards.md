@@ -17,13 +17,13 @@ Este laboratorio se realiza en **25** minutos aproximadamente.
 Antes de trabajar con datos de Fabric, necesitas crear un área de trabajo con la capacidad gratuita de Fabric habilitada.
 
 1. En un explorador, ve a la [página principal de Microsoft Fabric](https://app.fabric.microsoft.com/home?experience=fabric) en `https://app.fabric.microsoft.com/home?experience=fabric` e inicia sesión con tus credenciales de Fabric.
-1. En la barra de menús de la izquierda, selecciona **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
+1. En la barra de menús de la izquierda, seleccione **Áreas de trabajo** (el icono tiene un aspecto similar a &#128455;).
 1. Crea una nueva área de trabajo con el nombre que prefieras y selecciona un modo de licencia que incluya capacidad de Fabric (*Evaluación gratuita*, *Premium* o *Fabric*).
 1. Cuando se abra la nueva área de trabajo, debe estar vacía.
 
     ![Captura de pantalla de un área de trabajo vacía en Fabric.](./Images/new-workspace.png)
 
-## Creación de instancia de Eventhouse
+## Creación de instancias de Event house
 
 Ahora que tienes un área de trabajo, puedes empezar a crear los elementos de Fabric que necesitarás para tu solución de inteligencia en tiempo real. Empezaremos por crear un centro de eventos.
 
@@ -80,19 +80,22 @@ Actualmente no hay tablas en la base de datos. Usaremos un flujo de eventos para
 
 Ahora que tienes un flujo de datos en tiempo real que se cargan en una tabla en el centro de eventos, puedes visualizarlos con un panel en tiempo real.
 
-1. En la barra de menús de la izquierda, selecciona el centro de **inicio**. Después, en la página principal, crea un nuevo **Panel de control en tiempo real** denominado `bikes-dashboard`.
+1. En la barra de menús de la izquierda, selecciona **Crear**. En la página *New*, en la sección *Real-Time Inteligence*, seleccione **Real-Time Dashboard** y asígnele el nombre `bikes-dashboard`.
+
+    >**Nota**: si la opción **Crear** no está anclada a la barra lateral, primero debes seleccionar la opción de puntos suspensivos (**...**). 
 
     Se crea un nuevo panel vacío.
 
 
     ![Una captura de pantalla de un panel nuevo.](./Images/new-dashboard.png)
 
-1. En la barra de herramientas, selecciona **Nuevo origen de datos** y agrega un nuevo origen de datos de **centro de datos de One Lake**. Después, selecciona tu centro de eventos y crea un nuevo origen de datos con la siguiente configuración:
+1. En la barra de herramientas, seleccione **New data source**y, a continuación, seleccione **Eventhouse/KQL Database**. Después, selecciona tu centro de eventos y crea un nuevo origen de datos con la siguiente configuración:
     - **Nombre para mostrar**: `Bike Rental Data`
     - **Base de datos**: *la base de datos predeterminada de tu centro de eventos*.
     - **Identidad de paso**: *seleccionada*
 
-1. Cierra el panel **Orígenes de datos** y después, en el lienzo de diseño del panel, selecciona **Agregar icono**.
+1. Seleccione **Agregar**.
+1. En el lienzo de diseño del panel, seleccione **Add tile**.
 1. En el editor de consultas, asegúrate de que el origen **Datos de alquiler de bicicletas** está seleccionado y escribe el siguiente código KQL:
 
     ```kql
@@ -175,7 +178,7 @@ El panel contiene dos objetos visuales basados en consultas similares. Para evit
     | order by Neighbourhood asc
     ```
 
-1. Aplica los cambios y comprueba que el gráfico de barras sigue mostrando los datos de todos los barrios.
+1. Aplique los cambios y compruebe que el gráfico de barras sigue mostrando los datos de todos los barrios.
 
 1. Edita el objeto visual de mapa **Ubicaciones de bicicletas** y cambia la consulta por el siguiente código:
 
@@ -185,11 +188,11 @@ El panel contiene dos objetos visuales basados en consultas similares. Para evit
     | order by Neighbourhood asc
     ```
 
-1. Aplica los cambios y comprueba que el mapa sigue mostrando los datos de todos los barrios.
+1. Aplique los cambios y compruebe que el mapa sigue mostrando los datos de todos los barrios.
 
 ## Agregar un parámetro
 
-Tu panel muestra actualmente los últimos datos sobre bicicletas, aparcamientos y ubicación de todos los barrios. Ahora vamos a agregar un parámetro para que puedas seleccionar un barrio específico.
+Su panel muestra actualmente los últimos datos sobre bicicletas, aparcamientos y ubicación de todos los barrios. Ahora vamos a agregar un parámetro para que pueda seleccionar un barrio específico.
 
 1. En la barra de herramientas del panel, en la pestaña **Administrar**, selecciona **Parámetros**.
 1. Ten en cuenta cualquier parámetro existente que se haya creado automáticamente (por ejemplo, un parámetro *Intervalo de tiempo*). Después, **elimínalos**.
@@ -220,7 +223,7 @@ Tu panel muestra actualmente los últimos datos sobre bicicletas, aparcamientos 
 
 1. Seleccione **Done** (Listo) para crear el parámetro.
 
-    Ahora que has agregado un parámetro, debes modificar la consulta básica para filtrar los datos en función de los barrios elegidos.
+    Ahora que ha agregado un parámetro, debe modificar la consulta básica para filtrar los datos en función de los barrios elegidos.
 
 1. En la barra de herramientas, selecciona **Consultas básicas**. Después, selecciona la consulta **base_bike_data** y edítala para agregar una condición **And** a la cláusula **Where** para filtrar según los valores de los parámetros seleccionados, como se muestra en el siguiente código:
 
@@ -233,7 +236,7 @@ Tu panel muestra actualmente los últimos datos sobre bicicletas, aparcamientos 
 
 1. Selecciona **Listo** para guardar la consulta básica.
 
-1. En el panel, use el parámetro **Barrio** para filtrar los datos en función de los barrios que selecciones.
+1. En el panel, use el parámetro **Barrio** para filtrar los datos en función de los barrios seleccionados.
 
    ![Captura de pantalla de un panel con parámetros seleccionados.](./Images/dashboard-parameters.png)
 
