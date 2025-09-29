@@ -28,7 +28,7 @@ Después de completar este laboratorio, podrá:
 
 Necesita una [Capacidad de Microsoft Fabric (F2 o superior)](https://learn.microsoft.com/fabric/fundamentals/copilot-enable-fabric) con Copilot habilitado para completar este ejercicio.
 
-> **Nota**: Para su comodidad, un cuaderno con todos los mensajes de este ejercicio está disponible para su descarga en:
+> **Nota**: Para mayor comodidad, hay disponible un cuaderno con todas las indicaciones de este ejercicio que puede descargar en:
 
 `https://github.com/MicrosoftLearning/mslearn-fabric/raw/refs/heads/main/Allfiles/Labs/22b/Starter/eurostat-notebook.ipynb`
 
@@ -140,7 +140,7 @@ Ahora se usará Copilot para ayudar a descargar datos de la API de Eurostat. En 
     
     > **Funcionamiento de Copilot**: Observe cómo Copilot traduce la solicitud en lenguaje natural en código de Python funcional. Entiende que debe realizar una solicitud HTTP, controlar el sistema de archivos y guardar los datos en una ubicación específica del almacén de lago de datos.
     
-    Aquí tiene el código completo, en caso de que experimente excepciones durante la ejecución:
+    Para su comodidad, aquí está el código completo por si experimentara excepciones durante la ejecución:
     
     ```python
     #### ATTENTION: AI-generated code can include errors or operations you didn't intend. Review the code in this cell carefully before running it.
